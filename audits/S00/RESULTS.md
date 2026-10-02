@@ -12,7 +12,7 @@ Pending first CI run on `codex/s00-screen-time-feasibility`.
 |---|---|---|
 | Reproducible XcodeGen project definition | PENDING CI | `project.yml`; XcodeGen 2.46.0 is fetched to the ephemeral runner and SHA-256 verified. |
 | App + monitor + report extension Simulator compile | PENDING CI | Compile evidence only; Simulator cannot validate Screen Time delivery. |
-| Pure logic tests | PENDING CI | Thresholds, identifiers, copy, duplicate decision, and today interval. |
+| Pure logic tests | PENDING CI | Host-side Swift Package tests cover thresholds, identifiers, copy, duplicate decision, and today interval without claiming Screen Time runtime behavior. |
 | Individual authorization on iPhone | NOT RUN | Physical iPhone and signing required. |
 | Multi-app shared threshold pool | NOT RUN | Physical iPhone required. |
 | Unselected/locked time exclusion | NOT RUN | Physical iPhone required. |

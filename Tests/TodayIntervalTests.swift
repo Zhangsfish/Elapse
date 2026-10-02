@@ -1,4 +1,5 @@
 import XCTest
+@testable import ElapseCore
 
 final class TodayIntervalTests: XCTestCase {
     func testTodayIntervalUsesCalendarDayBoundaries() throws {

@@ -71,18 +71,6 @@ targets:
       path: ReportExtension/Info.plist
     entitlements:
       path: ReportExtension/ElapseReport.entitlements
-  ElapseTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources:
-      - path: Tests
-      - path: Shared
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.tests
-        GENERATE_INFOPLIST_FILE: YES
-        TEST_HOST: ""
-        BUNDLE_LOADER: ""
 schemes:
   Elapse:
     build:
@@ -90,7 +78,3 @@ schemes:
         Elapse: all
         ElapseMonitor: all
         ElapseReport: all
-        ElapseTests: [test]
-    test:
-      targets:
-        - ElapseTests
