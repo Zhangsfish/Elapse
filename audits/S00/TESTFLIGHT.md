@@ -75,3 +75,5 @@ The default explicit upload ref is `main`. The recovery marker is separately res
 - Processing: NOT RUN.
 
 The retry fix adds explicit iPhone icon renditions and `CFBundleIconName=AppIcon`, asserts the final built/archive plist value, and expands the fixed safe diagnostic categories. A unique path-scoped marker triggers exactly one upload when the fix PR first enters `main`; later ordinary commits do not match that path and cannot upload.
+
+Secret-free retry validation: [ordinary CI 37037314442](https://github.com/Zhangsfish/Elapse/actions/runs/37037314442) and [prepare-only run 37037360799](https://github.com/Zhangsfish/Elapse/actions/runs/37037360799) both PASS for commit `9f6140a39de744c25a0519ba7715d2b0dca4e2c3`. The upload step was skipped.

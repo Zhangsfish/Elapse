@@ -12,6 +12,8 @@ Direct dispatch succeeded for [TestFlight run 37035044676](https://github.com/Zh
 
 The retry fix is on `codex/s00-testflight-appicon-fix`: explicit iPhone icon slots, `CFBundleIconName=AppIcon`, archive assertions, improved safe diagnostics, and a path-scoped one-time upload marker. Merging that marker to `main` triggers one retry without making ordinary main pushes upload builds.
 
+Retry preparation evidence: commit `9f6140a39de744c25a0519ba7715d2b0dca4e2c3`; [ordinary CI run 37037314442](https://github.com/Zhangsfish/Elapse/actions/runs/37037314442) and secret-free [archive run 37037360799](https://github.com/Zhangsfish/Elapse/actions/runs/37037360799) both PASS. The upload step was skipped as intended.
+
 This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
 
 ## Product question
