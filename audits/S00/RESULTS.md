@@ -4,15 +4,24 @@ Updated: 2026-10-02
 
 ## Code and CI evidence
 
-Pending first CI run on `codex/s00-screen-time-feasibility`.
+Passing implementation evidence:
+
+- Commit: `b18309dfe58508540305d907f549745f5bc0cf13`
+- CI: [GitHub Actions run 36991441759](https://github.com/Zhangsfish/Elapse/actions/runs/36991441759)
+- Host: standard GitHub-hosted `macos-26-arm64`; macOS 26.6.2; Xcode 26.6 (17F113); iOS SDK 26.5; Swift 6.3.3.
+- Project generation: XcodeGen 2.46.0 official ZIP matched SHA-256 `4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806`; `xcodegen generate --spec project.yml` passed.
+- Compile: `xcodebuild ... -destination 'generic/platform=iOS Simulator' ... CODE_SIGNING_ALLOWED=NO clean build` passed for the app, monitor extension, and report extension (`BUILD SUCCEEDED`).
+- Tests: `swift test` passed 6/6 with 0 failures: threshold generation; event-name parsing/rejection; cumulative notification copy; duplicate receipt decision; and current-day interval boundaries.
+
+The CI compile uses Simulator SDKs only. The pure tests contain no Screen Time delivery claim. Local Windows Xcode/device execution was not available and was not represented as PASS.
 
 ## Evidence state
 
 | Item | Status | Evidence / limitation |
 |---|---|---|
-| Reproducible XcodeGen project definition | PENDING CI | `project.yml`; XcodeGen 2.46.0 is fetched to the ephemeral runner and SHA-256 verified. |
-| App + monitor + report extension Simulator compile | PENDING CI | Compile evidence only; Simulator cannot validate Screen Time delivery. |
-| Pure logic tests | PENDING CI | Host-side Swift Package tests cover thresholds, identifiers, copy, duplicate decision, and today interval without claiming Screen Time runtime behavior. |
+| Reproducible XcodeGen project definition | PASS | Generated in CI with verified XcodeGen 2.46.0. |
+| App + monitor + report extension Simulator compile | PASS | Unsigned compile evidence only; Simulator does not validate Screen Time delivery. |
+| Pure logic tests | PASS | 6/6 host-side Swift Package tests passed; they do not claim Screen Time runtime behavior. |
 | Individual authorization on iPhone | NOT RUN | Physical iPhone and signing required. |
 | Multi-app shared threshold pool | NOT RUN | Physical iPhone required. |
 | Unselected/locked time exclusion | NOT RUN | Physical iPhone required. |

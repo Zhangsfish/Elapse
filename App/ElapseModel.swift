@@ -34,9 +34,15 @@ final class ElapseModel: ObservableObject {
             return "Denied"
         case .approved:
             return "Authorized"
-        @unknown default:
+        case .approvedWithDataAccess:
             return "Authorized (additional data access)"
+        @unknown default:
+            return "Unknown"
         }
+    }
+
+    private var hasFamilyAuthorization: Bool {
+        authorizationStatus == .approved || authorizationStatus == .approvedWithDataAccess
     }
 
     var notificationDescription: String {
@@ -99,7 +105,7 @@ final class ElapseModel: ObservableObject {
     }
 
     func startMonitoring() {
-        guard authorizationStatus == .approved else {
+        guard hasFamilyAuthorization else {
             statusMessage = "Authorize Family Controls before starting."
             return
         }

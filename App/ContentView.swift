@@ -65,7 +65,7 @@ struct ContentView: View {
             .navigationTitle("Elapse S00")
             .familyActivityPicker(isPresented: $pickerPresented, selection: $model.selection)
             .task { await model.refreshState() }
-            .onChange(of: scenePhase) { phase in
+            .onChange(of: scenePhase) { _, phase in
                 if phase == .active {
                     Task { await model.refreshState() }
                 }

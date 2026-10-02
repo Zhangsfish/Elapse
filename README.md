@@ -80,6 +80,8 @@ If a proposed feature does not help the user **feel elapsed time** or inspect th
 
 **S00 — Screen Time feasibility gate**
 
+The S00 app, monitor extension, report extension, tests, and CI are implemented. Reproducible build and pure-logic evidence pass; the physical-iPhone behavior gates remain `NOT RUN`. See `STATUS.md` and `audits/S00/REAL_DEVICE_CHECKLIST.md`.
+
 Before polishing UI or building a complete app, prove on a real iPhone that:
 
 1. several selected apps can contribute to one cumulative usage threshold;
