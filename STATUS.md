@@ -10,7 +10,7 @@ The minimal app, Device Activity Monitor extension, Device Activity Report exten
 
 Passing implementation evidence: commit `e69c18f13b50f766746d7bade32c06172141e86c`; [ordinary CI run 37028810386](https://github.com/Zhangsfish/Elapse/actions/runs/37028810386) and secret-free [TestFlight prepare run 37028811778](https://github.com/Zhangsfish/Elapse/actions/runs/37028811778).
 
-The prepare run passed the Xcode 26 guard, helper validation, App Icon and privacy-manifest checks, unsigned generic-iPhone Release build, and unsigned distribution archive inspection. The upload step was correctly skipped. No App Store Connect signing or TestFlight upload has run because the four required GitHub settings are not configured.
+The prepare run passed the Xcode 26 guard, helper validation, App Icon and privacy-manifest checks, unsigned generic-iPhone Release build, and unsigned distribution archive inspection. The upload step was correctly skipped. No App Store Connect signing or TestFlight upload has run because the three required App Store Connect secrets are not configured.
 
 This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
 
@@ -64,7 +64,7 @@ Status: **PREPARE PASS — EXPLICIT UPLOAD BLOCKED_OWNER**
 - [x] User-visible app name is `Everwhile`; repository, project, scheme, product, and three Bundle IDs remain `Elapse`-based.
 - [x] Secret-free prepare-only CI builds and archives the app plus both extensions without development signing or device registration.
 - [x] Manual `upload` is the only path that reads `APPLE_TEAM_ID`, `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY`.
-- [ ] Automatic App Store Connect distribution signing and TestFlight upload: `BLOCKED_OWNER` until those four GitHub settings exist.
+- [ ] Automatic App Store Connect distribution signing and TestFlight upload: `BLOCKED_OWNER` until the three App Store Connect secrets exist. Repository variable `APPLE_TEAM_ID` is present.
 - [ ] App Store Connect processing reaches `VALID`: `NOT RUN`.
 
 The owner reports Family Controls Development + Distribution enabled for all three App IDs and the Everwhile App Store Connect record created. A successful export/upload is still required to validate that account-side configuration.
@@ -87,4 +87,4 @@ The owner reports Family Controls Development + Distribution enabled for all thr
 
 ## Next action
 
-After this PR is reviewed and merged, configure the four documented GitHub repository settings, manually dispatch `S00 TestFlight preparation and explicit upload` on `main` with `operation=upload`, install the resulting build through TestFlight, and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Do not register a device or switch to development/ad-hoc signing. Keep Gates A–D `NOT RUN` until physical-iPhone evidence exists.
+After this PR is reviewed and merged, configure the three missing App Store Connect repository secrets, manually dispatch `S00 TestFlight preparation and explicit upload` on `main` with `operation=upload`, install the resulting build through TestFlight, and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Do not register a device or switch to development/ad-hoc signing. Keep Gates A–D `NOT RUN` until physical-iPhone evidence exists.

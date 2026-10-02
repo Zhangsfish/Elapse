@@ -46,19 +46,19 @@ Secret-free implementation commit: `e69c18f13b50f766746d7bade32c06172141e86c`.
 | App Icon and required-reason privacy manifests | PASS | Prepare workflow validated the opaque 1024×1024 icon and app/monitor manifests. |
 | Prepare-only Release build and helper validation | PASS | Run 37028811778 passed without reading Apple settings. |
 | Unsigned archive and embedded extension metadata | PASS | Prepare-only created the unsigned archive and verified all three Bundle IDs plus synchronized build numbers. |
-| Automatic distribution signing and TestFlight upload | BLOCKED_OWNER | Required GitHub repository settings are not configured yet. |
+| Automatic distribution signing and TestFlight upload | BLOCKED_OWNER | The three required App Store Connect repository secrets are not configured yet. |
 | App Store Connect processing state | NOT RUN | No Everwhile build has been uploaded by this workflow. |
 | S00 real-device Gates A–D | NOT RUN | TestFlight plumbing is not Screen Time behavior evidence. |
 
 ## GitHub Actions settings
 
-Checked by name through the GitHub API on 2026-10-02; values were never read or printed.
+Checked by name through the GitHub API on 2026-10-02; only presence is reported here and no values were printed.
 
-- Variable `APPLE_TEAM_ID`: MISSING
+- Variable `APPLE_TEAM_ID`: PRESENT (value not printed)
 - Secret `APP_STORE_CONNECT_KEY_ID`: MISSING
 - Secret `APP_STORE_CONNECT_ISSUER_ID`: MISSING
 - Secret `APP_STORE_CONNECT_PRIVATE_KEY`: MISSING
 
-Until these four names exist, prepare-only work can pass but explicit upload remains `BLOCKED_OWNER`.
+Until the three missing secret names exist, prepare-only work can pass but explicit upload remains `BLOCKED_OWNER`.
 
 The workflow must first be merged to the default branch before its manual `workflow_dispatch` entry can be used there. The intended upload ref is `main`, not an unmerged feature branch.
