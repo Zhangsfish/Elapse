@@ -13,6 +13,7 @@ xcuserdata/
 
 # XcodeGen
 *.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/
 
 # macOS
 .DS_Store
