@@ -1,23 +1,25 @@
-# Elapse
+# Everwhile
+
+Repository and Xcode project name: **Elapse**. User-visible product name: **Everwhile**.
 
 **Feel time passing. Nothing else.**
 
-Elapse is a deliberately small iPhone utility for people who do not want another productivity system.
+Everwhile is a deliberately small iPhone utility for people who do not want another productivity system.
 
 The core idea is simple:
 
 1. The user selects a small group of apps.
-2. Elapse treats their usage as one shared pool of attention.
-3. Every N minutes of actual foreground usage, Elapse gives a quiet reminder.
+2. Everwhile treats their usage as one shared pool of attention.
+3. Every N minutes of actual foreground usage, Everwhile gives a quiet reminder.
 4. At the end of the day, the user can see where that time went.
 
-Elapse does **not** shame, score, block, gamify, or coach the user.
+Everwhile does **not** shame, score, block, gamify, or coach the user.
 
 ## Product thesis
 
 Many distracting apps reduce the subjective feeling of time passing. The first intervention should therefore be awareness, not control.
 
-Elapse does not prescribe what time is for. It simply makes elapsed time perceptible and leaves the next choice to the user.
+Everwhile does not prescribe what time is for. It simply makes elapsed time perceptible and leaves the next choice to the user.
 
 A notification such as:
 
@@ -55,7 +57,7 @@ See `docs/APPLE_PLATFORM_NOTES.md`.
 
 ## Non-goals
 
-Elapse is not:
+Everwhile is not:
 
 - an app blocker;
 - a parental-control product;

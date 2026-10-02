@@ -1,0 +1,138 @@
+name: S00 TestFlight preparation and explicit upload
+
+on:
+  push:
+    branches: [codex/s00-screen-time-feasibility]
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Prepare only, or explicitly upload Everwhile to TestFlight
+        required: true
+        type: choice
+        options: [prepare-only, upload]
+        default: prepare-only
+
+permissions:
+  contents: read
+
+jobs:
+  testflight:
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record Xcode 26 host and toolchain
+        run: |
+          set -euo pipefail
+          sw_vers
+          uname -m
+          xcode-select -p
+          xcodebuild -version
+          xcodebuild -showsdks
+          swift --version
+          major=$(xcodebuild -version | awk '/^Xcode / {split($2, parts, "."); print parts[1]}')
+          test "$major" -ge 26
+      - name: Run pure logic tests and lint distribution resources
+        run: |
+          set -euo pipefail
+          swift test
+          plutil -lint AppResources/PrivacyInfo.xcprivacy
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+
+          for path in (Path('scripts/s00_testflight_diagnostics.py'), Path('scripts/s00_signing_settings.py')):
+              ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+          print('Python release helpers parsed successfully')
+          PY
+      - name: Use verified XcodeGen 2.46.0
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip \
+            --output "$RUNNER_TEMP/xcodegen.zip"
+          echo "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 --check
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen-release"
+          tool=$(find "$RUNNER_TEMP/xcodegen-release" -type f -name xcodegen -print -quit)
+          test -n "$tool"
+          chmod +x "$tool"
+          echo "$(dirname "$tool")" >> "$GITHUB_PATH"
+          "$tool" --version
+      - name: Generate project and validate release helpers
+        run: |
+          set -euo pipefail
+          xcodegen generate --spec project.yml
+          xcodebuild -help 2>&1 | grep -E 'app-store-connect|destination.*upload|testFlightInternalTestingOnly' || true
+          bash -n scripts/s00_testflight_release.sh
+          swiftc -typecheck scripts/s00_testflight_status.swift
+          sips -g pixelWidth -g pixelHeight App/Assets.xcassets/AppIcon.appiconset/AppIcon.png
+      - name: Inspect effective Release signing settings safely
+        run: python3 scripts/s00_signing_settings.py
+      - name: Clean unsigned iPhone Release build
+        run: |
+          set -euo pipefail
+          xcodebuild -project Elapse.xcodeproj -scheme Elapse \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -derivedDataPath "$RUNNER_TEMP/S00EverwhileDeviceDerivedData" \
+            CODE_SIGNING_ALLOWED=NO clean build
+
+          app="$RUNNER_TEMP/S00EverwhileDeviceDerivedData/Build/Products/Release-iphoneos/Elapse.app"
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Info.plist")" = 'com.zhangsfish.elapse'
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$app/Info.plist")" = 'Everwhile'
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Info.plist")" = '0.1.0'
+          test -f "$app/PrivacyInfo.xcprivacy"
+          plutil -lint "$app/PrivacyInfo.xcprivacy"
+
+          for extension in \
+            'ElapseMonitor.appex|com.zhangsfish.elapse.monitor|privacy' \
+            'ElapseReport.appex|com.zhangsfish.elapse.report|no-privacy'; do
+            bundle_name=$(echo "$extension" | cut -d'|' -f1)
+            expected_id=$(echo "$extension" | cut -d'|' -f2)
+            privacy=$(echo "$extension" | cut -d'|' -f3)
+            bundle="$app/PlugIns/$bundle_name"
+            test -d "$bundle"
+            test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$bundle/Info.plist")" = "$expected_id"
+            if [[ "$privacy" == 'privacy' ]]; then
+              test -f "$bundle/PrivacyInfo.xcprivacy"
+              plutil -lint "$bundle/PrivacyInfo.xcprivacy"
+            fi
+          done
+      - name: Create and inspect unsigned distribution archive
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/S00-Everwhile-Prepare.xcarchive"
+          build_number="${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
+          xcodebuild -project Elapse.xcodeproj -scheme Elapse \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$archive" \
+            -derivedDataPath "$RUNNER_TEMP/S00EverwhileArchiveDerivedData" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CURRENT_PROJECT_VERSION="$build_number" archive
+
+          app="$archive/Products/Applications/Elapse.app"
+          test -d "$app"
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Info.plist")" = 'com.zhangsfish.elapse'
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$app/Info.plist")" = 'Everwhile'
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app/Info.plist")" = "$build_number"
+          test -f "$app/PrivacyInfo.xcprivacy"
+
+          for bundled_extension in \
+            'ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
+            'ElapseReport.appex|com.zhangsfish.elapse.report'; do
+            bundle_name=${bundled_extension%%|*}
+            expected_id=${bundled_extension#*|}
+            info="$app/PlugIns/$bundle_name/Info.plist"
+            test -f "$info"
+            test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
+            test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
+          done
+      - name: Sign and upload only on an explicit upload trigger
+        if: github.event_name == 'workflow_dispatch' && inputs.operation == 'upload'
+        env:
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: bash scripts/s00_testflight_release.sh

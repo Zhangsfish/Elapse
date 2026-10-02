@@ -53,6 +53,19 @@ Official docs:
 
 Do not assume the existing Apple Developer Program membership automatically grants distribution approval for a new App ID/extension.
 
+For the current TestFlight path, the owner reports that Family Controls Development + Distribution is enabled on the main app and both extensions. That account state is separate from repository compile evidence and must still be proven by a successful distribution export/upload.
+
+## Distribution and privacy manifests
+
+Apple's current App Store upload requirement is Xcode 26 or later. The repository therefore uses a GitHub-hosted `macos-26` runner and rejects an older selected Xcode before preparing an archive.
+
+The app and monitor extension use `UserDefaults` only to read or write preferences owned by the same app. Each executable that calls that API includes a privacy manifest declaring required-reason code `CA92.1`. The report extension does not call `UserDefaults` and does not inherit that declaration merely because it is embedded in the app.
+
+Official docs:
+- https://developer.apple.com/news/upcoming-requirements/
+- https://developer.apple.com/documentation/bundleresources/privacy-manifest-files
+- https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api
+
 ## Standard privacy model
 
 Under ordinary authorization, application and web selections are represented with privacy-preserving tokens.

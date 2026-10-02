@@ -18,6 +18,8 @@ targets:
     sources:
       - path: App
       - path: Shared
+      - path: AppResources/PrivacyInfo.xcprivacy
+        buildPhase: resources
     dependencies:
       - target: ElapseMonitor
         embed: true
@@ -29,11 +31,12 @@ targets:
         PRODUCT_NAME: Elapse
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: NO
     info:
       path: App/Info.plist
       properties:
-        CFBundleDisplayName: Elapse
+        CFBundleDisplayName: Everwhile
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         ITSAppUsesNonExemptEncryption: false
@@ -46,14 +49,21 @@ targets:
     sources:
       - path: MonitorExtension
       - path: Shared
+      - path: AppResources/PrivacyInfo.xcprivacy
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.monitor
         PRODUCT_NAME: ElapseMonitor
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
         SKIP_INSTALL: YES
         APPLICATION_EXTENSION_API_ONLY: YES
     info:
       path: MonitorExtension/Info.plist
+      properties:
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
     entitlements:
       path: MonitorExtension/ElapseMonitor.entitlements
   ElapseReport:
@@ -65,10 +75,15 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.report
         PRODUCT_NAME: ElapseReport
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
         SKIP_INSTALL: YES
         APPLICATION_EXTENSION_API_ONLY: YES
     info:
       path: ReportExtension/Info.plist
+      properties:
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
     entitlements:
       path: ReportExtension/ElapseReport.entitlements
 schemes:

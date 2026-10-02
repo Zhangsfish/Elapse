@@ -62,7 +62,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Elapse S00")
+            .navigationTitle("Everwhile")
             .familyActivityPicker(isPresented: $pickerPresented, selection: $model.selection)
             .task { await model.refreshState() }
             .onChange(of: scenePhase) { _, phase in
