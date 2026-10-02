@@ -7,10 +7,17 @@ This repository is the single source of truth for **Elapse**.
 Before changing code or product behavior, read:
 
 1. `STATUS.md`
-2. `docs/PRODUCT_SPEC.md`
-3. `docs/APPLE_PLATFORM_NOTES.md`
-4. `docs/TECHNICAL_PLAN.md`
-5. the active task under `prompts/`
+2. `docs/PRODUCT_DECISIONS.md`
+3. `docs/PRODUCT_SPEC.md`
+4. `docs/APPLE_PLATFORM_NOTES.md`
+5. `docs/TECHNICAL_PLAN.md`
+6. the active task under `prompts/`
+
+## Product authority
+
+- Product truth and brand foundation: `docs/PRODUCT_DECISIONS.md`.
+- Current behavioral contract: `docs/PRODUCT_SPEC.md`.
+- If a proposed name, feature, notification, or marketing idea conflicts with the product truth, change the proposal rather than silently changing the product philosophy.
 
 ## Product invariant
 
