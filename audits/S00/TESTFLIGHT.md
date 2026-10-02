@@ -77,3 +77,11 @@ The default explicit upload ref is `main`. The recovery marker is separately res
 The retry fix adds explicit iPhone icon renditions and `CFBundleIconName=AppIcon`, asserts the final built/archive plist value, and expands the fixed safe diagnostic categories. A unique path-scoped marker triggers exactly one upload when the fix PR first enters `main`; later ordinary commits do not match that path and cannot upload.
 
 Secret-free retry validation: [ordinary CI 37037314442](https://github.com/Zhangsfish/Elapse/actions/runs/37037314442) and [prepare-only run 37037360799](https://github.com/Zhangsfish/Elapse/actions/runs/37037360799) both PASS for commit `9f6140a39de744c25a0519ba7715d2b0dca4e2c3`. The upload step was skipped.
+
+## Upload attempt 02 and archive proof
+
+- [Run 37038785574](https://github.com/Zhangsfish/Elapse/actions/runs/37038785574): `0.1.0 (6.1)` built and archived; Apple asset validation failed with missing icon, missing plist key, and no supported orientations. No upload acceptance or processing.
+- [Baseline prepare run 37040791775](https://github.com/Zhangsfish/Elapse/actions/runs/37040791775): final archive had `UIDeviceFamily=[1,2]`, no supported-orientation array, and no primary iPad icon files. The main app did contain `Assets.car` with 13 AppIcon entries and a valid primary AppIcon name; the missing icon was therefore not explained by an absent source PNG.
+- Lecture Asset's successful Xcode 26 distribution uses a single universal 1024×1024 icon and target-level `TARGETED_DEVICE_FAMILY=1`. Everwhile now uses those same packaging settings and explicitly declares portrait plus landscape left/right in the main app plist.
+- [Fixed prepare run 37041479260](https://github.com/Zhangsfish/Elapse/actions/runs/37041479260): final archive asserts `UIDeviceFamily=[1]`, primary `CFBundleIcons`/`CFBundleIconName=AppIcon`, `Assets.car` AppIcon renditions, and all three orientations. Upload step skipped.
+- The old marker was consumed and removed. The new marker path is the only push path accepted by the TestFlight workflow; merging it triggers one retry from `main` without making ordinary commits upload.

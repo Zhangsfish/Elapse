@@ -6,6 +6,7 @@ This deliberately never reads provisioning profiles, signatures, or entitlements
 import json
 from pathlib import Path
 import plistlib
+import re
 import shutil
 import subprocess
 import sys
@@ -26,11 +27,15 @@ def icon_summary(key: str) -> dict[str, object]:
         return {"present": True, "primary_present": False}
     icon_name = primary.get("CFBundleIconName")
     files = primary.get("CFBundleIconFiles")
+    safe_files = [
+        item if isinstance(item, str) and re.fullmatch(r"AppIcon[A-Za-z0-9_-]*", item) else "OTHER"
+        for item in files
+    ] if isinstance(files, list) else []
     return {
         "present": True,
         "primary_present": True,
         "primary_name": "AppIcon" if icon_name == "AppIcon" else "OTHER_OR_MISSING",
-        "primary_files_count": len(files) if isinstance(files, list) else 0,
+        "primary_files": safe_files,
     }
 
 
@@ -134,6 +139,17 @@ matches = [
 print("S00_ASSETUTIL=OK")
 print(f"S00_ASSETUTIL_ENTRY_COUNT={len(entries)}")
 print(f"S00_ASSETUTIL_APPICON_MATCH_COUNT={len(matches)}")
+pixel_sizes = sorted(
+    {
+        (entry["PixelWidth"], entry["PixelHeight"])
+        for entry in matches
+        if isinstance(entry.get("PixelWidth"), int)
+        and isinstance(entry.get("PixelHeight"), int)
+        and 0 < entry["PixelWidth"] <= 4096
+        and 0 < entry["PixelHeight"] <= 4096
+    }
+)
+print("S00_ASSETUTIL_APPICON_PIXEL_SIZES=" + json.dumps(pixel_sizes))
 if require_metadata:
     if not matches:
         failures.append("ASSETUTIL_APPICON_RENDITION")

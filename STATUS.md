@@ -4,15 +4,15 @@
 
 **S00 — Screen Time feasibility gate**
 
-Status: **CODE / CI PASS — TESTFLIGHT RETRY FIX PENDING MERGE; REAL-DEVICE GATES NOT RUN**
+Status: **CODE / CI PASS — TESTFLIGHT ARCHIVE METADATA FIX PENDING MERGE; REAL-DEVICE GATES NOT RUN**
 
-The S00 implementation and TestFlight workflow are merged to `main` at `f8a9ce2a8fd094173584ff196db11c751618448d`.
+The S00 implementation is on `main` at `b8ef96b7c60f9e47d94d6449d413a9916135184d`.
 
-Direct dispatch succeeded for [TestFlight run 37035044676](https://github.com/Zhangsfish/Elapse/actions/runs/37035044676), version `0.1.0`, build `4.1`. The unsigned archive and metadata checks passed. App Store Connect then rejected the bundle during asset validation (`Invalid Bundle` plus a missing bundle key), before upload acceptance or processing. No missing setting, credential-format, cloud-signing-permission, Family Controls entitlement, or provisioning-profile category was reported.
+[TestFlight upload run 37038785574](https://github.com/Zhangsfish/Elapse/actions/runs/37038785574) built `0.1.0 (6.1)` and passed unsigned build/archive plus credential gates, then failed Apple asset validation (exit 70: icon, Info.plist key, orientations). Upload acceptance and processing remain `NOT RUN`.
 
-The retry fix is on `codex/s00-testflight-appicon-fix`: explicit iPhone icon slots, `CFBundleIconName=AppIcon`, archive assertions, improved safe diagnostics, and a path-scoped one-time upload marker. Merging that marker to `main` triggers one retry without making ordinary main pushes upload builds.
+[Baseline archive inspection run 37040791775](https://github.com/Zhangsfish/Elapse/actions/runs/37040791775) found the root cause: the compiled main app had `UIDeviceFamily=[1,2]` despite the top-level project setting `1`; its iPad icon metadata had no primary icon files, and supported orientations were absent. `Assets.car` existed and contained AppIcon renditions. [Fixed prepare run 37041479260](https://github.com/Zhangsfish/Elapse/actions/runs/37041479260) confirms the final archive has `UIDeviceFamily=[1]`, valid primary AppIcon metadata, `Assets.car` with AppIcon renditions, and portrait plus both landscape orientations.
 
-Retry preparation evidence: commit `9f6140a39de744c25a0519ba7715d2b0dca4e2c3`; [ordinary CI run 37037314442](https://github.com/Zhangsfish/Elapse/actions/runs/37037314442) and secret-free [archive run 37037360799](https://github.com/Zhangsfish/Elapse/actions/runs/37037360799) both PASS. The upload step was skipped as intended.
+The fix is on `codex/s00-testflight-archive-metadata`. Its new path-scoped marker triggers one upload after merge to `main`; ordinary pushes do not match that path.
 
 This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
 
@@ -61,13 +61,14 @@ The code registers one selected-application pool at 5/10/15/20/25/30 minutes wit
 
 ## TestFlight delivery path
 
-Status: **ARCHIVE PASS — APP STORE BUNDLE VALIDATION FAILED; RETRY FIX PENDING MERGE**
+Status: **ARCHIVE METADATA PASS — APPLE RETRY PENDING MERGE**
 
 - [x] User-visible app name is `Everwhile`; repository, project, scheme, product, and three Bundle IDs remain `Elapse`-based.
 - [x] Secret-free prepare-only CI builds and archives the app plus both extensions without development signing or device registration.
-- [x] Only an explicit `workflow_dispatch` upload or the unique one-time main-branch marker can enter the step that reads `APPLE_TEAM_ID`, `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY`.
+- [x] Only an explicit `workflow_dispatch` upload or the unique one-time main-branch marker can enter the upload step that reads the four existing Apple settings.
 - [x] Repository variable and all three App Store Connect secrets are present by name; values were not read or printed. The upload script passed its non-secret format gates.
-- [ ] Automatic distribution export/upload: run 37035044676 reached Apple bundle validation but failed before upload acceptance. No signing/entitlement/provisioning failure category appeared.
+- [x] The repaired final archive passes device-family, icon, asset-catalog and orientation assertions in secret-free CI.
+- [ ] Automatic distribution export/upload: run 37038785574 failed Apple bundle validation before upload acceptance. The repaired archive has not been uploaded.
 - [ ] App Store Connect processing reaches `VALID`: `NOT RUN`.
 
 The owner reports Family Controls Development + Distribution enabled for all three App IDs and the Everwhile App Store Connect record created. A successful export/upload is still required to validate that account-side configuration.
@@ -90,4 +91,4 @@ The owner reports Family Controls Development + Distribution enabled for all thr
 
 ## Next action
 
-Merge the App Icon validation-fix PR. Its unique marker automatically performs one retry from `main`; do not manually run Actions. If that retry reaches `VALID`, install Everwhile through TestFlight and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Do not register a device or switch to development/ad-hoc signing. Keep Gates A–D `NOT RUN` until physical-iPhone evidence exists.
+Review and merge the archive-metadata fix PR. Its unique marker automatically performs one retry from `main`. If that retry reaches `VALID`, install Everwhile through TestFlight and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Gates A–D remain `NOT RUN` until physical-iPhone evidence exists.

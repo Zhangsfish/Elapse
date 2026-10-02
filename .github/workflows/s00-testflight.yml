@@ -3,7 +3,7 @@ name: S00 TestFlight preparation and explicit upload
 on:
   push:
     branches: [main]
-    paths: [audits/S00/s00-testflight-upload-once-20261003.json]
+    paths: [audits/S00/s00-testflight-upload-once-20261003-metadata.json]
   workflow_dispatch:
     inputs:
       operation:
@@ -33,11 +33,11 @@ jobs:
           from pathlib import Path
 
           marker = json.loads(
-              Path('audits/S00/s00-testflight-upload-once-20261003.json').read_text(encoding='utf-8')
+              Path('audits/S00/s00-testflight-upload-once-20261003-metadata.json').read_text(encoding='utf-8')
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
-              'reason': 'retry-after-app-icon-metadata-validation',
+              'reason': 'retry-after-compiled-archive-metadata-fix',
               'version': '0.1.0',
           }
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
