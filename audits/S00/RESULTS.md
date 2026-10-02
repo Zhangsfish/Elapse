@@ -1,6 +1,6 @@
 # S00 results
 
-Updated: 2026-10-02
+Updated: 2026-10-03
 
 ## Code and CI evidence
 
@@ -39,4 +39,8 @@ The owner reports Family Controls Development + Distribution enabled for:
 - `com.zhangsfish.elapse.monitor` — Device Activity Monitor extension;
 - `com.zhangsfish.elapse.report` — Device Activity Report extension.
 
-The TestFlight route intentionally does not use development/ad-hoc signing or device registration. Repository variable `APPLE_TEAM_ID` is present. Automatic distribution export/upload remains `BLOCKED_OWNER` because secrets `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY` are not configured. No Apple key, certificate, profile, Team ID, or App and Website Usage entitlement is stored in this repository. The physical-device run remains `NOT RUN` and is required for Gates A–D.
+The TestFlight route intentionally does not use development/ad-hoc signing or device registration. The required variable and three secrets are present by name; no values were read or printed.
+
+Direct [workflow run 37035044676](https://github.com/Zhangsfish/Elapse/actions/runs/37035044676) used merge commit `f8a9ce2a8fd094173584ff196db11c751618448d`, version `0.1.0`, build `4.1`. Its unsigned archive and three-Bundle-ID checks passed. The combined automatic-signing/export/upload step failed with exit 70 during Apple bundle asset validation; safe diagnostics reported `Invalid Bundle` and a missing bundle key, with no credential, cloud-signing, Family Controls entitlement, or provisioning category. Upload acceptance and App Store Connect processing are `NOT RUN`.
+
+The physical-device run remains `NOT RUN` and is required for Gates A–D.

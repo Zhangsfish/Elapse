@@ -1,0 +1,5 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "reason": "retry-after-app-icon-metadata-validation",
+  "version": "0.1.0"
+}

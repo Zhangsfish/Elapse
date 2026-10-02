@@ -56,6 +56,18 @@ categories = {
     ),
     "FAMILY_CONTROLS_ENTITLEMENT": ("family-controls", "family controls"),
     "APP_ICON": ("app icon", "appicon"),
+    "APP_ICON_METADATA": (
+        "cfbundleiconname",
+        "cfbundleicons",
+        "icon assets were found",
+        "missing required icon file",
+    ),
+    "BUNDLE_METADATA": ("invalid bundle", "missing info.plist key", "missing info.plist value"),
+    "LAUNCH_SCREEN_METADATA": ("uilaunchstoryboardname", "launch storyboard"),
+    "SUPPORTED_ORIENTATIONS": (
+        "uisupportedinterfaceorientations",
+        "supported interface orientations",
+    ),
     "PRIVACY_MANIFEST": ("privacyinfo", "privacy manifest"),
     "UPLOAD_PROCESSING": ("upload failed", "could not upload", "processing"),
 }
@@ -73,6 +85,8 @@ requires required is are was has have with this the a an to of and or
 valid invalid expired revoked existing local remote key authentication
 service request server network response code entitlement family controls
 bundle id extension icon privacy manifest
+info plist value values assets asset catalog built sdk supply icons pixels
+cfbundleiconname cfbundleicons launch storyboard orientation orientations
 """.split()
 )
 safe_lines: list[str] = []
