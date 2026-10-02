@@ -53,6 +53,19 @@ Official docs:
 
 Do not assume the existing Apple Developer Program membership automatically grants distribution approval for a new App ID/extension.
 
+For the current TestFlight path, the owner reports that Family Controls Development + Distribution is enabled on the main app and both extensions. That account state is separate from repository compile evidence and must still be proven by a successful distribution export/upload.
+
+## Distribution and privacy manifests
+
+Apple's current App Store upload requirement is Xcode 26 or later. The repository therefore uses a GitHub-hosted `macos-26` runner and rejects an older selected Xcode before preparing an archive.
+
+The app and monitor extension use `UserDefaults` only to read or write preferences owned by the same app. Each executable that calls that API includes a privacy manifest declaring required-reason code `CA92.1`. The report extension does not call `UserDefaults` and does not inherit that declaration merely because it is embedded in the app.
+
+Official docs:
+- https://developer.apple.com/news/upcoming-requirements/
+- https://developer.apple.com/documentation/bundleresources/privacy-manifest-files
+- https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api
+
 ## Standard privacy model
 
 Under ordinary authorization, application and web selections are represented with privacy-preserving tokens.
@@ -106,6 +119,27 @@ Engineering consequence:
 - make handlers idempotent;
 - never derive authoritative total usage from callback count;
 - test on the actual target iPhone before declaring S00 PASS.
+
+## S00 current-API verification
+
+Rechecked against Apple's current public documentation on 2026-10-02:
+
+- `DeviceActivityEvent` accumulates the combined activity of the applications, categories, and web domains supplied to one event. S00 therefore supplies every selected `ApplicationToken` to each named 5/10/15/20/25/30-minute event, which is the public-API expression of one shared pool.
+- `includesPastActivity` controls whether activity earlier in the active schedule interval contributes when monitoring starts. S00 explicitly sets it to `false`: every stop/start is a new understandable experiment and use earlier that day is excluded.
+- `DeviceActivityFilter.SegmentInterval.hourly(during:)` is a supported aggregate interval. S00 requests hourly segments for the current calendar day.
+- `DeviceActivityData.ActivitySegment.totalActivityDuration` is documented as screen-on time for the segment. The selected-app chart must instead sum each filtered `ApplicationActivity.totalActivityDuration`; it must not present segment screen-on duration as selected-app usage.
+- Baseline per-app identity remains opaque. The report renders Apple's `Label(ApplicationToken)` rather than depending on bundle identifiers or the EU-only data-access entitlement.
+
+Official docs:
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init(applications:categories:webdomains:threshold:includespastactivity:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityfilter/segmentinterval-swift.enum/hourly(during:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/activitysegment/totalactivityduration
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/applicationactivity/totalactivityduration
+- https://developer.apple.com/documentation/familycontrols/displayingactivitylabels
+
+No repository/API conflict requiring an architecture change was found. The current SDK marks `approvedWithDataAccess` as iOS 26.4+ and documents that it includes ordinary `.approved` abilities plus non-tokenized data access. Elapse availability-checks that status only as an authorization-state compatibility case; it remains EU/customer-restricted, mutually exclusive between apps on a device, and outside the S00 baseline.
+
+Compilation was verified in GitHub-hosted CI with Xcode 26.6, iOS SDK 26.5, and Swift 6.3.3. One concrete source correction was required: `ApplicationToken` is declared by `ManagedSettings`, while the privacy-preserving SwiftUI `Label(ApplicationToken)` presentation is supplied through `FamilyControls`. The report extension imports both frameworks. This was a symbol ownership correction, not a change to the product architecture or privacy model.
 
 ## What S00 must answer empirically
 

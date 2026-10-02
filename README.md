@@ -1,23 +1,25 @@
-# Elapse
+# Everwhile
+
+Repository and Xcode project name: **Elapse**. User-visible product name: **Everwhile**.
 
 **Feel time passing. Nothing else.**
 
-Elapse is a deliberately small iPhone utility for people who do not want another productivity system.
+Everwhile is a deliberately small iPhone utility for people who do not want another productivity system.
 
 The core idea is simple:
 
 1. The user selects a small group of apps.
-2. Elapse treats their usage as one shared pool of attention.
-3. Every N minutes of actual foreground usage, Elapse gives a quiet reminder.
+2. Everwhile treats their usage as one shared pool of attention.
+3. Every N minutes of actual foreground usage, Everwhile gives a quiet reminder.
 4. At the end of the day, the user can see where that time went.
 
-Elapse does **not** shame, score, block, gamify, or coach the user.
+Everwhile does **not** shame, score, block, gamify, or coach the user.
 
 ## Product thesis
 
 Many distracting apps reduce the subjective feeling of time passing. The first intervention should therefore be awareness, not control.
 
-Elapse does not prescribe what time is for. It simply makes elapsed time perceptible and leaves the next choice to the user.
+Everwhile does not prescribe what time is for. It simply makes elapsed time perceptible and leaves the next choice to the user.
 
 A notification such as:
 
@@ -55,7 +57,7 @@ See `docs/APPLE_PLATFORM_NOTES.md`.
 
 ## Non-goals
 
-Elapse is not:
+Everwhile is not:
 
 - an app blocker;
 - a parental-control product;
@@ -78,10 +80,14 @@ If a proposed feature does not help the user **feel elapsed time** or inspect th
 - `docs/APPLE_PLATFORM_NOTES.md` — verified Apple API boundaries and links.
 - `docs/TECHNICAL_PLAN.md` — architecture and staged implementation.
 - `prompts/S00_CODEX.md` — executable first-stage task for Codex.
+- `project.yml` — reproducible app, monitor-extension, report-extension, and test targets.
+- `audits/S00/REAL_DEVICE_CHECKLIST.md` — the physical-iPhone acceptance procedure.
 
 ## Current stage
 
 **S00 — Screen Time feasibility gate**
+
+The S00 app, monitor extension, report extension, tests, and CI are implemented. Reproducible build and pure-logic evidence pass; the physical-iPhone behavior gates remain `NOT RUN`. See `STATUS.md` and `audits/S00/REAL_DEVICE_CHECKLIST.md`.
 
 Before polishing UI or building a complete app, prove on a real iPhone that:
 
