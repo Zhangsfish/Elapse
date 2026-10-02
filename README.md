@@ -17,7 +17,7 @@ Elapse does **not** shame, score, block, gamify, or coach the user.
 
 Many distracting apps reduce the subjective feeling of time passing. The first intervention should therefore be awareness, not control.
 
-Time is being allocated whether or not we notice it. Each interval is irreversible, and repeated allocations compound into the future. Elapse does not decide what that time should buy; it makes the allocation perceptible.
+Elapse does not prescribe what time is for. It simply makes elapsed time perceptible and leaves the next choice to the user.
 
 A notification such as:
 
