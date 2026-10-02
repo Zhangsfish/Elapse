@@ -164,6 +164,7 @@ jobs:
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
           done
+          python3 scripts/s00_archive_inspect.py "$archive"
       - name: Sign and upload only on an explicit upload trigger
         if: >-
           (github.event_name == 'workflow_dispatch' && inputs.operation == 'upload') ||
