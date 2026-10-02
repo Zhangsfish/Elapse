@@ -17,12 +17,16 @@ Elapse does **not** shame, score, block, gamify, or coach the user.
 
 Many distracting apps reduce the subjective feeling of time passing. The first intervention should therefore be awareness, not control.
 
+Time is being allocated whether or not we notice it. Each interval is irreversible, and repeated allocations compound into the future. Elapse does not decide what that time should buy; it makes the allocation perceptible.
+
 A notification such as:
 
 > 5 minutes passed  
 > Selected apps used today: 120 minutes
 
 may be enough to restore that awareness while leaving the decision to continue entirely with the user.
+
+The deeper product philosophy and brand foundation live in `docs/PRODUCT_DECISIONS.md`.
 
 ## Locked product scope
 
@@ -69,6 +73,7 @@ If a proposed feature does not help the user **feel elapsed time** or inspect th
 
 - `AGENTS.md` — rules for AI coding agents.
 - `STATUS.md` — current stage, gates, blockers, and next action.
+- `docs/PRODUCT_DECISIONS.md` — product philosophy and brand foundation.
 - `docs/PRODUCT_SPEC.md` — product contract.
 - `docs/APPLE_PLATFORM_NOTES.md` — verified Apple API boundaries and links.
 - `docs/TECHNICAL_PLAN.md` — architecture and staged implementation.
