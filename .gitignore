@@ -1,0 +1,25 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+
+# SwiftPM
+.build/
+.swiftpm/
+
+# XcodeGen
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+
+# Secrets / local config
+.env
+.env.*
+*.p8
+*.p12
+*.mobileprovision
