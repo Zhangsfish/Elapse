@@ -37,7 +37,8 @@ jobs:
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
-              'reason': 'retry-after-compiled-archive-metadata-fix',
+              'trigger_id': 'everwhile-s00-archive-metadata-20261003',
+              'source_baseline': 'b8ef96b7c60f9e47d94d6449d413a9916135184d',
               'version': '0.1.0',
           }
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
