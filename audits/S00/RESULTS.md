@@ -6,14 +6,15 @@ Updated: 2026-10-02
 
 Passing implementation evidence:
 
-- Commit: `b18309dfe58508540305d907f549745f5bc0cf13`
-- CI: [GitHub Actions run 36991441759](https://github.com/Zhangsfish/Elapse/actions/runs/36991441759)
+- Commit: `e69c18f13b50f766746d7bade32c06172141e86c`
+- Ordinary CI: [GitHub Actions run 37028810386](https://github.com/Zhangsfish/Elapse/actions/runs/37028810386)
 - Host: standard GitHub-hosted `macos-26-arm64`; macOS 26.6.2; Xcode 26.6 (17F113); iOS SDK 26.5; Swift 6.3.3.
 - Project generation: XcodeGen 2.46.0 official ZIP matched SHA-256 `4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806`; `xcodegen generate --spec project.yml` passed.
 - Compile: `xcodebuild ... -destination 'generic/platform=iOS Simulator' ... CODE_SIGNING_ALLOWED=NO clean build` passed for the app, monitor extension, and report extension (`BUILD SUCCEEDED`).
 - Tests: `swift test` passed 6/6 with 0 failures: threshold generation; event-name parsing/rejection; cumulative notification copy; duplicate receipt decision; and current-day interval boundaries.
+- TestFlight prepare-only CI: [GitHub Actions run 37028811778](https://github.com/Zhangsfish/Elapse/actions/runs/37028811778) passed the Xcode 26 guard, XcodeGen generation, helper validation, safe three-target signing-settings inspection, unsigned iPhoneOS Release build, Everwhile display-name/App Icon/privacy-manifest checks, and unsigned distribution archive inspection. The upload step was skipped and no Apple setting was read.
 
-The CI compile uses Simulator SDKs only. The pure tests contain no Screen Time delivery claim. Local Windows Xcode/device execution was not available and was not represented as PASS.
+Ordinary CI uses the Simulator SDK; TestFlight prepare-only uses an unsigned iPhoneOS build and archive. Neither path proves distribution signing, installation, or Screen Time runtime behavior. The pure tests contain no Screen Time delivery claim. Local Windows Xcode/device execution was not available and was not represented as PASS.
 
 ## Evidence state
 
@@ -30,12 +31,12 @@ The CI compile uses Simulator SDKs only. The pure tests contain no Screen Time d
 | Visible notification delivery | NOT RUN | Must be observed separately from request acceptance. |
 | Per-app/hourly Today report | NOT RUN | Physical iPhone required for real Screen Time data. |
 
-## Signing and entitlement blockers
+## Signing and entitlement state
 
-Family Controls distribution approval is not established for:
+The owner reports Family Controls Development + Distribution enabled for:
 
 - `com.zhangsfish.elapse` — main app;
 - `com.zhangsfish.elapse.monitor` — Device Activity Monitor extension;
 - `com.zhangsfish.elapse.report` — Device Activity Report extension.
 
-Development signing and a physical-device run remain owner-side prerequisites. No Apple key, certificate, profile, Team ID, or App and Website Usage entitlement is stored in this repository.
+The TestFlight route intentionally does not use development/ad-hoc signing or device registration. Automatic distribution export/upload is `BLOCKED_OWNER` because repository variable `APPLE_TEAM_ID` and secrets `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY` are not configured. No Apple key, certificate, profile, Team ID, or App and Website Usage entitlement is stored in this repository. The physical-device run remains `NOT RUN` and is required for Gates A–D.

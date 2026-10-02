@@ -35,12 +35,17 @@ These account facts are owner-provided. The repository contains no Apple private
 
 ## Evidence state
 
+Secret-free implementation commit: `e69c18f13b50f766746d7bade32c06172141e86c`.
+
+- Ordinary CI: [run 37028810386](https://github.com/Zhangsfish/Elapse/actions/runs/37028810386) — PASS.
+- TestFlight prepare-only CI: [run 37028811778](https://github.com/Zhangsfish/Elapse/actions/runs/37028811778) — PASS; explicit upload step skipped.
+
 | Item | Status | Evidence / limitation |
 |---|---|---|
-| Everwhile display name with Elapse internal project/scheme | PENDING CI | `CFBundleDisplayName=Everwhile`; project, scheme, product, and Bundle IDs remain Elapse. |
-| App Icon and required-reason privacy manifests | PENDING CI | Prepare workflow validates the icon and app/monitor manifests. |
-| Prepare-only Release build and helper validation | PENDING CI | No Apple settings are read by this path. |
-| Unsigned archive and embedded extension metadata | PENDING CI | Prepare-only creates and inspects the same unsigned archive structure without Apple credentials. |
+| Everwhile display name with Elapse internal project/scheme | PASS | Built app has `CFBundleDisplayName=Everwhile`; project, scheme, product, and Bundle IDs remain Elapse. |
+| App Icon and required-reason privacy manifests | PASS | Prepare workflow validated the opaque 1024×1024 icon and app/monitor manifests. |
+| Prepare-only Release build and helper validation | PASS | Run 37028811778 passed without reading Apple settings. |
+| Unsigned archive and embedded extension metadata | PASS | Prepare-only created the unsigned archive and verified all three Bundle IDs plus synchronized build numbers. |
 | Automatic distribution signing and TestFlight upload | BLOCKED_OWNER | Required GitHub repository settings are not configured yet. |
 | App Store Connect processing state | NOT RUN | No Everwhile build has been uploaded by this workflow. |
 | S00 real-device Gates A–D | NOT RUN | TestFlight plumbing is not Screen Time behavior evidence. |
@@ -55,3 +60,5 @@ Checked by name through the GitHub API on 2026-10-02; values were never read or 
 - Secret `APP_STORE_CONNECT_PRIVATE_KEY`: MISSING
 
 Until these four names exist, prepare-only work can pass but explicit upload remains `BLOCKED_OWNER`.
+
+The workflow must first be merged to the default branch before its manual `workflow_dispatch` entry can be used there. The intended upload ref is `main`, not an unmerged feature branch.
