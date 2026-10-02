@@ -82,6 +82,7 @@ for extension in \
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
 done
 echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
+python3 scripts/s00_archive_inspect.py "$archive_path" --require-distribution-metadata
 
 if xcodebuild -exportArchive -archivePath "$archive_path" \
   -exportOptionsPlist "$export_options" -exportPath "$export_path" \

@@ -12,6 +12,7 @@ import sys
 
 
 archive = Path(sys.argv[1])
+require_metadata = "--require-distribution-metadata" in sys.argv[2:]
 app = archive / "Products" / "Applications" / "Elapse.app"
 info = plistlib.loads((app / "Info.plist").read_bytes())
 
@@ -59,14 +60,37 @@ summary = {
 }
 print("S00_ARCHIVE_METADATA=" + json.dumps(summary, sort_keys=True))
 
+failures: list[str] = []
+if require_metadata:
+    if summary["UIDeviceFamily"] != [1]:
+        failures.append("UIDeviceFamily")
+    if summary["CFBundleIconName"] != "AppIcon":
+        failures.append("CFBundleIconName")
+    if summary["CFBundleIcons"].get("primary_name") != "AppIcon":
+        failures.append("CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconName")
+    if summary["UISupportedInterfaceOrientations"] != [
+        "UIInterfaceOrientationPortrait",
+        "UIInterfaceOrientationLandscapeLeft",
+        "UIInterfaceOrientationLandscapeRight",
+    ]:
+        failures.append("UISupportedInterfaceOrientations")
+    if not summary["Assets.car"]:
+        failures.append("Assets.car")
+
 assets = app / "Assets.car"
 if not assets.is_file():
     print("S00_ASSETUTIL=NO_ASSETS_CAR")
+    if require_metadata:
+        print("S00_ARCHIVE_ASSERTION_FAILED=" + ",".join(failures))
+        sys.exit(1)
     sys.exit(0)
 
 assetutil = shutil.which("xcrun")
 if assetutil is None:
     print("S00_ASSETUTIL=UNAVAILABLE")
+    if require_metadata:
+        print("S00_ARCHIVE_ASSERTION_FAILED=ASSETUTIL_UNAVAILABLE")
+        sys.exit(1)
     sys.exit(0)
 
 result = subprocess.run(
@@ -77,16 +101,25 @@ result = subprocess.run(
 )
 if result.returncode:
     print("S00_ASSETUTIL=QUERY_FAILED")
+    if require_metadata:
+        print("S00_ARCHIVE_ASSERTION_FAILED=ASSETUTIL_QUERY_FAILED")
+        sys.exit(1)
     sys.exit(0)
 
 try:
     entries = json.loads(result.stdout)
 except json.JSONDecodeError:
     print("S00_ASSETUTIL=UNPARSEABLE")
+    if require_metadata:
+        print("S00_ARCHIVE_ASSERTION_FAILED=ASSETUTIL_UNPARSEABLE")
+        sys.exit(1)
     sys.exit(0)
 
 if not isinstance(entries, list):
     print("S00_ASSETUTIL=UNEXPECTED_FORMAT")
+    if require_metadata:
+        print("S00_ARCHIVE_ASSERTION_FAILED=ASSETUTIL_UNEXPECTED_FORMAT")
+        sys.exit(1)
     sys.exit(0)
 
 matches = [
@@ -101,3 +134,10 @@ matches = [
 print("S00_ASSETUTIL=OK")
 print(f"S00_ASSETUTIL_ENTRY_COUNT={len(entries)}")
 print(f"S00_ASSETUTIL_APPICON_MATCH_COUNT={len(matches)}")
+if require_metadata:
+    if not matches:
+        failures.append("ASSETUTIL_APPICON_RENDITION")
+    if failures:
+        print("S00_ARCHIVE_ASSERTION_FAILED=" + ",".join(failures))
+        sys.exit(1)
+    print("S00_ARCHIVE_DISTRIBUTION_METADATA_PASS")
