@@ -67,6 +67,7 @@ app="$archive_path/Products/Applications/Elapse.app"
 app_info="$app/Info.plist"
 test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app_info")" = 'com.zhangsfish.elapse'
 test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$app_info")" = 'Everwhile'
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIconName' "$app_info")" = 'AppIcon'
 test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app_info")" = "$version"
 test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app_info")" = "$build_number"
 

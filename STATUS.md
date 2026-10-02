@@ -4,13 +4,15 @@
 
 **S00 — Screen Time feasibility gate**
 
-Status: **CODE / CI / TESTFLIGHT PREPARE PASS — UPLOAD BLOCKED_OWNER; REAL-DEVICE GATES NOT RUN**
+Status: **CODE / CI PASS — TESTFLIGHT RETRY FIX PENDING MERGE; REAL-DEVICE GATES NOT RUN**
 
-The minimal app, Device Activity Monitor extension, Device Activity Report extension, pure-logic tests, reproducible XcodeGen definition, ordinary CI, TestFlight prepare/upload workflow, and physical-iPhone checklist are implemented on `codex/s00-screen-time-feasibility`.
+The S00 implementation and TestFlight workflow are merged to `main` at `f8a9ce2a8fd094173584ff196db11c751618448d`.
 
-Passing implementation evidence: commit `e69c18f13b50f766746d7bade32c06172141e86c`; [ordinary CI run 37028810386](https://github.com/Zhangsfish/Elapse/actions/runs/37028810386) and secret-free [TestFlight prepare run 37028811778](https://github.com/Zhangsfish/Elapse/actions/runs/37028811778).
+Direct dispatch succeeded for [TestFlight run 37035044676](https://github.com/Zhangsfish/Elapse/actions/runs/37035044676), version `0.1.0`, build `4.1`. The unsigned archive and metadata checks passed. App Store Connect then rejected the bundle during asset validation (`Invalid Bundle` plus a missing bundle key), before upload acceptance or processing. No missing setting, credential-format, cloud-signing-permission, Family Controls entitlement, or provisioning-profile category was reported.
 
-The prepare run passed the Xcode 26 guard, helper validation, App Icon and privacy-manifest checks, unsigned generic-iPhone Release build, and unsigned distribution archive inspection. The upload step was correctly skipped. No App Store Connect signing or TestFlight upload has run because the three required App Store Connect secrets are not configured.
+The retry fix is on `codex/s00-testflight-appicon-fix`: explicit iPhone icon slots, `CFBundleIconName=AppIcon`, archive assertions, improved safe diagnostics, and a path-scoped one-time upload marker. Merging that marker to `main` triggers one retry without making ordinary main pushes upload builds.
+
+Retry preparation evidence: commit `9f6140a39de744c25a0519ba7715d2b0dca4e2c3`; [ordinary CI run 37037314442](https://github.com/Zhangsfish/Elapse/actions/runs/37037314442) and secret-free [archive run 37037360799](https://github.com/Zhangsfish/Elapse/actions/runs/37037360799) both PASS. The upload step was skipped as intended.
 
 This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
 
@@ -59,12 +61,13 @@ The code registers one selected-application pool at 5/10/15/20/25/30 minutes wit
 
 ## TestFlight delivery path
 
-Status: **PREPARE PASS — EXPLICIT UPLOAD BLOCKED_OWNER**
+Status: **ARCHIVE PASS — APP STORE BUNDLE VALIDATION FAILED; RETRY FIX PENDING MERGE**
 
 - [x] User-visible app name is `Everwhile`; repository, project, scheme, product, and three Bundle IDs remain `Elapse`-based.
 - [x] Secret-free prepare-only CI builds and archives the app plus both extensions without development signing or device registration.
-- [x] Manual `upload` is the only path that reads `APPLE_TEAM_ID`, `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY`.
-- [ ] Automatic App Store Connect distribution signing and TestFlight upload: `BLOCKED_OWNER` until the three App Store Connect secrets exist. Repository variable `APPLE_TEAM_ID` is present.
+- [x] Only an explicit `workflow_dispatch` upload or the unique one-time main-branch marker can enter the step that reads `APPLE_TEAM_ID`, `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, and `APP_STORE_CONNECT_PRIVATE_KEY`.
+- [x] Repository variable and all three App Store Connect secrets are present by name; values were not read or printed. The upload script passed its non-secret format gates.
+- [ ] Automatic distribution export/upload: run 37035044676 reached Apple bundle validation but failed before upload acceptance. No signing/entitlement/provisioning failure category appeared.
 - [ ] App Store Connect processing reaches `VALID`: `NOT RUN`.
 
 The owner reports Family Controls Development + Distribution enabled for all three App IDs and the Everwhile App Store Connect record created. A successful export/upload is still required to validate that account-side configuration.
@@ -87,4 +90,4 @@ The owner reports Family Controls Development + Distribution enabled for all thr
 
 ## Next action
 
-After this PR is reviewed and merged, configure the three missing App Store Connect repository secrets, manually dispatch `S00 TestFlight preparation and explicit upload` on `main` with `operation=upload`, install the resulting build through TestFlight, and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Do not register a device or switch to development/ad-hoc signing. Keep Gates A–D `NOT RUN` until physical-iPhone evidence exists.
+Merge the App Icon validation-fix PR. Its unique marker automatically performs one retry from `main`; do not manually run Actions. If that retry reaches `VALID`, install Everwhile through TestFlight and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Do not register a device or switch to development/ad-hoc signing. Keep Gates A–D `NOT RUN` until physical-iPhone evidence exists.
