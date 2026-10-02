@@ -73,6 +73,8 @@ If a proposed feature does not help the user **feel elapsed time** or inspect th
 - `docs/APPLE_PLATFORM_NOTES.md` — verified Apple API boundaries and links.
 - `docs/TECHNICAL_PLAN.md` — architecture and staged implementation.
 - `prompts/S00_CODEX.md` — executable first-stage task for Codex.
+- `project.yml` — reproducible app, monitor-extension, report-extension, and test targets.
+- `audits/S00/REAL_DEVICE_CHECKLIST.md` — the physical-iPhone acceptance procedure.
 
 ## Current stage
 

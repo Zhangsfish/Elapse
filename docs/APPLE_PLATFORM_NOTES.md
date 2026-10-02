@@ -107,6 +107,25 @@ Engineering consequence:
 - never derive authoritative total usage from callback count;
 - test on the actual target iPhone before declaring S00 PASS.
 
+## S00 current-API verification
+
+Rechecked against Apple's current public documentation on 2026-10-02:
+
+- `DeviceActivityEvent` accumulates the combined activity of the applications, categories, and web domains supplied to one event. S00 therefore supplies every selected `ApplicationToken` to each named 5/10/15/20/25/30-minute event, which is the public-API expression of one shared pool.
+- `includesPastActivity` controls whether activity earlier in the active schedule interval contributes when monitoring starts. S00 explicitly sets it to `false`: every stop/start is a new understandable experiment and use earlier that day is excluded.
+- `DeviceActivityFilter.SegmentInterval.hourly(during:)` is a supported aggregate interval. S00 requests hourly segments for the current calendar day.
+- `DeviceActivityData.ActivitySegment.totalActivityDuration` is documented as screen-on time for the segment. The selected-app chart must instead sum each filtered `ApplicationActivity.totalActivityDuration`; it must not present segment screen-on duration as selected-app usage.
+- Baseline per-app identity remains opaque. The report renders Apple's `Label(ApplicationToken)` rather than depending on bundle identifiers or the EU-only data-access entitlement.
+
+Official docs:
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init(applications:categories:webdomains:threshold:includespastactivity:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityfilter/segmentinterval-swift.enum/hourly(during:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/activitysegment/totalactivityduration
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/applicationactivity/totalactivityduration
+- https://developer.apple.com/documentation/familycontrols/displayingactivitylabels
+
+No repository/API conflict requiring an architecture change was found. The `approvedWithDataAccess` API now documents that it includes ordinary `.approved` abilities plus non-tokenized data access, but it remains EU/customer-restricted, mutually exclusive between apps on a device, and outside the S00 baseline.
+
 ## What S00 must answer empirically
 
 1. Can selected apps contribute to one shared cumulative usage event on the target device?

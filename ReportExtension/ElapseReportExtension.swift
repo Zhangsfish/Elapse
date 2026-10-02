@@ -1,5 +1,6 @@
 import DeviceActivity
 import FamilyControls
+import ManagedSettings
 import OSLog
 import SwiftUI
 
