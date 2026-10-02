@@ -124,7 +124,7 @@ Official docs:
 - https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/applicationactivity/totalactivityduration
 - https://developer.apple.com/documentation/familycontrols/displayingactivitylabels
 
-No repository/API conflict requiring an architecture change was found. The `approvedWithDataAccess` API now documents that it includes ordinary `.approved` abilities plus non-tokenized data access, but it remains EU/customer-restricted, mutually exclusive between apps on a device, and outside the S00 baseline.
+No repository/API conflict requiring an architecture change was found. The current SDK marks `approvedWithDataAccess` as iOS 26.4+ and documents that it includes ordinary `.approved` abilities plus non-tokenized data access. Elapse availability-checks that status only as an authorization-state compatibility case; it remains EU/customer-restricted, mutually exclusive between apps on a device, and outside the S00 baseline.
 
 Compilation was verified in GitHub-hosted CI with Xcode 26.6, iOS SDK 26.5, and Swift 6.3.3. One concrete source correction was required: `ApplicationToken` is declared by `ManagedSettings`, while the privacy-preserving SwiftUI `Label(ApplicationToken)` presentation is supplied through `FamilyControls`. The report extension imports both frameworks. This was a symbol ownership correction, not a change to the product architecture or privacy model.
 

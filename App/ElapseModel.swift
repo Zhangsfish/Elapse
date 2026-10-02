@@ -42,7 +42,13 @@ final class ElapseModel: ObservableObject {
     }
 
     private var hasFamilyAuthorization: Bool {
-        authorizationStatus == .approved || authorizationStatus == .approvedWithDataAccess
+        if authorizationStatus == .approved {
+            return true
+        }
+        if #available(iOS 26.4, *) {
+            return authorizationStatus == .approvedWithDataAccess
+        }
+        return false
     }
 
     var notificationDescription: String {
