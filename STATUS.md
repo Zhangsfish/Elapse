@@ -4,15 +4,17 @@
 
 **S00 — Screen Time feasibility gate**
 
-Status: **CODE / CI PASS — TESTFLIGHT EXTENSION METADATA FIX IN PR; REAL-DEVICE GATES NOT RUN**
+Status: **CODE / CI PASS — TESTFLIGHT DELIVERY PASS — REAL-DEVICE GATES NOT RUN**
 
-The S00 implementation is on `main` at `a66c5b4c45028d8ec7c4ba9d322838fa6e6eec24`.
+The S00 implementation is on `main` at `60a15650d6791ef081f6d8aa402cfb48d3a03ff1`.
 
 [TestFlight upload run 37038785574](https://github.com/Zhangsfish/Elapse/actions/runs/37038785574) built `0.1.0 (6.1)` and passed unsigned build/archive plus credential gates, then failed Apple asset validation (exit 70: icon, Info.plist key, orientations). Upload acceptance and processing remain `NOT RUN`.
 
 [Baseline archive inspection run 37040791775](https://github.com/Zhangsfish/Elapse/actions/runs/37040791775) found the root cause: the compiled main app had `UIDeviceFamily=[1,2]` despite the top-level project setting `1`; its iPad icon metadata had no primary icon files, and supported orientations were absent. `Assets.car` existed and contained AppIcon renditions. [Fixed prepare run 37041479260](https://github.com/Zhangsfish/Elapse/actions/runs/37041479260) confirms the final archive has `UIDeviceFamily=[1]`, valid primary AppIcon metadata, `Assets.car` with AppIcon renditions, and portrait plus both landscape orientations.
 
 [Upload run 37100010225](https://github.com/Zhangsfish/Elapse/actions/runs/37100010225) passed the repaired app archive checks but failed Apple validation (exit 70, missing extension plist key). [Read-only archive inspection 37100507160](https://github.com/Zhangsfish/Elapse/actions/runs/37100507160) proved that both embedded extension plists lacked `NSExtension`. XcodeGen had regenerated the source plists from incomplete `info.properties`. [PR #5](https://github.com/Zhangsfish/Elapse/pull/5) fixes the monitor declaration and uses ExtensionKit packaging for the `@main` report extension. [Ordinary CI 37100843564](https://github.com/Zhangsfish/Elapse/actions/runs/37100843564) and [prepare-only 37100820822](https://github.com/Zhangsfish/Elapse/actions/runs/37100820822) passed; the latter asserted both final extension plists and their locations. Its unique marker triggers one upload after merge. Ordinary pushes do not match that path.
+
+Final TestFlight delivery: [run 37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155) uploaded Everwhile `0.1.0 (19.1)` from `60a15650d6791ef081f6d8aa402cfb48d3a03ff1` and App Store Connect processing reached **VALID**. The root cause of the previous Family Controls rejection was XcodeGen regenerating the three entitlement files from `project.yml` without `entitlements.properties`, silently dropping `com.apple.developer.family-controls`. The spec now declares that managed entitlement for the app, monitor extension, and report extension, and both ordinary CI and the TestFlight workflow assert it immediately after project generation.
 
 This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
 
@@ -61,7 +63,7 @@ The code registers one selected-application pool at 5/10/15/20/25/30 minutes wit
 
 ## TestFlight delivery path
 
-Status: **APP + EXTENSION ARCHIVE METADATA PASS — APPLE RETRY PENDING MERGE**
+Status: **PASS — TESTFLIGHT BUILD 0.1.0 (19.1) VALID**
 
 - [x] User-visible app name is `Everwhile`; repository, project, scheme, product, and three Bundle IDs remain `Elapse`-based.
 - [x] Secret-free prepare-only CI builds and archives the app plus both extensions without development signing or device registration.
@@ -69,8 +71,8 @@ Status: **APP + EXTENSION ARCHIVE METADATA PASS — APPLE RETRY PENDING MERGE**
 - [x] Repository variable and all three App Store Connect secrets are present by name; values were not read or printed. The upload script passed its non-secret format gates.
 - [x] The final app archive passed device-family, icon, asset-catalog and orientation assertions in secret-free CI.
 - [x] PR #5's secret-free prepare-only run verifies the final monitor and report extension plist dictionaries, values, and packaging locations.
-- [ ] Automatic distribution export/upload: run 37100010225 failed extension plist validation before upload acceptance; PR #5's repaired archive has not been uploaded.
-- [ ] App Store Connect processing reaches `VALID`: `NOT RUN`.
+- [x] Automatic distribution export/upload: run 37105502155 accepted Everwhile 0.1.0 (19.1).
+- [x] App Store Connect processing reaches `VALID`: build `19.1` is `VALID`.
 
 The owner reports Family Controls Development + Distribution enabled for all three App IDs and the Everwhile App Store Connect record created. A successful export/upload is still required to validate that account-side configuration.
 
@@ -92,4 +94,4 @@ The owner reports Family Controls Development + Distribution enabled for all thr
 
 ## Next action
 
-After PR #5's ordinary and prepare CI pass, review and merge it. Its unique marker automatically performs one retry from `main`. If that retry reaches `VALID`, install Everwhile through TestFlight and run `audits/S00/REAL_DEVICE_CHECKLIST.md`. Gates A–D remain `NOT RUN` until physical-iPhone evidence exists.
+Install Everwhile `0.1.0 (19.1)` through TestFlight on the physical iPhone and execute `audits/S00/REAL_DEVICE_CHECKLIST.md`. Gates A–D remain `NOT RUN` until that physical-device evidence is recorded. S01 stays locked until S00 runtime acceptance is complete.
