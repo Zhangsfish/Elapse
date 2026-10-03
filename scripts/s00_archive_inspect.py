@@ -65,6 +65,53 @@ summary = {
 }
 print("S00_ARCHIVE_METADATA=" + json.dumps(summary, sort_keys=True))
 
+
+def extension_summary(bundle_name: str, folder: str) -> dict[str, object]:
+    plist_path = app / folder / bundle_name / "Info.plist"
+    if not plist_path.is_file():
+        return {"Info.plist": False}
+    plist = plistlib.loads(plist_path.read_bytes())
+    ns_extension = plist.get("NSExtension")
+    ex_attributes = plist.get("EXAppExtensionAttributes")
+    result: dict[str, object] = {
+        "Info.plist": True,
+        "folder": folder,
+        "NSExtension": isinstance(ns_extension, dict),
+        "EXAppExtensionAttributes": isinstance(ex_attributes, dict),
+    }
+    if folder == "PlugIns":
+        ns_extension = ns_extension if isinstance(ns_extension, dict) else {}
+        point = ns_extension.get("NSExtensionPointIdentifier")
+        principal = ns_extension.get("NSExtensionPrincipalClass")
+        result["NSExtensionPointIdentifier"] = (
+            "com.apple.deviceactivity.monitor-extension" if point == "com.apple.deviceactivity.monitor-extension"
+            else ("MISSING" if point is None else "OTHER")
+        )
+        result["NSExtensionPrincipalClass"] = (
+            "ElapseMonitor.ElapseMonitorExtension" if principal == "ElapseMonitor.ElapseMonitorExtension"
+            else ("MISSING" if principal is None else "OTHER")
+        )
+    else:
+        ex_attributes = ex_attributes if isinstance(ex_attributes, dict) else {}
+        point = ex_attributes.get("EXExtensionPointIdentifier")
+        result["EXExtensionPointIdentifier"] = (
+            "com.apple.deviceactivityui.report-extension" if point == "com.apple.deviceactivityui.report-extension"
+            else ("MISSING" if point is None else "OTHER")
+        )
+        result["NSExtensionPrincipalClass"] = (
+            "ABSENT" if not isinstance(ns_extension, dict) or ns_extension.get("NSExtensionPrincipalClass") is None
+            else "PRESENT_UNEXPECTED"
+        )
+    return result
+
+
+extensions = {
+    "ElapseMonitor.appex": extension_summary("ElapseMonitor.appex", "PlugIns"),
+    "ElapseReport.appex": extension_summary("ElapseReport.appex", "Extensions"),
+    "ElapseReport.appex in PlugIns": (app / "PlugIns" / "ElapseReport.appex").exists(),
+}
+print("S00_ARCHIVE_EXTENSIONS=" + json.dumps(extensions, sort_keys=True))
+
 failures: list[str] = []
 if require_metadata:
     if summary["UIDeviceFamily"] != [1]:
@@ -81,6 +128,22 @@ if require_metadata:
         failures.append("UISupportedInterfaceOrientations")
     if not summary["Assets.car"]:
         failures.append("Assets.car")
+    monitor = extensions["ElapseMonitor.appex"]
+    report = extensions["ElapseReport.appex"]
+    if not (
+        monitor.get("NSExtension") is True
+        and monitor.get("NSExtensionPointIdentifier") == "com.apple.deviceactivity.monitor-extension"
+        and monitor.get("NSExtensionPrincipalClass") == "ElapseMonitor.ElapseMonitorExtension"
+    ):
+        failures.append("MONITOR_EXTENSION_METADATA")
+    if not (
+        report.get("EXAppExtensionAttributes") is True
+        and report.get("EXExtensionPointIdentifier") == "com.apple.deviceactivityui.report-extension"
+        and report.get("NSExtension") is False
+        and report.get("NSExtensionPrincipalClass") == "ABSENT"
+        and extensions["ElapseReport.appex in PlugIns"] is False
+    ):
+        failures.append("REPORT_EXTENSIONKIT_METADATA")
 
 assets = app / "Assets.car"
 if not assets.is_file():

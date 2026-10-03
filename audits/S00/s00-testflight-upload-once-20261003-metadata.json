@@ -1,6 +1,0 @@
-{
-  "operation": "s00-testflight-upload-once",
-  "trigger_id": "everwhile-s00-archive-metadata-20261003",
-  "source_baseline": "b8ef96b7c60f9e47d94d6449d413a9916135184d",
-  "version": "0.1.0"
-}

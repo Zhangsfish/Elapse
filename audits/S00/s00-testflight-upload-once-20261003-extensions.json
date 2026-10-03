@@ -1,0 +1,6 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "trigger_id": "everwhile-s00-extensionkit-metadata-20261003",
+  "source_baseline": "a66c5b4c45028d8ec7c4ba9d322838fa6e6eec24",
+  "version": "0.1.0"
+}
