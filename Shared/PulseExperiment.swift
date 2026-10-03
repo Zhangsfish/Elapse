@@ -60,20 +60,24 @@ struct PulseExperimentSnapshot: Codable, Equatable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         experimentID = try values.decodeIfPresent(String.self, forKey: .experimentID)
-        generation = try values.decodeIfPresent(Int.self, forKey: .generation) ?? 0
-        phase = try values.decodeIfPresent(PulseExperimentPhase.self, forKey: .phase) ?? .idle
-        selectedApplicationCount = try values.decodeIfPresent(Int.self, forKey: .selectedApplicationCount) ?? 0
-        thresholds = try values.decodeIfPresent([Int: PulseThresholdDiagnostic].self, forKey: .thresholds) ?? [:]
+        generation = try values.decode(Int.self, forKey: .generation)
+        phase = try values.decode(PulseExperimentPhase.self, forKey: .phase)
+        selectedApplicationCount = try values.decode(Int.self, forKey: .selectedApplicationCount)
+        if values.contains(.thresholds) {
+            thresholds = try values.decode([Int: PulseThresholdDiagnostic].self, forKey: .thresholds)
+        } else {
+            thresholds = [:]
+        }
         safeErrorCode = try values.decodeIfPresent(String.self, forKey: .safeErrorCode)
-        staleCallbackCount = try values.decodeIfPresent(Int.self, forKey: .staleCallbackCount) ?? 0
-        duplicateCallbackCount = try values.decodeIfPresent(Int.self, forKey: .duplicateCallbackCount) ?? 0
-        staleCompletionCount = try values.decodeIfPresent(Int.self, forKey: .staleCompletionCount) ?? 0
-        invalidCallbackCount = try values.decodeIfPresent(Int.self, forKey: .invalidCallbackCount) ?? 0
-        receiptKeys = try values.decodeIfPresent(Set<String>.self, forKey: .receiptKeys) ?? []
-        if thresholds.isEmpty {
+        staleCallbackCount = try values.decode(Int.self, forKey: .staleCallbackCount)
+        duplicateCallbackCount = try values.decode(Int.self, forKey: .duplicateCallbackCount)
+        staleCompletionCount = try values.decode(Int.self, forKey: .staleCompletionCount)
+        invalidCallbackCount = try values.decode(Int.self, forKey: .invalidCallbackCount)
+        receiptKeys = try values.decode(Set<String>.self, forKey: .receiptKeys)
+        if !values.contains(.thresholds) {
             let callbackAt = try values.decodeIfPresent(Date.self, forKey: .fiveMinuteCallbackAt)
             let requestAt = try values.decodeIfPresent(Date.self, forKey: .fiveMinuteRequestAt)
-            let requestStatus = try values.decodeIfPresent(PulseRequestStatus.self, forKey: .fiveMinuteRequestStatus) ?? .notRequested
+            let requestStatus = try values.decode(PulseRequestStatus.self, forKey: .fiveMinuteRequestStatus)
             if callbackAt != nil || requestAt != nil || requestStatus != .notRequested {
                 thresholds[5] = PulseThresholdDiagnostic(
                     callbackAt: callbackAt,
@@ -82,6 +86,13 @@ struct PulseExperimentSnapshot: Codable, Equatable {
                     safeErrorCode: requestStatus == .failed ? safeErrorCode : nil
                 )
             }
+        }
+        if (phase == .starting || phase == .registered) && experimentID == nil {
+            throw DecodingError.dataCorruptedError(
+                forKey: .experimentID,
+                in: values,
+                debugDescription: "Active experiment is missing its identity"
+            )
         }
     }
 

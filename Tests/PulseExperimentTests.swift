@@ -146,7 +146,8 @@ final class PulseExperimentTests: XCTestCase {
     func testLegacyFiveMinuteStoreMigratesWithoutLosingReadableState() throws {
         let legacy = """
         {"experimentID":"\(firstID)","generation":1,"phase":"registered", "selectedApplicationCount":2,
-         "fiveMinuteRequestStatus":"accepted","receiptKeys":[]}
+         "fiveMinuteRequestStatus":"accepted","receiptKeys":[],
+         "staleCallbackCount":0,"duplicateCallbackCount":0,"staleCompletionCount":0,"invalidCallbackCount":0}
         """
         let state = try JSONDecoder().decode(PulseExperimentSnapshot.self, from: Data(legacy.utf8))
         XCTAssertEqual(state.diagnostic(for: 5).requestStatus, .accepted)
@@ -154,6 +155,15 @@ final class PulseExperimentTests: XCTestCase {
         let encoded = try JSONEncoder().encode(state)
         let roundTrip = try JSONDecoder().decode(PulseExperimentSnapshot.self, from: encoded)
         XCTAssertEqual(roundTrip, state)
+    }
+
+    func testSyntacticallyValidButIncompleteStateFailsClosed() {
+        let incomplete = """
+        {"experimentID":"\(firstID)","generation":1,"phase":"registered","selectedApplicationCount":2,
+         "thresholds":{},"staleCallbackCount":0,"duplicateCallbackCount":0,
+         "staleCompletionCount":0,"invalidCallbackCount":0}
+        """
+        XCTAssertThrowsError(try JSONDecoder().decode(PulseExperimentSnapshot.self, from: Data(incomplete.utf8)))
     }
 
     func testSelectionIsFrozenOnlyDuringCurrentRegistration() {
