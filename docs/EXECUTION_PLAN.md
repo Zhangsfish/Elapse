@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前已接受的设备基础为 Everwhile `0.1.0 (27.1)`。S00-A 已由云端在精确 head `bf5530e22a338150dd45408e4702651bc4711064` 上给出 PASS_WITH_NOTES，并合并为 `044841658fb990324c13224cb592402f0540c80a`。27.1 的最终上传 IPA 已验证主 App、Monitor、Report 三主体 Family Controls code-signature claim 与 profile allowance，旧 19.1 的 ITMS-90897 不再作为当前 build 的未关闭签名问题；individual 授权、两个 App 的 app-relaunch 持久化与普通测试通知也已完成 S00-A 真机验收。当前由 `STATUS.md` 解锁 S00-B，其余阶段仍按门槛锁定。详细审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md`。
+当前已接受的设备基础已推进到 Everwhile `0.1.0 (32.1)`。S00-A 与 S00-B 均已完成云端精确 SHA 审核并给出 PASS_WITH_NOTES。S00-B 合并 commit 为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`：首个真实五分钟共享池、同日新 experiment、App Group 脱敏 callback/request 诊断、selection/config 一致性与最终分发签名已通过。当前由 `STATUS.md` 只解锁 S00-C；S00-D 及之后阶段仍按门槛锁定。审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md` 与 `audits/S00/S00_B_AUDIT_2026-10-03.md`。
 
 ## 顺序与门槛
 
@@ -22,7 +22,7 @@ Updated: 2026-10-03
 
 后续每个子阶段只有在解锁时才写完整执行任务，避免一次性大 prompt 让 Codex 顺手做完整个产品。
 
-## S00-B 必须先解决的已见问题
+## S00-B 已关闭问题（历史依据）
 
 - 现有 `PulseDeliveryDecision.receiptKey` 只含日期与 event；同日 stop/start 没有独立实验 ID。不能再把 stop/start 无条件称作“完整清零”。选择可复测的会话/配置版本策略并测试旧回调，不用系统时间伪造使用量。
 - 主 App 的 selection 改变后不会自动替换已登记 events。必须选择并明确实现“运行中禁止修改”或“显式重新开始并固定新配置”，不可让监控集合与 Today 所选集合悄悄不同。
