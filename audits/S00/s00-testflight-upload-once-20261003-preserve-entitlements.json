@@ -1,0 +1,6 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "trigger_id": "everwhile-s00-preserve-family-controls-20261003",
+  "source_baseline": "b489429430dde608cf50eb53209dc814ffde12d6",
+  "version": "0.1.0"
+}

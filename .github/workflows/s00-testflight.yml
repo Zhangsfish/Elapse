@@ -3,7 +3,7 @@ name: S00 TestFlight preparation and explicit upload
 on:
   push:
     branches: [main]
-    paths: [audits/S00/s00-testflight-upload-once-20261003-entitlements.json]
+    paths: [audits/S00/s00-testflight-upload-once-20261003-preserve-entitlements.json]
   workflow_dispatch:
     inputs:
       operation:
@@ -38,7 +38,7 @@ jobs:
           import subprocess
           from pathlib import Path
 
-          marker_path = 'audits/S00/s00-testflight-upload-once-20261003-entitlements.json'
+          marker_path = 'audits/S00/s00-testflight-upload-once-20261003-preserve-entitlements.json'
           previous_main = os.environ['PREVIOUS_MAIN_SHA']
           assert re.fullmatch(r'[0-9a-f]{40}', previous_main)
           changed = subprocess.check_output(
@@ -50,8 +50,8 @@ jobs:
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
-              'trigger_id': 'everwhile-s00-signed-entitlements-20261003',
-              'source_baseline': '05cba92cf24932e9e1d91870afd3000b2edfc2a5',
+              'trigger_id': 'everwhile-s00-preserve-family-controls-20261003',
+              'source_baseline': 'b489429430dde608cf50eb53209dc814ffde12d6',
               'version': '0.1.0',
           }
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
