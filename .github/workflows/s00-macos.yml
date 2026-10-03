@@ -46,12 +46,12 @@ jobs:
       - name: Probe codesign entitlement semantics
         run: |
           set -euo pipefail
-          test "$(/usr/libexec/PlistBuddy -c 'Print :com.apple.developer.family-controls' MonitorExtension/ElapseMonitor.entitlements)" = "true"
+          test "$(python3 -c 'import plistlib; print(str(plistlib.load(open("MonitorExtension/ElapseMonitor.entitlements","rb")).get("com.apple.developer.family-controls")).lower())')" = "true"
           cp /bin/echo "$RUNNER_TEMP/entitlement-probe"
           chmod u+w "$RUNNER_TEMP/entitlement-probe"
           codesign --force --sign - --entitlements MonitorExtension/ElapseMonitor.entitlements "$RUNNER_TEMP/entitlement-probe"
           codesign --display --entitlements - --xml "$RUNNER_TEMP/entitlement-probe" > "$RUNNER_TEMP/entitlement-probe.plist"
-          value="$(/usr/libexec/PlistBuddy -c 'Print :com.apple.developer.family-controls' "$RUNNER_TEMP/entitlement-probe.plist" 2>/dev/null || true)"
+          value="$(python3 -c 'import plistlib,sys; print(str(plistlib.load(open(sys.argv[1],"rb")).get("com.apple.developer.family-controls")).lower())' "$RUNNER_TEMP/entitlement-probe.plist" 2>/dev/null || true)"
           echo "S00_CODESIGN_PROBE family_controls=$value"
           test "$value" = "true"
       - name: Build app and Screen Time extensions for Simulator
