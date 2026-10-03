@@ -65,6 +65,34 @@ summary = {
 }
 print("S00_ARCHIVE_METADATA=" + json.dumps(summary, sort_keys=True))
 
+
+def extension_summary(bundle_name: str, expected_point: str, expected_principal: str | None) -> dict[str, object]:
+    plist_path = app / "PlugIns" / bundle_name / "Info.plist"
+    if not plist_path.is_file():
+        return {"Info.plist": False}
+    extension_info = plistlib.loads(plist_path.read_bytes()).get("NSExtension")
+    if not isinstance(extension_info, dict):
+        return {"Info.plist": True, "NSExtension": False}
+    point = extension_info.get("NSExtensionPointIdentifier")
+    principal = extension_info.get("NSExtensionPrincipalClass")
+    return {
+        "Info.plist": True,
+        "NSExtension": True,
+        "NSExtensionPointIdentifier": "EXPECTED" if point == expected_point else ("MISSING" if point is None else "OTHER"),
+        "NSExtensionPrincipalClass": "EXPECTED" if principal == expected_principal and expected_principal else ("ABSENT" if principal is None else "OTHER"),
+    }
+
+
+extensions = {
+    "ElapseMonitor.appex": extension_summary(
+        "ElapseMonitor.appex", "com.apple.deviceactivity.monitor-extension", "ElapseMonitor.ElapseMonitorExtension"
+    ),
+    "ElapseReport.appex": extension_summary(
+        "ElapseReport.appex", "com.apple.deviceactivityui.report-extension", None
+    ),
+}
+print("S00_ARCHIVE_EXTENSIONS=" + json.dumps(extensions, sort_keys=True))
+
 failures: list[str] = []
 if require_metadata:
     if summary["UIDeviceFamily"] != [1]:
