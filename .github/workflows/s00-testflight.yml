@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 2
           persist-credentials: false
       - name: Validate the one-time main-branch upload marker
         if: github.event_name == 'push'
@@ -30,10 +31,16 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           import json
+          import subprocess
           from pathlib import Path
 
+          marker_path = 'audits/S00/s00-testflight-upload-once-20261003-extensions.json'
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-status', 'HEAD^', 'HEAD', '--', marker_path], text=True
+          ).strip()
+          assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this main commit'
           marker = json.loads(
-              Path('audits/S00/s00-testflight-upload-once-20261003-extensions.json').read_text(encoding='utf-8')
+              Path(marker_path).read_text(encoding='utf-8')
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
