@@ -11,6 +11,9 @@ xcuserdata/
 .build/
 .swiftpm/
 
+# Python test bytecode
+__pycache__/
+
 # XcodeGen
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcodeproj/

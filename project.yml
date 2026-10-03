@@ -51,6 +51,8 @@ targets:
       path: App/Elapse.entitlements
       properties:
         com.apple.developer.family-controls: true
+        com.apple.security.application-groups:
+          - group.com.zhangsfish.elapse
   ElapseMonitor:
     type: app-extension
     platform: iOS
@@ -81,6 +83,8 @@ targets:
       path: MonitorExtension/ElapseMonitor.entitlements
       properties:
         com.apple.developer.family-controls: true
+        com.apple.security.application-groups:
+          - group.com.zhangsfish.elapse
   ElapseReport:
     type: extensionkit-extension
     platform: iOS

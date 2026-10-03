@@ -56,6 +56,9 @@ categories = {
         "no ios app store provisioning profiles",
     ),
     "FAMILY_CONTROLS_ENTITLEMENT": ("family-controls", "family controls"),
+    "APP_GROUP_CAPABILITY": (
+        "application-groups", "app groups", "app group", "group.com.zhangsfish.elapse",
+    ),
     "APP_ICON": ("app icon", "appicon"),
     "APP_ICON_METADATA": (
         "cfbundleiconname",
@@ -85,7 +88,7 @@ failed fail could cannot unable create created use using automatic manually
 requires required is are was has have with this the a an to of and or
 valid invalid expired revoked existing local remote key authentication
 service request server network response code entitlement family controls
-bundle id extension icon privacy manifest
+bundle id extension icon privacy manifest group groups application
 info plist value values assets asset catalog built sdk supply icons pixels
 cfbundleiconname cfbundleicons launch storyboard orientation orientations
 """.split()

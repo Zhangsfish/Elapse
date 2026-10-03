@@ -2,8 +2,10 @@ name: S00 TestFlight preparation and explicit upload
 
 on:
   push:
-    branches: [main]
-    paths: [audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json]
+    branches: [main, codex/s00-b-first-real-pulse]
+    paths:
+      - audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json
+      - reports/S00-B/round-01/evidence/s00b-upload-once.json
   workflow_dispatch:
     inputs:
       operation:
@@ -22,7 +24,10 @@ permissions:
 
 jobs:
   testflight:
-    if: github.event_name != 'workflow_dispatch' || inputs.operation != 'verify-build'
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.operation != 'verify-build') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-b-first-real-pulse' && github.event.head_commit.message == 'S00-B explicit one-time TestFlight upload')
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -30,7 +35,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Validate the one-time main-branch upload marker
+      - name: Validate an explicit one-time upload marker
         if: github.event_name == 'push'
         env:
           PREVIOUS_MAIN_SHA: ${{ github.event.before }}
@@ -43,22 +48,37 @@ jobs:
           import subprocess
           from pathlib import Path
 
-          marker_path = 'audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json'
           previous_main = os.environ['PREVIOUS_MAIN_SHA']
           assert re.fullmatch(r'[0-9a-f]{40}', previous_main)
+          ref = os.environ['GITHUB_REF']
+          if ref == 'refs/heads/main':
+              marker_path = 'audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json'
+              expected = {
+                  'operation': 's00-testflight-upload-once',
+                  'trigger_id': 'everwhile-s00-xcodegen-entitlements-20261003',
+                  'source_baseline': '8c7268a24e3c2d5238d20f224915a38d2e74f2df',
+                  'version': '0.1.0',
+              }
+          elif ref == 'refs/heads/codex/s00-b-first-real-pulse':
+              marker_path = 'reports/S00-B/round-01/evidence/s00b-upload-once.json'
+              expected = None
+          else:
+              raise AssertionError('Unexpected upload ref')
           changed = subprocess.check_output(
               ['git', 'diff', '--name-status', previous_main, 'HEAD', '--', marker_path], text=True
           ).strip()
-          assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this main commit'
+          assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this push'
           marker = json.loads(
               Path(marker_path).read_text(encoding='utf-8')
           )
-          assert marker == {
-              'operation': 's00-testflight-upload-once',
-              'trigger_id': 'everwhile-s00-xcodegen-entitlements-20261003',
-              'source_baseline': '8c7268a24e3c2d5238d20f224915a38d2e74f2df',
-              'version': '0.1.0',
-          }
+          if expected is None:
+              expected = {
+                  'operation': 's00b-testflight-upload-once',
+                  'trigger_id': 'everwhile-s00b-first-pulse-20261003',
+                  'source_code_sha': previous_main,
+                  'version': '0.1.0',
+              }
+          assert marker == expected
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
           PY
       - name: Record Xcode 26 host and toolchain
@@ -113,7 +133,10 @@ jobs:
               with open(path, "rb") as f:
                   data = plistlib.load(f)
               assert data.get("com.apple.developer.family-controls") is True, path
+              if path != "ReportExtension/ElapseReport.entitlements":
+                  assert data.get("com.apple.security.application-groups") == ["group.com.zhangsfish.elapse"], path
           print("S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
+          print("S00B_TF_XCODEGEN_APP_GROUP_ENTITLEMENTS_PASS")
           PY
           xcodebuild -help 2>&1 | grep -E 'app-store-connect|destination.*upload|testFlightInternalTestingOnly' || true
           xcrun altool --help 2>&1 | grep -E -- 'upload-app|apiKey|apiIssuer' | head -n 12
@@ -192,7 +215,7 @@ jobs:
       - name: Sign and upload only on an explicit upload trigger
         if: >-
           (github.event_name == 'workflow_dispatch' && inputs.operation == 'upload') ||
-          (github.event_name == 'push' && github.ref == 'refs/heads/main')
+          (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/codex/s00-b-first-real-pulse'))
         env:
           APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}

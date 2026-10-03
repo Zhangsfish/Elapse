@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 from s00_archive_entitlements import BUNDLES
-from s00_entitlement_checks import EXPECTED_FILES, family_controls_status
+from s00_entitlement_checks import EXPECTED_FILES, GROUP_TARGETS, app_group_status, family_controls_status
 
 
 ORDER = ("ElapseReport", "ElapseMonitor", "Elapse")
@@ -39,10 +39,13 @@ def sign(archive: Path) -> bool:
                 check=True,
             ).stdout
             status = family_controls_status(output)
+            group_status = app_group_status(output) if target in GROUP_TARGETS else "NOT_REQUIRED"
         except (OSError, subprocess.CalledProcessError, plistlib.InvalidFileException):
             status = "READ_ERROR"
+            group_status = "READ_ERROR" if target in GROUP_TARGETS else "NOT_REQUIRED"
         print(f"S00A_INTERMEDIATE_{target.upper()}_FAMILY_CONTROLS_CLAIM={status}")
-        valid = status == "TRUE" and valid
+        print(f"S00B_INTERMEDIATE_{target.upper()}_APP_GROUP_CLAIM={group_status}")
+        valid = status == "TRUE" and group_status in {"EXPECTED", "NOT_REQUIRED"} and valid
     print(f"S00A_INTERMEDIATE_ARCHIVE_SIGNATURE={'PASS' if valid else 'FAIL'}")
     return valid
 

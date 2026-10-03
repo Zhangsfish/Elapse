@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B READY；S00-C 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B READY_FOR_AUDIT；S00-C 及之后阶段 LOCKED。**
 
 PR #14 的精确 head `bf5530e22a338150dd45408e4702651bc4711064` 已由云端独立审核并合并为 `044841658fb990324c13224cb592402f0540c80a`。审计见 [S00-A cloud audit](audits/S00/S00_A_AUDIT_2026-10-03.md)。
 
@@ -42,7 +42,7 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 | 两 App 选择 + app relaunch 保留 | **PASS — OWNER** | S00-A device evidence |
 | 普通通知自检 | **PASS — OWNER visible banner** | 与 Screen Time threshold 分开 |
 | monitor Running → Stopped | **PASS — OWNER** | 不推断停止后的迟到 callback |
-| 共享池 5 分钟完整 gate | **NOT_RUN / S00-B** | 历史英文五分钟 banner 不足以通过 |
+| 共享池 5 分钟完整 gate | **OWNER_OBSERVED / PENDING_CLOUD_AUDIT** | 32.1 两个新实验的回调、请求与可见提醒；`reports/S00-B/round-01/DEVICE_OBSERVATIONS.md` |
 | 10–30 分钟连续 pulse | LOCKED | S00-C |
 | Today 真实报告 | LOCKED | S00-D |
 | 全天 / interval 配置 / 恢复 | LOCKED | S01 |
@@ -58,7 +58,7 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选 App/保存、普通通知自检 |
-| S00-B | **READY** | 第一次真实 5 分钟共享池、可观察事件、同日可重试、配置一致性 |
+| S00-B | **READY_FOR_AUDIT** | PR #15：`0.1.0 (32.1)` CI、签名、TestFlight 与两轮 owner 设备观察已记录；迟到 stale callback 未在设备发生，隔离依 SOURCE/UNIT_TEST。待云端独立审计，不自行 PASS/merge。证据见 `reports/S00-B/round-01/` |
 | S00-C | LOCKED | 10–30 分钟连续提醒、切换/停止/迟到/重复 |
 | S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
 | S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |

@@ -8,6 +8,9 @@ import plistlib
 
 
 FAMILY_CONTROLS = "com.apple.developer.family-controls"
+APP_GROUPS = "com.apple.security.application-groups"
+S00B_APP_GROUP = "group.com.zhangsfish.elapse"
+GROUP_TARGETS = frozenset({"Elapse", "ElapseMonitor"})
 EXPECTED_FILES = {
     "Elapse": "App/Elapse.entitlements",
     "ElapseMonitor": "MonitorExtension/ElapseMonitor.entitlements",
@@ -37,6 +40,35 @@ def family_controls_status(blob: bytes, *, profile: bool = False) -> str:
 def file_status(path: Path, *, profile: bool = False) -> str:
     try:
         return family_controls_status(path.read_bytes(), profile=profile)
+    except OSError:
+        return "READ_ERROR"
+
+
+def app_group_status(blob: bytes, *, profile: bool = False) -> str:
+    """Check only membership in the known group; never print other group IDs."""
+    if not blob:
+        return "READ_ERROR"
+    try:
+        value = plistlib.loads(blob)
+    except (plistlib.InvalidFileException, ValueError, TypeError, OverflowError):
+        return "READ_ERROR"
+    if not isinstance(value, dict):
+        return "READ_ERROR"
+    if profile:
+        value = value.get("Entitlements")
+        if not isinstance(value, dict):
+            return "READ_ERROR"
+    if APP_GROUPS not in value:
+        return "MISSING"
+    groups = value[APP_GROUPS]
+    if not isinstance(groups, list) or not all(isinstance(group, str) for group in groups):
+        return "NOT_EXPECTED"
+    return "EXPECTED" if S00B_APP_GROUP in groups else "NOT_EXPECTED"
+
+
+def file_app_group_status(path: Path) -> str:
+    try:
+        return app_group_status(path.read_bytes())
     except OSError:
         return "READ_ERROR"
 
