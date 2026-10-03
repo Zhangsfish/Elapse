@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前已接受的设备基础已推进到 Everwhile `0.1.0 (32.1)`。S00-A 与 S00-B 均已完成云端精确 SHA 审核并给出 PASS_WITH_NOTES。S00-B 合并 commit 为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`：首个真实五分钟共享池、同日新 experiment、App Group 脱敏 callback/request 诊断、selection/config 一致性与最终分发签名已通过。当前由 `STATUS.md` 只解锁 S00-C；S00-D 及之后阶段仍按门槛锁定。审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md` 与 `audits/S00/S00_B_AUDIT_2026-10-03.md`。
+当前已接受的设备基础已推进到 Everwhile `0.1.0 (38.1)`。S00-A/B/C 均已完成云端精确 SHA 审核并给出 PASS_WITH_NOTES。S00-C 合并 commit 为 `bba53845b78eb657b0daa29019abb202a29de81a`：5/10/15/20/25/30 六档逐阈值诊断与一个真实连续 experiment 已通过，且不宣称精确 callback 延迟。当前由 `STATUS.md` 只解锁 S00-D；S01 及之后仍锁定。审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md`、`audits/S00/S00_B_AUDIT_2026-10-03.md` 与 `audits/S00/S00_C_AUDIT_2026-10-04.md`。
 
 ## 顺序与门槛
 

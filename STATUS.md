@@ -1,45 +1,41 @@
 # STATUS
 
-Updated: 2026-10-03
+Updated: 2026-10-04
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C READY_FOR_AUDIT；S00-D 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C COMPLETE — PASS_WITH_NOTES。S00-D READY；S01 及之后阶段 LOCKED。**
 
-S00-C 实现分支：`codex/s00-c-continuous-pulses`，基于 `3fcaa287217399449b3dd2b10e6adba8280ebf2e`，PR #16。六档诊断、边界测试和内部 TestFlight `0.1.0 (38.1)` 已完成工程检查；该 build 的 Apple processing `VALID / INTERNAL_ONLY / IN_BETA_TESTING`，已分配内部组。持有人已提供同一实验 5/10/15/20/25/30 六档 callback、accepted request 和可见通知证据，并确认两个所选 App 至少切换两次、Stop 成功且选择重新可用。**本阶段真机操作结束，等待云端独立审计；Codex 不自批、不合并或解锁 S00-D。**进展见 `reports/S00-C/round-01/`。
+S00-C PR #16 的精确 head `35f5102fa2ec98df0729e601663ecbdb2a5b01ce` 已由云端独立审核并合并为 `bba53845b78eb657b0daa29019abb202a29de81a`。审计见 [S00-C cloud audit](audits/S00/S00_C_AUDIT_2026-10-04.md)。
 
-S00-B PR #15 的精确 head `ee51be3d6e4b76246d5aecc85934c0e53fe33207` 已由云端独立审核并合并为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`。审计见 [S00-B cloud audit](audits/S00/S00_B_AUDIT_2026-10-03.md)。
+Everwhile `0.1.0 (38.1)` 现作为已接受的 S00-C 基线：
 
-Everwhile `0.1.0 (32.1)` 现作为已接受的 S00-B 基线：
+- 5/10/15/20/25/30 六档拥有独立 callback/request/error 诊断；
+- legacy 32.1 shared-state 迁移与 malformed state fail-closed 已覆盖；
+- duplicate/stale/invalid/out-of-order/request-failure/late-completion 语义有 SOURCE + UNIT_TEST；
+- 一个真机 experiment `0cb91a51` 六档均观察到 current callback、accepted request 和 visible pulse；
+- 持有人确认两个 selected Apps 至少切换两次；
+- Stop 与 selection 解锁通过 owner report；
+- 38.1 最终签名 / TestFlight / internal group 均通过。
 
-- main App + Monitor 的 App Group 最终签名 claim/profile allowance 已验证；
-- Family Controls 最终签名仍通过；
-- Apple processing `VALID / INTERNAL_ONLY / IN_BETA_TESTING`，已分配内部组；
-- 每次 Start 使用独立 experiment UUID；
-- stale / duplicate callback 及旧 experiment completion 具有 fail-closed 隔离语义；
-- selection 在 experiment 运行时冻结，Stop 后恢复；
-- App Group 只保存 app-owned 实验/诊断元数据，不保存 tokens、App 身份或 report 数据；
-- 真机第一轮跨两个 selected App 在约五分钟累计后收到当前 experiment callback、accepted request 与 visible pulse；
-- 同日新的第二个 experiment 也独立收到 callback/request/visible pulse，没有被旧 receipt 抑制。
-
-持有人的 2:18 + 1:44 + 约 1 分钟仅作为近似观察，不是权威 Screen Time 秒级数据。
+六档 callback 时间戳不是权威 Screen Time 使用量或精确提醒延迟。
 
 ## 唯一当前任务
 
-**[S00-C：10–30 分钟连续提醒与边界语义](prompts/S00_C_CONTINUOUS_PULSES.md)**
+**[S00-D：真实 Today 报表](prompts/S00_D_REAL_TODAY_REPORT.md)**
 
-本轮只验证：
+本轮只解决：
 
-- 10 / 15 / 20 / 25 / 30 分钟当前 experiment threshold；
-- 每个 threshold 的 callback / request 分层诊断；
-- 两个 selected App 间切换时共享累计池不断裂；
-- duplicate / stale / delayed / request-failure 的安全语义；
-- Stop 与 selection 解锁；
-- 不宣称系统秒级准点。
+- 当前用户 / 当前 iPhone；
+- 今天当地 00:00 → 现在；
+- selected-App 总时长；
+- per-app 真实汇总；
+- hourly aggregate；
+- zero usage / no report data / system-managed loading 的真实语义；
+- 不伪造 exact session；
+- report usage 不通过 App Group 或主 App side channel 导出。
 
-Today / S00-D 仍 LOCKED。
-
-Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并以本 STATUS 为调度权威。
+优先使用 2026-10-04 午夜后已经存在的 S00-C 真机使用数据，不再安排新的长时间刷 App。
 
 ## 已接受基线
 
@@ -47,43 +43,42 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 |---|---|---|
 | S00-A cloud audit | **PASS_WITH_NOTES** | `audits/S00/S00_A_AUDIT_2026-10-03.md` |
 | S00-B cloud audit | **PASS_WITH_NOTES** | `audits/S00/S00_B_AUDIT_2026-10-03.md` |
-| 32.1 App Group + Family Controls 最终签名 | **PASS** | upload run 37128996204 |
-| 32.1 Apple processing / internal availability | **PASS** | VALID / INTERNAL_ONLY / IN_BETA_TESTING / internal group assigned |
-| shared App pool first 5-minute threshold | **PASS — OWNER + app diagnostics** | experiment `5c520eb7`;近似时长，不声称秒级精度 |
-| same-day fresh experiment | **PASS — OWNER + app diagnostics** | experiment `722d1c70` |
-| stale callback rejection | **PASS — SOURCE + UNIT_TEST** | 设备测试中未自然发生 stale callback |
-| selection/config consistency | **PASS** | running 时锁定 selection；Stop 后恢复 |
-| 10–30 minute sequence | **NOT_RUN / S00-C** | 当前唯一 READY stage |
-| Today real report | LOCKED | S00-D |
-| all-day / configurable interval / recovery | LOCKED | S01 |
+| S00-C cloud audit | **PASS_WITH_NOTES** | `audits/S00/S00_C_AUDIT_2026-10-04.md` |
+| 38.1 final signing / TestFlight | **PASS** | upload run 37134139991 |
+| finite 5–30 pulse sequence | **PASS — OWNER + app diagnostics** | experiment `0cb91a51`;不声称精确延迟 |
+| two selected-App switches | **PASS — OWNER_REPORT** | exact switch times 未记录 |
+| Stop / selection unlock | **PASS — OWNER_REPORT** | 无 post-Stop copied diagnostic |
+| stale/duplicate/late semantics | **PASS — SOURCE + UNIT_TEST** | 设备未自然发生 |
+| real Today report | **NOT_RUN / S00-D** | 当前唯一 READY stage |
+| all-day / interval / lifecycle recovery | LOCKED | S01 |
 
-## S00-B 审计 notes
+## S00-C 审计 notes
 
-- 设备上没有自然出现 delayed stale callback；旧 callback / old completion 隔离由 SOURCE + UNIT_TEST 支持，不冒充 DEVICE_OBSERVED。
-- 设备未记录 pulse 的精确文案；neutral monitoring-start copy 由 source + unit test 支持。
-- 当前登记状态文案在 callback 已收到后仍可能显示“等待真实回调”；S00-C 扩展逐阈值诊断时一并清理。
-- 设备墙钟用时都是近似值，不得写成权威 Screen Time 秒级用量或 callback 准点证明。
+- stale / duplicate / invalid / late completion 未在设备自然发生；拒绝语义不冒充 DEVICE_OBSERVED。
+- 六档 timestamp 不能用来推导精确使用时长或 callback delay。
+- Stop / selection unlock 只有 owner report，无 post-Stop diagnostic。
+- S00-C 已完成有限 30 分钟长测；后续默认不再要求新的长时间/全天人工测试，除非有明确必要性并先说明。
 
 ## 调度表
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选 App/保存、普通通知自检 |
-| S00-B | **COMPLETE — PASS_WITH_NOTES** | 首个真实 5 分钟共享池、可观察诊断、同日可重试、配置一致性 |
-| S00-C | **READY_FOR_AUDIT** | 10–30 分钟连续提醒、切换、停止、迟到/重复语义 |
-| S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
+| S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选择持久化、普通通知 |
+| S00-B | **COMPLETE — PASS_WITH_NOTES** | 首个真实 5 分钟共享池、可观察诊断、同日复测 |
+| S00-C | **COMPLETE — PASS_WITH_NOTES** | 5–30 分钟有限连续提醒、切换与边界语义 |
+| S00-D | **READY** | 当前用户/设备的真实 Today、per-app 与 hourly aggregate |
 | S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |
 | S02 | LOCKED | 轻量正式体验与回顾呈现 |
-| S03 | LOCKED / OWNER_RELEASE_REQUIRED | 公开分发准备，非当前上架授权 |
+| S03 | LOCKED / OWNER_RELEASE_REQUIRED | 公开分发准备 |
 
 ## 分工
 
-Codex 负责 S00-C 实现、自动验证、必要的内部 TestFlight，并在同一 Codex 对话中一次一个动作带持有人完成有限的 10–30 分钟真机验收。等待设备反馈为 `WAITING_FOR_OWNER_TEST`；必需证据完成后为 `READY_FOR_AUDIT`。
+Codex 负责 S00-D 实现、自动验证、必要的内部 TestFlight，并在同一 Codex 对话中用最小手机操作验收真实 Today。默认复用今天已有使用数据，不安排新的长时间刷 App。等待设备反馈为 `WAITING_FOR_OWNER_TEST`；完成后为 `READY_FOR_AUDIT`。
 
-云端 ChatGPT 读取实际 diff、完整关键源码、CI/log、reports 和设备观察后给精确 SHA verdict；通过后由云端 merge 并只解锁 S00-D。
+云端 ChatGPT 读取实际 diff、完整 ReportExtension 源码、CI/log、signed artifact、reports 与设备观察后给精确 SHA verdict；通过后由云端 merge 并判断 S00 整体验收是否完成，再决定是否解锁 S01。
 
-持有人只做必要 iPhone / Apple 私密账号动作，不手动 merge、不手动点 Actions、不整理测试报告。
+持有人只做必要 iPhone / Apple 私密账号操作，不手动 merge、不手动点 Actions、不整理测试报告。
 
 ## 固定产品边界
 
-只报时，不裁判。无 block/shield、账号、云服务、AI、广告、评分、streak。不给 callback 条数伪造权威总量；不给小时桶伪造精确 session；不把 monitoring-start 累计量写成未经证明的自然日 Today 总量。
+只报时，不裁判。Today 只展示 Apple report 环境允许的真实聚合；不伪造 exact sessions，不从 callback 推导使用总量，不把 protected report data 通过 App Group 导出，不依赖 EU-only enhanced data access。
