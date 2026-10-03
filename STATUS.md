@@ -4,7 +4,9 @@ Updated: 2026-10-03
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C READY；S00-D 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C IN_PROGRESS；S00-D 及之后阶段 LOCKED。**
+
+S00-C 实现分支：`codex/s00-c-continuous-pulses`，基于 `3fcaa287217399449b3dd2b10e6adba8280ebf2e`。当前正在完成六档诊断、边界测试与新的内部 TestFlight 准备；10–30 分钟真机序列尚未执行。进展见 `reports/S00-C/round-01/`。
 
 S00-B PR #15 的精确 head `ee51be3d6e4b76246d5aecc85934c0e53fe33207` 已由云端独立审核并合并为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`。审计见 [S00-B cloud audit](audits/S00/S00_B_AUDIT_2026-10-03.md)。
 
@@ -68,7 +70,7 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 |---|---|---|
 | S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选 App/保存、普通通知自检 |
 | S00-B | **COMPLETE — PASS_WITH_NOTES** | 首个真实 5 分钟共享池、可观察诊断、同日可重试、配置一致性 |
-| S00-C | **READY** | 10–30 分钟连续提醒、切换、停止、迟到/重复语义 |
+| S00-C | **IN_PROGRESS** | 10–30 分钟连续提醒、切换、停止、迟到/重复语义 |
 | S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
 | S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |
 | S02 | LOCKED | 轻量正式体验与回顾呈现 |

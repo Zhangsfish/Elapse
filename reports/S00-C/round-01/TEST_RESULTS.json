@@ -1,0 +1,21 @@
+{
+  "task": "S00-C",
+  "round": "01",
+  "status": "IN_PROGRESS",
+  "base_main_sha": "3fcaa287217399449b3dd2b10e6adba8280ebf2e",
+  "branch": "codex/s00-c-continuous-pulses",
+  "code_sha": null,
+  "tested_sha": null,
+  "upload_sha": null,
+  "version": "0.1.0",
+  "build": null,
+  "checks": {
+    "six_threshold_diagnostics": "NOT_RUN_CI",
+    "duplicate_stale_out_of_order_failure": "NOT_RUN_CI",
+    "ordinary_ci": "NOT_RUN",
+    "testflight_processing": "NOT_RUN",
+    "internal_availability": "NOT_RUN",
+    "device_continuous_sequence": "NOT_RUN",
+    "device_stop_and_selection_unlock": "NOT_RUN"
+  }
+}
