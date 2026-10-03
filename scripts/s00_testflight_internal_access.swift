@@ -150,15 +150,17 @@ func betaGroupIDsForBuild(_ api: API, buildID: String) throws -> Set<String> {
     ]).compactMap { $0["id"] as? String })
 }
 
-func ensureInternalTesterCanSeeApp(_ api: API, testerID: String, appID: String) throws {
+func internalTesterEmailWithAppAccess(_ api: API, testerID: String, appID: String) throws -> String {
     let tester = try api.getItem("betaTesters/\(testerID)", query: [
-        URLQueryItem(name: "fields[betaTesters]", value: "email"),
+        URLQueryItem(name: "fields[betaTesters]", value: "email,state,inviteType"),
     ])
     guard let testerAttrs = tester["attributes"] as? [String: Any],
           let email = testerAttrs["email"] as? String,
           !email.isEmpty else {
         throw ASCError(message: "internal_tester_email_unavailable")
     }
+    let state = testerAttrs["state"] as? String ?? "UNKNOWN"
+    print("S00_TF_SOURCE_TESTER_STATE state=\(state)")
 
     let users = try api.getItems("users", query: [
         URLQueryItem(name: "filter[username]", value: email),
@@ -171,22 +173,24 @@ func ensureInternalTesterCanSeeApp(_ api: API, testerID: String, appID: String) 
     let user = users[0]
     let userID = try id(user)
     let attrs = user["attributes"] as? [String: Any] ?? [:]
-    if attrs["allAppsVisible"] as? Bool == true {
-        return
+    let allAppsVisible = attrs["allAppsVisible"] as? Bool == true
+    print("S00_TF_INTERNAL_USER_ALL_APPS_VISIBLE value=\(allAppsVisible)")
+    if allAppsVisible {
+        return email
     }
 
     let visible = Set(try api.getItems("users/\(userID)/relationships/visibleApps", query: [
         URLQueryItem(name: "limit", value: "200"),
     ]).compactMap { $0["id"] as? String })
-    if visible.contains(appID) {
-        return
+    if !visible.contains(appID) {
+        let body: [String: Any] = [
+            "data": [["type": "apps", "id": appID]]
+        ]
+        _ = try api.request("POST", "users/\(userID)/relationships/visibleApps", body: body, expected: [204])
+        print("S00_TF_INTERNAL_USER_APP_ACCESS_ADDED")
+        Thread.sleep(forTimeInterval: 2)
     }
-
-    let body: [String: Any] = [
-        "data": [["type": "apps", "id": appID]]
-    ]
-    _ = try api.request("POST", "users/\(userID)/relationships/visibleApps", body: body, expected: [204])
-    print("S00_TF_INTERNAL_USER_APP_ACCESS_ADDED")
+    return email
 }
 
 let args = CommandLine.arguments
@@ -268,12 +272,19 @@ do {
     let missing = sourceTesterIDs.subtracting(existing)
     var added = 0
     for testerID in missing.sorted() {
-        try ensureInternalTesterCanSeeApp(api, testerID: testerID, appID: everwhileApp)
-        Thread.sleep(forTimeInterval: 2)
+        let email = try internalTesterEmailWithAppAccess(api, testerID: testerID, appID: everwhileApp)
         let body: [String: Any] = [
-            "data": [["type": "betaTesters", "id": testerID]]
+            "data": [
+                "type": "betaTesters",
+                "attributes": ["email": email],
+                "relationships": [
+                    "betaGroups": [
+                        "data": [["type": "betaGroups", "id": targetGroupID]]
+                    ]
+                ],
+            ]
         ]
-        _ = try api.request("POST", "betaGroups/\(targetGroupID)/relationships/betaTesters", body: body, expected: [204])
+        _ = try api.request("POST", "betaTesters", body: body, expected: [201])
         added += 1
     }
     print("S00_TF_INTERNAL_TESTERS_READY total=\(sourceTesterIDs.count) newly_added=\(added)")
