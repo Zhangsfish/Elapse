@@ -70,12 +70,16 @@ echo "S00_TF_RELEASE_START version=$version build=$build_number code_sha=$code_s
 if xcodebuild -project Elapse.xcodeproj -scheme Elapse \
   -configuration Release -destination 'generic/platform=iOS' \
   -archivePath "$archive_path" -derivedDataPath "$RUNNER_TEMP/S00EverwhileReleaseDerivedData" \
-  CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+  -allowProvisioningUpdates \
+  -authenticationKeyPath "$key_file" \
+  -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
+  -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+  DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_IDENTITY='Apple Distribution' \
   CURRENT_PROJECT_VERSION="$build_number" archive > "$archive_log" 2>&1; then
-  echo 'S00_TF_UNSIGNED_ARCHIVE_SUCCEEDED'
+  echo 'S00_TF_SIGNED_ARCHIVE_SUCCEEDED'
 else
   result=$?
-  echo "S00_TF_UNSIGNED_ARCHIVE_FAILED exit=$result"
+  echo "S00_TF_SIGNED_ARCHIVE_FAILED exit=$result"
   python3 scripts/s00_testflight_diagnostics.py "$archive_log"
   exit "$result"
 fi
@@ -102,7 +106,8 @@ for extension in \
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
 done
 python3 scripts/s00_archive_inspect.py "$archive_path" --require-distribution-metadata
-echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
+python3 scripts/s00_archive_signature_audit.py "$archive_path"
+echo 'S00_TF_SIGNED_ARCHIVE_METADATA_VERIFIED'
 
 if xcodebuild -exportArchive -archivePath "$archive_path" \
   -exportOptionsPlist "$export_options" -exportPath "$export_path" \

@@ -36,7 +36,7 @@ def decoded_plist(command):
     return plistlib.loads(result.stdout)
 
 
-def check_bundle(label, bundle, expected_id):
+def check_bundle(label, bundle, expected_id, prefix="S00A_SIGNED"):
     info = plistlib.loads((bundle / "Info.plist").read_bytes())
     identifier = info.get("CFBundleIdentifier")
     id_status = "EXPECTED" if identifier == expected_id else "MISMATCH"
@@ -55,10 +55,10 @@ def check_bundle(label, bundle, expected_id):
         allowance_status = family_controls_status(plistlib.dumps(profile), profile=True)
     except (OSError, ValueError, subprocess.CalledProcessError):
         allowance_status = "READ_ERROR"
-    print(f"S00A_SIGNED_{label}_BUNDLE_ID={id_status}")
-    print(f"S00A_SIGNED_{label}_CODESIGN={signature_status}")
-    print(f"S00A_SIGNED_{label}_FAMILY_CONTROLS_CLAIM={claim_status}")
-    print(f"S00A_SIGNED_{label}_PROFILE_ALLOWANCE={allowance_status}")
+    print(f"{prefix}_{label}_BUNDLE_ID={id_status}")
+    print(f"{prefix}_{label}_CODESIGN={signature_status}")
+    print(f"{prefix}_{label}_FAMILY_CONTROLS_CLAIM={claim_status}")
+    print(f"{prefix}_{label}_PROFILE_ALLOWANCE={allowance_status}")
     return all(status == required for status, required in (
         (id_status, "EXPECTED"), (signature_status, "VALID"),
         (claim_status, "TRUE"), (allowance_status, "TRUE"),
