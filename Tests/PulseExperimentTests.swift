@@ -127,6 +127,22 @@ final class PulseExperimentTests: XCTestCase {
         XCTAssertEqual(state.receive(eventName: event, activityName: PulsePlan.activityName(for: secondID), at: callbackDate), .request(minutes: 25))
     }
 
+    func testRepeatedCompletionCannotOverwriteAcceptedRequest() {
+        var state = PulseExperimentSnapshot()
+        state.begin(id: firstID, selectedApplicationCount: 2)
+        state.markRegistered(id: firstID)
+        let event = PulsePlan.eventName(for: 30)
+        let activity = PulsePlan.activityName(for: firstID)
+        XCTAssertEqual(state.receive(eventName: event, activityName: activity, at: callbackDate), .request(minutes: 30))
+        state.finishRequest(eventName: event, activityName: activity, errorCode: nil, at: callbackDate)
+        state.finishRequest(eventName: event, activityName: activity, errorCode: "37", at: callbackDate.addingTimeInterval(1))
+        XCTAssertEqual(state.diagnostic(for: 30).requestStatus, .accepted)
+        XCTAssertEqual(state.staleCompletionCount, 1)
+        state.markStopped(id: firstID)
+        state.finishRequest(eventName: event, activityName: activity, errorCode: nil, at: callbackDate.addingTimeInterval(2))
+        XCTAssertEqual(state.staleCompletionCount, 2)
+    }
+
     func testLegacyFiveMinuteStoreMigratesWithoutLosingReadableState() throws {
         let legacy = """
         {"experimentID":"\(firstID)","generation":1,"phase":"registered", "selectedApplicationCount":2,
