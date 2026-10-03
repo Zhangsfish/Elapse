@@ -7,7 +7,7 @@
   "upload_sha": "88697237e5d87cfe54f858053cf1e7251bcea713",
   "version": "0.1.0",
   "build": "27.1",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "runs": {
     "ordinary_ci": "https://github.com/Zhangsfish/Elapse/actions/runs/37121113355",
     "prepare_only_ci": "https://github.com/Zhangsfish/Elapse/actions/runs/37121213437",
@@ -29,10 +29,10 @@
     "device_build_installed": "PASS",
     "device_authorization": "PASS",
     "two_app_selection": "PASS_OWNER_REPORTED_TWO_SELECTED",
-    "selection_restart_persistence": "NOT_RUN",
+    "selection_restart_persistence": "PASS_OWNER_REPORTED_APP_RELAUNCH_TWO_RETAINED",
     "notification_permission_and_alerts": "PASS",
     "ordinary_notification_request": "PASS_REQUEST_ONLY",
-    "visible_notification_delivery": "NOT_RUN",
+    "visible_notification_delivery": "PASS_OWNER_REPORTED_TOP_BANNER_CHINESE_ORDINARY_TEST",
     "monitor_stop": "PASS_OWNER_SCREENSHOT_RUNNING_TO_STOPPED",
     "five_minute_banner": "PASS_OWNER_REPORTED_THRESHOLD_REMINDER_APPEARANCE",
     "s00_b_full_gate": "NOT_RUN_LOCKED"
@@ -44,7 +44,7 @@
     "selected_category_count": 0,
     "selected_web_domain_count": 0,
     "monitor_registration": "REGISTERED_NOT_VERIFIED",
-    "ordinary_notification_delivery": "UNOBSERVED",
+    "ordinary_notification_delivery": "VISIBLE_TOP_BANNER_OWNER_REPORTED",
     "five_minute_banner_title": "ENGLISH_FIVE_MINUTE_REMINDER_RECALLED_NOT_VERBATIM",
     "five_minute_banner_context": "OWNER_STARTED_MONITORING_AND_USED_ONE_SELECTED_APP_ABOUT_FIVE_MINUTES",
     "five_minute_banner_exact_timing": "NOT_MEASURED"
