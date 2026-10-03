@@ -32,7 +32,9 @@
     "selection_restart_persistence": "NOT_RUN",
     "notification_permission_and_alerts": "PASS",
     "ordinary_notification_request": "PASS_REQUEST_ONLY",
-    "visible_notification_delivery": "NOT_RUN"
+    "visible_notification_delivery": "NOT_RUN",
+    "monitor_stop": "PASS_OWNER_REPORTED",
+    "five_minute_banner": "OWNER_REPORTED_UNCLASSIFIED"
   },
   "device_observation": {
     "source": "owner_report_and_screenshots_in_codex_chat_not_committed",
@@ -41,6 +43,8 @@
     "selected_category_count": 0,
     "selected_web_domain_count": 0,
     "monitor_registration": "REGISTERED_NOT_VERIFIED",
-    "ordinary_notification_delivery": "UNOBSERVED"
+    "ordinary_notification_delivery": "UNOBSERVED",
+    "five_minute_banner_title": "UNKNOWN",
+    "five_minute_banner_relative_to_stop": "UNKNOWN"
   }
 }

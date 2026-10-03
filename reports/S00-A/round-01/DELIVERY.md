@@ -1,6 +1,6 @@
 # S00-A round 01 — delivery record
 
-Status: WAITING_FOR_OWNER_TEST. Device tests: partial; see [DEVICE_OBSERVATIONS.md](DEVICE_OBSERVATIONS.md). No Screen Time callback or visible notification has been verified.
+Status: WAITING_FOR_OWNER_TEST. Device tests: partial; see [DEVICE_OBSERVATIONS.md](DEVICE_OBSERVATIONS.md). Owner reports that Stop changed the status and that a top banner appeared after about five minutes of selected-App use. The banner's content and timing relative to Stop are unknown, so neither ordinary notification delivery nor a Screen Time callback is yet attributed or marked PASS.
 
 - Base main: `b2a2e85e57d41a284d60ab5ad028662070efa203`.
 - Historical installed build: Everwhile `0.1.0 (19.1)`; upload run [37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155) reported accepted/VALID, followed by owner-provided `ITMS-90897` for main-app Family Controls. No retained signed IPA exists for that upload; its final claim is UNVERIFIED.
@@ -11,6 +11,6 @@ Status: WAITING_FOR_OWNER_TEST. Device tests: partial; see [DEVICE_OBSERVATIONS.
 - Read-only [availability run 37121122810](https://github.com/Zhangsfish/Elapse/actions/runs/37121122810): `VALID`, `INTERNAL_ONLY`, `IN_BETA_TESTING`, internal group exists, build assigned to an internal group — all PASS. No group/tester identity or credential printed.
 - Safe extracted result: [SIGNING_AND_TESTFLIGHT.md](evidence/SIGNING_AND_TESTFLIGHT.md). No raw signing or provisioning materials are committed.
 - Ordinary CI: [37121113355](https://github.com/Zhangsfish/Elapse/actions/runs/37121113355) PASS on implementation SHA and [37121380767](https://github.com/Zhangsfish/Elapse/actions/runs/37121380767) PASS on the prior evidence-only PR head. Prepare-only: [37121213437](https://github.com/Zhangsfish/Elapse/actions/runs/37121213437) PASS on implementation SHA, with no Apple secrets used.
-- Owner screenshot/report: 27.1 installed, Screen Time authorized, notifications allowed with alerts enabled, five application tokens currently selected, ordinary local notification request accepted. Monitoring is registered but no usage callback is proven. Exact two-app selection, restart persistence, and visible notification delivery remain open. No screenshots are copied to the repository.
+- Owner screenshot/report: 27.1 installed, Screen Time authorized, notifications allowed with alerts enabled, five application tokens currently selected, ordinary local notification request accepted. Stop control changed status. A later-reported top banner remains unclassified pending its text and timing. Exact two-app selection, restart persistence, and identified notification delivery remain open. No screenshots are copied to the repository.
 
 The signed audit uses Apple's [TN3125](https://developer.apple.com/documentation/technotes/tn3125-inside-code-signing-provisioning-profiles) distinction: a profile allowance does not establish a code-signature claim. It prints only fixed status words and an IPA SHA-256; the raw profile/signature and Apple credentials are never published.
