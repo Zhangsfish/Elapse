@@ -110,7 +110,7 @@ adhoc_sign_bundle() {
   codesign --force --sign - --entitlements "$entitlements" \
     --generate-entitlement-der "$bundle" >/dev/null 2>&1
   codesign --verify --strict "$bundle" >/dev/null 2>&1
-  codesign -d --entitlements :- "$bundle" > "$code_entitlements" 2>/dev/null
+  codesign --display --entitlements - --xml "$bundle" > "$code_entitlements" 2>/dev/null
 
   python3 - "$code_entitlements" "$expected_id" <<'PY'
 import plistlib
@@ -186,7 +186,7 @@ check_signed_bundle() {
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$info")" = "$expected_display"
 
-  if ! codesign -d --entitlements :- "$bundle" > "$code_entitlements" 2>/dev/null; then
+  if ! codesign --display --entitlements - --xml "$bundle" > "$code_entitlements" 2>/dev/null; then
     echo "S00_TF_SIGNED_ENTITLEMENTS_UNREADABLE bundle=$expected_id"
     return 1
   fi
