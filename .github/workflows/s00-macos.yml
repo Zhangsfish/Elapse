@@ -66,11 +66,11 @@ jobs:
             local bundle="$probe_root/$tag.appex"
             local dumped="$probe_root/$tag-entitlements.plist"
 
-            test "$(plutil -extract com.apple.developer.family-controls raw -o - "$entitlements")" = "true"
+            test "$(/usr/libexec/PlistBuddy -c 'Print :com.apple.developer.family-controls' "$entitlements")" = "true"
             cp -R "$source_bundle" "$bundle"
             codesign -s - -f --entitlements "$entitlements" "$bundle"
             codesign --display --entitlements - --xml "$bundle" > "$dumped"
-            value="$(plutil -extract com.apple.developer.family-controls raw -o - "$dumped" 2>/dev/null || true)"
+            value="$(/usr/libexec/PlistBuddy -c 'Print :com.apple.developer.family-controls' "$dumped" 2>/dev/null || true)"
             echo "S00_ADHOC_PROBE bundle=$expected_id family_controls=$value"
             test "$value" = "true"
           }
