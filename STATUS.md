@@ -4,7 +4,9 @@ Updated: 2026-10-03
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C READY；S00-D 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C READY_FOR_AUDIT；S00-D 及之后阶段 LOCKED。**
+
+S00-C 实现分支：`codex/s00-c-continuous-pulses`，基于 `3fcaa287217399449b3dd2b10e6adba8280ebf2e`，PR #16。六档诊断、边界测试和内部 TestFlight `0.1.0 (38.1)` 已完成工程检查；该 build 的 Apple processing `VALID / INTERNAL_ONLY / IN_BETA_TESTING`，已分配内部组。持有人已提供同一实验 5/10/15/20/25/30 六档 callback、accepted request 和可见通知证据，并确认两个所选 App 至少切换两次、Stop 成功且选择重新可用。**本阶段真机操作结束，等待云端独立审计；Codex 不自批、不合并或解锁 S00-D。**进展见 `reports/S00-C/round-01/`。
 
 S00-B PR #15 的精确 head `ee51be3d6e4b76246d5aecc85934c0e53fe33207` 已由云端独立审核并合并为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`。审计见 [S00-B cloud audit](audits/S00/S00_B_AUDIT_2026-10-03.md)。
 
@@ -68,7 +70,7 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 |---|---|---|
 | S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选 App/保存、普通通知自检 |
 | S00-B | **COMPLETE — PASS_WITH_NOTES** | 首个真实 5 分钟共享池、可观察诊断、同日可重试、配置一致性 |
-| S00-C | **READY** | 10–30 分钟连续提醒、切换、停止、迟到/重复语义 |
+| S00-C | **READY_FOR_AUDIT** | 10–30 分钟连续提醒、切换、停止、迟到/重复语义 |
 | S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
 | S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |
 | S02 | LOCKED | 轻量正式体验与回顾呈现 |

@@ -100,7 +100,7 @@ final class ElapseModel: ObservableObject {
     }
 
     var diagnosticSummary: String {
-        [
+        let header = [
             "Everwhile=\(versionDescription)",
             "ScreenTime=\(authorizationDescription)",
             "NotificationAuthorization=\(notificationDescription)",
@@ -112,18 +112,30 @@ final class ElapseModel: ObservableObject {
             "Experiment=\(pulseSnapshot.generation):\(pulseSnapshot.shortID)",
             "ExperimentPhase=\(pulseSnapshot.phase.rawValue)",
             "ExperimentSelectedApplications=\(pulseSnapshot.selectedApplicationCount)",
-            "FiveMinuteCallback=\(pulseSnapshot.fiveMinuteCallbackAt == nil ? "not_observed" : "received_current_experiment")",
-            "FiveMinuteCallbackAt=\(pulseSnapshot.fiveMinuteCallbackAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
-            "FiveMinuteRequest=\(pulseSnapshot.fiveMinuteRequestStatus.rawValue)",
-            "FiveMinuteRequestAt=\(pulseSnapshot.fiveMinuteRequestAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+        ]
+        let thresholds = PulsePlan.thresholdMinutes.flatMap { minutes -> [String] in
+            let diagnostic = pulseSnapshot.diagnostic(for: minutes)
+            let prefix = "Threshold\(minutes)m"
+            return [
+                "\(prefix)Callback=\(diagnostic.callbackReceived ? "received_current_experiment" : "not_observed")",
+                "\(prefix)CallbackAt=\(diagnostic.callbackAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+                "\(prefix)Request=\(diagnostic.requestStatus.rawValue)",
+                "\(prefix)RequestAt=\(diagnostic.requestAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+                "\(prefix)ErrorCode=\(diagnostic.safeErrorCode ?? "none")",
+            ]
+        }
+        let footer = [
             "StaleCallbacksRejected=\(pulseSnapshot.staleCallbackCount)",
             "DuplicateCallbacksRejected=\(pulseSnapshot.duplicateCallbackCount)",
+            "StaleCompletionsRejected=\(pulseSnapshot.staleCompletionCount)",
+            "InvalidCallbacksRejected=\(pulseSnapshot.invalidCallbackCount)",
             "SharedDiagnosticStore=\(pulseStoreStatus)",
-            "PulseErrorCode=\(pulseSnapshot.safeErrorCode ?? "none")",
+            "RegistrationErrorCode=\(pulseSnapshot.safeErrorCode ?? "none")",
             "LastAction=\(lastAction)",
             "LastResult=\(lastResult)",
             "ErrorCode=\(lastErrorCode ?? "none")",
-        ].joined(separator: "\n")
+        ]
+        return (header + thresholds + footer).joined(separator: "\n")
     }
 
     func refreshState() async {
@@ -145,23 +157,32 @@ final class ElapseModel: ObservableObject {
         pulseSnapshot.experimentID == nil ? "尚未开始" : "第 \(pulseSnapshot.generation) 次（\(pulseSnapshot.shortID)）"
     }
 
-    var fiveMinuteCallbackDescription: String {
-        guard let receivedAt = pulseSnapshot.fiveMinuteCallbackAt else { return "未观察到" }
+    func thresholdCallbackDescription(_ minutes: Int) -> String {
+        guard let receivedAt = pulseSnapshot.diagnostic(for: minutes).callbackAt else { return "未观察到" }
         return "当前实验已收到（\(receivedAt.formatted(date: .omitted, time: .standard))）"
     }
 
-    var fiveMinuteRequestDescription: String {
-        switch pulseSnapshot.fiveMinuteRequestStatus {
+    func thresholdRequestDescription(_ minutes: Int) -> String {
+        let diagnostic = pulseSnapshot.diagnostic(for: minutes)
+        switch diagnostic.requestStatus {
         case .notRequested: return "尚未请求"
         case .submitting: return "回调已到，请求结果待确认"
         case .accepted: return "请求已接受，是否显示待观察"
-        case .failed: return "请求失败（代码 \(pulseSnapshot.safeErrorCode ?? "未知")）"
+        case .failed: return "请求失败（代码 \(diagnostic.safeErrorCode ?? "未知")）"
         }
     }
 
     var experimentRegistrationDescription: String {
         guard pulseStoreStatus == "ready" else { return "共享诊断不可用" }
-        return isMonitoring ? "已登记，等待真实回调" : "未运行"
+        switch pulseSnapshot.phase {
+        case .idle: return "尚未开始"
+        case .starting: return "正在登记"
+        case .stopped: return "已停止"
+        case .failed: return "登记失败"
+        case .registered:
+            guard isMonitoring else { return "登记状态未确认" }
+            return pulseSnapshot.hasReceivedCallback ? "已登记，已收到真实回调" : "已登记，等待真实回调"
+        }
     }
 
     var canChangeSelection: Bool {

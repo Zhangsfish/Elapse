@@ -52,15 +52,23 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00-B 五分钟实验") {
+                Section("S00-C 连续提醒实验") {
                     Text("所选 App 使用时间在本次开始后累计；启动前的活动不计入。回调可能延迟，通知请求成功不等于横幅已显示。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                     LabeledContent("实验", value: model.experimentDescription)
                     LabeledContent("登记状态", value: model.experimentRegistrationDescription)
-                    LabeledContent("5 分钟回调", value: model.fiveMinuteCallbackDescription)
-                    LabeledContent("通知请求", value: model.fiveMinuteRequestDescription)
+                    ForEach(PulsePlan.thresholdMinutes, id: \.self) { minutes in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("\(minutes) 分钟")
+                                .font(.headline)
+                            Text("回调：\(model.thresholdCallbackDescription(minutes))")
+                            Text("通知：\(model.thresholdRequestDescription(minutes))")
+                        }
+                        .font(.footnote)
+                    }
                     LabeledContent("拒绝的旧回调", value: "\(model.pulseSnapshot.staleCallbackCount)")
+                    LabeledContent("拒绝的重复回调", value: "\(model.pulseSnapshot.duplicateCallbackCount)")
                     Button("开始新实验") {
                         model.startMonitoring()
                     }
@@ -91,7 +99,7 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00-A/B 脱敏诊断") {
+                Section("S00-A/B/C 脱敏诊断") {
                     LabeledContent("版本", value: model.versionDescription)
                     Text(model.diagnosticSummary)
                         .font(.footnote.monospaced())
