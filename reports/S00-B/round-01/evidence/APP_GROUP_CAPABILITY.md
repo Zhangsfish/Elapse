@@ -1,0 +1,9 @@
+# S00-B App Group capability diagnosis
+
+- Source/unsigned archive: main App and Monitor declare `group.com.zhangsfish.elapse`; Report does not. This is not final signing proof.
+- [TestFlight upload attempt](https://github.com/Zhangsfish/Elapse/actions/runs/37127540352), commit `3f8f23154a054957b725412b94984c86f9527dcb`, build `0.1.0 (30.1)`: unsigned build/archive PASS; distribution export exit 70, safe categories `API_AUTHORIZATION` and `NO_MATCHING_PROFILE`; no IPA/upload.
+- [Read-only App Store Connect capability probe](https://github.com/Zhangsfish/Elapse/actions/runs/37128404114), commit `8783bf23f47adde4f0b368b41edafa53832e0f11`: both exact App IDs FOUND; `APP_GROUPS` capability MISSING on `com.zhangsfish.elapse` and `com.zhangsfish.elapse.monitor`. The API check does not establish specific-group registration or assignment.
+- Apple Developer Portal, owner’s existing signed-in session: App Groups list initially empty. Registered `group.com.zhangsfish.elapse` as “Everwhile Diagnostics”; assigned it to the main App ID and Monitor App ID, not Report. Reopened Monitor configuration: App Groups checked, Enabled App Groups (1), Save disabled (no unsaved change). Main configuration saved and returned to identifiers list. No key, profile content, or selected App identity was read or recorded. Private screenshot remains local, not in the repository.
+- Final distribution-signed App/Monitor entitlement claim and embedded profile allowance: **NOT_RUN** until the next export succeeds. Portal configuration alone is not PASS.
+
+Apple references: [register App Group](https://developer.apple.com/help/account/identifiers/register-an-app-group), [assign App Groups to App ID](https://developer.apple.com/help/account/identifiers/enable-app-capabilities/), [list Bundle ID capabilities](https://developer.apple.com/documentation/appstoreconnectapi/get-v1-bundleids-_id_-bundleidcapabilities).

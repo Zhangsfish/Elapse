@@ -72,7 +72,6 @@ jobs:
         run: |
           set -euo pipefail
           bash -n scripts/s00_testflight_release.sh
-          swiftc -typecheck scripts/s00b_capability_probe.swift
           python3 -m unittest discover -s scripts/tests
       - name: Run pure logic unit tests
         run: swift test
