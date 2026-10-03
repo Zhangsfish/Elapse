@@ -1,97 +1,63 @@
 # STATUS
 
-## Current stage
+Updated: 2026-10-03
 
-**S00 — Screen Time feasibility gate**
+## 当前结论
 
-Status: **CODE / CI PASS — TESTFLIGHT DELIVERY PASS — REAL-DEVICE GATES NOT RUN**
+**S00 原型已安装，功能尚未验收。S00-A READY；其余实现阶段 LOCKED。**
 
-The S00 implementation is on `main` at `60a15650d6791ef081f6d8aa402cfb48d3a03ff1`.
+Apple 接受上传与 processing VALID 是已发生的交付事实，但 build 19.1 随后收到主 App 缺 Family Controls entitlement 的 `ITMS-90897` 警告。不能再以“TestFlight delivery PASS”概括签名/功能全部通过。当前完整可用性为 **HOLD / CHANGES_REQUESTED**。
 
-[TestFlight upload run 37038785574](https://github.com/Zhangsfish/Elapse/actions/runs/37038785574) built `0.1.0 (6.1)` and passed unsigned build/archive plus credential gates, then failed Apple asset validation (exit 70: icon, Info.plist key, orientations). Upload acceptance and processing remain `NOT RUN`.
+## 唯一当前任务
 
-[Baseline archive inspection run 37040791775](https://github.com/Zhangsfish/Elapse/actions/runs/37040791775) found the root cause: the compiled main app had `UIDeviceFamily=[1,2]` despite the top-level project setting `1`; its iPad icon metadata had no primary icon files, and supported orientations were absent. `Assets.car` existed and contained AppIcon renditions. [Fixed prepare run 37041479260](https://github.com/Zhangsfish/Elapse/actions/runs/37041479260) confirms the final archive has `UIDeviceFamily=[1]`, valid primary AppIcon metadata, `Assets.car` with AppIcon renditions, and portrait plus both landscape orientations.
+**[S00-A：可验收的真机基础](prompts/S00_A_DEVICE_FOUNDATION.md)**
 
-[Upload run 37100010225](https://github.com/Zhangsfish/Elapse/actions/runs/37100010225) passed the repaired app archive checks but failed Apple validation (exit 70, missing extension plist key). [Read-only archive inspection 37100507160](https://github.com/Zhangsfish/Elapse/actions/runs/37100507160) proved that both embedded extension plists lacked `NSExtension`. XcodeGen had regenerated the source plists from incomplete `info.properties`. [PR #5](https://github.com/Zhangsfish/Elapse/pull/5) fixes the monitor declaration and uses ExtensionKit packaging for the `@main` report extension. [Ordinary CI 37100843564](https://github.com/Zhangsfish/Elapse/actions/runs/37100843564) and [prepare-only 37100820822](https://github.com/Zhangsfish/Elapse/actions/runs/37100820822) passed; the latter asserted both final extension plists and their locations. Its unique marker triggers one upload after merge. Ordinary pushes do not match that path.
+先由 Codex 核对最终签名、修复必要基础问题，提供可读授权/选择/通知状态及普通测试通知，再在 Codex 对话中一次一步带持有人验收。**现在不要求使用目标 App 满 5/30 分钟，不启动 Today/全天报时验收。**
 
-Final TestFlight delivery: [run 37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155) uploaded Everwhile `0.1.0 (19.1)` from `60a15650d6791ef081f6d8aa402cfb48d3a03ff1` and App Store Connect processing reached **VALID**. The root cause of the previous Family Controls rejection was XcodeGen regenerating the three entitlement files from `project.yml` without `entitlements.properties`, silently dropping `com.apple.developer.family-controls`. The spec now declares that managed entitlement for the app, monitor extension, and report extension, and both ordinary CI and the TestFlight workflow assert it immediately after project generation.
+启动入口：[handoff/CODEX_START.md](handoff/CODEX_START.md)。协作规则：[docs/WORKFLOW.md](docs/WORKFLOW.md)。
 
-This is not a product feasibility PASS. No Screen Time runtime behavior has been tested on a physical iPhone.
+## 基线与证据层级
 
-## Product question
+| 项目 | 当前状态 | 依据与限制 |
+|---|---|---|
+| App + Monitor + Report 源码、编译和六个纯逻辑测试 | 已有历史 PASS | 不能代表 Screen Time 真机行为 |
+| 19.1 上传 / processing | ACCEPTED / VALID | [run 37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155) |
+| 内部测试安装 | OWNER_REPORTED_INSTALLED | 持有人在本会话报告安装完成；没有因此推断授权成功 |
+| 最终 Family Controls 签名 | **HOLD — 未关闭 Apple 警告** | 19.1 邮件 ITMS-90897；生成文件有 key 不等于最终签名声明 key |
+| individual 授权 / 选择持久化 | NOT_RUN | 等 S00-A 的针对性设备证据 |
+| 普通通知自检 | NOT_IMPLEMENTED / NOT_RUN | S00-A 补足，不冒充阈值通知 |
+| 实际使用共享池 / 阈值回调 / 阈值通知 | NOT_RUN | S00-B/C |
+| 真实 Today 报表 | NOT_RUN | S00-D |
+| 全天与间隔配置 | NOT_IMPLEMENTED | S01；现有阈值只到 30 分钟 |
 
-Can iOS reliably support the smallest useful Elapse loop?
+已装预期基线：Everwhile `0.1.0 (19.1)`，实现 SHA `60a15650d6791ef081f6d8aa402cfb48d3a03ff1`。复核时 main `afb4a61a2e62e849b5c6e831367c90d9f2983726` 与其只差三个文档。本轮重新规划也是文档变更，不会自动更新手机 App。
 
-> Select a group of apps → accumulate their actual foreground usage → notify at 5-minute usage increments → show a truthful daily usage report.
+完整静态问题清单：[READINESS_REVIEW_2026-10-03](audits/S00/READINESS_REVIEW_2026-10-03.md)。旧 STATUS 的时间顺序记录保留在 Git 历史 `afb4a61a2e62e849b5c6e831367c90d9f2983726:STATUS.md`；旧 Next action 不再是调度指令。
 
-## S00 gates
+## 调度表
 
-### Gate A — Authorization and selection: NOT RUN
+| 阶段 | 状态 | 目的 |
+|---|---|---|
+| S00-A | **READY** | 最终签名、授权、选 App/保存、普通通知自检 |
+| S00-B | LOCKED | 第一次真实 5 分钟共享池通知、可观察事件、同日可重试 |
+| S00-C | LOCKED | 10–30 分钟连续提醒、切换/停止/迟到/重复 |
+| S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
+| S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |
+| S02 | LOCKED | 轻量正式体验与回顾呈现 |
+| S03 | LOCKED / OWNER_RELEASE_REQUIRED | 公开分发准备，非当前上架授权 |
 
-- [ ] Individual Family Controls authorization succeeds on a real iPhone.
-- [ ] User can select multiple apps using Apple's system picker.
-- [ ] Selection persists locally without revealing unnecessary app identity.
+阶段定义见 [docs/EXECUTION_PLAN.md](docs/EXECUTION_PLAN.md)。旧 `prompts/S00_CODEX.md` 仅保留历史，不再执行整张全量任务。
 
-### Gate B — Shared usage thresholds: NOT RUN
+## 分工
 
-The code registers one selected-application pool at 5/10/15/20/25/30 minutes with `includesPastActivity=false`, but these behavior claims require a physical iPhone:
+Codex 实现、准备 build、逐步带持有人测试、修复和整理证据。云端只派任务、读 diff/代码/CI/证据、审核和合并批准 SHA。持有人只做必要的手机动作/本人账号确认；不用手动整理报告或点 Actions/merge。
 
-- [ ] Two or more selected apps contribute to the same usage pool.
-- [ ] Time spent outside the selected set does not count as selected-app usage.
-- [ ] Threshold callbacks are logged with threshold identity and wall-clock receipt time.
-- [ ] Duplicate / early / delayed callback behavior is observable rather than hidden.
+Codex 等设备反馈时为 `WAITING_FOR_OWNER_TEST`；必需测试完成后为 `READY_FOR_AUDIT`。云端审核通过才解锁下一阶段，不允许因编译通过就越级。
 
-### Gate C — Notification path: NOT RUN
+## 不要重做
 
-- [ ] Notification permission flow works on a physical iPhone.
-- [ ] A threshold callback can request a local notification.
-- [ ] Notification content reports the named cumulative threshold truthfully.
-- [ ] Request acceptance and a visibly observed banner are recorded separately.
+现有 Bundle IDs 与 App Store Connect record 不变：`com.zhangsfish.elapse`、`.monitor`、`.report`。现有 `APPLE_TEAM_ID` variable + 三个 `APP_STORE_CONNECT_*` secrets 继续使用；不索取私钥、不重复配置邀请/UDID/证书。若确有账号阻塞，先给精确错误和最小必要操作。
 
-### Gate D — Report path: NOT RUN
+## 固定产品边界
 
-- [ ] Device Activity Report renders real data in the app.
-- [ ] It shows per-app daily usage using Apple's opaque labels.
-- [ ] It shows truthful hourly selected-app aggregates.
-- [ ] Physical-device inspection confirms the UI does not imply exact sessions.
-
-### Gate E — CI / reproducibility: PASS
-
-- [x] Repository contains a reproducible XcodeGen project definition.
-- [x] Standard hosted `macos-26` CI generates the project, builds the app and both extensions for iOS Simulator with signing disabled, and runs all six pure-logic tests.
-- [x] Signing, entitlement approval, and real-device blockers are documented separately from compile/test results.
-
-## TestFlight delivery path
-
-Status: **PASS — TESTFLIGHT BUILD 0.1.0 (19.1) VALID**
-
-- [x] User-visible app name is `Everwhile`; repository, project, scheme, product, and three Bundle IDs remain `Elapse`-based.
-- [x] Secret-free prepare-only CI builds and archives the app plus both extensions without development signing or device registration.
-- [x] Only an explicit `workflow_dispatch` upload or the unique one-time main-branch marker can enter the upload step that reads the four existing Apple settings.
-- [x] Repository variable and all three App Store Connect secrets are present by name; values were not read or printed. The upload script passed its non-secret format gates.
-- [x] The final app archive passed device-family, icon, asset-catalog and orientation assertions in secret-free CI.
-- [x] PR #5's secret-free prepare-only run verifies the final monitor and report extension plist dictionaries, values, and packaging locations.
-- [x] Automatic distribution export/upload: run 37105502155 accepted Everwhile 0.1.0 (19.1).
-- [x] App Store Connect processing reaches `VALID`: build `19.1` is `VALID`.
-
-The owner reports Family Controls Development + Distribution enabled for all three App IDs and the Everwhile App Store Connect record created. A successful export/upload is still required to validate that account-side configuration.
-
-## Explicitly out of scope for S00
-
-- polished UI;
-- App Store submission;
-- blocking/shielding apps;
-- exact per-session start/end export;
-- CSV/JSON export of protected Screen Time report data;
-- EU-only app-and-website usage data access;
-- Apple Watch;
-- cloud sync;
-- accounts;
-- AI;
-- subscriptions;
-- analytics;
-- gamification.
-
-## Next action
-
-Install Everwhile `0.1.0 (19.1)` through TestFlight on the physical iPhone and execute `audits/S00/REAL_DEVICE_CHECKLIST.md`. Gates A–D remain `NOT RUN` until that physical-device evidence is recorded. S01 stays locked until S00 runtime acceptance is complete.
+只报时、不裁判。无 block/shield、账号、云服务、AI、广告、评分、streak。不给小时汇总伪造精确会话；不给 callbacks 伪造总量。受保护 Screen Time 数据的结构化导出和 EU-only 增强权限不属于当前基线。
