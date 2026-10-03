@@ -71,14 +71,14 @@ jobs:
             codesign -s - -f --entitlements "$entitlements" "$bundle"
             codesign --display --entitlements - --xml "$bundle" > "$dumped"
             python3 - "$dumped" "$expected_id" <<'PY'
-import plistlib
-import sys
-path, bundle_id = sys.argv[1:]
-data = plistlib.loads(open(path, "rb").read())
-ok = data.get("com.apple.developer.family-controls") is True
-print(f"S00_ADHOC_PROBE bundle={bundle_id} family_controls={str(ok).lower()}")
-raise SystemExit(0 if ok else 1)
-PY
+            import plistlib
+            import sys
+            path, bundle_id = sys.argv[1:]
+            data = plistlib.loads(open(path, "rb").read())
+            ok = data.get("com.apple.developer.family-controls") is True
+            print(f"S00_ADHOC_PROBE bundle={bundle_id} family_controls={str(ok).lower()}")
+            raise SystemExit(0 if ok else 1)
+            PY
           }
 
           probe_bundle "$app/PlugIns/ElapseMonitor.appex"             MonitorExtension/ElapseMonitor.entitlements             com.zhangsfish.elapse.monitor monitor
