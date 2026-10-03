@@ -1,0 +1,35 @@
+{
+  "task": "S00-A",
+  "round": "01",
+  "base_main_sha": "b2a2e85e57d41a284d60ab5ad028662070efa203",
+  "code_sha": "d1b2a76426e11a333a0f13fa8e0ce2908b39523b",
+  "tested_sha": "d1b2a76426e11a333a0f13fa8e0ce2908b39523b",
+  "upload_sha": "88697237e5d87cfe54f858053cf1e7251bcea713",
+  "version": "0.1.0",
+  "build": "27.1",
+  "status": "WAITING_FOR_OWNER_TEST",
+  "runs": {
+    "ordinary_ci": "https://github.com/Zhangsfish/Elapse/actions/runs/37121113355",
+    "prepare_only_ci": "https://github.com/Zhangsfish/Elapse/actions/runs/37121213437",
+    "upload": "https://github.com/Zhangsfish/Elapse/actions/runs/37120646140",
+    "internal_availability": "https://github.com/Zhangsfish/Elapse/actions/runs/37121122810"
+  },
+  "checks": {
+    "source_entitlements": "PASS",
+    "generated_release_entitlements": "PASS",
+    "signed_main_app_claim": "PASS",
+    "signed_monitor_claim": "PASS",
+    "signed_report_claim": "PASS",
+    "profile_allowances": "PASS",
+    "ordinary_ci": "PASS",
+    "prepare_only_ci": "PASS",
+    "upload": "PASS",
+    "apple_processing": "VALID",
+    "internal_testflight_group": "PASS",
+    "device_authorization": "NOT_RUN",
+    "two_app_selection": "NOT_RUN",
+    "selection_restart_persistence": "NOT_RUN",
+    "ordinary_notification_request": "NOT_RUN",
+    "visible_notification_delivery": "NOT_RUN"
+  }
+}
