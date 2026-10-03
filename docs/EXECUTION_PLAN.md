@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前 build `0.1.0 (19.1)` 是已上传并由持有人报告安装的 S00 原型。授权/选择/监控/报表都有源码入口，但尚没有功能验收。Apple 对该 build 的 `ITMS-90897` 主 App 缺 Family Controls entitlement 警告仍需闭环。详细基线见 `audits/S00/READINESS_REVIEW_2026-10-03.md`。
+当前已接受的设备基础为 Everwhile `0.1.0 (27.1)`。S00-A 已由云端在精确 head `bf5530e22a338150dd45408e4702651bc4711064` 上给出 PASS_WITH_NOTES，并合并为 `044841658fb990324c13224cb592402f0540c80a`。27.1 的最终上传 IPA 已验证主 App、Monitor、Report 三主体 Family Controls code-signature claim 与 profile allowance，旧 19.1 的 ITMS-90897 不再作为当前 build 的未关闭签名问题；individual 授权、两个 App 的 app-relaunch 持久化与普通测试通知也已完成 S00-A 真机验收。当前由 `STATUS.md` 解锁 S00-B，其余阶段仍按门槛锁定。详细审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md`。
 
 ## 顺序与门槛
 
