@@ -49,6 +49,8 @@ targets:
         UILaunchScreen: {}
     entitlements:
       path: App/Elapse.entitlements
+      properties:
+        com.apple.developer.family-controls: true
   ElapseMonitor:
     type: app-extension
     platform: iOS
@@ -77,6 +79,8 @@ targets:
           NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ElapseMonitorExtension"
     entitlements:
       path: MonitorExtension/ElapseMonitor.entitlements
+      properties:
+        com.apple.developer.family-controls: true
   ElapseReport:
     type: extensionkit-extension
     platform: iOS
@@ -101,6 +105,8 @@ targets:
           EXExtensionPointIdentifier: com.apple.deviceactivityui.report-extension
     entitlements:
       path: ReportExtension/ElapseReport.entitlements
+      properties:
+        com.apple.developer.family-controls: true
 schemes:
   Elapse:
     build:
