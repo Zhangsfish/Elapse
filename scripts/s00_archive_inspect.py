@@ -66,30 +66,49 @@ summary = {
 print("S00_ARCHIVE_METADATA=" + json.dumps(summary, sort_keys=True))
 
 
-def extension_summary(bundle_name: str, expected_point: str, expected_principal: str | None) -> dict[str, object]:
-    plist_path = app / "PlugIns" / bundle_name / "Info.plist"
+def extension_summary(bundle_name: str, folder: str) -> dict[str, object]:
+    plist_path = app / folder / bundle_name / "Info.plist"
     if not plist_path.is_file():
         return {"Info.plist": False}
-    extension_info = plistlib.loads(plist_path.read_bytes()).get("NSExtension")
-    if not isinstance(extension_info, dict):
-        return {"Info.plist": True, "NSExtension": False}
-    point = extension_info.get("NSExtensionPointIdentifier")
-    principal = extension_info.get("NSExtensionPrincipalClass")
-    return {
+    plist = plistlib.loads(plist_path.read_bytes())
+    ns_extension = plist.get("NSExtension")
+    ex_attributes = plist.get("EXAppExtensionAttributes")
+    result: dict[str, object] = {
         "Info.plist": True,
-        "NSExtension": True,
-        "NSExtensionPointIdentifier": "EXPECTED" if point == expected_point else ("MISSING" if point is None else "OTHER"),
-        "NSExtensionPrincipalClass": "EXPECTED" if principal == expected_principal and expected_principal else ("ABSENT" if principal is None else "OTHER"),
+        "folder": folder,
+        "NSExtension": isinstance(ns_extension, dict),
+        "EXAppExtensionAttributes": isinstance(ex_attributes, dict),
     }
+    if folder == "PlugIns":
+        ns_extension = ns_extension if isinstance(ns_extension, dict) else {}
+        point = ns_extension.get("NSExtensionPointIdentifier")
+        principal = ns_extension.get("NSExtensionPrincipalClass")
+        result["NSExtensionPointIdentifier"] = (
+            "com.apple.deviceactivity.monitor-extension" if point == "com.apple.deviceactivity.monitor-extension"
+            else ("MISSING" if point is None else "OTHER")
+        )
+        result["NSExtensionPrincipalClass"] = (
+            "ElapseMonitor.ElapseMonitorExtension" if principal == "ElapseMonitor.ElapseMonitorExtension"
+            else ("MISSING" if principal is None else "OTHER")
+        )
+    else:
+        ex_attributes = ex_attributes if isinstance(ex_attributes, dict) else {}
+        point = ex_attributes.get("EXExtensionPointIdentifier")
+        result["EXExtensionPointIdentifier"] = (
+            "com.apple.deviceactivityui.report-extension" if point == "com.apple.deviceactivityui.report-extension"
+            else ("MISSING" if point is None else "OTHER")
+        )
+        result["NSExtensionPrincipalClass"] = (
+            "ABSENT" if not isinstance(ns_extension, dict) or ns_extension.get("NSExtensionPrincipalClass") is None
+            else "PRESENT_UNEXPECTED"
+        )
+    return result
 
 
 extensions = {
-    "ElapseMonitor.appex": extension_summary(
-        "ElapseMonitor.appex", "com.apple.deviceactivity.monitor-extension", "ElapseMonitor.ElapseMonitorExtension"
-    ),
-    "ElapseReport.appex": extension_summary(
-        "ElapseReport.appex", "com.apple.deviceactivityui.report-extension", None
-    ),
+    "ElapseMonitor.appex": extension_summary("ElapseMonitor.appex", "PlugIns"),
+    "ElapseReport.appex": extension_summary("ElapseReport.appex", "Extensions"),
+    "ElapseReport.appex in PlugIns": (app / "PlugIns" / "ElapseReport.appex").exists(),
 }
 print("S00_ARCHIVE_EXTENSIONS=" + json.dumps(extensions, sort_keys=True))
 
@@ -109,6 +128,22 @@ if require_metadata:
         failures.append("UISupportedInterfaceOrientations")
     if not summary["Assets.car"]:
         failures.append("Assets.car")
+    monitor = extensions["ElapseMonitor.appex"]
+    report = extensions["ElapseReport.appex"]
+    if not (
+        monitor.get("NSExtension") is True
+        and monitor.get("NSExtensionPointIdentifier") == "com.apple.deviceactivity.monitor-extension"
+        and monitor.get("NSExtensionPrincipalClass") == "ElapseMonitor.ElapseMonitorExtension"
+    ):
+        failures.append("MONITOR_EXTENSION_METADATA")
+    if not (
+        report.get("EXAppExtensionAttributes") is True
+        and report.get("EXExtensionPointIdentifier") == "com.apple.deviceactivityui.report-extension"
+        and report.get("NSExtension") is False
+        and report.get("NSExtensionPrincipalClass") == "ABSENT"
+        and extensions["ElapseReport.appex in PlugIns"] is False
+    ):
+        failures.append("REPORT_EXTENSIONKIT_METADATA")
 
 assets = app / "Assets.car"
 if not assets.is_file():

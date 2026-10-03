@@ -71,10 +71,13 @@ targets:
       properties:
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.deviceactivity.monitor-extension
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ElapseMonitorExtension"
     entitlements:
       path: MonitorExtension/ElapseMonitor.entitlements
   ElapseReport:
-    type: app-extension
+    type: extensionkit-extension
     platform: iOS
     sources:
       - path: ReportExtension
@@ -92,6 +95,8 @@ targets:
       properties:
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        EXAppExtensionAttributes:
+          EXExtensionPointIdentifier: com.apple.deviceactivityui.report-extension
     entitlements:
       path: ReportExtension/ElapseReport.entitlements
 schemes:

@@ -3,7 +3,7 @@ name: S00 TestFlight preparation and explicit upload
 on:
   push:
     branches: [main]
-    paths: [audits/S00/s00-testflight-upload-once-20261003-metadata.json]
+    paths: [audits/S00/s00-testflight-upload-once-20261003-extensions.json]
   workflow_dispatch:
     inputs:
       operation:
@@ -33,12 +33,12 @@ jobs:
           from pathlib import Path
 
           marker = json.loads(
-              Path('audits/S00/s00-testflight-upload-once-20261003-metadata.json').read_text(encoding='utf-8')
+              Path('audits/S00/s00-testflight-upload-once-20261003-extensions.json').read_text(encoding='utf-8')
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
-              'trigger_id': 'everwhile-s00-archive-metadata-20261003',
-              'source_baseline': 'b8ef96b7c60f9e47d94d6449d413a9916135184d',
+              'trigger_id': 'everwhile-s00-extensionkit-metadata-20261003',
+              'source_baseline': 'a66c5b4c45028d8ec7c4ba9d322838fa6e6eec24',
               'version': '0.1.0',
           }
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
@@ -110,12 +110,12 @@ jobs:
           plutil -lint "$app/PrivacyInfo.xcprivacy"
 
           for extension in \
-            'ElapseMonitor.appex|com.zhangsfish.elapse.monitor|privacy' \
-            'ElapseReport.appex|com.zhangsfish.elapse.report|no-privacy'; do
+            'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor|privacy' \
+            'Extensions/ElapseReport.appex|com.zhangsfish.elapse.report|no-privacy'; do
             bundle_name=$(echo "$extension" | cut -d'|' -f1)
             expected_id=$(echo "$extension" | cut -d'|' -f2)
             privacy=$(echo "$extension" | cut -d'|' -f3)
-            bundle="$app/PlugIns/$bundle_name"
+            bundle="$app/$bundle_name"
             test -d "$bundle"
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$bundle/Info.plist")" = "$expected_id"
             if [[ "$privacy" == 'privacy' ]]; then
@@ -144,11 +144,11 @@ jobs:
           test -f "$app/PrivacyInfo.xcprivacy"
 
           for bundled_extension in \
-            'ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
-            'ElapseReport.appex|com.zhangsfish.elapse.report'; do
+            'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
+            'Extensions/ElapseReport.appex|com.zhangsfish.elapse.report'; do
             bundle_name=${bundled_extension%%|*}
             expected_id=${bundled_extension#*|}
-            info="$app/PlugIns/$bundle_name/Info.plist"
+            info="$app/$bundle_name/Info.plist"
             test -f "$info"
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"

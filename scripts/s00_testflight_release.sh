@@ -72,11 +72,11 @@ test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app_inf
 test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app_info")" = "$build_number"
 
 for extension in \
-  'ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
-  'ElapseReport.appex|com.zhangsfish.elapse.report'; do
+  'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
+  'Extensions/ElapseReport.appex|com.zhangsfish.elapse.report'; do
   bundle_name=${extension%%|*}
   expected_id=${extension#*|}
-  info="$app/PlugIns/$bundle_name/Info.plist"
+  info="$app/$bundle_name/Info.plist"
   test -f "$info"
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
