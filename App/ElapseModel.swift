@@ -6,30 +6,20 @@ import UserNotifications
 
 @MainActor
 final class ElapseModel: ObservableObject {
-    @Published var selection: FamilyActivitySelection {
-        didSet {
-            guard selection != oldValue else { return }
-            lastErrorCode = nil
-            let saved = persistSelection()
-            statusMessage = FoundationFeedback.selectionMessage(
-                applicationCount: selection.applicationTokens.count,
-                otherCount: selection.categoryTokens.count + selection.webDomainTokens.count,
-                saved: saved
-            )
-            lastAction = "selection"
-            lastResult = saved ? "saved" : "save_failed"
-        }
-    }
+    @Published private(set) var selection: FamilyActivitySelection
     @Published private(set) var authorizationStatus = AuthorizationCenter.shared.authorizationStatus
     @Published private(set) var notificationStatus: UNAuthorizationStatus = .notDetermined
     @Published private(set) var notificationAlertSetting: UNNotificationSetting = .notSupported
     @Published private(set) var isMonitoring = false
+    @Published private(set) var pulseSnapshot = PulseExperimentSnapshot()
+    @Published private(set) var pulseStoreStatus = "未检查"
     @Published var statusMessage: String?
     @Published private(set) var lastAction = "launch"
     @Published private(set) var lastResult = "not_run"
     @Published private(set) var lastErrorCode: String?
 
     private let center = DeviceActivityCenter()
+    private let pulseStore: PulseExperimentStore?
     private let logger = Logger(subsystem: "com.zhangsfish.elapse", category: "setup")
     private let selectionKey = "elapse.familyActivitySelection"
     private let testNotificationID = "com.zhangsfish.elapse.s00a.ordinary-test"
@@ -39,7 +29,13 @@ final class ElapseModel: ObservableObject {
         selection = restored.selection
         statusMessage = restored.message
         lastResult = restored.result
-        isMonitoring = center.activities.contains(.elapseDaily)
+        pulseStore = try? PulseExperimentStore.live()
+        if center.activities.contains(.elapseDaily) {
+            center.stopMonitoring([.elapseDaily])
+            statusMessage = "旧版监控已停止；请使用新实验重新开始。"
+            lastResult = "legacy_monitor_retired"
+        }
+        refreshExperimentState()
     }
 
     var versionDescription: String {
@@ -113,6 +109,17 @@ final class ElapseModel: ObservableObject {
             "SelectedCategories=\(selection.categoryTokens.count)",
             "SelectedWebDomains=\(selection.webDomainTokens.count)",
             "MonitorRegistration=\(isMonitoring ? "registered_not_verified" : "stopped")",
+            "Experiment=\(pulseSnapshot.generation):\(pulseSnapshot.shortID)",
+            "ExperimentPhase=\(pulseSnapshot.phase.rawValue)",
+            "ExperimentSelectedApplications=\(pulseSnapshot.selectedApplicationCount)",
+            "FiveMinuteCallback=\(pulseSnapshot.fiveMinuteCallbackAt == nil ? "not_observed" : "received_current_experiment")",
+            "FiveMinuteCallbackAt=\(pulseSnapshot.fiveMinuteCallbackAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+            "FiveMinuteRequest=\(pulseSnapshot.fiveMinuteRequestStatus.rawValue)",
+            "FiveMinuteRequestAt=\(pulseSnapshot.fiveMinuteRequestAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+            "StaleCallbacksRejected=\(pulseSnapshot.staleCallbackCount)",
+            "DuplicateCallbacksRejected=\(pulseSnapshot.duplicateCallbackCount)",
+            "SharedDiagnosticStore=\(pulseStoreStatus)",
+            "PulseErrorCode=\(pulseSnapshot.safeErrorCode ?? "none")",
             "LastAction=\(lastAction)",
             "LastResult=\(lastResult)",
             "ErrorCode=\(lastErrorCode ?? "none")",
@@ -131,7 +138,77 @@ final class ElapseModel: ObservableObject {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
         notificationStatus = settings.authorizationStatus
         notificationAlertSetting = settings.alertSetting
-        isMonitoring = center.activities.contains(.elapseDaily)
+        refreshExperimentState()
+    }
+
+    var experimentDescription: String {
+        pulseSnapshot.experimentID == nil ? "尚未开始" : "第 \(pulseSnapshot.generation) 次（\(pulseSnapshot.shortID)）"
+    }
+
+    var fiveMinuteCallbackDescription: String {
+        guard let receivedAt = pulseSnapshot.fiveMinuteCallbackAt else { return "未观察到" }
+        return "当前实验已收到（\(receivedAt.formatted(date: .omitted, time: .standard))）"
+    }
+
+    var fiveMinuteRequestDescription: String {
+        switch pulseSnapshot.fiveMinuteRequestStatus {
+        case .notRequested: return "尚未请求"
+        case .submitting: return "回调已到，请求结果待确认"
+        case .accepted: return "请求已接受，是否显示待观察"
+        case .failed: return "请求失败（代码 \(pulseSnapshot.safeErrorCode ?? "未知")）"
+        }
+    }
+
+    var experimentRegistrationDescription: String {
+        guard pulseStoreStatus == "ready" else { return "共享诊断不可用" }
+        return isMonitoring ? "已登记，等待真实回调" : "未运行"
+    }
+
+    var canChangeSelection: Bool {
+        !isMonitoring && pulseSnapshot.canChangeSelection
+    }
+
+    var canStopExperiment: Bool {
+        isMonitoring || pulseSnapshot.phase == .starting || pulseSnapshot.phase == .registered
+    }
+
+    func updateSelection(_ newSelection: FamilyActivitySelection) {
+        guard canChangeSelection else {
+            statusMessage = "实验运行中不能修改所选 App；请先停止实验。"
+            return
+        }
+        guard newSelection != selection else { return }
+        selection = newSelection
+        lastErrorCode = nil
+        let saved = persistSelection()
+        statusMessage = FoundationFeedback.selectionMessage(
+            applicationCount: selection.applicationTokens.count,
+            otherCount: selection.categoryTokens.count + selection.webDomainTokens.count,
+            saved: saved
+        )
+        lastAction = "selection"
+        lastResult = saved ? "saved" : "save_failed"
+    }
+
+    func refreshExperimentState() {
+        guard let pulseStore else {
+            pulseStoreStatus = "group_unavailable"
+            isMonitoring = false
+            return
+        }
+        do {
+            pulseSnapshot = try pulseStore.read()
+            pulseStoreStatus = "ready"
+            if let id = pulseSnapshot.experimentID {
+                let activity = DeviceActivityName(PulsePlan.activityName(for: id))
+                isMonitoring = pulseSnapshot.isCurrentRegistration && center.activities.contains(activity)
+            } else {
+                isMonitoring = false
+            }
+        } catch {
+            pulseStoreStatus = "read_error"
+            isMonitoring = false
+        }
     }
 
     func requestFamilyAuthorization() async {
@@ -207,19 +284,77 @@ final class ElapseModel: ObservableObject {
     }
 
     func startMonitoring() {
+        lastAction = "start_experiment"
+        lastErrorCode = nil
         guard hasFamilyAuthorization else {
             statusMessage = "请先完成屏幕使用时间授权；未授权不能登记监控。"
+            lastResult = "not_authorized"
             return
         }
         guard !selection.applicationTokens.isEmpty else {
             statusMessage = "请先选至少一个 App；类别或网站不计入本轮所选应用。"
+            lastResult = "no_app_selected"
+            return
+        }
+        guard persistSelection() else {
+            statusMessage = "所选 App 未能保存；新实验未启动。"
+            lastResult = "selection_save_failed"
+            return
+        }
+        refreshExperimentState()
+        guard let pulseStore, pulseStoreStatus == "ready" else {
+            statusMessage = "共享诊断不可用，不能开始无法核验回调的新实验。"
+            lastResult = "shared_diagnostic_unavailable"
+            return
+        }
+        guard !isMonitoring else {
+            statusMessage = "已有实验正在运行；请先停止。"
+            lastResult = "already_running"
+            return
+        }
+
+        // Retire both the S00-A fixed activity and any previous experiment.
+        // A delayed old callback is rejected by the experiment identity in
+        // the extension, even after stopMonitoring returns.
+        let previousActivities = center.activities.filter {
+            $0 == .elapseDaily || $0.rawValue.hasPrefix(PulsePlan.activityPrefix)
+        }
+        if !previousActivities.isEmpty {
+            do {
+                if let oldID = pulseSnapshot.experimentID {
+                    try pulseStore.update { $0.markStopped(id: oldID) }
+                }
+            } catch {
+                statusMessage = "无法隔离旧实验；新实验未开始。"
+                lastResult = "shared_diagnostic_write_failed"
+                return
+            }
+            center.stopMonitoring(previousActivities)
+            guard !center.activities.contains(where: { previousActivities.contains($0) }) else {
+                statusMessage = "旧监控仍显示已登记；新实验未开始。"
+                lastResult = "old_monitor_still_registered"
+                refreshExperimentState()
+                return
+            }
+        }
+
+        let experimentID = UUID().uuidString.lowercased()
+        let activity = DeviceActivityName(PulsePlan.activityName(for: experimentID))
+        do {
+            try pulseStore.update {
+                $0.begin(id: experimentID, selectedApplicationCount: selection.applicationTokens.count)
+            }
+        } catch {
+            statusMessage = "新实验状态无法保存；监控未启动。"
+            lastResult = "shared_diagnostic_write_failed"
+            refreshExperimentState()
             return
         }
 
         let schedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: 0, minute: 0, second: 0),
             intervalEnd: DateComponents(hour: 23, minute: 59, second: 59),
-            repeats: true
+            repeats: false
         )
         let events = Dictionary(uniqueKeysWithValues: PulsePlan.thresholdMinutes.map { minutes in
             let name = DeviceActivityEvent.Name(PulsePlan.eventName(for: minutes))
@@ -231,25 +366,59 @@ final class ElapseModel: ObservableObject {
             return (name, event)
         })
 
-        logger.notice("Starting daily monitor with \(self.selection.applicationTokens.count, privacy: .public) opaque application tokens and events: \(events.keys.map(\.rawValue).sorted().joined(separator: ","), privacy: .public)")
+        logger.notice("Starting experiment with \(self.selection.applicationTokens.count, privacy: .public) opaque application tokens")
         do {
-            try center.startMonitoring(.elapseDaily, during: schedule, events: events)
-            isMonitoring = true
-            statusMessage = "监控登记成功；尚未证明收到使用时间回调。"
+            try center.startMonitoring(activity, during: schedule, events: events)
+            do {
+                try pulseStore.update { $0.markRegistered(id: experimentID) }
+            } catch {
+                center.stopMonitoring([activity])
+                statusMessage = "监控已停止：实验登记状态无法保存。"
+                lastResult = "shared_diagnostic_write_failed"
+                refreshExperimentState()
+                return
+            }
+            refreshExperimentState()
+            lastResult = isMonitoring ? "registered_not_verified" : "registration_not_confirmed"
+            statusMessage = isMonitoring
+                ? "新实验已登记；这不等于已经收到使用时间回调。"
+                : "登记返回成功，但系统未显示该实验正在监控；请查看脱敏诊断。"
             logger.notice("Monitoring start succeeded; includesPastActivity=false")
         } catch {
-            isMonitoring = center.activities.contains(.elapseDaily)
             lastErrorCode = FoundationFeedback.safeErrorCode(error)
+            try? pulseStore.update {
+                $0.markRegistrationFailed(id: experimentID, errorCode: lastErrorCode ?? "unknown")
+            }
+            refreshExperimentState()
+            lastResult = "registration_failed"
             statusMessage = "监控登记失败（错误代码 \(lastErrorCode ?? "未知")）。"
             logger.error("Monitoring start failed; code=\(self.lastErrorCode ?? "unknown", privacy: .public)")
         }
     }
 
     func stopMonitoring() {
-        logger.notice("Stopping daily monitor")
-        center.stopMonitoring([.elapseDaily])
-        isMonitoring = center.activities.contains(.elapseDaily)
-        statusMessage = isMonitoring ? "已请求停止，但监控仍显示已登记。" : "监控已停止。"
+        lastAction = "stop_experiment"
+        lastErrorCode = nil
+        refreshExperimentState()
+        guard let pulseStore, let experimentID = pulseSnapshot.experimentID else {
+            statusMessage = "没有可停止的当前实验。"
+            lastResult = "no_current_experiment"
+            return
+        }
+        let activity = DeviceActivityName(PulsePlan.activityName(for: experimentID))
+        var stateSaved = true
+        do {
+            try pulseStore.update { $0.markStopped(id: experimentID) }
+        } catch {
+            stateSaved = false
+        }
+        center.stopMonitoring([activity])
+        refreshExperimentState()
+        let stillRegistered = center.activities.contains(activity)
+        lastResult = stateSaved && !stillRegistered ? "stopped_late_callbacks_not_excluded" : "stop_unconfirmed"
+        statusMessage = stateSaved && !stillRegistered
+            ? "实验已停止；旧回调仍可能迟到，但不会归入新实验。"
+            : "已请求停止，但状态未完全确认；请查看脱敏诊断。"
         logger.notice("Monitoring stop returned; active=\(self.isMonitoring, privacy: .public)")
     }
 

@@ -36,7 +36,12 @@ struct ContentView: View {
                     Button("选择 App") {
                         pickerPresented = true
                     }
-                    .disabled(!model.hasFamilyAuthorization)
+                    .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
+                    if !model.canChangeSelection {
+                        Text("实验运行中已锁定选择；先停止实验再修改。")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
                 Section("S00-A 普通通知自检") {
@@ -47,20 +52,26 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00 pulse") {
-                    Text("One shared selected-app pool. Thresholds: 5, 10, 15, 20, 25, and 30 minutes.")
-                    Text("Monitoring starts from zero when you tap Start. Earlier activity today is excluded.")
+                Section("S00-B 五分钟实验") {
+                    Text("所选 App 使用时间在本次开始后累计；启动前的活动不计入。回调可能延迟，通知请求成功不等于横幅已显示。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                    LabeledContent("Status", value: model.isMonitoring ? "Running" : "Stopped")
-                    Button("Start monitoring") {
+                    LabeledContent("实验", value: model.experimentDescription)
+                    LabeledContent("登记状态", value: model.experimentRegistrationDescription)
+                    LabeledContent("5 分钟回调", value: model.fiveMinuteCallbackDescription)
+                    LabeledContent("通知请求", value: model.fiveMinuteRequestDescription)
+                    LabeledContent("拒绝的旧回调", value: "\(model.pulseSnapshot.staleCallbackCount)")
+                    Button("开始新实验") {
                         model.startMonitoring()
                     }
-                    .disabled(!model.hasFamilyAuthorization || model.selection.applicationTokens.isEmpty || model.isMonitoring)
-                    Button("Stop monitoring", role: .destructive) {
+                    .disabled(!model.hasFamilyAuthorization || model.selection.applicationTokens.isEmpty || !model.canChangeSelection || model.pulseStoreStatus != "ready")
+                    Button("停止实验", role: .destructive) {
                         model.stopMonitoring()
                     }
-                    .disabled(!model.isMonitoring)
+                    .disabled(!model.canStopExperiment)
+                    Button("刷新实验诊断") {
+                        Task { await model.refreshState() }
+                    }
                 }
 
                 Section("Today") {
@@ -80,7 +91,7 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00-A 脱敏诊断") {
+                Section("S00-A/B 脱敏诊断") {
                     LabeledContent("版本", value: model.versionDescription)
                     Text(model.diagnosticSummary)
                         .font(.footnote.monospaced())
@@ -91,7 +102,13 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Everwhile")
-            .familyActivityPicker(isPresented: $pickerPresented, selection: $model.selection)
+            .familyActivityPicker(
+                isPresented: $pickerPresented,
+                selection: Binding(
+                    get: { model.selection },
+                    set: { model.updateSelection($0) }
+                )
+            )
             .task { await model.refreshState() }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .active {

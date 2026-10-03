@@ -5,7 +5,9 @@ from pathlib import Path
 import subprocess
 import sys
 
-from s00_entitlement_checks import EXPECTED_FILES, expected_path_status, file_status
+from s00_entitlement_checks import (
+    EXPECTED_FILES, GROUP_TARGETS, expected_path_status, file_app_group_status, file_status,
+)
 
 
 EXPECTED_BUNDLE_IDS = {
@@ -90,7 +92,9 @@ for target, expected_bundle_id in EXPECTED_BUNDLE_IDS.items():
     print(prefix + "_CODE_SIGN_ENTITLEMENTS_PATH=" + path_status)
     file_result = file_status(Path(expected_file))
     print(prefix + "_GENERATED_FAMILY_CONTROLS=" + file_result)
-    if path_status != "EXPECTED" or file_result != "TRUE":
+    group_result = file_app_group_status(Path(expected_file)) if target in GROUP_TARGETS else "NOT_REQUIRED"
+    print(prefix + "_GENERATED_APP_GROUP=" + group_result)
+    if path_status != "EXPECTED" or file_result != "TRUE" or group_result not in {"EXPECTED", "NOT_REQUIRED"}:
         failed = True
 
 if failed:

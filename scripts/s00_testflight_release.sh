@@ -29,7 +29,10 @@ for path in (
     with open(path, "rb") as f:
         data = plistlib.load(f)
     assert data.get("com.apple.developer.family-controls") is True, path
+    if path != "ReportExtension/ElapseReport.entitlements":
+        assert data.get("com.apple.security.application-groups") == ["group.com.zhangsfish.elapse"], path
 print("S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
+print("S00B_TF_XCODEGEN_APP_GROUP_ENTITLEMENTS_PASS")
 PY
 
 secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-everwhile-apple.XXXXXX")

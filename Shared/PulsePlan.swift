@@ -4,6 +4,7 @@ enum PulsePlan {
     static let intervalMinutes = 5
     static let maximumTestMinutes = 30
     static let eventPrefix = "elapse.threshold."
+    static let activityPrefix = "elapse.experiment."
 
     static var thresholdMinutes: [Int] {
         Array(stride(from: intervalMinutes, through: maximumTestMinutes, by: intervalMinutes))
@@ -11,6 +12,19 @@ enum PulsePlan {
 
     static func eventName(for minutes: Int) -> String {
         "\(eventPrefix)\(minutes)m"
+    }
+
+    static func activityName(for experimentID: String) -> String {
+        "\(activityPrefix)\(experimentID)"
+    }
+
+    static func experimentID(fromActivityName name: String) -> String? {
+        guard name.hasPrefix(activityPrefix) else { return nil }
+        let value = String(name.dropFirst(activityPrefix.count))
+        guard let uuid = UUID(uuidString: value), uuid.uuidString.lowercased() == value else {
+            return nil
+        }
+        return value
     }
 
     static func minutes(fromEventName name: String) -> Int? {
@@ -35,8 +49,8 @@ struct PulseNotificationCopy: Equatable {
 
     static func safeThresholdCopy(minutes: Int) -> PulseNotificationCopy {
         PulseNotificationCopy(
-            title: "\(minutes) minutes",
-            body: "Selected apps have reached \(minutes) minutes today."
+            title: "\(minutes) 分钟",
+            body: "所选 App 自本次监控开始后已达到 \(minutes) 分钟。"
         )
     }
 }
@@ -44,25 +58,23 @@ struct PulseNotificationCopy: Equatable {
 enum PulseDeliveryDecision {
     static func shouldRequestNotification(
         eventName: String,
-        existingReceiptKeys: Set<String>,
-        date: Date,
-        calendar: Calendar = .current
+        experimentID: String,
+        currentExperimentID: String?,
+        isActive: Bool,
+        existingReceiptKeys: Set<String>
     ) -> Bool {
-        guard PulsePlan.minutes(fromEventName: eventName) != nil else {
+        guard PulsePlan.minutes(fromEventName: eventName) != nil,
+              isActive,
+              experimentID == currentExperimentID else {
             return false
         }
-        return !existingReceiptKeys.contains(receiptKey(for: eventName, date: date, calendar: calendar))
+        return !existingReceiptKeys.contains(receiptKey(for: eventName, experimentID: experimentID))
     }
 
     static func receiptKey(
         for eventName: String,
-        date: Date,
-        calendar: Calendar = .current
+        experimentID: String
     ) -> String {
-        let components = calendar.dateComponents([.year, .month, .day], from: date)
-        let year = components.year ?? 0
-        let month = components.month ?? 0
-        let day = components.day ?? 0
-        return String(format: "%04d-%02d-%02d|%@", year, month, day, eventName)
+        "\(experimentID)|\(eventName)"
     }
 }

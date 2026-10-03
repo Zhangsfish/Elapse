@@ -55,7 +55,10 @@ jobs:
               with open(path, "rb") as f:
                   data = plistlib.load(f)
               assert data.get("com.apple.developer.family-controls") is True, path
+              if path != "ReportExtension/ElapseReport.entitlements":
+                  assert data.get("com.apple.security.application-groups") == ["group.com.zhangsfish.elapse"], path
           print("S00_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
+          print("S00B_XCODEGEN_APP_GROUP_ENTITLEMENTS_PASS")
           PY
           python3 scripts/s00_signing_settings.py
       - name: Build app and Screen Time extensions for Simulator

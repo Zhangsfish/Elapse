@@ -13,7 +13,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from s00_entitlement_checks import family_controls_status
+from s00_entitlement_checks import app_group_status, family_controls_status
 
 
 BUNDLES = (
@@ -48,20 +48,28 @@ def check_bundle(label, bundle, expected_id, prefix="S00A_SIGNED"):
     try:
         claimed = decoded_plist(["codesign", "--display", "--entitlements", "-", "--xml", str(bundle)])
         claim_status = family_controls_status(plistlib.dumps(claimed))
+        group_claim_status = app_group_status(plistlib.dumps(claimed)) if label in {"APP", "MONITOR"} else "NOT_REQUIRED"
     except (OSError, ValueError, subprocess.CalledProcessError):
         claim_status = "READ_ERROR"
+        group_claim_status = "READ_ERROR" if label in {"APP", "MONITOR"} else "NOT_REQUIRED"
     try:
         profile = decoded_plist(["security", "cms", "-D", "-i", str(bundle / "embedded.mobileprovision")])
         allowance_status = family_controls_status(plistlib.dumps(profile), profile=True)
+        group_allowance_status = app_group_status(plistlib.dumps(profile), profile=True) if label in {"APP", "MONITOR"} else "NOT_REQUIRED"
     except (OSError, ValueError, subprocess.CalledProcessError):
         allowance_status = "READ_ERROR"
+        group_allowance_status = "READ_ERROR" if label in {"APP", "MONITOR"} else "NOT_REQUIRED"
     print(f"{prefix}_{label}_BUNDLE_ID={id_status}")
     print(f"{prefix}_{label}_CODESIGN={signature_status}")
     print(f"{prefix}_{label}_FAMILY_CONTROLS_CLAIM={claim_status}")
     print(f"{prefix}_{label}_PROFILE_ALLOWANCE={allowance_status}")
+    print(f"S00B_SIGNED_{label}_APP_GROUP_CLAIM={group_claim_status}")
+    print(f"S00B_SIGNED_{label}_APP_GROUP_PROFILE_ALLOWANCE={group_allowance_status}")
     return all(status == required for status, required in (
         (id_status, "EXPECTED"), (signature_status, "VALID"),
         (claim_status, "TRUE"), (allowance_status, "TRUE"),
+        (group_claim_status, "EXPECTED" if label in {"APP", "MONITOR"} else "NOT_REQUIRED"),
+        (group_allowance_status, "EXPECTED" if label in {"APP", "MONITOR"} else "NOT_REQUIRED"),
     ))
 
 

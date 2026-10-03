@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B READY；S00-C 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B IN_PROGRESS；S00-C 及之后阶段 LOCKED。**
 
 PR #14 的精确 head `bf5530e22a338150dd45408e4702651bc4711064` 已由云端独立审核并合并为 `044841658fb990324c13224cb592402f0540c80a`。审计见 [S00-A cloud audit](audits/S00/S00_A_AUDIT_2026-10-03.md)。
 
@@ -58,7 +58,7 @@ Codex 启动仍从 [handoff/CODEX_START.md](handoff/CODEX_START.md) 进入，并
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S00-A | **COMPLETE — PASS_WITH_NOTES** | 最终签名、授权、选 App/保存、普通通知自检 |
-| S00-B | **READY** | 第一次真实 5 分钟共享池、可观察事件、同日可重试、配置一致性 |
+| S00-B | **IN_PROGRESS** | 分支 `codex/s00-b-first-real-pulse` 正实现可观察事件、同日可重试、配置一致性；真机 Gate 仍 NOT_RUN |
 | S00-C | LOCKED | 10–30 分钟连续提醒、切换/停止/迟到/重复 |
 | S00-D | LOCKED | Today 的真实各 App 总量与小时汇总 |
 | S01 | LOCKED | 全天、间隔配置、跨日/重启/撤权/恢复 |

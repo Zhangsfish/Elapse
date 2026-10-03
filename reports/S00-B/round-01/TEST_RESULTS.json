@@ -1,0 +1,27 @@
+{
+  "task": "S00-B",
+  "round": "01",
+  "status": "IN_PROGRESS",
+  "base_main_sha": "00160c625b35dfc36f43b868137500ba3da35066",
+  "branch": "codex/s00-b-first-real-pulse",
+  "code_sha": null,
+  "tested_sha": null,
+  "upload_sha": null,
+  "version": null,
+  "build": null,
+  "checks": {
+    "same_experiment_duplicate_dedup": "NOT_RUN",
+    "same_day_new_experiment": "NOT_RUN",
+    "stale_callback_isolation": "NOT_RUN",
+    "selection_configuration_consistency": "NOT_RUN",
+    "callback_request_diagnostics": "NOT_RUN",
+    "neutral_time_copy": "NOT_RUN",
+    "ordinary_ci": "NOT_RUN",
+    "prepare_only": "NOT_RUN",
+    "app_group_distribution_signature_and_profile": "NOT_RUN",
+    "testflight_processing": "NOT_RUN",
+    "internal_availability": "NOT_RUN",
+    "device_shared_pool_a2_b3": "NOT_RUN",
+    "device_second_experiment_same_day": "NOT_RUN"
+  }
+}

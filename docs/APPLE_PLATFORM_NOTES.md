@@ -136,6 +136,12 @@ Engineering consequence:
 - never derive authoritative total usage from callback count;
 - test on the actual target iPhone before declaring S00 PASS.
 
+## S00-B shared diagnostics and experiment scope
+
+Apple's current [App Groups guidance](https://developer.apple.com/documentation/xcode/configuring-app-groups) permits a containing app and extension to share a container; the [entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.application-groups) is an array of registered `group.` identifiers. S00-B uses `group.com.zhangsfish.elapse` only for app-owned experiment identity, selected-token **count**, callback/request status and safe error codes. It does not share tokens or protected report data. The main app and Monitor require this entitlement and matching final distribution profile allowances; the Report extension does not use the group.
+
+Apple's current [DeviceActivityEvent initializer](https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init%28applications%3Acategories%3Awebdomains%3Athreshold%3Aincludespastactivity%3A%29) documents that one event combines its specified applications and that `includesPastActivity=false` excludes activity before monitoring starts. [DeviceActivityCenter](https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter) passes the activity name to the threshold callback, allowing a unique app-owned experiment ID to distinguish current and stale callbacks. These are API semantics, not proof of observed timing or delivery on a device.
+
 ## S00 current-API verification
 
 Rechecked against Apple's current public documentation on 2026-10-02:

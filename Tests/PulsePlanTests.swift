@@ -13,6 +13,13 @@ final class PulsePlanTests: XCTestCase {
         }
     }
 
+    func testActivityNameCarriesValidatedExperimentIdentity() {
+        let id = "6bd15048-58f7-4da0-9738-f5cef9df1d12"
+        XCTAssertEqual(PulsePlan.experimentID(fromActivityName: PulsePlan.activityName(for: id)), id)
+        XCTAssertNil(PulsePlan.experimentID(fromActivityName: "elapse.daily"))
+        XCTAssertNil(PulsePlan.experimentID(fromActivityName: "elapse.experiment.not-a-uuid"))
+    }
+
     func testUnknownEventNamesAreRejected() {
         XCTAssertNil(PulsePlan.minutes(fromEventName: "elapse.threshold.7m"))
         XCTAssertNil(PulsePlan.minutes(fromEventName: "other.threshold.5m"))
@@ -23,37 +30,43 @@ final class PulsePlanTests: XCTestCase {
         XCTAssertEqual(
             PulseNotificationCopy.safeThresholdCopy(minutes: 20),
             PulseNotificationCopy(
-                title: "20 minutes",
-                body: "Selected apps have reached 20 minutes today."
+                title: "20 分钟",
+                body: "所选 App 自本次监控开始后已达到 20 分钟。"
             )
         )
     }
 
-    func testDuplicateReceiptIsSuppressedWithinSameDay() {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-        let date = Date(timeIntervalSince1970: 1_767_225_600)
+    func testReceiptIsScopedToExperimentNotCalendarDay() {
         let eventName = PulsePlan.eventName(for: 5)
         let receipt = PulseDeliveryDecision.receiptKey(
             for: eventName,
-            date: date,
-            calendar: calendar
+            experimentID: "first"
         )
-
         XCTAssertFalse(
             PulseDeliveryDecision.shouldRequestNotification(
                 eventName: eventName,
-                existingReceiptKeys: [receipt],
-                date: date,
-                calendar: calendar
+                experimentID: "first",
+                currentExperimentID: "first",
+                isActive: true,
+                existingReceiptKeys: [receipt]
             )
         )
         XCTAssertTrue(
             PulseDeliveryDecision.shouldRequestNotification(
                 eventName: eventName,
-                existingReceiptKeys: [],
-                date: date,
-                calendar: calendar
+                experimentID: "second",
+                currentExperimentID: "second",
+                isActive: true,
+                existingReceiptKeys: [receipt]
+            )
+        )
+        XCTAssertFalse(
+            PulseDeliveryDecision.shouldRequestNotification(
+                eventName: eventName,
+                experimentID: "first",
+                currentExperimentID: "second",
+                isActive: true,
+                existingReceiptKeys: []
             )
         )
     }
