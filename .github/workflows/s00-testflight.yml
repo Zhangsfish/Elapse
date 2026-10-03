@@ -3,7 +3,7 @@ name: S00 TestFlight preparation and explicit upload
 on:
   push:
     branches: [main]
-    paths: [audits/S00/s00-testflight-upload-once-20261003.json]
+    paths: [audits/S00/s00-testflight-upload-once-20261003-metadata.json]
   workflow_dispatch:
     inputs:
       operation:
@@ -33,11 +33,12 @@ jobs:
           from pathlib import Path
 
           marker = json.loads(
-              Path('audits/S00/s00-testflight-upload-once-20261003.json').read_text(encoding='utf-8')
+              Path('audits/S00/s00-testflight-upload-once-20261003-metadata.json').read_text(encoding='utf-8')
           )
           assert marker == {
               'operation': 's00-testflight-upload-once',
-              'reason': 'retry-after-app-icon-metadata-validation',
+              'trigger_id': 'everwhile-s00-archive-metadata-20261003',
+              'source_baseline': 'b8ef96b7c60f9e47d94d6449d413a9916135184d',
               'version': '0.1.0',
           }
           print('S00_TF_ONE_TIME_UPLOAD_MARKER_VALID')
@@ -57,6 +58,7 @@ jobs:
         run: |
           set -euo pipefail
           swift test
+          python3 -m unittest discover -s scripts/tests
           plutil -lint AppResources/PrivacyInfo.xcprivacy
           python3 - <<'PY'
           import ast
@@ -86,22 +88,9 @@ jobs:
           xcodebuild -help 2>&1 | grep -E 'app-store-connect|destination.*upload|testFlightInternalTestingOnly' || true
           bash -n scripts/s00_testflight_release.sh
           swiftc -typecheck scripts/s00_testflight_status.swift
-          for icon in \
-            'AppIcon-20-2x.png|40' \
-            'AppIcon-20-3x.png|60' \
-            'AppIcon-29-2x.png|58' \
-            'AppIcon-29-3x.png|87' \
-            'AppIcon-40-2x.png|80' \
-            'AppIcon-40-3x.png|120' \
-            'AppIcon-60-2x.png|120' \
-            'AppIcon-60-3x.png|180' \
-            'AppIcon.png|1024'; do
-            name=${icon%%|*}
-            expected=${icon#*|}
-            path="App/Assets.xcassets/AppIcon.appiconset/$name"
-            test "$(sips -g pixelWidth "$path" | awk '/pixelWidth/ {print $2}')" = "$expected"
-            test "$(sips -g pixelHeight "$path" | awk '/pixelHeight/ {print $2}')" = "$expected"
-          done
+          icon='App/Assets.xcassets/AppIcon.appiconset/AppIcon.png'
+          test "$(sips -g pixelWidth "$icon" | awk '/pixelWidth/ {print $2}')" = '1024'
+          test "$(sips -g pixelHeight "$icon" | awk '/pixelHeight/ {print $2}')" = '1024'
       - name: Inspect effective Release signing settings safely
         run: python3 scripts/s00_signing_settings.py
       - name: Clean unsigned iPhone Release build
@@ -164,6 +153,7 @@ jobs:
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
           done
+          python3 scripts/s00_archive_inspect.py "$archive" --require-distribution-metadata
       - name: Sign and upload only on an explicit upload trigger
         if: >-
           (github.event_name == 'workflow_dispatch' && inputs.operation == 'upload') ||

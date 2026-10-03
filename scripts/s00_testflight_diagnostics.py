@@ -4,6 +4,7 @@ Never print raw Apple account, certificate, provisioning, or upload output.
 """
 
 from pathlib import Path
+import json
 import re
 import sys
 
@@ -110,3 +111,49 @@ for line in text.splitlines():
 
 for index, line in enumerate(safe_lines, start=1):
     print(f"S00_TF_PRIVATE_ERROR_TERMS_{index}={line}")
+
+
+def known_validation_kind(line: str) -> str:
+    if "missing required icon" in line or "missing app icon" in line:
+        return "MISSING_ICON"
+    if "missing info.plist key" in line or "missing info.plist value" in line:
+        return "MISSING_PLIST_KEY"
+    if "no orientations" in line or "supported orientations" in line:
+        return "SUPPORTED_ORIENTATIONS"
+    if "invalid bundle" in line:
+        return "INVALID_BUNDLE"
+    return "OTHER_VALIDATION"
+
+
+own_bundles = (
+    "com.zhangsfish.elapse",
+    "com.zhangsfish.elapse.monitor",
+    "com.zhangsfish.elapse.report",
+)
+validation_lines = [
+    line
+    for line in text.splitlines()
+    if "error: exportarchive" in line
+    or "asset validation failed" in line
+    or "validation failed" in line
+]
+seen_details: set[str] = set()
+for line in validation_lines:
+    details = {
+        "kind": known_validation_kind(line),
+        "apple_codes": sorted(set(re.findall(r"\bitms-\d{4,6}\b", line))),
+        "validation_ids": sorted(
+            set(re.findall(r"\bid:\s*([0-9a-f-]{36})\b", line))
+        ),
+        "plist_keys": sorted(
+            set(re.findall(r"\b(?:cfbundle|ui|ls|ns)[a-z0-9_~.-]{3,}\b", line))
+        ),
+        "required_pixels": sorted(set(re.findall(r"\b\d{2,4}x\d{2,4}\b", line))),
+        "own_bundle_ids": [bundle for bundle in own_bundles if bundle in line],
+    }
+    serialized = json.dumps(details, sort_keys=True)
+    if serialized not in seen_details:
+        seen_details.add(serialized)
+        print(f"S00_TF_VALIDATION_{len(seen_details)}={serialized}")
+    if len(seen_details) == 10:
+        break

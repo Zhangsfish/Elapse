@@ -57,6 +57,12 @@ For the current TestFlight path, the owner reports that Family Controls Developm
 
 ## Distribution and privacy manifests
 
+Apple's current asset-catalog guidance allows Xcode to generate iOS icon variations from a single 1024×1024 image. Archive inspection on Xcode 26 showed that setting `TARGETED_DEVICE_FAMILY=1` only at the project base did not prevent XcodeGen's main target from compiling with `UIDeviceFamily=[1,2]`; Everwhile now sets it explicitly on each target. The main app declares `UISupportedInterfaceOrientations` for portrait and both landscape directions. CI checks the compiled archive plist and `Assets.car` before any upload.
+
+Official docs:
+- https://developer.apple.com/documentation/xcode/configuring-your-app-icon
+- https://developer.apple.com/documentation/bundleresources/information-property-list/uisupportedinterfaceorientations
+
 Apple's current App Store upload requirement is Xcode 26 or later. The repository therefore uses a GitHub-hosted `macos-26` runner and rejects an older selected Xcode before preparing an archive.
 
 The app and monitor extension use `UserDefaults` only to read or write preferences owned by the same app. Each executable that calls that API includes a privacy manifest declaring required-reason code `CA92.1`. The report extension does not call `UserDefaults` and does not inherit that declaration merely because it is embedded in the app.
