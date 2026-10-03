@@ -50,5 +50,10 @@ jobs:
             -configuration Debug -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
             CODE_SIGNING_ALLOWED=NO clean build
+      - name: Validate release helpers
+        run: |
+          set -euo pipefail
+          bash -n scripts/s00_testflight_release.sh
+          python3 -m unittest discover -s scripts/tests
       - name: Run pure logic unit tests
         run: swift test
