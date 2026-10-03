@@ -1,120 +1,67 @@
 # Technical Plan
 
-## Architecture philosophy
+Updated: 2026-10-03
 
-Keep the product boring.
+## Architecture
 
-Use Apple frameworks for observation and delivery. Elapse should not run its own continuous screen recorder, VPN, accessibility monitor, or cloud service.
+Keep the current small native implementation. Use Apple's public Screen Time APIs for observation; no screen recorder, VPN, accessibility monitor or cloud service.
 
-## Baseline targets
+### Main iOS app
 
-### 1. Main iOS app
-Responsibilities:
-- explain the product in one screen;
-- request individual Family Controls authorization;
-- present Apple's app picker;
-- store selected tokens locally;
-- choose pulse interval;
-- start/stop monitoring;
-- host the Today report view.
+SwiftUI + FamilyControls + DeviceActivity + UserNotifications. Request individual authorization, present Apple's picker, persist opaque selections, start/stop configured monitoring, host the report, and expose truthful app-owned status.
 
-Frameworks:
-- SwiftUI
-- FamilyControls
-- DeviceActivity
-- UserNotifications
+Interval configuration and production recovery are planned S01 capabilities, not claims about installed S00 build 19.1. A visible diagnostic path must precede device tests that need it.
 
-### 2. DeviceActivityMonitor extension
-Responsibilities:
-- receive named threshold callbacks;
-- record minimal diagnostic metadata;
-- request a local notification;
-- behave idempotently if a callback repeats.
+### DeviceActivityMonitor extension
 
-It must not:
-- block apps;
-- infer morality/productivity;
-- treat callback count as ground-truth duration.
+Receive named threshold callbacks, record minimal app-owned diagnostic events, and request local notifications idempotently. Do not infer actual usage from callback count. Callback receipt, request acceptance and visible delivery remain separate.
 
-### 3. DeviceActivityReport extension
-Responsibilities:
-- aggregate/report data Apple supplies;
-- render honest per-app totals;
-- render supported time-distribution buckets.
+### DeviceActivityReport extension
 
-It must not:
-- leak protected report data through unofficial side channels;
-- fabricate exact sessions.
+Aggregate real data in the protected report environment and render per-app totals plus supported hourly buckets. Use Apple's opaque labels. Make device/date scope explicit; no fabricated sessions and no report-data side channel.
 
-## Local shared state
+## Shared state, only when justified
 
-If an App Group is needed, use it only for Elapse-owned state such as:
-- configuration;
-- selected-token archives where permitted;
-- pulse interval;
-- monitor enabled state;
-- diagnostic callback receipts.
+An App Group may be necessary later for experiment/configuration identities and extension callback diagnostics accessible from the main app. Establish the need in the active task, configure/sign it correctly, and keep it limited to app-owned data. It must not export protected Screen Time report data.
 
-Do not use App Groups as a workaround to exfiltrate protected report data.
+S00-A does not add an App Group. It covers final signing, authorization, selection and ordinary local-notification self-test only. S00-B addresses actual threshold observation and repeatable experiments.
 
-## Pulse model
+## Pulse semantics
 
-For S00:
-- hard-code test interval = 5 minutes;
-- register thresholds at 5/10/15/20/25/30 minutes;
-- name each threshold deterministically;
-- notification body should derive from the named reached threshold, not from callback count.
+Current experimental code registers only 5/10/15/20/25/30-minute events across the same selected application tokens, with includesPastActivity=false. It does not implement an unlimited day-long pulse loop or interval settings.
 
-For later stages:
-- generate thresholds safely for the configured daily operating range;
-- reset/re-register across day boundaries in a way proven by real-device tests;
-- handle timezone/calendar changes explicitly.
+Before usage testing, fix the static mismatch between date-only deduplication and stop/start experiments, and between changed UI selections and existing registered event tokens. Use tested experiment/configuration identities and explicitly handle late old callbacks; do not assume stop/start resets every layer.
 
-## Data model principle
+S00 notifications describe the monitored experiment's threshold, not an authoritative natural-day total. Today uses a separately stated daily report interval. S01 will choose and validate daily coverage/reset/calendar semantics and configurable intervals against current SDK limits and real-device evidence.
 
-Separate three concepts:
+Keep three data types separate:
 
-1. **Configured threshold** — what usage boundary the system was asked to monitor.
-2. **Callback receipt** — what the OS told the extension and when.
-3. **Reported usage** — what Device Activity reporting APIs say happened.
+1. configured thresholds;
+2. callback receipts;
+3. reported usage from DeviceActivityReport.
 
-These are not interchangeable.
+A Timer-based test notification is allowed only as an explicitly labeled one-shot notification diagnostic. A wall-clock timer is not usage accounting.
 
-## Testing strategy
+## Distribution
 
-### Automated
-Test pure logic:
-- threshold generation;
-- identifiers;
-- notification copy;
-- duplicate callback suppression;
-- date/day reset calculations;
-- configuration serialization.
+Retain existing bundle identifiers, Apple credentials, TestFlight infrastructure and generated plist checks. The 19.1 upload was accepted/VALID, but an Apple ITMS-90897 email still reports the parent App missing Family Controls entitlement. Current final-signature correctness is HOLD until checked.
 
-### Real device
-Required:
-- authorization;
-- picker;
-- shared app pool;
-- threshold delivery;
-- notifications;
-- report rendering;
-- lock/switch/restart/cross-day behavior.
+Verify generated entitlements and effective target wiring, then actual distribution-signed code and profile authorization separately. Do not infer one from the other or replace an unreadable file with an empty dictionary. Verify that artifact evidence corresponds to what is uploaded if the upload path re-exports/re-signs.
 
-Simulator results must never be used to declare Screen Time behavior correct.
+Internal TestFlight upload, tester assignment, installation, runtime authorization and App Store public release are different gates. Existing internal-test authorization does not authorize public release or extra tester/account access.
 
-## Stage plan
+## Testing and stages
 
-### S00 — Feasibility
-Prove monitoring, notification, and report primitives.
+The authoritative staged plan is `docs/EXECUTION_PLAN.md`; current dispatch is `STATUS.md`:
 
-### S01 — Daily pulse
-Turn the validated primitive into a day-long reliable 5-minute pulse loop. Handle reset, re-registration, error states, permission changes, and minimal production UI.
+- S00-A: final-signature validation + authorization/selection + ordinary notification self-test.
+- S00-B: first real shared-pool 5-minute pulse with observable and repeatable diagnostics.
+- S00-C: limited-range 10–30-minute sequence and switching/stopping anomalies.
+- S00-D: real Today rendering, scope and honest hourly aggregates.
+- S01: day-long operation, configurable interval and lifecycle/calendar recovery.
+- S02: minimal production experience and retrospective presentation.
+- S03: public distribution preparation and separately authorized release.
 
-### S02 — Today report
-Polish truthful per-app and time-distribution visualization. Add only export forms legitimately supported by the platform.
+Only the current stage may be implemented. Codex runs focused automatic checks, guides the owner one phone action at a time, fixes/retests, then delivers evidence for cloud audit. Simulator/CI success is not real Screen Time evidence. Pure-logic tests cover identifiers, threshold generation, copy, deduplication, serialization and date logic; they must not pretend to prove runtime delivery.
 
-### S03 — Distribution
-Family Controls entitlement approval, signing, TestFlight, privacy copy, App Store compliance, and external-user testing.
-
-Do not begin a later stage to hide a failed earlier gate.
+Structured export and exact sessions remain separately gated future goals, not baseline promises. EU-only enhanced data access, Watch, cloud, AI, accounts, analytics and payments stay out of this plan.
