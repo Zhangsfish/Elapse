@@ -81,22 +81,7 @@ jobs:
             codesign --display --entitlements - --xml "$bundle" 2>/dev/null > "$ent"
             security cms -D -i "$bundle/embedded.mobileprovision" > "$profile" 2>/dev/null
 
-            python3 - "$ent" "$profile" "$bundle_id" <<'PY'
-import plistlib, sys
-ent_path, profile_path, bundle_id = sys.argv[1:]
-ent = plistlib.loads(open(ent_path, "rb").read())
-profile = plistlib.loads(open(profile_path, "rb").read())
-key = "com.apple.developer.family-controls"
-profile_ent = profile.get("Entitlements", {})
-print(
-    "S00_DIST_FAMILY_CONTROLS "
-    f"bundle={bundle_id} "
-    f"signature={str(ent.get(key) is True).lower()} "
-    f"profile={str(profile_ent.get(key) is True).lower()}"
-)
-if ent.get(key) is not True or profile_ent.get(key) is not True:
-    raise SystemExit(1)
-PY
+            python3 -c 'import plistlib,sys; e=plistlib.load(open(sys.argv[1],"rb")); p=plistlib.load(open(sys.argv[2],"rb")); k="com.apple.developer.family-controls"; pe=p.get("Entitlements",{}); ok1=e.get(k) is True; ok2=pe.get(k) is True; print(f"S00_DIST_FAMILY_CONTROLS bundle={sys.argv[3]} signature={str(ok1).lower()} profile={str(ok2).lower()}"); raise SystemExit(0 if ok1 and ok2 else 1)' "$ent" "$profile" "$bundle_id"
           }
 
           check_bundle "$app" com.zhangsfish.elapse main
