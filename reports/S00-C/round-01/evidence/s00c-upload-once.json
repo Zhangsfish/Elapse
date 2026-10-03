@@ -1,0 +1,6 @@
+{
+  "operation": "s00c-testflight-upload-once",
+  "trigger_id": "everwhile-s00c-continuous-pulses-upload-20261003",
+  "source_code_sha": "08f42f7a41fbc0be52533b890fe107f0d3b2784d",
+  "version": "0.1.0"
+}
