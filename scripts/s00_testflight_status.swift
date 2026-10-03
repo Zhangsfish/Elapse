@@ -91,7 +91,13 @@ do {
            let attributes = item["attributes"] as? [String: Any],
            let state = attributes["processingState"] as? String {
             if state == "VALID" {
+                let audience = attributes["buildAudienceType"] as? String ?? "UNKNOWN"
                 print("S00_TF_PROCESSING_STATUS_VALID build=" + args[2])
+                print("S00_TF_BUILD_AUDIENCE=" + audience)
+                if audience != "INTERNAL_ONLY" {
+                    print("S00_TF_INTERNAL_ONLY_NOT_VERIFIED")
+                    exit(1)
+                }
                 exit(0)
             }
             if state == "FAILED" || state == "INVALID" {
@@ -104,6 +110,7 @@ do {
         }
     }
     print("S00_TF_PROCESSING_STATUS_PENDING build=" + args[2])
+    exit(1)
 } catch {
     print("S00_TF_PROCESSING_STATUS_NOT_VERIFIED api_query_failed")
     exit(1)

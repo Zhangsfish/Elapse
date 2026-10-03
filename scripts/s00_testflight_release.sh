@@ -33,9 +33,11 @@ print("S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
 PY
 
 secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-everwhile-apple.XXXXXX")
-key_file="$secret_dir/AuthKey.p8"
+mkdir -m 700 "$secret_dir/private_keys"
+key_file="$secret_dir/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8"
 archive_log="$secret_dir/archive.log"
 export_log="$secret_dir/export.log"
+upload_log="$secret_dir/upload.log"
 export_options="$secret_dir/export-options.plist"
 trap 'rm -rf "$secret_dir"' EXIT
 printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
@@ -53,7 +55,7 @@ import plistlib
 import sys
 
 options = {
-    "destination": "upload",
+    "destination": "export",
     "manageAppVersionAndBuildNumber": False,
     "method": "app-store-connect",
     "signingStyle": "automatic",
@@ -109,18 +111,35 @@ if xcodebuild -exportArchive -archivePath "$archive_path" \
   -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
   -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
   > "$export_log" 2>&1; then
-  echo "S00_TF_EXPORT_UPLOAD_ACCEPTED version=$version build=$build_number code_sha=$code_sha"
-  if find "$export_path" -type f -name '*.ipa' -print -quit | grep -q .; then
-    echo 'S00_TF_IPA_EXPORT_PRESENT'
-  else
-    echo 'S00_TF_IPA_EXPORT_NOT_RETAINED_BY_XCODE'
-  fi
+  echo "S00_TF_DISTRIBUTION_EXPORT_SUCCEEDED version=$version build=$build_number code_sha=$code_sha"
+else
+  result=$?
+  echo "S00_TF_DISTRIBUTION_EXPORT_FAILED exit=$result"
+  python3 scripts/s00_testflight_diagnostics.py "$export_log"
+  exit "$result"
+fi
+
+mapfile -t ipa_files < <(find "$export_path" -maxdepth 1 -type f -name '*.ipa' -print)
+if [[ ${#ipa_files[@]} -ne 1 ]]; then
+  echo "S00_TF_IPA_COUNT_INVALID count=${#ipa_files[@]}"
+  exit 1
+fi
+ipa="${ipa_files[0]}"
+python3 scripts/s00_signed_ipa_audit.py "$ipa"
+echo 'S00_TF_EXACT_SIGNED_IPA_AUDIT_PASSED'
+
+# Upload the audited bytes, not a second export or a newly signed archive.
+# altool searches ./private_keys/AuthKey_<ID>.p8 for the same team API key.
+if (cd "$secret_dir" && xcrun altool --upload-app -f "$ipa" -t ios \
+  --apiKey "$APP_STORE_CONNECT_KEY_ID" --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID") \
+  > "$upload_log" 2>&1; then
+  echo "S00_TF_UPLOAD_ACCEPTED version=$version build=$build_number code_sha=$code_sha"
   if ! swift scripts/s00_testflight_status.swift "$key_file" "$build_number"; then
     echo 'S00_TF_UPLOAD_ACCEPTED_PROCESSING_UNCONFIRMED'
   fi
 else
   result=$?
-  echo "S00_TF_EXPORT_UPLOAD_FAILED exit=$result"
-  python3 scripts/s00_testflight_diagnostics.py "$export_log"
+  echo "S00_TF_UPLOAD_FAILED exit=$result"
+  python3 scripts/s00_testflight_diagnostics.py "$upload_log"
   exit "$result"
 fi
