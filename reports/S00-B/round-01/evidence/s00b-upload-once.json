@@ -1,0 +1,6 @@
+{
+  "operation": "s00b-testflight-upload-once",
+  "trigger_id": "everwhile-s00b-first-pulse-20261003",
+  "source_code_sha": "a73bdc5c34e3919ba2c559fbdfe8199fe8a07444",
+  "version": "0.1.0"
+}
