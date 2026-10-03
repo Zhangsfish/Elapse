@@ -1,0 +1,6 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "trigger_id": "everwhile-s00-xcodegen-entitlements-20261003",
+  "source_baseline": "8c7268a24e3c2d5238d20f224915a38d2e74f2df",
+  "version": "0.1.0"
+}
