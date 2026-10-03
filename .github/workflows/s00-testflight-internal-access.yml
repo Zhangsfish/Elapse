@@ -1,0 +1,33 @@
+name: S00 TestFlight internal access
+
+on:
+  push:
+    branches: [diag/s00-testflight-internal-access]
+
+permissions:
+  contents: read
+
+jobs:
+  internal-access:
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Mirror Lecture Asset internal testers to Everwhile 19.1
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          set +x
+          secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-internal-access.XXXXXX")
+          trap 'rm -rf "$secret_dir"' EXIT
+          key_file="$secret_dir/AuthKey.p8"
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
+          chmod 600 "$key_file"
+          swiftc -typecheck scripts/s00_testflight_internal_access.swift
+          swift scripts/s00_testflight_internal_access.swift "$key_file" "19.1"
