@@ -16,4 +16,6 @@ Implementation: unique activity/experiment IDs, cross-process app-owned diagnost
 
 The first [read-only probe run](https://github.com/Zhangsfish/Elapse/actions/runs/37128145747) failed before loading credentials because shallow checkout omitted the marker's parent commit. The checkout depth is corrected for the retry.
 
+The second [probe run](https://github.com/Zhangsfish/Elapse/actions/runs/37128255415) passed marker validation but the API's filtered bundle-ID list did not find the main App ID. It did not disclose whether the App ID truly is absent or the filter/API-key view is restricted; an unfiltered-list cross-check will resolve that distinction without logging other identifiers.
+
 Apple references: [combined event and includesPastActivity](https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init%28applications%3Acategories%3Awebdomains%3Athreshold%3Aincludespastactivity%3A%29), [App Groups](https://developer.apple.com/documentation/xcode/configuring-app-groups), [App Groups entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.application-groups).

@@ -70,6 +70,7 @@ do {
         pemRepresentation: String(contentsOfFile: arguments[1], encoding: .utf8)
     )
     let bearer = try token(key: key, keyID: keyID, issuerID: issuerID)
+    var foundAll = true
     for (label, identifier) in [
         ("APP", "com.zhangsfish.elapse"),
         ("MONITOR", "com.zhangsfish.elapse.monitor"),
@@ -79,9 +80,31 @@ do {
             queries: [URLQueryItem(name: "filter[identifier]", value: identifier)],
             bearer: bearer
         )
-        guard bundles.count == 1, let id = bundles[0]["id"] as? String else {
-            throw ProbeError(status: "BUNDLE_NOT_FOUND")
+        // Some API-key scopes return an empty filtered list rather than an
+        // authorization error. Cross-check the unfiltered first page without
+        // logging any unrelated bundle identifiers.
+        let candidates: [[String: Any]]
+        if bundles.count == 1 {
+            candidates = bundles
+        } else {
+            print("S00B_\(label)_FILTER_MATCH_COUNT=\(bundles.count)")
+            let listed = try readJSON(
+                "bundleIds",
+                queries: [URLQueryItem(name: "limit", value: "200")],
+                bearer: bearer
+            )
+            print("S00B_\(label)_UNFILTERED_LIST_COUNT=\(listed.count)")
+            candidates = listed.filter { item in
+                let attributes = item["attributes"] as? [String: Any]
+                return attributes?["identifier"] as? String == identifier
+            }
         }
+        guard candidates.count == 1, let id = candidates[0]["id"] as? String else {
+            print("S00B_\(label)_BUNDLE_IN_API=NOT_FOUND")
+            foundAll = false
+            continue
+        }
+        print("S00B_\(label)_BUNDLE_IN_API=FOUND")
         let capabilities = try readJSON(
             "bundleIds/" + id + "/bundleIdCapabilities",
             queries: [],
@@ -93,8 +116,9 @@ do {
         }
         print("S00B_\(label)_APP_GROUPS_CAPABILITY=" + (enabled ? "ENABLED" : "MISSING"))
     }
-    print("S00B_ASC_API_READ=PASS")
+    print("S00B_ASC_API_READ=" + (foundAll ? "PASS" : "BUNDLE_NOT_FOUND"))
     print("S00B_SPECIFIC_GROUP_REGISTRATION=UNVERIFIED_BY_THIS_API")
+    if !foundAll { exit(1) }
 } catch let error as ProbeError {
     print("S00B_ASC_API_READ=" + error.status)
     exit(1)
