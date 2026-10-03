@@ -1,0 +1,59 @@
+name: S00-B explicit read-only Apple capability probe
+
+on:
+  push:
+    branches: [codex/s00-b-first-real-pulse]
+    paths: [reports/S00-B/round-01/evidence/s00b-capability-probe-once.json]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'S00-B explicit capability probe'
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate the one-time read-only probe marker
+        env:
+          PREVIOUS_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          from pathlib import Path
+
+          path = 'reports/S00-B/round-01/evidence/s00b-capability-probe-once.json'
+          previous = os.environ['PREVIOUS_SHA']
+          assert re.fullmatch(r'[0-9a-f]{40}', previous)
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-status', previous, 'HEAD', '--', path], text=True
+          ).strip()
+          assert changed == 'A\t' + path
+          assert json.loads(Path(path).read_text(encoding='utf-8')) == {
+              'operation': 's00b-read-only-capability-probe-once',
+              'source_code_sha': previous,
+          }
+          print('S00B_CAPABILITY_PROBE_MARKER_VALID')
+          PY
+      - name: Read only known bundle capability flags
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          set +x
+          umask 077
+          secret_dir=$(mktemp -d "$RUNNER_TEMP/s00b-probe.XXXXXX")
+          trap 'rm -rf "$secret_dir"' EXIT
+          key_file="$secret_dir/AuthKey.p8"
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
+          chmod 600 "$key_file"
+          swift scripts/s00b_capability_probe.swift "$key_file"
