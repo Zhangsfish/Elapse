@@ -1,43 +1,35 @@
-# S00 real-device checklist
+# S00 真机验收入口
 
-Use one physical iPhone with a development-signed build containing the app, monitor extension, and report extension. Record iOS/build version and wall-clock observations. Reset the experiment by stopping and starting monitoring; S00 deliberately sets `includesPastActivity=false`, so selected-app use before each start is excluded.
+Updated: 2026-10-03
 
-## 1. Authorization and picker
+**由 Codex 在当前任务对话中一次一步带测，持有人不用自行跑完本文件。** 当前只做 STATUS 中已 READY 的子阶段，完整契约在 `prompts/S00_A_DEVICE_FOUNDATION.md` 与 `docs/EXECUTION_PLAN.md`。
 
-- Request individual Family Controls authorization and notification permission.
-- Select at least two applications in Apple's picker; relaunch Elapse and confirm the opaque selection count persists.
-- Start monitoring and record success/error. Expected thresholds: 5/10/15/20/25/30 minutes.
+## S00-A：当前基础检查
 
-## 2. Shared pool
+Codex 先完成最终签名核验及必要实现、CI/内部 TestFlight 分发，再让持有人操作。已安装的预期基线是 Everwhile `0.1.0 (19.1)`；该 build 的 Apple ITMS-90897 警告尚待关闭，不自动视为签名无问题。
 
-- Use selected App A for about 2 minutes, then selected App B until combined selected usage crosses 5 minutes.
-- Record separately: OS threshold callback seen in device logs; notification request accepted in logs; banner/alert visibly observed.
+每步等用户反馈再继续：
 
-## 3. Unselected time
+1. 核对当前 build/屏幕；非必要不重装。
+2. individual Screen Time 授权后，实际状态是否已授权。失败即停在这里修复。
+3. 在系统 picker 选两个 App，然后单独核对关闭重开后的选择保留。无需公开 App 身份。
+4. 请求通知权限，用清楚标记为测试、不计使用量的单次通知自检。记录 API 请求结果与用户实际看到通知分别是什么；可记录手机/通知中心/Watch 的出现位置。
 
-- Stop/start to reset. Use a selected app briefly, then spend at least 5 minutes in an unselected app or locked, then resume selected use.
-- Record whether behavior suggests that unselected/locked wall-clock time was incorrectly counted.
+此阶段**不要求使用所选 App 五分钟、不测 Today、不读取 Mac Console、不重置全机屏幕使用时间**。如果测试通知按钮尚不存在，Codex 先实现，不让用户寻找。
 
-## 4. Sequential thresholds
+## 后续锁定检查
 
-- Continue selected-app use through 10, 15, 20, 25, and 30 minutes.
-- For each boundary record callback receipt time, request result, visible notification, and whether it was early, delayed, missing, or duplicated.
+- S00-B：修复同日重试/配置不一致，并提供可取得的脱敏扩展诊断后，再测第一轮真实共享池五分钟；所选 A 约两分钟 + B 约三分钟，另设未选 App/锁屏对照。
+- S00-C：再测 10/15/20/25/30 分钟、停止/切换/重复/迟到，不要求用户在底层未通时长时间等待。
+- S00-D：再测 Today 实际数据、设备范围、每 App 总量及小时汇总、加载/空数据/不可用、不同统计起点。
+- 全天/跨日/时区/重启恢复及可配置间隔属于 S01。
 
-## 5. Switching and lock
+## 记录规则
 
-- Switch repeatedly among both selected apps, an unselected app, and lock/unlock.
-- Record missing, duplicate, early, or delayed callbacks without normalizing them away.
+用户自然语言回复即可；Codex 整理到 `reports/<stage>/round-NN/DEVICE_OBSERVATIONS.md`，绑定 version/build 与 tested/upload SHA。
 
-## 6. Restart and authorization
+分别记录：监控登记、OS 阈值回调、通知请求、用户看到通知、报表数据。不可用编译/模拟/普通测试通知填充其他 PASS。未观察写 NOT_RUN；由代码推断的问题标注未真机复现。
 
-- Stop/start monitoring, relaunch Elapse, and—if practical—reboot the iPhone.
-- Revoke and regrant Family Controls authorization. Record stale callbacks, duplicates, monitoring state, and errors.
+以前“stop/start 会完整清零”的说明已经撤回：原实现的去重键仅有日期与 eventName，必须先经 S00-B 修复并验证。不可依此盲目反复跑同一日实验。
 
-## 7. Report truthfulness
-
-- Open Today. Compare rough observed use with each selected app row and hourly bars.
-- Confirm rows use Apple's private labels, buckets are labeled hourly aggregates, and no UI implies exact app-open/app-close sessions.
-
-## Result rule
-
-Do not mark a gate PASS from compilation, Simulator, notification-request acceptance, or a visible banner alone. Attach only privacy-safe timestamps and observations to `RESULTS.md`.
+截图不默认公开；不记录 Apple 账号、UDID、token、其他 App 私密内容。Codex 完成当前子阶段后停在 READY_FOR_AUDIT，由云端审计再解锁后续。
