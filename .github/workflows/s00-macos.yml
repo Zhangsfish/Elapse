@@ -50,6 +50,39 @@ jobs:
             -configuration Debug -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
             CODE_SIGNING_ALLOWED=NO clean build
+      - name: Probe ad-hoc entitlement signing safely
+        run: |
+          set -euo pipefail
+          app="$RUNNER_TEMP/ElapseBuild/Build/Products/Debug-iphonesimulator/Elapse.app"
+          probe_root="$RUNNER_TEMP/S00EntitlementProbe"
+          rm -rf "$probe_root"
+          mkdir -p "$probe_root"
+
+          probe_bundle() {
+            local source_bundle="$1"
+            local entitlements="$2"
+            local expected_id="$3"
+            local tag="$4"
+            local bundle="$probe_root/$tag.appex"
+            local dumped="$probe_root/$tag-entitlements.plist"
+
+            test "$(plutil -extract com.apple.developer.family-controls raw -o - "$entitlements")" = "true"
+            cp -R "$source_bundle" "$bundle"
+            codesign -s - -f --entitlements "$entitlements" "$bundle"
+            codesign --display --entitlements - --xml "$bundle" > "$dumped"
+            python3 - "$dumped" "$expected_id" <<'PY'
+import plistlib
+import sys
+path, bundle_id = sys.argv[1:]
+data = plistlib.loads(open(path, "rb").read())
+ok = data.get("com.apple.developer.family-controls") is True
+print(f"S00_ADHOC_PROBE bundle={bundle_id} family_controls={str(ok).lower()}")
+raise SystemExit(0 if ok else 1)
+PY
+          }
+
+          probe_bundle "$app/PlugIns/ElapseMonitor.appex"             MonitorExtension/ElapseMonitor.entitlements             com.zhangsfish.elapse.monitor monitor
+          probe_bundle "$app/Extensions/ElapseReport.appex"             ReportExtension/ElapseReport.entitlements             com.zhangsfish.elapse.report report
       - name: Validate release helpers
         run: |
           set -euo pipefail
