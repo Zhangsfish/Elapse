@@ -294,10 +294,17 @@ do {
     for email in missingEmails.sorted() {
         // Resolve the existing Lecture Asset tester to the App Store Connect user
         // without logging the email, and ensure the user can see Everwhile.
-        let sourceIDs = sourceTesterEmails.contains(email)
-            ? lectureInternal.flatMap { (try? testerIDs(api, groupID: try id($0))) ?? [] }
-            : []
-        guard let sourceID = sourceIDs.first(where: { (try? testerEmail(api, testerID: $0)) == email }) else {
+        var resolvedSourceID: String?
+        for group in lectureInternal {
+            for candidate in try testerIDs(api, groupID: try id(group)) {
+                if try testerEmail(api, testerID: candidate) == email {
+                    resolvedSourceID = candidate
+                    break
+                }
+            }
+            if resolvedSourceID != nil { break }
+        }
+        guard let sourceID = resolvedSourceID else {
             throw ASCError(message: "source_tester_resolution_failed")
         }
         _ = try internalTesterEmailWithAppAccess(api, testerID: sourceID, appID: everwhileApp)
