@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 ## 当前结论
 
-**S00-A WAITING_FOR_OWNER_TEST；其余实现阶段 LOCKED。** Everwhile `0.1.0 (27.1)` 已完成最终分发签名核验、上传、处理与内部组分配。持有人截图确认新版已装、屏幕使用时间已授权、通知允许且提醒开启、当前选中 5 个 App、普通测试通知请求已提交；随后报告停止监控后状态改变，以及使用约五分钟后看到顶部横幅。横幅文字及相对停止操作的时间未确认，不能归因为普通自检或 Screen Time 阈值通知；重启后选择保留仍未验证。本轮工作分支为 `codex/s00-a-device-foundation`，基线 main `b2a2e85e57d41a284d60ab5ad028662070efa203`。
+**S00-A WAITING_FOR_OWNER_TEST；其余实现阶段 LOCKED。** Everwhile `0.1.0 (27.1)` 已完成最终分发签名核验、上传、处理与内部组分配。持有人截图确认新版已装、屏幕使用时间已授权、通知允许且提醒开启、当前选中 5 个 App、普通测试通知请求已提交；随后报告停止监控后状态改变。持有人又说明启动监控并使用一个所选 App 约五分钟后，看到英文五分钟顶部提醒；文案与阈值通知吻合，记录为持有人目击的阈值提醒出现，不冒充完整 S00-B 验收。重启后选择保留及独立普通测试通知可见送达仍未验证。本轮工作分支为 `codex/s00-a-device-foundation`，基线 main `b2a2e85e57d41a284d60ab5ad028662070efa203`。
 
 历史 build 19.1 虽 VALID，却随后收到主 App 缺 Family Controls entitlement 的 `ITMS-90897`。本轮 [upload run 37120646140](https://github.com/Zhangsfish/Elapse/actions/runs/37120646140) 对实际上传的 27.1 IPA 核验了主 App、Monitor、Report 的签名声明和 profile 授权，全部为 `true`，随后上传同一 IPA，processing `VALID`。[read-only verify run 37121122810](https://github.com/Zhangsfish/Elapse/actions/runs/37121122810) 确认 `INTERNAL_ONLY`、`IN_BETA_TESTING`、已分配内部测试组。这关闭了旧版签名缺口的仓库/上传证据，不代表真机产品行为已通过。明细见 [S00-A round 01](reports/S00-A/round-01/DELIVERY.md)。
 
@@ -27,9 +27,9 @@ Updated: 2026-10-03
 | 27.1 手机安装 | PASS — OWNER_SCREENSHOT | App 内版本 `0.1.0 (27.1)` |
 | individual 授权 | PASS — OWNER_SCREENSHOT | App 内状态“已授权”；未推断阈值行为 |
 | App 选择 / 重启保留 | 5 个已选 / 重启 NOT_RUN | 本轮计划恰好两个；截图目前为 5 个，尚需收敛并重启核对 |
-| 普通通知自检 | 请求 PASS / 可识别送达 NOT_RUN | App 内授权与提醒开启，请求 accepted；报告的横幅来源尚不明 |
+| 普通通知自检 | 请求 PASS / 可识别送达 NOT_RUN | App 内授权与提醒开启，请求 accepted；英文五分钟提醒不是该中文普通自检通知 |
 | 停止监控 | PASS — OWNER_REPORT | 持有人报告按钮操作后状态改变；不推断阈值回调 |
-| 实际使用共享池 / 阈值回调 / 阈值通知 | NOT_RUN；横幅观察待归类 | 约五分钟后见顶部横幅，但文字与操作时间待确认；S00-B/C 仍 LOCKED |
+| 实际使用共享池 / 阈值回调 / 阈值通知 | 英文五分钟阈值提醒外观 PASS — OWNER_REPORT；完整 Gate NOT_RUN | 持有人开启监控、使用一个所选 App 约五分钟后看到英文提醒；未核验精确计时、共享池、回调生命周期；S00-B/C 仍 LOCKED |
 | 真实 Today 报表 | NOT_RUN | S00-D |
 | 全天与间隔配置 | NOT_IMPLEMENTED | S01；现有阈值只到 30 分钟 |
 

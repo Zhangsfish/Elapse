@@ -34,7 +34,8 @@
     "ordinary_notification_request": "PASS_REQUEST_ONLY",
     "visible_notification_delivery": "NOT_RUN",
     "monitor_stop": "PASS_OWNER_REPORTED",
-    "five_minute_banner": "OWNER_REPORTED_UNCLASSIFIED"
+    "five_minute_banner": "PASS_OWNER_REPORTED_THRESHOLD_REMINDER_APPEARANCE",
+    "s00_b_full_gate": "NOT_RUN_LOCKED"
   },
   "device_observation": {
     "source": "owner_report_and_screenshots_in_codex_chat_not_committed",
@@ -44,7 +45,8 @@
     "selected_web_domain_count": 0,
     "monitor_registration": "REGISTERED_NOT_VERIFIED",
     "ordinary_notification_delivery": "UNOBSERVED",
-    "five_minute_banner_title": "UNKNOWN",
-    "five_minute_banner_relative_to_stop": "UNKNOWN"
+    "five_minute_banner_title": "ENGLISH_FIVE_MINUTE_REMINDER_RECALLED_NOT_VERBATIM",
+    "five_minute_banner_context": "OWNER_STARTED_MONITORING_AND_USED_ONE_SELECTED_APP_ABOUT_FIVE_MINUTES",
+    "five_minute_banner_exact_timing": "NOT_MEASURED"
   }
 }
