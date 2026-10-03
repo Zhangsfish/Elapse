@@ -1,0 +1,24 @@
+{
+  "task": "S00-D",
+  "round": "01",
+  "status": "IN_PROGRESS",
+  "base_main_sha": "a80ae5a3b84a1952488a9cfb25773ae11ac7c9e0",
+  "branch": "codex/s00-d-real-today-report",
+  "code_sha": null,
+  "tested_sha": null,
+  "upload_sha": null,
+  "version": "0.1.0",
+  "build": null,
+  "checks": {
+    "current_user_current_iphone_scope": "SOURCE_PENDING_CI",
+    "today_start_of_day_to_now_dst": "SOURCE_PENDING_CI",
+    "selected_app_total_per_app_hourly": "SOURCE_PENDING_CI",
+    "zero_unavailable_loading": "SOURCE_PENDING_CI",
+    "privacy_boundary": "SOURCE_PENDING_CI",
+    "ordinary_ci": "NOT_RUN",
+    "prepare_only": "NOT_RUN",
+    "signed_ipa": "NOT_RUN",
+    "testflight_processing": "NOT_RUN",
+    "device_today_nonzero": "NOT_RUN"
+  }
+}

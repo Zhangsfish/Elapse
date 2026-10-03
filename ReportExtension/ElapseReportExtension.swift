@@ -26,56 +26,77 @@ private struct TodayReportScene: DeviceActivityReportScene {
         representing data: DeviceActivityResults<DeviceActivityData>
     ) async -> TodayReportConfiguration {
         logger.notice("Building hourly selected-app report configuration")
-        var usageByApplication: [ApplicationToken: TimeInterval] = [:]
-        var hourlyBuckets: [HourlyUsage] = []
+        var aggregation = TodayReportAggregation<ApplicationToken>()
+        var deviceRecordCount = 0
+        var isCurrentIPhone = false
+        var hasUnattributedActivity = false
+        var lastUpdatedDate: Date?
 
         for await deviceData in data {
+            deviceRecordCount += 1
+            guard deviceRecordCount == 1 else { continue }
+            isCurrentIPhone = deviceData.device.model == .iPhone
+            lastUpdatedDate = deviceData.lastUpdatedDate
             for await segment in deviceData.activitySegments {
-                var selectedUsageInSegment: TimeInterval = 0
                 for await category in segment.categories {
                     for await applicationActivity in category.applications {
+                        let duration = applicationActivity.totalActivityDuration
                         guard let token = applicationActivity.application.token else {
+                            if duration > 0 { hasUnattributedActivity = true }
                             continue
                         }
-                        let duration = applicationActivity.totalActivityDuration
-                        usageByApplication[token, default: 0] += duration
-                        selectedUsageInSegment += duration
+                        aggregation.add(
+                            application: token,
+                            duration: duration,
+                            hourStart: segment.dateInterval.start
+                        )
                     }
                 }
-                hourlyBuckets.append(
-                    HourlyUsage(start: segment.dateInterval.start, duration: selectedUsageInSegment)
-                )
             }
         }
 
-        let applications = usageByApplication
+        let state = TodayReportState.classify(
+            deviceRecordCount: deviceRecordCount,
+            isCurrentIPhone: isCurrentIPhone,
+            hasUnattributedActivity: hasUnattributedActivity,
+            totalDuration: aggregation.totalDuration
+        )
+        guard state == .content else {
+            logger.notice("Report configuration completed without displayable selected-app activity")
+            return TodayReportConfiguration(
+                state: state,
+                totalDuration: 0,
+                applications: [],
+                hourlyBuckets: [],
+                lastUpdatedDate: state == .zeroUsage ? lastUpdatedDate : nil
+            )
+        }
+
+        let applications = aggregation.byApplication
             .map { ApplicationUsage(token: $0.key, duration: $0.value) }
             .sorted { $0.duration > $1.duration }
-        let buckets = hourlyBuckets
-            .reduce(into: [Date: TimeInterval]()) { partial, bucket in
-                partial[bucket.start, default: 0] += bucket.duration
-            }
+        let buckets = aggregation.byHour
             .map { HourlyUsage(start: $0.key, duration: $0.value) }
             .sorted { $0.start < $1.start }
 
         let configuration = TodayReportConfiguration(
-            totalDuration: applications.reduce(0) { $0 + $1.duration },
+            state: state,
+            totalDuration: aggregation.totalDuration,
             applications: applications,
-            hourlyBuckets: buckets
+            hourlyBuckets: buckets,
+            lastUpdatedDate: lastUpdatedDate
         )
-        if applications.isEmpty {
-            logger.notice("Report configuration completed with no selected-app activity rows")
-        } else {
-            logger.notice("Report configuration completed with \(applications.count, privacy: .public) opaque application rows and \(buckets.count, privacy: .public) hourly buckets")
-        }
+        logger.notice("Report configuration completed with \(applications.count, privacy: .public) opaque application rows and \(buckets.count, privacy: .public) hourly buckets")
         return configuration
     }
 }
 
 private struct TodayReportConfiguration {
+    let state: TodayReportState
     let totalDuration: TimeInterval
     let applications: [ApplicationUsage]
     let hourlyBuckets: [HourlyUsage]
+    let lastUpdatedDate: Date?
 }
 
 private struct ApplicationUsage: Identifiable {
@@ -102,20 +123,32 @@ private struct TodayReportView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Selected apps today")
-                        .font(.headline)
-                    Text(durationText(configuration.totalDuration))
-                        .font(.title2.monospacedDigit())
+                Text("当前用户 · 当前 iPhone · 今天截至现在")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+
+                if let lastUpdatedDate = configuration.lastUpdatedDate {
+                    Text("系统报告更新于 \(lastUpdatedDate, format: .dateTime.hour().minute())")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Per application")
-                        .font(.headline)
-                    if configuration.applications.isEmpty {
-                        Text("No selected-app activity is available for this report yet.")
-                            .foregroundStyle(.secondary)
-                    } else {
+                switch configuration.state {
+                case .unavailable:
+                    Text("当前还没有可用的屏幕使用时间报告数据。这不代表所选 App 使用时间为零。")
+                case .zeroUsage:
+                    Text("今天截至目前没有可显示的所选 App 使用记录。")
+                case .content:
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("所选 App 今日总时长")
+                            .font(.headline)
+                        Text(durationText(configuration.totalDuration))
+                            .font(.title2.monospacedDigit())
+                    }
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("各所选 App")
+                            .font(.headline)
                         ForEach(configuration.applications) { item in
                             HStack {
                                 Label(item.token)
@@ -125,19 +158,19 @@ private struct TodayReportView: View {
                             }
                         }
                     }
-                }
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Hourly selected-app usage")
-                        .font(.headline)
-                    Text("Each row is an hourly aggregate, not an exact session.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    ForEach(configuration.hourlyBuckets) { bucket in
-                        HourlyUsageRow(
-                            bucket: bucket,
-                            maximumDuration: maximumBucketDuration
-                        )
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("所选 App 每小时汇总")
+                            .font(.headline)
+                        Text("小时汇总，不是精确的 App 打开或关闭时间线。")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        ForEach(configuration.hourlyBuckets) { bucket in
+                            HourlyUsageRow(
+                                bucket: bucket,
+                                maximumDuration: maximumBucketDuration
+                            )
+                        }
                     }
                 }
             }

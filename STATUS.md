@@ -4,7 +4,7 @@ Updated: 2026-10-04
 
 ## 当前结论
 
-**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C COMPLETE — PASS_WITH_NOTES。S00-D READY；S01 及之后阶段 LOCKED。**
+**S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C COMPLETE — PASS_WITH_NOTES。S00-D IN_PROGRESS；S01 及之后阶段 LOCKED。**
 
 S00-C PR #16 的精确 head `35f5102fa2ec98df0729e601663ecbdb2a5b01ce` 已由云端独立审核并合并为 `bba53845b78eb657b0daa29019abb202a29de81a`。审计见 [S00-C cloud audit](audits/S00/S00_C_AUDIT_2026-10-04.md)。
 
@@ -23,6 +23,8 @@ Everwhile `0.1.0 (38.1)` 现作为已接受的 S00-C 基线：
 ## 唯一当前任务
 
 **[S00-D：真实 Today 报表](prompts/S00_D_REAL_TODAY_REPORT.md)**
+
+Codex 当前在 `codex/s00-d-real-today-report` 实现 Today 并准备自动验证 / internal TestFlight。真实 Today 设备验收仍 **NOT_RUN**；38.1 的 pulse 证据不能替代新报表验收。待新 build 完成，状态转为 `WAITING_FOR_OWNER_TEST`，只请求一次最小 Today 查看。S00-D 不自行判定 PASS；云端审核前停在 `READY_FOR_AUDIT`。
 
 本轮只解决：
 

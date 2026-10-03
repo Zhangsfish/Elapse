@@ -83,11 +83,11 @@ struct ContentView: View {
                 }
 
                 Section("Today") {
-                    NavigationLink("Open truthful usage report") {
+                    NavigationLink("查看今日真实使用报告") {
                         TodayReportView(selection: model.selection)
                     }
                     .disabled(model.selection.applicationTokens.isEmpty)
-                    Text("The report uses hourly aggregate buckets and does not claim exact app-open or app-close sessions.")
+                    Text("当前用户 · 当前 iPhone · 今天截至现在。报告由系统加载；小时汇总不是精确的 App 打开或关闭时间线。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -133,14 +133,23 @@ struct TodayReportView: View {
     private var filter: DeviceActivityFilter {
         DeviceActivityFilter(
             segment: .hourly(during: TodayInterval.make()),
+            devices: nil,
             applications: selection.applicationTokens
         )
     }
 
     var body: some View {
-        DeviceActivityReport(.elapseToday, filter: filter)
-            .navigationTitle("Today")
-            .navigationBarTitleDisplayMode(.inline)
+        VStack(alignment: .leading, spacing: 8) {
+            Text("当前用户 · 当前 iPhone · 今天截至现在")
+                .font(.footnote)
+            Text("屏幕使用时间报告由 iOS 加载，可能需要片刻更新。")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            DeviceActivityReport(.elapseToday, filter: filter)
+        }
+        .padding(.horizontal)
+        .navigationTitle("Today")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

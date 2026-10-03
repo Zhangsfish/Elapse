@@ -98,6 +98,10 @@ Important product rule:
 - report interval/bucket boundaries are not automatically exact app-open/app-close sessions;
 - never fabricate exact session boundaries from aggregate usage.
 
+For S00-D, Apple's current `DeviceActivityFilter(segment:devices:applications:categories:webDomains:)` initializer uses the current user and defaults `devices: nil` to the current device. Everwhile explicitly passes `devices: nil`, selected opaque application tokens and `.hourly(during:)` for the local calendar's start of today through filter creation time. The report extension checks that exactly one iPhone device record was returned; unexpected scope is unavailable rather than silently aggregated. `DeviceActivityData.lastUpdatedDate` is the system report's update timestamp, not a claim that collection is live to the second. The report scene's asynchronous `makeConfiguration` can update when more data arrives, but does not give the host app a reliable loading/error completion callback; S00-D therefore labels loading `SYSTEM_MANAGED_LOADING` and does not use an App Group handshake. The filtered `ApplicationActivity.totalActivityDuration` remains the only source for selected-app totals and hourly sums; `ActivitySegment.totalActivityDuration` is screen-on time, not selected-app usage.
+
+Official references: [filter initializer](https://developer.apple.com/documentation/deviceactivity/deviceactivityfilter/init%28segment%3Adevices%3Aapplications%3Acategories%3Awebdomains%3A%29), [device scope](https://developer.apple.com/documentation/deviceactivity/deviceactivityfilter/devices-swift.property), [report data](https://developer.apple.com/documentation/deviceactivity/deviceactivitydata), [report scene](https://developer.apple.com/documentation/deviceactivity/deviceactivityreportscene/makeconfiguration%28representing%3A%29), [application duration](https://developer.apple.com/documentation/deviceactivity/deviceactivitydata/applicationactivity/totalactivityduration).
+
 ## Structured usage export
 
 Apple now documents:
