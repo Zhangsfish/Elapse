@@ -10,14 +10,19 @@ on:
         description: Prepare only, or explicitly upload Everwhile to TestFlight
         required: true
         type: choice
-        options: [prepare-only, upload]
+        options: [prepare-only, upload, verify-build]
         default: prepare-only
+      build_number:
+        description: Exact build for a read-only internal TestFlight availability check
+        required: false
+        type: string
 
 permissions:
   contents: read
 
 jobs:
   testflight:
+    if: github.event_name != 'workflow_dispatch' || inputs.operation != 'verify-build'
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -194,3 +199,19 @@ jobs:
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
         run: bash scripts/s00_testflight_release.sh
+
+  verify-build:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'verify-build'
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Query only the specified Everwhile internal build
+        env:
+          BUILD_NUMBER: ${{ inputs.build_number }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: bash scripts/s00a_verify_internal.sh

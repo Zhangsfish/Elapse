@@ -26,7 +26,7 @@ func token(key: P256.Signing.PrivateKey, keyID: String, issuerID: String) throws
     return body + "." + base64URL(signature.rawRepresentation)
 }
 
-func get(_ path: String, queries: [URLQueryItem], bearer: String) throws -> [[String: Any]] {
+func requestJSON(_ path: String, queries: [URLQueryItem], bearer: String) throws -> [String: Any] {
     var url = URLComponents(string: "https://api.appstoreconnect.apple.com/v1/" + path)!
     url.queryItems = queries
     var request = URLRequest(url: url.url!)
@@ -46,11 +46,24 @@ func get(_ path: String, queries: [URLQueryItem], bearer: String) throws -> [[St
           let http = response as? HTTPURLResponse,
           http.statusCode == 200,
           let data = responseData,
-          let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-          let items = json["data"] as? [[String: Any]] else {
+          let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+        throw APIError()
+    }
+    return json
+}
+
+func get(_ path: String, queries: [URLQueryItem], bearer: String) throws -> [[String: Any]] {
+    guard let items = try requestJSON(path, queries: queries, bearer: bearer)["data"] as? [[String: Any]] else {
         throw APIError()
     }
     return items
+}
+
+func getOne(_ path: String, bearer: String) throws -> [String: Any] {
+    guard let item = try requestJSON(path, queries: [], bearer: bearer)["data"] as? [String: Any] else {
+        throw APIError()
+    }
+    return item
 }
 
 let args = CommandLine.arguments
@@ -88,6 +101,7 @@ do {
             bearer: token(key: key, keyID: keyID, issuerID: issuerID)
         )
         if let item = builds.first,
+           let buildID = item["id"] as? String,
            let attributes = item["attributes"] as? [String: Any],
            let state = attributes["processingState"] as? String {
             if state == "VALID" {
@@ -96,6 +110,43 @@ do {
                 print("S00_TF_BUILD_AUDIENCE=" + audience)
                 if audience != "INTERNAL_ONLY" {
                     print("S00_TF_INTERNAL_ONLY_NOT_VERIFIED")
+                    exit(1)
+                }
+                let betaDetail = try getOne(
+                    "builds/" + buildID + "/buildBetaDetail",
+                    bearer: token(key: key, keyID: keyID, issuerID: issuerID)
+                )
+                let betaAttributes = betaDetail["attributes"] as? [String: Any]
+                let internalState = betaAttributes?["internalBuildState"] as? String ?? "UNKNOWN"
+                let knownStates: Set<String> = [
+                    "PROCESSING", "PROCESSING_EXCEPTION", "MISSING_EXPORT_COMPLIANCE",
+                    "READY_FOR_BETA_TESTING", "IN_BETA_TESTING", "EXPIRED", "IN_EXPORT_COMPLIANCE_REVIEW",
+                ]
+                print("S00_TF_INTERNAL_BETA_STATE=" + (knownStates.contains(internalState) ? internalState : "UNKNOWN"))
+                let groups = try get(
+                    "apps/" + appID + "/betaGroups",
+                    queries: [URLQueryItem(name: "limit", value: "200")],
+                    bearer: token(key: key, keyID: keyID, issuerID: issuerID)
+                )
+                var internalGroupCount = 0
+                var assigned = false
+                for group in groups {
+                    guard let groupID = group["id"] as? String,
+                          let groupAttributes = group["attributes"] as? [String: Any],
+                          groupAttributes["isInternalGroup"] as? Bool == true else { continue }
+                    internalGroupCount += 1
+                    let groupBuilds = try get(
+                        "betaGroups/" + groupID + "/builds",
+                        queries: [URLQueryItem(name: "limit", value: "200")],
+                        bearer: token(key: key, keyID: keyID, issuerID: issuerID)
+                    )
+                    if groupBuilds.contains(where: { $0["id"] as? String == buildID }) {
+                        assigned = true
+                    }
+                }
+                print("S00_TF_INTERNAL_GROUP_EXISTS=" + (internalGroupCount > 0 ? "TRUE" : "FALSE"))
+                print("S00_TF_BUILD_ASSIGNED_TO_INTERNAL_GROUP=" + (assigned ? "TRUE" : "FALSE"))
+                if !assigned || (internalState != "READY_FOR_BETA_TESTING" && internalState != "IN_BETA_TESTING") {
                     exit(1)
                 }
                 exit(0)
