@@ -1,7 +1,7 @@
 {
   "task": "S00-C",
   "round": "01",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "base_main_sha": "3fcaa287217399449b3dd2b10e6adba8280ebf2e",
   "branch": "codex/s00-c-continuous-pulses",
   "code_sha": "484041dbd6e5c6753d8640cf5565c4d92b0b07c5",
@@ -24,9 +24,9 @@
     "device_threshold_25_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
     "device_threshold_30_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
     "device_registration_copy_after_callback": "PASS_OWNER_SCREENSHOT",
-    "device_two_selected_app_switches": "NOT_CONFIRMED_OWNER_REPORT",
+    "device_two_selected_app_switches": "PASS_OWNER_FOLLOWUP_REPORT_NO_EXACT_TIMES",
     "device_stop": "PASS_OWNER_REPORT_NO_POST_STOP_DIAGNOSTIC",
-    "device_selection_unlock": "NOT_CONFIRMED_OWNER_REPORT",
-    "device_continuous_sequence": "PARTIAL_PASS_SIX_THRESHOLDS_SWITCHING_PENDING"
+    "device_selection_unlock": "PASS_OWNER_FOLLOWUP_REPORT_NO_POST_STOP_DIAGNOSTIC",
+    "device_continuous_sequence": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT_WITH_TIMING_LIMITS"
   }
 }
