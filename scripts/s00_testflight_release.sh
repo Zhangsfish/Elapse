@@ -119,12 +119,12 @@ else
   exit "$result"
 fi
 
-mapfile -t ipa_files < <(find "$export_path" -maxdepth 1 -type f -name '*.ipa' -print)
-if [[ ${#ipa_files[@]} -ne 1 ]]; then
-  echo "S00_TF_IPA_COUNT_INVALID count=${#ipa_files[@]}"
+ipa_count=$(find "$export_path" -maxdepth 1 -type f -name '*.ipa' | wc -l | tr -d ' ')
+if [[ "$ipa_count" -ne 1 ]]; then
+  echo "S00_TF_IPA_COUNT_INVALID count=$ipa_count"
   exit 1
 fi
-ipa="${ipa_files[0]}"
+ipa=$(find "$export_path" -maxdepth 1 -type f -name '*.ipa' -print -quit)
 python3 scripts/s00_signed_ipa_audit.py "$ipa"
 echo 'S00_TF_EXACT_SIGNED_IPA_AUDIT_PASSED'
 
