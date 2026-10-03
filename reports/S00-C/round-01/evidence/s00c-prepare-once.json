@@ -1,0 +1,6 @@
+{
+  "operation": "s00c-testflight-prepare-once",
+  "trigger_id": "everwhile-s00c-continuous-pulses-prepare-20261003",
+  "source_code_sha": "484041dbd6e5c6753d8640cf5565c4d92b0b07c5",
+  "version": "0.1.0"
+}
