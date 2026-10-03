@@ -23,20 +23,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
           persist-credentials: false
       - name: Validate the one-time main-branch upload marker
         if: github.event_name == 'push'
+        env:
+          PREVIOUS_MAIN_SHA: ${{ github.event.before }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
+          import os
+          import re
           import subprocess
           from pathlib import Path
 
           marker_path = 'audits/S00/s00-testflight-upload-once-20261003-extensions.json'
+          previous_main = os.environ['PREVIOUS_MAIN_SHA']
+          assert re.fullmatch(r'[0-9a-f]{40}', previous_main)
           changed = subprocess.check_output(
-              ['git', 'diff', '--name-status', 'HEAD^', 'HEAD', '--', marker_path], text=True
+              ['git', 'diff', '--name-status', previous_main, 'HEAD', '--', marker_path], text=True
           ).strip()
           assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this main commit'
           marker = json.loads(
