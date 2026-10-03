@@ -50,3 +50,18 @@ The merged retry [run 37038785574](https://github.com/Zhangsfish/Elapse/actions/
 The physical-device run remains `NOT RUN` and is required for Gates A–D.
 
 The next merged retry [run 37100010225](https://github.com/Zhangsfish/Elapse/actions/runs/37100010225) passed app archive metadata but failed Apple extension plist validation (exit 70). [Prepare-only archive inspection 37100507160](https://github.com/Zhangsfish/Elapse/actions/runs/37100507160) found that both embedded `.appex/Info.plist` files lacked `NSExtension`, despite the tracked source plists declaring it. PR #5 repairs generated extension metadata and adds final-archive assertions; upload acceptance and processing remain `NOT RUN`.
+
+
+## Final TestFlight delivery
+
+- Main commit: `60a15650d6791ef081f6d8aa402cfb48d3a03ff1`.
+- Workflow: [run 37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155).
+- Version/build: `Everwhile 0.1.0 (19.1)`.
+- XcodeGen Family Controls entitlement guard: PASS for the app, monitor extension, and report extension.
+- Unsigned iPhoneOS archive and final package metadata checks: PASS.
+- Automatic App Store Connect distribution export/upload: PASS.
+- App Store Connect processing: **VALID**.
+
+Root cause of the prior Family Controls rejection: XcodeGen regenerated each entitlement file from the target's `entitlements` spec. The spec declared only `path`, so the checked-in `com.apple.developer.family-controls=true` entries were erased during `xcodegen generate`. Adding the key under `entitlements.properties` for all three targets preserved the managed entitlement. This is now asserted in CI immediately after generation.
+
+TestFlight delivery is therefore PASS. S00 product feasibility is still open because physical-iPhone Gates A–D remain `NOT RUN`.

@@ -93,3 +93,19 @@ Secret-free retry validation: [ordinary CI 37037314442](https://github.com/Zhang
 - Root cause: XcodeGen 2.46.0 `info.path` generates and writes an Info.plist from `info.properties`; the extension dictionaries existed only in tracked source plists, so generation discarded them. PR #5 places the monitor declaration in generated properties. The `@main` report uses ExtensionKit type, `Extensions/` embedding, and `EXAppExtensionAttributes`, avoiding a report `NSExtensionPrincipalClass` that can prevent installation.
 - The new archive inspector asserts both final extension manifests and locations before any upload. The prior marker was consumed; a new path-scoped marker permits only the next merge to retry automatically.
 - [Ordinary CI 37100843564](https://github.com/Zhangsfish/Elapse/actions/runs/37100843564) passed app/extension Simulator compile and pure tests. [Prepare-only run 37100820822](https://github.com/Zhangsfish/Elapse/actions/runs/37100820822) passed the unsigned iPhone build/archive and exact final metadata checks: Monitor in `PlugIns/` has the expected `NSExtension` point and `ElapseMonitor.ElapseMonitorExtension` principal class; Report in `Extensions/` has the expected `EXExtensionPointIdentifier`, no legacy `NSExtension` or principal class, and no duplicate `PlugIns/` copy. Upload was skipped.
+
+
+## Final upload — PASS
+
+- Main commit: `60a15650d6791ef081f6d8aa402cfb48d3a03ff1`.
+- Workflow: [37105502155](https://github.com/Zhangsfish/Elapse/actions/runs/37105502155).
+- Version/build: `0.1.0 (19.1)`.
+- `S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS`: PASS.
+- Unsigned archive: PASS.
+- App/extension metadata assertions: PASS.
+- Automatic App Store Connect export/upload: PASS.
+- Processing result: `S00_TF_PROCESSING_STATUS_VALID build=19.1`.
+
+The decisive fix was declaring `com.apple.developer.family-controls: true` in XcodeGen `entitlements.properties` for all three targets. Merely keeping the key in the tracked entitlement plist was insufficient because XcodeGen owns and rewrites those files when generating the project.
+
+Distribution plumbing is now complete. The next gate is physical-device acceptance using `audits/S00/REAL_DEVICE_CHECKLIST.md`.
