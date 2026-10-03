@@ -1,0 +1,6 @@
+{
+  "operation": "s00d-testflight-prepare-once",
+  "trigger_id": "everwhile-s00d-real-today-report-prepare-20261004",
+  "source_code_sha": "0e4bec3ffefdfaf92fd8060fdec7934e9a839827",
+  "version": "0.1.0"
+}
