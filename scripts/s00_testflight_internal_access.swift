@@ -62,7 +62,16 @@ struct API {
             throw ASCError(message: "network")
         }
         guard expected.contains(http.statusCode) else {
-            throw ASCError(message: "http_\(http.statusCode)_\(path)")
+            var safe = "http_\(http.statusCode)_\(path)"
+            if let data = dataOut,
+               let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let errors = json["errors"] as? [[String: Any]],
+               let first = errors.first {
+                let code = (first["code"] as? String ?? "unknown").replacingOccurrences(of: " ", with: "_")
+                let title = (first["title"] as? String ?? "unknown").replacingOccurrences(of: " ", with: "_")
+                safe += "_code_\(code)_title_\(title)"
+            }
+            throw ASCError(message: safe)
         }
         guard let data = dataOut, !data.isEmpty else { return (http.statusCode, nil) }
         let json = try JSONSerialization.jsonObject(with: data)
