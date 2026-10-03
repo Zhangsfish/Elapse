@@ -33,7 +33,7 @@
     "notification_permission_and_alerts": "PASS",
     "ordinary_notification_request": "PASS_REQUEST_ONLY",
     "visible_notification_delivery": "NOT_RUN",
-    "monitor_stop": "PASS_OWNER_REPORTED",
+    "monitor_stop": "PASS_OWNER_SCREENSHOT_RUNNING_TO_STOPPED",
     "five_minute_banner": "PASS_OWNER_REPORTED_THRESHOLD_REMINDER_APPEARANCE",
     "s00_b_full_gate": "NOT_RUN_LOCKED"
   },

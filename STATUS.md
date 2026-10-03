@@ -28,7 +28,7 @@ Updated: 2026-10-03
 | individual 授权 | PASS — OWNER_SCREENSHOT | App 内状态“已授权”；未推断阈值行为 |
 | App 选择 / 重启保留 | 5 个已选 / 重启 NOT_RUN | 本轮计划恰好两个；截图目前为 5 个，尚需收敛并重启核对 |
 | 普通通知自检 | 请求 PASS / 可识别送达 NOT_RUN | App 内授权与提醒开启，请求 accepted；英文五分钟提醒不是该中文普通自检通知 |
-| 停止监控 | PASS — OWNER_REPORT | 持有人报告按钮操作后状态改变；不推断阈值回调 |
+| 停止监控 | PASS — OWNER_SCREENSHOT | 两张截图确认 Running → Stopped；停止不清空已选 App，这是预期行为，不推断停止后的阈值回调 |
 | 实际使用共享池 / 阈值回调 / 阈值通知 | 英文五分钟阈值提醒外观 PASS — OWNER_REPORT；完整 Gate NOT_RUN | 持有人开启监控、使用一个所选 App 约五分钟后看到英文提醒；未核验精确计时、共享池、回调生命周期；S00-B/C 仍 LOCKED |
 | 真实 Today 报表 | NOT_RUN | S00-D |
 | 全天与间隔配置 | NOT_IMPLEMENTED | S01；现有阈值只到 30 分钟 |
