@@ -1,0 +1,6 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "trigger_id": "everwhile-s00-codesign-xml-20261003",
+  "source_baseline": "54c2058204c5df793a0ee86cbe78cceb8154ca91",
+  "version": "0.1.0"
+}
