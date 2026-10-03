@@ -1,0 +1,105 @@
+name: S00 distribution archive signing probe
+
+on:
+  push:
+    branches: [diag/s00-distribution-archive]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install verified XcodeGen
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip \
+            --output "$RUNNER_TEMP/xcodegen.zip"
+          echo "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 --check
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen-release"
+          tool=$(find "$RUNNER_TEMP/xcodegen-release" -type f -name xcodegen -print -quit)
+          chmod +x "$tool"
+          echo "$(dirname "$tool")" >> "$GITHUB_PATH"
+
+      - name: Generate project
+        run: xcodegen generate --spec project.yml
+
+      - name: Build a distribution-signed archive
+        env:
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          set +x
+          secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-dist-probe.XXXXXX")
+          trap 'rm -rf "$secret_dir"' EXIT
+          key_file="$secret_dir/AuthKey.p8"
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
+          chmod 600 "$key_file"
+
+          archive="$RUNNER_TEMP/S00DistributionProbe.xcarchive"
+          log="$secret_dir/archive.log"
+          if xcodebuild -project Elapse.xcodeproj -scheme Elapse \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$archive" \
+            -derivedDataPath "$RUNNER_TEMP/S00DistributionProbeDerivedData" \
+            CODE_SIGNING_ALLOWED=YES \
+            CODE_SIGN_STYLE=Automatic \
+            CODE_SIGN_IDENTITY="Apple Distribution" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$key_file" \
+            -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+            archive > "$log" 2>&1; then
+            echo "S00_DIST_ARCHIVE_SUCCEEDED"
+          else
+            result=$?
+            echo "S00_DIST_ARCHIVE_FAILED exit=$result"
+            python3 scripts/s00_testflight_diagnostics.py "$log"
+            exit "$result"
+          fi
+
+          app="$archive/Products/Applications/Elapse.app"
+
+          check_bundle() {
+            local bundle="$1"
+            local bundle_id="$2"
+            local tag="$3"
+            local ent="$secret_dir/$tag-entitlements.plist"
+            local profile="$secret_dir/$tag-profile.plist"
+
+            codesign --display --entitlements - --xml "$bundle" 2>/dev/null > "$ent"
+            security cms -D -i "$bundle/embedded.mobileprovision" > "$profile" 2>/dev/null
+
+            python3 - "$ent" "$profile" "$bundle_id" <<'PY'
+import plistlib, sys
+ent_path, profile_path, bundle_id = sys.argv[1:]
+ent = plistlib.loads(open(ent_path, "rb").read())
+profile = plistlib.loads(open(profile_path, "rb").read())
+key = "com.apple.developer.family-controls"
+profile_ent = profile.get("Entitlements", {})
+print(
+    "S00_DIST_FAMILY_CONTROLS "
+    f"bundle={bundle_id} "
+    f"signature={str(ent.get(key) is True).lower()} "
+    f"profile={str(profile_ent.get(key) is True).lower()}"
+)
+if ent.get(key) is not True or profile_ent.get(key) is not True:
+    raise SystemExit(1)
+PY
+          }
+
+          check_bundle "$app" com.zhangsfish.elapse main
+          check_bundle "$app/PlugIns/ElapseMonitor.appex" com.zhangsfish.elapse.monitor monitor
+          check_bundle "$app/Extensions/ElapseReport.appex" com.zhangsfish.elapse.report report
+          echo "S00_DIST_ARCHIVE_FAMILY_CONTROLS_PASS"
