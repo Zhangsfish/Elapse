@@ -69,6 +69,7 @@ targets:
     info:
       path: MonitorExtension/Info.plist
       properties:
+        CFBundleDisplayName: Everwhile Monitor
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         NSExtension:
@@ -93,6 +94,7 @@ targets:
     info:
       path: ReportExtension/Info.plist
       properties:
+        CFBundleDisplayName: Everwhile Report
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         EXAppExtensionAttributes:
