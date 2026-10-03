@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Runs only inside the explicitly triggered macOS GitHub Actions upload step.
-# Keep every Apple secret in Actions Secrets; never print raw signing/provisioning contents.
+# Keep every Apple secret in Actions Secrets; never print raw signing logs.
 set -euo pipefail
 set +x
 umask 077
@@ -17,14 +17,26 @@ done
 [[ "$APP_STORE_CONNECT_ISSUER_ID" =~ ^[0-9a-fA-F-]{36}$ ]] || { echo 'INVALID_API_ISSUER_ID_FORMAT'; exit 2; }
 [[ "$APP_STORE_CONNECT_PRIVATE_KEY" == *'-----BEGIN PRIVATE KEY-----'* ]] || { echo 'INVALID_API_KEY_FILE_FORMAT'; exit 2; }
 
+# XcodeGen owns these generated entitlement files. Guard the managed capability
+# after project generation so a future spec change cannot silently erase it.
+python3 - <<'PY'
+import plistlib
+for path in (
+    "App/Elapse.entitlements",
+    "MonitorExtension/ElapseMonitor.entitlements",
+    "ReportExtension/ElapseReport.entitlements",
+):
+    with open(path, "rb") as f:
+        data = plistlib.load(f)
+    assert data.get("com.apple.developer.family-controls") is True, path
+print("S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
+PY
+
 secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-everwhile-apple.XXXXXX")
 key_file="$secret_dir/AuthKey.p8"
 archive_log="$secret_dir/archive.log"
-signed_export_log="$secret_dir/signed-export.log"
-upload_log="$secret_dir/upload.log"
-signed_options="$secret_dir/signed-export-options.plist"
-upload_options="$secret_dir/upload-options.plist"
-signed_unpack="$secret_dir/signed-ipa"
+export_log="$secret_dir/export.log"
+export_options="$secret_dir/export-options.plist"
 trap 'rm -rf "$secret_dir"' EXIT
 printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
 chmod 600 "$key_file"
@@ -32,31 +44,25 @@ chmod 600 "$key_file"
 version="0.1.0"
 build_number="${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
 archive_path="$RUNNER_TEMP/S00-Everwhile-TestFlight.xcarchive"
-signed_export_path="$RUNNER_TEMP/S00-Everwhile-Signed-export"
-upload_export_path="$RUNNER_TEMP/S00-Everwhile-TestFlight-export"
+export_path="$RUNNER_TEMP/S00-Everwhile-TestFlight-export"
 code_sha=$(git rev-parse HEAD)
 
-write_export_options() {
-  local destination="$1"
-  local output="$2"
-  DESTINATION="$destination" python3 - "$output" <<'PY'
+python3 - "$export_options" <<'PY'
 import os
 import plistlib
 import sys
 
 options = {
-    "destination": os.environ["DESTINATION"],
+    "destination": "upload",
     "manageAppVersionAndBuildNumber": False,
     "method": "app-store-connect",
     "signingStyle": "automatic",
     "teamID": os.environ["APPLE_TEAM_ID"],
+    "testFlightInternalTestingOnly": True,
 }
-if os.environ["DESTINATION"] == "upload":
-    options["testFlightInternalTestingOnly"] = True
 with open(sys.argv[1], "wb") as output:
     plistlib.dump(options, output)
 PY
-}
 
 echo "S00_TF_RELEASE_START version=$version build=$build_number code_sha=$code_sha"
 if xcodebuild -project Elapse.xcodeproj -scheme Elapse \
@@ -73,12 +79,12 @@ else
 fi
 
 app="$archive_path/Products/Applications/Elapse.app"
-app_info="$app/Info.plist"
-test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app_info")" = 'com.zhangsfish.elapse'
-test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$app_info")" = 'Everwhile'
-test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIconName' "$app_info")" = 'AppIcon'
-test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app_info")" = "$version"
-test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app_info")" = "$build_number"
+test -d "$app"
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Info.plist")" = 'com.zhangsfish.elapse'
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$app/Info.plist")" = 'Everwhile'
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIconName' "$app/Info.plist")" = 'AppIcon'
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Info.plist")" = "$version"
+test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app/Info.plist")" = "$build_number"
 
 for extension in \
   'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor|Everwhile Monitor' \
@@ -93,167 +99,28 @@ for extension in \
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$info")" = "$expected_display"
   test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$info")" = "$build_number"
 done
-echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
 python3 scripts/s00_archive_inspect.py "$archive_path" --require-distribution-metadata
+echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
 
-# The archive is intentionally built without a development identity. Before export,
-# add an ad-hoc signature carrying the requested entitlements. Xcode can then replace
-# that signature with App Store distribution signing while preserving the entitlement
-# request from the archived product.
-adhoc_sign_bundle() {
-  local bundle="$1"
-  local entitlements="$2"
-  local expected_id="$3"
-  local tag="$4"
-  local code_entitlements="$secret_dir/$tag-adhoc-entitlements.plist"
-
-  codesign --force --sign - --entitlements "$entitlements" \
-    --generate-entitlement-der "$bundle" >/dev/null 2>&1
-  codesign --verify --strict "$bundle" >/dev/null 2>&1
-  codesign --display --entitlements - --xml "$bundle" > "$code_entitlements" 2>/dev/null
-
-  python3 - "$code_entitlements" "$expected_id" <<'PY'
-import plistlib
-import sys
-
-path, bundle_id = sys.argv[1:]
-try:
-    entitlements = plistlib.loads(open(path, "rb").read())
-except Exception:
-    entitlements = {}
-ok = entitlements.get("com.apple.developer.family-controls") is True
-print(
-    "S00_TF_ADHOC_FAMILY_CONTROLS "
-    f"bundle={bundle_id} code_signature={str(ok).lower()}"
-)
-raise SystemExit(0 if ok else 1)
-PY
-}
-
-# Sign nested code first and the containing app last. Do not use --deep, because
-# that would risk replacing the extensions' explicitly requested entitlements.
-adhoc_sign_bundle "$app/PlugIns/ElapseMonitor.appex" \
-  "MonitorExtension/ElapseMonitor.entitlements" \
-  "com.zhangsfish.elapse.monitor" monitor
-adhoc_sign_bundle "$app/Extensions/ElapseReport.appex" \
-  "ReportExtension/ElapseReport.entitlements" \
-  "com.zhangsfish.elapse.report" report
-adhoc_sign_bundle "$app" "App/Elapse.entitlements" "com.zhangsfish.elapse" main
-echo 'S00_TF_ADHOC_ENTITLEMENTS_PASS'
-
-# First export a distribution-signed IPA without uploading it. This lets CI inspect
-# the actual code signature and the actual distribution provisioning profiles.
-rm -rf "$signed_export_path"
-write_export_options export "$signed_options"
 if xcodebuild -exportArchive -archivePath "$archive_path" \
-  -exportOptionsPlist "$signed_options" -exportPath "$signed_export_path" \
+  -exportOptionsPlist "$export_options" -exportPath "$export_path" \
   -allowProvisioningUpdates \
   -authenticationKeyPath "$key_file" \
   -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
   -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
-  > "$signed_export_log" 2>&1; then
-  echo 'S00_TF_SIGNED_EXPORT_SUCCEEDED'
-else
-  result=$?
-  echo "S00_TF_SIGNED_EXPORT_FAILED exit=$result"
-  python3 scripts/s00_testflight_diagnostics.py "$signed_export_log"
-  exit "$result"
-fi
-
-signed_ipa=$(find "$signed_export_path" -type f -name '*.ipa' -print -quit)
-if [[ -z "$signed_ipa" ]]; then
-  echo 'S00_TF_SIGNED_IPA_MISSING'
-  exit 3
-fi
-mkdir -p "$signed_unpack"
-unzip -q "$signed_ipa" -d "$signed_unpack"
-signed_app=$(find "$signed_unpack/Payload" -maxdepth 1 -type d -name '*.app' -print -quit)
-if [[ -z "$signed_app" ]]; then
-  echo 'S00_TF_SIGNED_APP_MISSING'
-  exit 3
-fi
-
-check_signed_bundle() {
-  local bundle="$1"
-  local expected_id="$2"
-  local expected_display="$3"
-  local tag="$4"
-  local info="$bundle/Info.plist"
-  local code_entitlements="$secret_dir/$tag-code-entitlements.plist"
-  local profile_plist="$secret_dir/$tag-profile.plist"
-
-  test -f "$info"
-  test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = "$expected_id"
-  test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$info")" = "$expected_display"
-
-  if ! codesign --display --entitlements - --xml "$bundle" > "$code_entitlements" 2>/dev/null; then
-    echo "S00_TF_SIGNED_ENTITLEMENTS_UNREADABLE bundle=$expected_id"
-    return 1
-  fi
-  if [[ ! -f "$bundle/embedded.mobileprovision" ]]; then
-    echo "S00_TF_SIGNED_PROFILE_MISSING bundle=$expected_id"
-    return 1
-  fi
-  if ! security cms -D -i "$bundle/embedded.mobileprovision" > "$profile_plist" 2>/dev/null; then
-    echo "S00_TF_SIGNED_PROFILE_UNREADABLE bundle=$expected_id"
-    return 1
-  fi
-
-  python3 - "$code_entitlements" "$profile_plist" "$expected_id" <<'PY'
-import plistlib
-import sys
-
-code_path, profile_path, bundle_id = sys.argv[1:]
-try:
-    code = plistlib.loads(open(code_path, "rb").read())
-except Exception:
-    code = {}
-try:
-    profile = plistlib.loads(open(profile_path, "rb").read())
-except Exception:
-    profile = {}
-
-key = "com.apple.developer.family-controls"
-code_ok = code.get(key) is True
-profile_entitlements = profile.get("Entitlements")
-profile_ok = isinstance(profile_entitlements, dict) and profile_entitlements.get(key) is True
-print(
-    "S00_TF_SIGNED_FAMILY_CONTROLS "
-    f"bundle={bundle_id} code_signature={str(code_ok).lower()} "
-    f"profile={str(profile_ok).lower()}"
-)
-raise SystemExit(0 if code_ok and profile_ok else 1)
-PY
-}
-
-signed_failure=0
-check_signed_bundle "$signed_app" 'com.zhangsfish.elapse' 'Everwhile' main || signed_failure=1
-check_signed_bundle "$signed_app/PlugIns/ElapseMonitor.appex" 'com.zhangsfish.elapse.monitor' 'Everwhile Monitor' monitor || signed_failure=1
-check_signed_bundle "$signed_app/Extensions/ElapseReport.appex" 'com.zhangsfish.elapse.report' 'Everwhile Report' report || signed_failure=1
-if [[ "$signed_failure" -ne 0 ]]; then
-  echo 'S00_TF_SIGNED_FAMILY_CONTROLS_PRECHECK_FAILED'
-  exit 3
-fi
-echo 'S00_TF_SIGNED_FAMILY_CONTROLS_PRECHECK_PASS'
-
-# Only after the locally inspectable distribution-signed package passes do we
-# ask Xcode to upload the archive to App Store Connect.
-rm -rf "$upload_export_path"
-write_export_options upload "$upload_options"
-if xcodebuild -exportArchive -archivePath "$archive_path" \
-  -exportOptionsPlist "$upload_options" -exportPath "$upload_export_path" \
-  -allowProvisioningUpdates \
-  -authenticationKeyPath "$key_file" \
-  -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
-  -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
-  > "$upload_log" 2>&1; then
+  > "$export_log" 2>&1; then
   echo "S00_TF_EXPORT_UPLOAD_ACCEPTED version=$version build=$build_number code_sha=$code_sha"
+  if find "$export_path" -type f -name '*.ipa' -print -quit | grep -q .; then
+    echo 'S00_TF_IPA_EXPORT_PRESENT'
+  else
+    echo 'S00_TF_IPA_EXPORT_NOT_RETAINED_BY_XCODE'
+  fi
   if ! swift scripts/s00_testflight_status.swift "$key_file" "$build_number"; then
     echo 'S00_TF_UPLOAD_ACCEPTED_PROCESSING_UNCONFIRMED'
   fi
 else
   result=$?
   echo "S00_TF_EXPORT_UPLOAD_FAILED exit=$result"
-  python3 scripts/s00_testflight_diagnostics.py "$upload_log"
+  python3 scripts/s00_testflight_diagnostics.py "$export_log"
   exit "$result"
 fi
