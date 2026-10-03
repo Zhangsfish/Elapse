@@ -1,7 +1,7 @@
 {
   "task": "S00-B",
   "round": "01",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "base_main_sha": "00160c625b35dfc36f43b868137500ba3da35066",
   "branch": "codex/s00-b-first-real-pulse",
   "code_sha": "8b1672c5718292b6723fbff9d8afc7f577601d30",
@@ -11,17 +11,17 @@
   "build": "32.1",
   "checks": {
     "same_experiment_duplicate_dedup": "PASS_UNIT_TEST",
-    "same_day_new_experiment": "PASS_UNIT_TEST_DEVICE_NOT_RUN",
-    "stale_callback_isolation": "PASS_UNIT_TEST_DEVICE_NOT_RUN",
-    "selection_configuration_consistency": "PASS_SOURCE_AND_UNIT_TEST_DEVICE_NOT_RUN",
-    "callback_request_diagnostics": "PASS_SOURCE_DEVICE_NOT_RUN",
-    "neutral_time_copy": "PASS_SOURCE_DEVICE_NOT_RUN",
+    "same_day_new_experiment": "PASS_UNIT_TEST_AND_OWNER_REPORT_SCREENSHOT",
+    "stale_callback_isolation": "PASS_SOURCE_AND_UNIT_TEST_NO_STALE_DEVICE_CALLBACK_OBSERVED",
+    "selection_configuration_consistency": "PASS_SOURCE_UNIT_TEST_AND_OWNER_REPORT",
+    "callback_request_diagnostics": "PASS_OWNER_REPORT_AND_SCREENSHOT_BOTH_MEASURED_EXPERIMENTS",
+    "neutral_time_copy": "PASS_SOURCE_DEVICE_NOTIFICATION_TEXT_NOT_RECORDED",
     "ordinary_ci": "PASS_37128998592",
     "prepare_only": "PASS_UNSIGNED_STEPS_IN_UPLOAD_RUN_37128996204",
     "app_group_distribution_signature_and_profile": "PASS_SIGNED_ARTIFACT_37128996204",
     "testflight_processing": "PASS_VALID_37128996204",
     "internal_availability": "PASS_INTERNAL_GROUP_ASSIGNED_37128996204",
-    "device_shared_pool_a2_b3": "NOT_RUN",
-    "device_second_experiment_same_day": "NOT_RUN"
+    "device_shared_pool_a2_b3": "PASS_OWNER_REPORT_AND_SCREENSHOT_APPROX_5_MINUTES",
+    "device_second_experiment_same_day": "PASS_OWNER_REPORT_AND_SCREENSHOT"
   }
 }

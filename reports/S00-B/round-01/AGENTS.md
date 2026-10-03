@@ -7,4 +7,4 @@ This folder records the first real five-minute shared-pool experiment. Upstream 
 - `DEVICE_OBSERVATIONS.md`: owner iPhone observations in natural language; no unapproved screenshots.
 - `evidence/`: safe excerpts only, never keys, profiles, tokens or other App data.
 
-Canonical product/engineering facts remain in repository docs; this folder is task-specific evidence. Current device results are NOT_RUN. No S00-C/Today acceptance belongs here.
+Canonical product/engineering facts remain in repository docs; this folder is task-specific evidence. Owner-reported S00-B device observations are recorded in `DEVICE_OBSERVATIONS.md`; two screenshots were inspected but not published. No S00-C/Today acceptance belongs here. Current handoff is READY_FOR_AUDIT, not self-approved.
