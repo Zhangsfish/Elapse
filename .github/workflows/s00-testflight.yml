@@ -111,6 +111,7 @@ jobs:
           print("S00_TF_XCODEGEN_FAMILY_CONTROLS_ENTITLEMENTS_PASS")
           PY
           xcodebuild -help 2>&1 | grep -E 'app-store-connect|destination.*upload|testFlightInternalTestingOnly' || true
+          xcrun altool --help 2>&1 | grep -E -- 'upload-app|apiKey|apiIssuer' | head -n 12
           bash -n scripts/s00_testflight_release.sh
           swiftc -typecheck scripts/s00_testflight_status.swift
           icon='App/Assets.xcassets/AppIcon.appiconset/AppIcon.png'

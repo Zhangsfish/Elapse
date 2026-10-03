@@ -1,8 +1,11 @@
 """Inspect effective Release settings without exposing team or profile data."""
 
 import json
+from pathlib import Path
 import subprocess
 import sys
+
+from s00_entitlement_checks import EXPECTED_FILES, expected_path_status, file_status
 
 
 EXPECTED_BUNDLE_IDS = {
@@ -40,6 +43,7 @@ def known(value: str, allowed: set[str]) -> str:
     return value if value in allowed else "OTHER_SET"
 
 
+failed = False
 for target, expected_bundle_id in EXPECTED_BUNDLE_IDS.items():
     settings = targets.get(target)
     if not settings:
@@ -81,3 +85,14 @@ for target, expected_bundle_id in EXPECTED_BUNDLE_IDS.items():
         + "_CODE_SIGNING_ALLOWED="
         + known(settings.get("CODE_SIGNING_ALLOWED", "UNSET"), {"YES", "NO", "UNSET"})
     )
+    expected_file = EXPECTED_FILES[target]
+    path_status = expected_path_status(settings.get("CODE_SIGN_ENTITLEMENTS"), expected_file, Path.cwd())
+    print(prefix + "_CODE_SIGN_ENTITLEMENTS_PATH=" + path_status)
+    file_result = file_status(Path(expected_file))
+    print(prefix + "_GENERATED_FAMILY_CONTROLS=" + file_result)
+    if path_status != "EXPECTED" or file_result != "TRUE":
+        failed = True
+
+if failed:
+    sys.exit(1)
+print("S00_TF_EFFECTIVE_ENTITLEMENTS_PASS")
