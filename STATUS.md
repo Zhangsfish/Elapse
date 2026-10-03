@@ -6,7 +6,7 @@ Updated: 2026-10-03
 
 **S00-A COMPLETE — PASS_WITH_NOTES。S00-B COMPLETE — PASS_WITH_NOTES。S00-C WAITING_FOR_OWNER_TEST；S00-D 及之后阶段 LOCKED。**
 
-S00-C 实现分支：`codex/s00-c-continuous-pulses`，基于 `3fcaa287217399449b3dd2b10e6adba8280ebf2e`，PR #16。六档诊断、边界测试和内部 TestFlight `0.1.0 (38.1)` 已完成工程检查；该 build 的 Apple processing `VALID / INTERNAL_ONLY / IN_BETA_TESTING`，已分配内部组。**10–30 分钟真机序列仍 NOT_RUN，正在等待持有人安装和逐步反馈**。进展见 `reports/S00-C/round-01/`。
+S00-C 实现分支：`codex/s00-c-continuous-pulses`，基于 `3fcaa287217399449b3dd2b10e6adba8280ebf2e`，PR #16。六档诊断、边界测试和内部 TestFlight `0.1.0 (38.1)` 已完成工程检查；该 build 的 Apple processing `VALID / INTERNAL_ONLY / IN_BETA_TESTING`，已分配内部组。持有人已提供同一实验 5/10/15/20/25/30 六档 callback、accepted request 和可见通知证据，并报告已停止；**仅等待确认本实验是否两次切换所选 App，以及 Stop 后选择是否解锁**，不要求再跑 30 分钟。进展见 `reports/S00-C/round-01/`。
 
 S00-B PR #15 的精确 head `ee51be3d6e4b76246d5aecc85934c0e53fe33207` 已由云端独立审核并合并为 `0386ee9d35cf3046192a4b2f14d7f2243ebab08d`。审计见 [S00-B cloud audit](audits/S00/S00_B_AUDIT_2026-10-03.md)。
 

@@ -17,7 +17,16 @@
     "signed_ipa_entitlements": "PASS_37134139991",
     "testflight_processing": "PASS_VALID_37134139991",
     "internal_availability": "PASS_INTERNAL_GROUP_ASSIGNED_37134139991",
-    "device_continuous_sequence": "NOT_RUN",
-    "device_stop_and_selection_unlock": "NOT_RUN"
+    "device_threshold_5_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_threshold_10_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_threshold_15_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_threshold_20_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_threshold_25_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_threshold_30_callback_request_visible": "PASS_OWNER_PASTED_DIAGNOSTIC_REPORT_SCREENSHOT",
+    "device_registration_copy_after_callback": "PASS_OWNER_SCREENSHOT",
+    "device_two_selected_app_switches": "NOT_CONFIRMED_OWNER_REPORT",
+    "device_stop": "PASS_OWNER_REPORT_NO_POST_STOP_DIAGNOSTIC",
+    "device_selection_unlock": "NOT_CONFIRMED_OWNER_REPORT",
+    "device_continuous_sequence": "PARTIAL_PASS_SIX_THRESHOLDS_SWITCHING_PENDING"
   }
 }
