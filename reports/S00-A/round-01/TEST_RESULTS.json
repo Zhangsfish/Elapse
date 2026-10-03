@@ -28,7 +28,7 @@
     "internal_testflight_group": "PASS",
     "device_build_installed": "PASS",
     "device_authorization": "PASS",
-    "two_app_selection": "HOLD_5_SELECTED",
+    "two_app_selection": "PASS_OWNER_REPORTED_TWO_SELECTED",
     "selection_restart_persistence": "NOT_RUN",
     "notification_permission_and_alerts": "PASS",
     "ordinary_notification_request": "PASS_REQUEST_ONLY",
@@ -40,7 +40,7 @@
   "device_observation": {
     "source": "owner_report_and_screenshots_in_codex_chat_not_committed",
     "observed_version": "0.1.0 (27.1)",
-    "selected_application_count": 5,
+    "selected_application_count": 2,
     "selected_category_count": 0,
     "selected_web_domain_count": 0,
     "monitor_registration": "REGISTERED_NOT_VERIFIED",
