@@ -1,6 +1,6 @@
 # S00-C device observations — round 01
 
-Status: NOT_RUN. Await exact internal TestFlight build and owner installation before starting one continuous experiment. No 10/15/20/25/30 callback, request or visible pulse has been observed for this branch. No private screenshots have been copied into the public repository.
+Status: WAITING_FOR_OWNER_TEST. Exact internally available TestFlight build: Everwhile `0.1.0 (38.1)`. Await owner installation before starting one continuous experiment. No 10/15/20/25/30 callback, request or visible pulse has been observed for this branch. No private screenshots have been copied into the public repository.
 
 | Threshold | Callback | Request | Visible pulse | Approximate delay |
 |---|---|---|---|---|
