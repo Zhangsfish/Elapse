@@ -1,0 +1,108 @@
+name: S00 ad-hoc entitlement upload probe
+
+on:
+  push:
+    branches: [diag/s00-adhoc-upload-probe]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install verified XcodeGen
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip \
+            --output "$RUNNER_TEMP/xcodegen.zip"
+          echo "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 --check
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen-release"
+          tool=$(find "$RUNNER_TEMP/xcodegen-release" -type f -name xcodegen -print -quit)
+          chmod +x "$tool"
+          echo "$(dirname "$tool")" >> "$GITHUB_PATH"
+
+      - name: Generate project
+        run: xcodegen generate --spec project.yml
+
+      - name: Upload ad-hoc-entitled archive through App Store export
+        env:
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          set +x
+          secret_dir=$(mktemp -d "$RUNNER_TEMP/s00-adhoc-upload.XXXXXX")
+          trap 'rm -rf "$secret_dir"' EXIT
+          key_file="$secret_dir/AuthKey.p8"
+          export_options="$secret_dir/export-options.plist"
+          archive_log="$secret_dir/archive.log"
+          export_log="$secret_dir/export.log"
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$key_file"
+          chmod 600 "$key_file"
+
+          build_number="90.${GITHUB_RUN_NUMBER}"
+          archive="$RUNNER_TEMP/S00AdhocUpload.xcarchive"
+          export_path="$RUNNER_TEMP/S00AdhocUploadExport"
+
+          xcodebuild -project Elapse.xcodeproj -scheme Elapse \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$archive" \
+            -derivedDataPath "$RUNNER_TEMP/S00AdhocUploadDerivedData" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CURRENT_PROJECT_VERSION="$build_number" archive > "$archive_log" 2>&1
+
+          app="$archive/Products/Applications/Elapse.app"
+          test -d "$app"
+          python3 -c 'import plistlib; assert plistlib.load(open("App/Elapse.entitlements","rb"))["com.apple.developer.family-controls"] is True'
+          python3 -c 'import plistlib; assert plistlib.load(open("MonitorExtension/ElapseMonitor.entitlements","rb"))["com.apple.developer.family-controls"] is True'
+          python3 -c 'import plistlib; assert plistlib.load(open("ReportExtension/ElapseReport.entitlements","rb"))["com.apple.developer.family-controls"] is True'
+
+          codesign --force --sign - --entitlements MonitorExtension/ElapseMonitor.entitlements \
+            --generate-entitlement-der "$app/PlugIns/ElapseMonitor.appex"
+          codesign --verify --strict "$app/PlugIns/ElapseMonitor.appex"
+
+          codesign --force --sign - --entitlements ReportExtension/ElapseReport.entitlements \
+            --generate-entitlement-der "$app/Extensions/ElapseReport.appex"
+          codesign --verify --strict "$app/Extensions/ElapseReport.appex"
+
+          codesign --force --sign - --entitlements App/Elapse.entitlements \
+            --generate-entitlement-der "$app"
+          codesign --verify --deep --strict "$app"
+          echo "S00_ADHOC_ARCHIVE_SIGNED_WITH_REQUESTED_ENTITLEMENTS"
+
+          python3 - "$export_options" <<'PY'
+          import os, plistlib, sys
+          plistlib.dump({
+              "destination": "upload",
+              "manageAppVersionAndBuildNumber": False,
+              "method": "app-store-connect",
+              "signingStyle": "automatic",
+              "teamID": os.environ["APPLE_TEAM_ID"],
+              "testFlightInternalTestingOnly": True,
+          }, open(sys.argv[1], "wb"))
+          PY
+
+          if xcodebuild -exportArchive -archivePath "$archive" \
+            -exportOptionsPlist "$export_options" -exportPath "$export_path" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$key_file" \
+            -authenticationKeyID "$APP_STORE_CONNECT_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+            > "$export_log" 2>&1; then
+            echo "S00_ADHOC_EXPORT_UPLOAD_ACCEPTED build=$build_number"
+            swift scripts/s00_testflight_status.swift "$key_file" "$build_number" || true
+          else
+            result=$?
+            echo "S00_ADHOC_EXPORT_UPLOAD_FAILED exit=$result"
+            python3 scripts/s00_testflight_diagnostics.py "$export_log"
+            exit "$result"
+          fi
