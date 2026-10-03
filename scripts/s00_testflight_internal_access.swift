@@ -76,6 +76,14 @@ struct API {
         }
         return items
     }
+
+    func getItem(_ path: String, query: [URLQueryItem] = []) throws -> [String: Any] {
+        let (_, json) = try request("GET", path, query: query, expected: [200])
+        guard let item = json?["data"] as? [String: Any] else {
+            throw ASCError(message: "bad_json_\(path)")
+        }
+        return item
+    }
 }
 
 func id(_ item: [String: Any]) throws -> String {
@@ -131,6 +139,45 @@ func betaGroupIDsForBuild(_ api: API, buildID: String) throws -> Set<String> {
     Set(try api.getItems("builds/\(buildID)/relationships/betaGroups", query: [
         URLQueryItem(name: "limit", value: "200"),
     ]).compactMap { $0["id"] as? String })
+}
+
+func ensureInternalTesterCanSeeApp(_ api: API, testerID: String, appID: String) throws {
+    let tester = try api.getItem("betaTesters/\(testerID)", query: [
+        URLQueryItem(name: "fields[betaTesters]", value: "email"),
+    ])
+    guard let testerAttrs = tester["attributes"] as? [String: Any],
+          let email = testerAttrs["email"] as? String,
+          !email.isEmpty else {
+        throw ASCError(message: "internal_tester_email_unavailable")
+    }
+
+    let users = try api.getItems("users", query: [
+        URLQueryItem(name: "filter[username]", value: email),
+        URLQueryItem(name: "fields[users]", value: "username,roles,allAppsVisible"),
+        URLQueryItem(name: "limit", value: "2"),
+    ])
+    guard users.count == 1 else {
+        throw ASCError(message: "internal_tester_appstore_user_missing")
+    }
+    let user = users[0]
+    let userID = try id(user)
+    let attrs = user["attributes"] as? [String: Any] ?? [:]
+    if attrs["allAppsVisible"] as? Bool == true {
+        return
+    }
+
+    let visible = Set(try api.getItems("users/\(userID)/relationships/visibleApps", query: [
+        URLQueryItem(name: "limit", value: "200"),
+    ]).compactMap { $0["id"] as? String })
+    if visible.contains(appID) {
+        return
+    }
+
+    let body: [String: Any] = [
+        "data": [["type": "apps", "id": appID]]
+    ]
+    _ = try api.request("POST", "users/\(userID)/relationships/visibleApps", body: body, expected: [204])
+    print("S00_TF_INTERNAL_USER_APP_ACCESS_ADDED")
 }
 
 let args = CommandLine.arguments
@@ -210,13 +257,17 @@ do {
 
     let existing = try testerIDs(api, groupID: targetGroupID)
     let missing = sourceTesterIDs.subtracting(existing)
-    if !missing.isEmpty {
+    var added = 0
+    for testerID in missing.sorted() {
+        try ensureInternalTesterCanSeeApp(api, testerID: testerID, appID: everwhileApp)
+        Thread.sleep(forTimeInterval: 2)
         let body: [String: Any] = [
-            "data": missing.sorted().map { ["type": "betaTesters", "id": $0] }
+            "data": [["type": "betaTesters", "id": testerID]]
         ]
         _ = try api.request("POST", "betaGroups/\(targetGroupID)/relationships/betaTesters", body: body, expected: [204])
+        added += 1
     }
-    print("S00_TF_INTERNAL_TESTERS_READY total=\(sourceTesterIDs.count) newly_added=\(missing.count)")
+    print("S00_TF_INTERNAL_TESTERS_READY total=\(sourceTesterIDs.count) newly_added=\(added)")
 
     let build = try buildID(api, appID: everwhileApp, buildNumber: buildNumber)
     let linkedGroups = try betaGroupIDsForBuild(api, buildID: build)
