@@ -129,6 +129,26 @@ func testerIDs(_ api: API, groupID: String) throws -> Set<String> {
     ]).compactMap { $0["id"] as? String })
 }
 
+func testerEmail(_ api: API, testerID: String) throws -> String {
+    let tester = try api.getItem("betaTesters/\(testerID)", query: [
+        URLQueryItem(name: "fields[betaTesters]", value: "email,state,inviteType"),
+    ])
+    guard let attrs = tester["attributes"] as? [String: Any],
+          let email = attrs["email"] as? String,
+          !email.isEmpty else {
+        throw ASCError(message: "tester_email_unavailable")
+    }
+    return email
+}
+
+func testerEmails(_ api: API, groupID: String) throws -> Set<String> {
+    var result = Set<String>()
+    for testerID in try testerIDs(api, groupID: groupID) {
+        result.insert(try testerEmail(api, testerID: testerID))
+    }
+    return result
+}
+
 func buildID(_ api: API, appID: String, buildNumber: String) throws -> String {
     let items = try api.getItems("builds", query: [
         URLQueryItem(name: "filter[app]", value: appID),
@@ -216,14 +236,14 @@ do {
         throw ASCError(message: "lecture_internal_group_missing")
     }
 
-    var sourceTesterIDs = Set<String>()
+    var sourceTesterEmails = Set<String>()
     for group in lectureInternal {
-        sourceTesterIDs.formUnion(try testerIDs(api, groupID: try id(group)))
+        sourceTesterEmails.formUnion(try testerEmails(api, groupID: try id(group)))
     }
-    guard !sourceTesterIDs.isEmpty else {
+    guard !sourceTesterEmails.isEmpty else {
         throw ASCError(message: "lecture_internal_testers_missing")
     }
-    print("S00_TF_SOURCE_INTERNAL_TESTERS count=\(sourceTesterIDs.count)")
+    print("S00_TF_SOURCE_INTERNAL_TESTERS count=\(sourceTesterEmails.count)")
 
     var everInternal = internalGroups(try groups(api, appID: everwhileApp))
     let targetGroupID: String
@@ -268,11 +288,20 @@ do {
         everInternal = [data]
     }
 
-    let existing = try testerIDs(api, groupID: targetGroupID)
-    let missing = sourceTesterIDs.subtracting(existing)
+    var targetEmails = try testerEmails(api, groupID: targetGroupID)
+    let missingEmails = sourceTesterEmails.subtracting(targetEmails)
     var added = 0
-    for testerID in missing.sorted() {
-        let email = try internalTesterEmailWithAppAccess(api, testerID: testerID, appID: everwhileApp)
+    for email in missingEmails.sorted() {
+        // Resolve the existing Lecture Asset tester to the App Store Connect user
+        // without logging the email, and ensure the user can see Everwhile.
+        let sourceIDs = sourceTesterEmails.contains(email)
+            ? lectureInternal.flatMap { (try? testerIDs(api, groupID: try id($0))) ?? [] }
+            : []
+        guard let sourceID = sourceIDs.first(where: { (try? testerEmail(api, testerID: $0)) == email }) else {
+            throw ASCError(message: "source_tester_resolution_failed")
+        }
+        _ = try internalTesterEmailWithAppAccess(api, testerID: sourceID, appID: everwhileApp)
+
         let body: [String: Any] = [
             "data": [
                 "type": "betaTesters",
@@ -287,18 +316,30 @@ do {
         _ = try api.request("POST", "betaTesters", body: body, expected: [201])
         added += 1
     }
-    print("S00_TF_INTERNAL_TESTERS_READY total=\(sourceTesterIDs.count) newly_added=\(added)")
+
+    targetEmails = try testerEmails(api, groupID: targetGroupID)
+    guard sourceTesterEmails.isSubset(of: targetEmails) else {
+        throw ASCError(message: "internal_tester_membership_not_confirmed")
+    }
+    print("S00_TF_INTERNAL_TESTERS_READY total=\(sourceTesterEmails.count) newly_added=\(added)")
 
     let build = try buildID(api, appID: everwhileApp, buildNumber: buildNumber)
-    let linkedGroups = try betaGroupIDsForBuild(api, buildID: build)
-    if !linkedGroups.contains(targetGroupID) {
-        let body: [String: Any] = [
-            "data": [["type": "betaGroups", "id": targetGroupID]]
-        ]
-        _ = try api.request("POST", "builds/\(build)/relationships/betaGroups", body: body, expected: [204])
-        print("S00_TF_BUILD_ADDED_TO_INTERNAL_GROUP build=\(buildNumber)")
+    let targetGroup = everInternal.first ?? [:]
+    let targetAttrs = targetGroup["attributes"] as? [String: Any] ?? [:]
+    let auto = targetAttrs["hasAccessToAllBuilds"] as? Bool == true
+    if auto {
+        print("S00_TF_INTERNAL_AUTO_DISTRIBUTION_READY build=\(buildNumber)")
     } else {
-        print("S00_TF_BUILD_ALREADY_IN_INTERNAL_GROUP build=\(buildNumber)")
+        let linkedGroups = try betaGroupIDsForBuild(api, buildID: build)
+        if !linkedGroups.contains(targetGroupID) {
+            let body: [String: Any] = [
+                "data": [["type": "betaGroups", "id": targetGroupID]]
+            ]
+            _ = try api.request("POST", "builds/\(build)/relationships/betaGroups", body: body, expected: [204])
+            print("S00_TF_BUILD_ADDED_TO_INTERNAL_GROUP build=\(buildNumber)")
+        } else {
+            print("S00_TF_BUILD_ALREADY_IN_INTERNAL_GROUP build=\(buildNumber)")
+        }
     }
 
     print("S00_TF_INTERNAL_ACCESS_READY build=\(buildNumber)")
