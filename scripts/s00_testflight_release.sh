@@ -96,6 +96,51 @@ done
 echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
 python3 scripts/s00_archive_inspect.py "$archive_path" --require-distribution-metadata
 
+# The archive is intentionally built without a development identity. Before export,
+# add an ad-hoc signature carrying the requested entitlements. Xcode can then replace
+# that signature with App Store distribution signing while preserving the entitlement
+# request from the archived product.
+adhoc_sign_bundle() {
+  local bundle="$1"
+  local entitlements="$2"
+  local expected_id="$3"
+  local tag="$4"
+  local code_entitlements="$secret_dir/$tag-adhoc-entitlements.plist"
+
+  codesign --force --sign - --entitlements "$entitlements" \
+    --generate-entitlement-der "$bundle" >/dev/null 2>&1
+  codesign --verify --strict "$bundle" >/dev/null 2>&1
+  codesign -d --entitlements :- "$bundle" > "$code_entitlements" 2>/dev/null
+
+  python3 - "$code_entitlements" "$expected_id" <<'PY'
+import plistlib
+import sys
+
+path, bundle_id = sys.argv[1:]
+try:
+    entitlements = plistlib.loads(open(path, "rb").read())
+except Exception:
+    entitlements = {}
+ok = entitlements.get("com.apple.developer.family-controls") is True
+print(
+    "S00_TF_ADHOC_FAMILY_CONTROLS "
+    f"bundle={bundle_id} code_signature={str(ok).lower()}"
+)
+raise SystemExit(0 if ok else 1)
+PY
+}
+
+# Sign nested code first and the containing app last. Do not use --deep, because
+# that would risk replacing the extensions' explicitly requested entitlements.
+adhoc_sign_bundle "$app/PlugIns/ElapseMonitor.appex" \
+  "MonitorExtension/ElapseMonitor.entitlements" \
+  "com.zhangsfish.elapse.monitor" monitor
+adhoc_sign_bundle "$app/Extensions/ElapseReport.appex" \
+  "ReportExtension/ElapseReport.entitlements" \
+  "com.zhangsfish.elapse.report" report
+adhoc_sign_bundle "$app" "App/Elapse.entitlements" "com.zhangsfish.elapse" main
+echo 'S00_TF_ADHOC_ENTITLEMENTS_PASS'
+
 # First export a distribution-signed IPA without uploading it. This lets CI inspect
 # the actual code signature and the actual distribution provisioning profiles.
 rm -rf "$signed_export_path"
