@@ -57,4 +57,26 @@ final class PulsePlanTests: XCTestCase {
             )
         )
     }
+
+    func testSelectionFeedbackDistinguishesSaveFailureAndCategoryOnly() {
+        XCTAssertEqual(
+            FoundationFeedback.selectionMessage(applicationCount: 2, otherCount: 0, saved: true),
+            "已保存 2 个 App；重启后请核对数量。"
+        )
+        XCTAssertEqual(
+            FoundationFeedback.selectionMessage(applicationCount: 0, otherCount: 1, saved: true),
+            "已保存选择，但本轮仅测试 App；请至少选一个应用，而不只是类别或网站。"
+        )
+        XCTAssertEqual(
+            FoundationFeedback.selectionMessage(applicationCount: 2, otherCount: 0, saved: false),
+            "选择未保存；请重试，重启后可能无法保留。"
+        )
+    }
+
+    func testSafeErrorCodeNeverIncludesLocalizedDescription() {
+        let error = NSError(domain: "Private Account Detail", code: 37, userInfo: [
+            NSLocalizedDescriptionKey: "Do not display this text",
+        ])
+        XCTAssertEqual(FoundationFeedback.safeErrorCode(error), "37")
+    }
 }

@@ -1,31 +1,49 @@
 import DeviceActivity
 import FamilyControls
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     @EnvironmentObject private var model: ElapseModel
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.openURL) private var openURL
     @State private var pickerPresented = false
 
     var body: some View {
         NavigationStack {
             Form {
-                Section("Authorization") {
-                    LabeledContent("Screen Time", value: model.authorizationDescription)
-                    Button("Request individual authorization") {
+                Section("权限状态") {
+                    LabeledContent("屏幕使用时间", value: model.authorizationDescription)
+                    Button("请求屏幕使用时间授权") {
                         Task { await model.requestFamilyAuthorization() }
                     }
+                    if model.isFamilyAuthorizationDenied,
+                       let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                        Button("打开 Everwhile 设置") {
+                            openURL(settingsURL)
+                        }
+                    }
 
-                    LabeledContent("Notifications", value: model.notificationDescription)
-                    Button("Request notification permission") {
+                    LabeledContent("通知", value: model.notificationDescription)
+                    LabeledContent("提醒显示", value: model.notificationAlertDescription)
+                    Button("请求通知权限") {
                         Task { await model.requestNotificationAuthorization() }
                     }
                 }
 
-                Section("Selected applications") {
-                    LabeledContent("Count", value: "\(model.selection.applicationTokens.count)")
-                    Button("Choose applications") {
+                Section("所选 App") {
+                    LabeledContent("App 数量", value: "\(model.selection.applicationTokens.count)")
+                    Button("选择 App") {
                         pickerPresented = true
+                    }
+                    .disabled(!model.hasFamilyAuthorization)
+                }
+
+                Section("S00-A 普通通知自检") {
+                    Text("测试，不计使用时间。仅验证普通本地通知；不证明 Screen Time 阈值链路。")
+                        .font(.footnote)
+                    Button("发送普通测试通知") {
+                        Task { await model.sendOrdinaryTestNotification() }
                     }
                 }
 
@@ -38,7 +56,7 @@ struct ContentView: View {
                     Button("Start monitoring") {
                         model.startMonitoring()
                     }
-                    .disabled(model.selection.applicationTokens.isEmpty || model.isMonitoring)
+                    .disabled(!model.hasFamilyAuthorization || model.selection.applicationTokens.isEmpty || model.isMonitoring)
                     Button("Stop monitoring", role: .destructive) {
                         model.stopMonitoring()
                     }
@@ -56,9 +74,19 @@ struct ContentView: View {
                 }
 
                 if let message = model.statusMessage {
-                    Section("Diagnostic") {
+                    Section("操作结果") {
                         Text(message)
                             .textSelection(.enabled)
+                    }
+                }
+
+                Section("S00-A 脱敏诊断") {
+                    LabeledContent("版本", value: model.versionDescription)
+                    Text(model.diagnosticSummary)
+                        .font(.footnote.monospaced())
+                        .textSelection(.enabled)
+                    Button("复制脱敏诊断") {
+                        UIPasteboard.general.string = model.diagnosticSummary
                     }
                 }
             }
