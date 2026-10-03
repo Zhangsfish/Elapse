@@ -103,7 +103,8 @@ for extension in \
 done
 python3 scripts/s00_archive_inspect.py "$archive_path" --require-distribution-metadata
 python3 scripts/s00_archive_entitlements.py "$archive_path"
-echo 'S00_TF_UNSIGNED_ARCHIVE_METADATA_VERIFIED'
+python3 scripts/s00_intermediate_sign.py "$archive_path"
+echo 'S00_TF_ARCHIVE_METADATA_VERIFIED'
 
 if xcodebuild -exportArchive -archivePath "$archive_path" \
   -exportOptionsPlist "$export_options" -exportPath "$export_path" \
