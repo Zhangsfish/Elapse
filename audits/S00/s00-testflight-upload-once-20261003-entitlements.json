@@ -1,0 +1,6 @@
+{
+  "operation": "s00-testflight-upload-once",
+  "trigger_id": "everwhile-s00-signed-entitlements-20261003",
+  "source_baseline": "05cba92cf24932e9e1d91870afd3000b2edfc2a5",
+  "version": "0.1.0"
+}
