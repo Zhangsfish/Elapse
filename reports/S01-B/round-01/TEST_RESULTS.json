@@ -1,0 +1,23 @@
+{
+  "stage": "S01-B",
+  "round": 1,
+  "state": "READY_FOR_AUDIT",
+  "pull_request": "https://github.com/Zhangsfish/Elapse/pull/19",
+  "base_main_sha": "07b889afe456aa408104b3643b2c8281d3cf99a1",
+  "branch": "codex/s01-b-daily-lifecycle",
+  "code_sha": "2479f48efa62d26ca0d2972aaa56af7b96540766",
+  "tested_sha": "34f95996c1c89667a40612edf41620ef5604d57e",
+  "upload_sha": "34f95996c1c89667a40612edf41620ef5604d57e",
+  "version": "0.1.0",
+  "build": "47.1",
+  "ordinary_ci": "PASS: https://github.com/Zhangsfish/Elapse/actions/runs/37220713643",
+  "prepare_only": "PASS: https://github.com/Zhangsfish/Elapse/actions/runs/37220897989",
+  "signed_ipa": "PASS: https://github.com/Zhangsfish/Elapse/actions/runs/37221126361",
+  "app_store_processing": "VALID; INTERNAL_ONLY; IN_BETA_TESTING; internal group assigned",
+  "device_initial_recurring_299_events_and_anchor": "PASS_SCREENSHOT_OBSERVED: config 2f1a4c52; 5m; ON; 299/299; repeats YES; active generation 1; anchor 2026-10-05 02:25:58 phone local; error none",
+  "device_app_reopen_same_config": "PASS_OWNER_REPORT_WITH_SCREENSHOT_STATE: config 2f1a4c52 unchanged at 02:27 and 02:28; generation 1",
+  "device_reboot_reconcile": "PASS_OWNER_REPORT_WITH_SCREENSHOT_STATE: whole iPhone reboot explicitly confirmed; same config 2f1a4c52 and 299/299 visible afterward; no new recovery reason",
+  "device_stop_no_resurrection": "PASS_OWNER_REPORT: Stop then App reopen desired OFF and 2 selected Apps explicitly confirmed; no final OFF screenshot",
+  "real_midnight_rollover": "NOT_RUN_OUT_OF_SCOPE",
+  "real_authorization_revoke_regrant": "NOT_RUN_OUT_OF_SCOPE"
+}

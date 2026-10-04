@@ -4,7 +4,9 @@ Updated: 2026-10-04
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01-A COMPLETE — PASS_WITH_NOTES。S01-B READY；S01-C / S02 / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01-A COMPLETE — PASS_WITH_NOTES。S01-B READY_FOR_AUDIT；S01-C / S02 / S03 LOCKED。**
+
+Codex 在 [PR #19](https://github.com/Zhangsfish/Elapse/pull/19) 提交 S01-B 待云端独立审核。`0.1.0 (47.1)` 已完成普通 CI、prepare-only、签名 IPA 审计、Apple processing VALID 与内部组分配。持有人报告已完成短时真机 Start、App 重开、整机重启、Stop 后重开；截图直接显示同一配置 `2f1a4c52`、5m、299/299、daily YES、active interval generation 1 / anchor。整机重启动作和最终 OFF / 两个所选 App 是持有人明确口述确认，非截图独立证明。证据见 `reports/S01-B/round-01/`。未获云端审核前不得标记 PASS 或解锁 S01-C。
 
 S01-A PR #18 exact head `e7adced2834d3a4831d9b24ff6ae7dc421df68b5` 已由云端审核并合并为 `4fbb88be370e1481ec644a5cfbf7823680f0504e`。审计见 [S01-A cloud audit](audits/S01/S01_A_AUDIT_2026-10-04.md)。
 
@@ -42,7 +44,7 @@ S01-A 只证明大 event ladder 能登记，不证明全天所有 callback 或�
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S01-A | COMPLETE — PASS_WITH_NOTES | full-range interval plan + 299-event registration feasibility |
-| S01-B | **READY** | repeating daily schedule、lifecycle generation、reboot/reconcile recovery |
+| S01-B | **READY_FOR_AUDIT** | repeating daily schedule、lifecycle generation、reboot/reconcile recovery |
 | S01-C | LOCKED | 真实午夜 rollover、permission revoke/regrant、timezone/DST 边界 |
 | S02 | LOCKED | production UI / Today 可视化研究与体验 |
 | S03 | LOCKED | public distribution |
