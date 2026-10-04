@@ -1,6 +1,0 @@
-{
-  "operation": "s01a-testflight-upload-once",
-  "trigger_id": "everwhile-s01a-day-range-interval-upload-20261004",
-  "source_code_sha": "ca68109b2ae96dbcd142f68810c98c1cad6790d6",
-  "version": "0.1.0"
-}

@@ -6,7 +6,7 @@ Updated: 2026-10-04
 
 **S00 FUNCTIONAL ACCEPTANCE COMPLETE — PASS_WITH_NOTES。S01-A IN_PROGRESS；S01-B / S01-C / S02 / S03 LOCKED。**
 
-S01-A 由 Codex 在 `codex/s01-a-day-range-interval` 实施；当前代码/CI/真机登记证据以 `reports/S01-A/round-01/` 为准。未完成设备验收前不得标记 PASS 或解锁 S01-B。
+S01-A 由 Codex 在 `codex/s01-a-day-range-interval` 实施；当前状态 **WAITING_FOR_OWNER_TEST**。`0.1.0 (44.1)` 已完成内部 TestFlight 上传与 processing `VALID`，但 299-event 真机登记尚未测试。代码/CI/真机证据以 `reports/S01-A/round-01/` 为准。不得标记 PASS 或解锁 S01-B。
 
 S00-D PR #17 的精确 head `ebaf1c7a23a9f93856428e4df5b6dba71020bf39` 已由云端独立审核并合并为 `3771b556334a5dc1b15e42287183bc9e8f1bef95`。审计见 [S00-D cloud audit](audits/S00/S00_D_AUDIT_2026-10-04.md)。
 
@@ -41,7 +41,7 @@ Apple 当前公开文档给出 activity 同时监控上限 20，但未公开每 
 
 | 子阶段 | 状态 | 目的 |
 |---|---|---|
-| S01-A | **IN_PROGRESS** | 日内全天 threshold plan、interval 配置、大 event ladder 注册可行性 |
+| S01-A | **WAITING_FOR_OWNER_TEST** | build 44.1 已进入内部 TestFlight，等待短时真机 registration/config 验收 |
 | S01-B | LOCKED | 自动跨日 / config change / app & device restart / permission recovery |
 | S01-C | LOCKED | 自然日 rollover、timezone/DST 与持续使用验收 |
 
