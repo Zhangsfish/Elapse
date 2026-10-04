@@ -1,8 +1,13 @@
-# S01-B device observations — NOT RUN
+# S01-B device observations — owner round 01
 
-Exact new build installed on target iPhone: NOT RUN.
+Target iPhone: owner states Everwhile `0.1.0 (47.1)` installed, then reports “都没问题，实际结果见截图” in response to the complete short lifecycle checklist. Six screenshots were inspected in this chat; **the image files are not committed or publicly uploaded**. Evidence below is a safe transcription, not a claim that a screenshot proves a phone reboot or a later Stop.
 
-Planned short path only: start with two selected Apps and 5m interval; verify desired=ON, recurring=YES, 299/299 and interval generation/anchor; close/reopen same config; reboot iPhone once; observe either same complete registration or a new recovered config/reason; Stop and verify desired=OFF, selection/interval retained; reopen and ensure no self-resurrection. No pulse wait, midnight wait, permission revocation, or Today retest.
+| Check | Evidence | Classification |
+|---|---|---|
+| Initial Start / recurring registration | At phone-local 02:26, short config `2f1a4c52`, desired ON, registration interval 5m, planned/system-registered 299/299, recurring YES, registration error none. | SCREENSHOT_OBSERVED |
+| Actual interval start | Current interval `active`, generation 1, anchor and last start `2026-10-05 02:25:58` phone-local; last end not received. | SCREENSHOT_OBSERVED — current interval start evidence, not usage-threshold proof |
+| Reopen persistence | At 02:27 and 02:28, screenshots still show `2f1a4c52`, ON, 299/299, recurring YES; generation remains 1 in the displayed section. | SCREENSHOT_OBSERVED for state persistence; exact close/reopen action OWNER_REPORT |
+| One iPhone reboot | Owner's “all fine” refers to the prior checklist; screenshots alone do not prove the device power-cycle action. Same ID `2f1a4c52` and registration remained in subsequent screenshots, with no observed new recovery reason. | OWNER_REPORT_PENDING_EXPLICIT_CONFIRMATION |
+| Stop + reopen, no auto-resurrection, 2 selected Apps retained | Owner's “all fine” refers to the prior checklist. The six supplied screenshots show monitoring ON and do not display the final OFF state or selected-App count. | OWNER_REPORT_PENDING_EXPLICIT_CONFIRMATION |
 
-Owner's verbatim observations: NOT RUN.
-Codex interpretation: NOT RUN.
+Additional safe diagnostic observations: recovery count 1 and latest recovery reason “无”; the count is cumulative across configurations, so this does **not** establish a recovery during the 47.1 test. Unanchored callback rejection count 2, premature count 0, accepted callback/request count 0 in the screenshot; the rejection counter is also cumulative, and no visible pulse was tested or claimed. A brief clarification for reboot and final OFF state has been requested. No waiting for a five-minute pulse, midnight, permission revocation or Today retest is needed.

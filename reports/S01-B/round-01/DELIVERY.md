@@ -26,10 +26,11 @@ PR: https://github.com/Zhangsfish/Elapse/pull/19 (open; Codex does not merge).
 | Secret-free ordinary CI | PASS — [code run 37220713643](https://github.com/Zhangsfish/Elapse/actions/runs/37220713643), [prepare marker run 37220901488](https://github.com/Zhangsfish/Elapse/actions/runs/37220901488), [upload SHA run 37221128832](https://github.com/Zhangsfish/Elapse/actions/runs/37221128832) |
 | Prepare-only archive | PASS — [run 37220897989](https://github.com/Zhangsfish/Elapse/actions/runs/37220897989); upload step skipped |
 | Signed IPA / internal TestFlight | PASS — [run 37221126361](https://github.com/Zhangsfish/Elapse/actions/runs/37221126361); signed app+extensions claims/profile allowance valid, upload accepted, processing VALID, internal-only group assigned |
-| Target iPhone 299/299 + lifecycle anchor | NOT RUN |
-| App reopen / one iPhone reboot / Stop no resurrection | NOT RUN |
+| Target iPhone 299/299 + lifecycle anchor | PASS — owner-supplied screenshots, config `2f1a4c52`, recurring YES, active generation 1 / 02:25:58 local anchor, no registration error |
+| App reopen | PASS_OWNER_REPORT_WITH_SCREENSHOT_STATE — same config and generation visible at 02:27–02:28 |
+| One iPhone reboot / Stop no resurrection | OWNER_REPORT_PENDING_EXPLICIT_CONFIRMATION — owner says all checks fine; screenshots do not show the reboot action or final OFF state |
 | True midnight rollover and revoke/regrant on device | NOT_RUN_OUT_OF_SCOPE — S01-C |
 
 The preimplementation 44.1 midnight observation is historical evidence, not an S01-B recurring-schedule result. The current Apple API distinctions are recorded in `docs/APPLE_PLATFORM_NOTES.md`.
 
-The target iPhone has not yet established a new 47.1 interval generation/anchor, reopen behavior, reboot reconciliation, or Stop/no-resurrection. These stay NOT RUN until the owner reports direct observations. Registration/VALID are not substituted for them.
+The target iPhone has established a 47.1 interval start/anchor, distinct from mere 299/299 registration. The owner reports the full short path worked; the exact reboot and final OFF/no-resurrection actions await one explicit wording confirmation before READY_FOR_AUDIT. The displayed unanchored rejection count (2) and recovery count (1) are cumulative safety diagnostics, not proven events of the pictured configuration. No pulse or midnight rollover is claimed.
