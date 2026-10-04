@@ -1,0 +1,6 @@
+{
+  "operation": "s01b-testflight-upload-once",
+  "trigger_id": "everwhile-s01b-daily-lifecycle-upload-20261005",
+  "source_code_sha": "73483187917768535cfd25bd702ae9deaaf77828",
+  "version": "0.1.0"
+}
