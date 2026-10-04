@@ -1,4 +1,4 @@
-# S01-B round 01 — WAITING_FOR_OWNER_TEST
+# S01-B round 01 — READY_FOR_AUDIT
 
 Base main: `07b889afe456aa408104b3643b2c8281d3cf99a1`.
 Branch: `codex/s01-b-daily-lifecycle`.
@@ -28,9 +28,10 @@ PR: https://github.com/Zhangsfish/Elapse/pull/19 (open; Codex does not merge).
 | Signed IPA / internal TestFlight | PASS — [run 37221126361](https://github.com/Zhangsfish/Elapse/actions/runs/37221126361); signed app+extensions claims/profile allowance valid, upload accepted, processing VALID, internal-only group assigned |
 | Target iPhone 299/299 + lifecycle anchor | PASS — owner-supplied screenshots, config `2f1a4c52`, recurring YES, active generation 1 / 02:25:58 local anchor, no registration error |
 | App reopen | PASS_OWNER_REPORT_WITH_SCREENSHOT_STATE — same config and generation visible at 02:27–02:28 |
-| One iPhone reboot / Stop no resurrection | OWNER_REPORT_PENDING_EXPLICIT_CONFIRMATION — owner says all checks fine; screenshots do not show the reboot action or final OFF state |
+| One iPhone reboot | PASS_OWNER_REPORT_WITH_SCREENSHOT_STATE — owner explicitly confirms whole-device restart; later screenshots still show same config `2f1a4c52` and 299/299, with no new recovery reason |
+| Stop / reopen no resurrection | PASS_OWNER_REPORT — owner explicitly confirms desired OFF and two selected Apps after Stop and reopen; final OFF is not screenshot-proven |
 | True midnight rollover and revoke/regrant on device | NOT_RUN_OUT_OF_SCOPE — S01-C |
 
 The preimplementation 44.1 midnight observation is historical evidence, not an S01-B recurring-schedule result. The current Apple API distinctions are recorded in `docs/APPLE_PLATFORM_NOTES.md`.
 
-The target iPhone has established a 47.1 interval start/anchor, distinct from mere 299/299 registration. The owner reports the full short path worked; the exact reboot and final OFF/no-resurrection actions await one explicit wording confirmation before READY_FOR_AUDIT. The displayed unanchored rejection count (2) and recovery count (1) are cumulative safety diagnostics, not proven events of the pictured configuration. No pulse or midnight rollover is claimed.
+The target iPhone has established a 47.1 interval start/anchor, distinct from mere 299/299 registration. The owner explicitly confirmed the whole-device reboot and Stop/reopen OFF state; these actions are owner-report evidence, while the image captures only the ON/registered state. The displayed unanchored rejection count (2) and recovery count (1) are cumulative safety diagnostics, not proven events of the pictured configuration. No pulse, midnight rollover, permission revoke/regrant or Today retest is claimed. No owner action remains for S01-B; cloud audit and merge approval remain external to Codex.
