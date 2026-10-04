@@ -9,142 +9,157 @@ struct ContentView: View {
     @Environment(\.openURL) private var openURL
     @State private var pickerPresented = false
 
+    private var monitoringStatus: HomeMonitoringStatus {
+        HomeMonitoringStatus.resolve(
+            authorized: model.hasFamilyAuthorization,
+            selectedAppCount: model.selection.applicationTokens.count,
+            desired: model.pulseSnapshot.monitoringDesired,
+            exactRegistration: model.isMonitoring,
+            intervalActive: model.pulseSnapshot.lifecycleState == .active,
+            intervalCycleIsToday: model.pulseSnapshot.intervalCycleKey == PulseCycle.key(for: Date()),
+            registrationFailed: model.pulseSnapshot.phase == .failed
+        )
+    }
+
+    private var statusKey: LocalizedStringKey {
+        switch monitoringStatus {
+        case .needsPermission: return "home.status.permission"
+        case .needsApps: return "home.status.apps"
+        case .off: return "home.status.off"
+        case .on: return "home.status.on"
+        case .checking: return "home.status.checking"
+        case .needsAttention: return "home.status.attention"
+        }
+    }
+
+    private var statusDetailKey: LocalizedStringKey {
+        switch monitoringStatus {
+        case .needsPermission: return "home.detail.permission"
+        case .needsApps: return "home.detail.apps"
+        case .off: return "home.detail.off"
+        case .on: return "home.detail.on"
+        case .checking: return "home.detail.checking"
+        case .needsAttention: return "home.detail.attention"
+        }
+    }
+
     var body: some View {
         NavigationStack {
-            Form {
-                Section("权限状态") {
-                    LabeledContent("屏幕使用时间", value: model.authorizationDescription)
-                    Button("请求屏幕使用时间授权") {
-                        Task { await model.requestFamilyAuthorization() }
-                    }
-                    if model.isFamilyAuthorizationDenied,
-                       let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                        Button("打开 Everwhile 设置") {
-                            openURL(settingsURL)
-                        }
-                    }
-
-                    LabeledContent("通知", value: model.notificationDescription)
-                    LabeledContent("提醒显示", value: model.notificationAlertDescription)
-                    Button("请求通知权限") {
-                        Task { await model.requestNotificationAuthorization() }
-                    }
-                }
-
-                Section("所选 App") {
-                    LabeledContent("App 数量", value: "\(model.selection.applicationTokens.count)")
-                    Button("选择 App") {
-                        pickerPresented = true
-                    }
-                    .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
-                    if !model.canChangeSelection {
-                        Text("监控运行中已锁定选择；先停止监控再修改。")
-                            .font(.footnote)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Everwhile").font(.largeTitle.bold())
+                        Text("home.tagline")
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
-                }
 
-                Section("S00-A 普通通知自检") {
-                    Text("测试，不计使用时间。仅验证普通本地通知；不证明 Screen Time 阈值链路。")
-                        .font(.footnote)
-                    Button("发送普通测试通知") {
-                        Task { await model.sendOrdinaryTestNotification() }
-                    }
-                }
-
-                Section("S01-B 每日提醒与生命周期") {
-                    Text("提醒点不等于 Today 总量。希望监控、系统登记和当前 interval 启动是三件事；登记仍在不证明今天已开始计量。")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                    Picker("提醒间隔", selection: Binding(
-                        get: { model.configuredIntervalMinutes },
-                        set: { model.updateInterval(to: $0) }
-                    )) {
-                        ForEach(DayPulsePlan.supportedIntervals, id: \.self) { minutes in
-                            Text("\(minutes) 分钟").tag(minutes)
+                    VStack(alignment: .leading, spacing: 18) {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(statusKey).font(.title2.weight(.semibold))
+                            Text(statusDetailKey)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
                         }
-                    }
-                    .disabled(!model.canChangeInterval)
-                    if !model.canChangeInterval {
-                        Text("监控运行中已锁定间隔；先停止监控再修改。")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    LabeledContent("配置", value: model.experimentDescription)
-                    LabeledContent("配置 ID", value: model.pulseSnapshot.shortID)
-                    LabeledContent("希望监控", value: model.pulseSnapshot.monitoringDesired ? "ON" : "OFF")
-                    LabeledContent("登记间隔", value: "\(model.pulseSnapshot.configurationIntervalMinutes) 分钟")
-                    LabeledContent("计划事件数", value: "\(model.pulseSnapshot.plannedEventCount)")
-                    LabeledContent("系统登记事件数", value: model.observedRegisteredEventCount.map { String($0) } ?? "未确认")
-                    LabeledContent("每日重复日程", value: model.systemScheduleRepeatsDaily.map { $0 ? "YES" : "NO" } ?? "未确认")
-                    LabeledContent("登记状态", value: model.experimentRegistrationDescription)
-                    LabeledContent("登记错误", value: model.pulseSnapshot.safeErrorCode ?? "无")
-                    LabeledContent("当前 interval", value: model.pulseSnapshot.lifecycleState.rawValue)
-                    LabeledContent("interval generation", value: "\(model.pulseSnapshot.intervalGeneration)")
-                    LabeledContent("interval anchor", value: model.pulseSnapshot.intervalAnchor.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
-                    LabeledContent("最近 interval start", value: model.pulseSnapshot.lastIntervalStartAt.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
-                    LabeledContent("最近 interval end", value: model.pulseSnapshot.lastIntervalEndAt.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
-                    LabeledContent("自动恢复次数", value: "\(model.pulseSnapshot.recoveryCount)")
-                    LabeledContent("最近恢复原因", value: model.pulseSnapshot.lastRecoveryReason?.rawValue ?? "无")
-                    LabeledContent("拒绝的过早回调", value: "\(model.pulseSnapshot.prematureCallbackCount)")
-                    LabeledContent("拒绝的无 anchor 回调", value: "\(model.pulseSnapshot.unanchoredCallbackCount)")
-                    LabeledContent("已收到回调", value: "\(model.pulseSnapshot.callbackCount)")
-                    LabeledContent("已接受通知请求", value: "\(model.pulseSnapshot.acceptedRequestCount)")
-                    LabeledContent("通知请求失败", value: "\(model.pulseSnapshot.failedRequestCount)")
-                    LabeledContent("最近已接受提醒点", value: model.pulseSnapshot.mostRecentAcceptedThresholdMinutes.map { "\($0) 分钟" } ?? "无")
-                    LabeledContent("计划下一档（非实时计量）", value: model.pulseSnapshot.nextPlannedThresholdMinutes.map { "\($0) 分钟" } ?? "无")
-                    ForEach(model.pulseSnapshot.recentThresholdMinutes, id: \.self) { minutes in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("最近回调 · \(minutes) 分钟")
-                                .font(.headline)
-                            Text("回调：\(model.thresholdCallbackDescription(minutes))")
-                            Text("通知：\(model.thresholdRequestDescription(minutes))")
-                        }
-                        .font(.footnote)
-                    }
-                    LabeledContent("拒绝的旧回调", value: "\(model.pulseSnapshot.staleCallbackCount)")
-                    LabeledContent("拒绝的重复回调", value: "\(model.pulseSnapshot.duplicateCallbackCount)")
-                    Button("开始监控") {
-                        model.startMonitoring()
-                    }
-                    .disabled(!model.hasFamilyAuthorization || model.selection.applicationTokens.isEmpty || !model.canChangeSelection || model.pulseStoreStatus != "ready")
-                    Button("停止监控", role: .destructive) {
-                        model.stopMonitoring()
-                    }
-                    .disabled(!model.canStopExperiment)
-                    Button("刷新监控诊断") {
-                        Task { await model.refreshState() }
-                    }
-                }
+                        .accessibilityElement(children: .combine)
 
-                Section("Today") {
-                    NavigationLink("查看今日真实使用报告") {
+                        HStack(spacing: 18) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text("home.interval")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                HStack(spacing: 4) {
+                                    Text(verbatim: "\(model.configuredIntervalMinutes)")
+                                    Text("home.minutes")
+                                }
+                                .font(.headline.monospacedDigit())
+                            }
+                            Spacer(minLength: 8)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text("home.selected")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                HStack(spacing: 4) {
+                                    Text(verbatim: "\(model.selection.applicationTokens.count)")
+                                    Text("home.apps")
+                                }
+                                .font(.headline.monospacedDigit())
+                            }
+                        }
+                        .accessibilityElement(children: .combine)
+                        primaryAction
+                    }
+                    .padding(20)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22))
+
+                    VStack(spacing: 0) {
+                        Button { pickerPresented = true } label: {
+                            actionRow("home.chooseApps", icon: "square.stack.3d.up")
+                        }
+                        .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
+                        Divider().padding(.leading, 52)
+                        HStack {
+                            Image(systemName: "clock")
+                                .frame(width: 28)
+                                .foregroundStyle(.secondary)
+                            Picker("home.changeInterval", selection: Binding(
+                                get: { model.configuredIntervalMinutes },
+                                set: { model.updateInterval(to: $0) }
+                            )) {
+                                ForEach(DayPulsePlan.supportedIntervals, id: \.self) { minutes in
+                                    Text("\(minutes) \(String(localized: "home.minutes"))").tag(minutes)
+                                }
+                            }
+                            .disabled(!model.canChangeInterval)
+                        }
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 8)
+                    }
+                    .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22))
+
+                    NavigationLink {
                         TodayReportView(selection: model.selection)
+                    } label: {
+                        HStack(alignment: .center, spacing: 14) {
+                            Image(systemName: "chart.bar.xaxis")
+                                .font(.title2)
+                                .frame(width: 34)
+                                .accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text("home.today").font(.title3.weight(.semibold))
+                                Text("home.today.detail")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer(minLength: 4)
+                            Image(systemName: "chevron.right")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                                .accessibilityHidden(true)
+                        }
+                        .padding(20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22))
                     }
+                    .buttonStyle(.plain)
                     .disabled(model.selection.applicationTokens.isEmpty)
-                    Text("当前用户 · 当前 iPhone · 今天截至现在。报告由系统加载；小时汇总不是精确的 App 打开或关闭时间线。")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
                 }
-
-                if let message = model.statusMessage {
-                    Section("操作结果") {
-                        Text(message)
-                            .textSelection(.enabled)
-                    }
-                }
-
-                Section("脱敏诊断") {
-                    LabeledContent("版本", value: model.versionDescription)
-                    Text(model.diagnosticSummary)
-                        .font(.footnote.monospaced())
-                        .textSelection(.enabled)
-                    Button("复制脱敏诊断") {
-                        UIPasteboard.general.string = model.diagnosticSummary
+                .padding(20)
+                .frame(maxWidth: 620)
+                .frame(maxWidth: .infinity)
+            }
+            .background(Color(uiColor: .systemGroupedBackground))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        DiagnosticsView()
+                    } label: {
+                        Image(systemName: "info.circle")
+                            .accessibilityLabel(Text("home.diagnostics"))
                     }
                 }
             }
-            .navigationTitle("Everwhile")
             .familyActivityPicker(
                 isPresented: $pickerPresented,
                 selection: Binding(
@@ -154,11 +169,109 @@ struct ContentView: View {
             )
             .task { await model.refreshState() }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .active {
-                    Task { await model.refreshState() }
-                }
+                if phase == .active { Task { await model.refreshState() } }
             }
         }
+    }
+
+    @ViewBuilder
+    private var primaryAction: some View {
+        if model.canStopExperiment {
+            Button { model.stopMonitoring() } label: {
+                Text("home.stop").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+        } else if !model.hasFamilyAuthorization {
+            Button {
+                Task { await model.requestFamilyAuthorization() }
+            } label: {
+                Text("home.allowScreenTime").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            if model.isFamilyAuthorizationDenied,
+               let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                Button("home.openSettings") { openURL(settingsURL) }
+            }
+        } else if model.selection.applicationTokens.isEmpty {
+            Button { pickerPresented = true } label: {
+                Text("home.chooseApps").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+        } else {
+            Button { model.startMonitoring() } label: {
+                Text("home.start").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(!model.canChangeSelection || model.pulseStoreStatus != "ready")
+        }
+    }
+
+    private func actionRow(_ title: LocalizedStringKey, icon: String) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: icon)
+                .frame(width: 28)
+                .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
+            Text(title).foregroundStyle(.primary)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
+        }
+        .padding(18)
+        .contentShape(Rectangle())
+    }
+}
+
+private struct DiagnosticsView: View {
+    @EnvironmentObject private var model: ElapseModel
+
+    var body: some View {
+        Form {
+            Section("diagnostics.permissions") {
+                LabeledContent("diagnostics.screenTime", value: model.authorizationDescription)
+                LabeledContent("diagnostics.notifications", value: model.notificationDescription)
+                LabeledContent("diagnostics.alerts", value: model.notificationAlertDescription)
+                Button("diagnostics.requestNotifications") {
+                    Task { await model.requestNotificationAuthorization() }
+                }
+            }
+            Section("diagnostics.registration") {
+                LabeledContent("diagnostics.configuration", value: model.pulseSnapshot.shortID)
+                LabeledContent("diagnostics.state", value: model.experimentRegistrationDescription)
+                LabeledContent("diagnostics.plannedEvents", value: String(model.pulseSnapshot.plannedEventCount))
+                LabeledContent("diagnostics.systemEvents", value: model.observedRegisteredEventCount.map { String($0) } ?? "—")
+                LabeledContent("diagnostics.lifecycle", value: model.pulseSnapshot.lifecycleState.rawValue)
+                LabeledContent("diagnostics.generation", value: String(model.pulseSnapshot.intervalGeneration))
+                LabeledContent("diagnostics.recoveries", value: String(model.pulseSnapshot.recoveryCount))
+                LabeledContent("diagnostics.callbacks", value: String(model.pulseSnapshot.callbackCount))
+                LabeledContent("diagnostics.requests", value: String(model.pulseSnapshot.acceptedRequestCount))
+            }
+            Section("diagnostics.tools") {
+                Text("diagnostics.testNote").font(.footnote).foregroundStyle(.secondary)
+                Button("diagnostics.testNotification") {
+                    Task { await model.sendOrdinaryTestNotification() }
+                }
+                Button("diagnostics.refresh") {
+                    Task { await model.refreshState() }
+                }
+                Button("diagnostics.copy") {
+                    UIPasteboard.general.string = model.diagnosticSummary
+                }
+            }
+            if let message = model.statusMessage {
+                Section("diagnostics.lastResult") { Text(message).textSelection(.enabled) }
+            }
+            Section("diagnostics.summary") {
+                LabeledContent("diagnostics.version", value: model.versionDescription)
+                Text(model.diagnosticSummary)
+                    .font(.footnote.monospaced())
+                    .textSelection(.enabled)
+            }
+        }
+        .navigationTitle("diagnostics.title")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -175,15 +288,14 @@ struct TodayReportView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("当前用户 · 当前 iPhone · 今天截至现在")
-                .font(.footnote)
-            Text("屏幕使用时间报告由 iOS 加载，可能需要片刻更新。")
+            Text("today.scope").font(.footnote)
+            Text("today.systemLoading")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
             DeviceActivityReport(.elapseToday, filter: filter)
         }
         .padding(.horizontal)
-        .navigationTitle("Today")
+        .navigationTitle("today.title")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

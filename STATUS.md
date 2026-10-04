@@ -4,7 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A READY；S02-B / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A IN_PROGRESS；S02-B / S03 LOCKED。**
+
+S02-A 由 Codex 在 `codex/s02-a-production-ui-today` 实施中；本分支尚待 CI、内部 TestFlight 与持有人一轮简短 UI 验收。该状态不是验收批准。
 
 S01-B PR #19 已由云端审核并合并；accepted internal baseline 仍为 **Everwhile 0.1.0 (47.1)**。
 
@@ -44,7 +46,7 @@ S02-A 只解决第一轮正式产品体验：
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S02-A | **READY** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
+| S02-A | **IN_PROGRESS** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
 | S02-B | LOCKED | onboarding / “选择 App”教学 / copy-spacing-accessibility polish |
 | S03 | LOCKED | public distribution |
 

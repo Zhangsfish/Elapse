@@ -18,6 +18,7 @@ targets:
     sources:
       - path: App
       - path: Shared
+      - path: Localization
       - path: AppResources/PrivacyInfo.xcprivacy
         buildPhase: resources
     dependencies:
@@ -37,6 +38,7 @@ targets:
     info:
       path: App/Info.plist
       properties:
+        CFBundleDevelopmentRegion: en
         CFBundleDisplayName: Everwhile
         CFBundleIconName: AppIcon
         UISupportedInterfaceOrientations:
@@ -91,6 +93,9 @@ targets:
     sources:
       - path: ReportExtension
       - path: Shared/TodayReportAggregation.swift
+      - path: Shared/TodayHourlyChartPlan.swift
+      - path: Shared/UsageDurationFormatter.swift
+      - path: Localization
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.report
@@ -103,6 +108,7 @@ targets:
     info:
       path: ReportExtension/Info.plist
       properties:
+        CFBundleDevelopmentRegion: en
         CFBundleDisplayName: Everwhile Report
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"

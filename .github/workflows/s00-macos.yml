@@ -68,6 +68,16 @@ jobs:
             -configuration Debug -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
             CODE_SIGNING_ALLOWED=NO clean build
+          app="$RUNNER_TEMP/ElapseBuild/Build/Products/Debug-iphonesimulator/Elapse.app"
+          report="$app/Extensions/ElapseReport.appex"
+          for bundle in "$app" "$report"; do
+            for language in en zh-Hans; do
+              resource="$bundle/$language.lproj/Localizable.strings"
+              test -f "$resource"
+              plutil -lint "$resource"
+            done
+          done
+          echo 'S02_LOCALIZATION_PACKAGING_PASS'
       - name: Validate release helpers
         run: |
           set -euo pipefail

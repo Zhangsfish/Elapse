@@ -1,0 +1,16 @@
+{
+  "stage": "S02-A",
+  "status": "IN_PROGRESS",
+  "baseMainSHA": "c8d8b81294dceff2eaa09a3abb4643340abc3719",
+  "codeSHA": null,
+  "testedSHA": null,
+  "uploadSHA": null,
+  "version": "0.1.0",
+  "build": null,
+  "ordinaryCI": "NOT_RUN",
+  "prepareCI": "NOT_RUN",
+  "localizationPackaging": "NOT_RUN",
+  "signedIPA": "NOT_RUN",
+  "processing": "NOT_RUN",
+  "ownerUI": "NOT_RUN"
+}
