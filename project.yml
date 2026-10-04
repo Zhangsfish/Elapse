@@ -90,6 +90,7 @@ targets:
     platform: iOS
     sources:
       - path: ReportExtension
+      - path: Shared/TodayReportAggregation.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.report
