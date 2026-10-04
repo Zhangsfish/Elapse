@@ -1,6 +1,0 @@
-{
-  "operation": "s01b-testflight-prepare-once",
-  "trigger_id": "everwhile-s01b-daily-lifecycle-prepare-20261005",
-  "source_code_sha": "2479f48efa62d26ca0d2972aaa56af7b96540766",
-  "version": "0.1.0"
-}
