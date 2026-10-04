@@ -1,16 +1,36 @@
 {
   "stage": "S02-A",
-  "status": "IN_PROGRESS",
+  "status": "WAITING_FOR_OWNER_TEST",
   "baseMainSHA": "c8d8b81294dceff2eaa09a3abb4643340abc3719",
-  "codeSHA": null,
-  "testedSHA": null,
-  "uploadSHA": null,
+  "runtimeCodeSHA": "a5329c1887ae63fafb5fdd4ef2ab0dd28fd29bee",
+  "testedAndUploadSHA": "0edc5f39a4fa6a5c7436d28d3ea2a33c07b3d1cf",
   "version": "0.1.0",
-  "build": null,
-  "ordinaryCI": "NOT_RUN",
-  "prepareCI": "NOT_RUN",
-  "localizationPackaging": "NOT_RUN",
-  "signedIPA": "NOT_RUN",
-  "processing": "NOT_RUN",
-  "ownerUI": "NOT_RUN"
+  "build": "50.1",
+  "ordinaryCI": {
+    "status": "PASS",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229178469",
+    "swiftTests": "43 passed",
+    "localizationPackaging": "PASS"
+  },
+  "prepareOnly": {
+    "status": "PASS",
+    "sourceWasBeforeFinalStopUIAdjustment": true,
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229098457"
+  },
+  "explicitUpload": {
+    "status": "PASS",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229402515",
+    "unsignedArchive": "PASS",
+    "signedIPAAndFamilyControls": "PASS",
+    "signedIPASHA256": "5cfdcf4fb7c60bb9e69aa6ec1be21b2758bea9b69b1331a40c6151e1d488af17",
+    "uploadAccepted": "PASS",
+    "processing": "VALID",
+    "audience": "INTERNAL_ONLY",
+    "internalGroupAssignment": "PASS"
+  },
+  "deviceHome": "NOT_RUN",
+  "deviceToday": "NOT_RUN",
+  "runtimeLightDarkDynamicTypeVoiceOver": "NOT_RUN",
+  "s01LifecycleRetest": "NOT_RUN_NOT_REQUIRED",
+  "publicRelease": "NOT_RUN_OUT_OF_SCOPE"
 }
