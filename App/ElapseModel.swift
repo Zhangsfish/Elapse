@@ -11,6 +11,8 @@ final class ElapseModel: ObservableObject {
     @Published private(set) var notificationStatus: UNAuthorizationStatus = .notDetermined
     @Published private(set) var notificationAlertSetting: UNNotificationSetting = .notSupported
     @Published private(set) var isMonitoring = false
+    @Published private(set) var observedRegisteredEventCount: Int?
+    @Published private(set) var configuredIntervalMinutes: Int
     @Published private(set) var pulseSnapshot = PulseExperimentSnapshot()
     @Published private(set) var pulseStoreStatus = "未检查"
     @Published var statusMessage: String?
@@ -22,11 +24,15 @@ final class ElapseModel: ObservableObject {
     private let pulseStore: PulseExperimentStore?
     private let logger = Logger(subsystem: "com.zhangsfish.elapse", category: "setup")
     private let selectionKey = "elapse.familyActivitySelection"
+    private static let intervalKey = "elapse.pulseIntervalMinutes"
     private let testNotificationID = "com.zhangsfish.elapse.s00a.ordinary-test"
 
     init() {
         let restored = Self.loadSelection(key: selectionKey)
         selection = restored.selection
+        let savedInterval = UserDefaults.standard.object(forKey: Self.intervalKey) as? Int
+        configuredIntervalMinutes = DayPulsePlan(intervalMinutes: savedInterval ?? DayPulsePlan.defaultIntervalMinutes)?.intervalMinutes
+            ?? DayPulsePlan.defaultIntervalMinutes
         statusMessage = restored.message
         lastResult = restored.result
         pulseStore = try? PulseExperimentStore.live()
@@ -112,8 +118,19 @@ final class ElapseModel: ObservableObject {
             "Experiment=\(pulseSnapshot.generation):\(pulseSnapshot.shortID)",
             "ExperimentPhase=\(pulseSnapshot.phase.rawValue)",
             "ExperimentSelectedApplications=\(pulseSnapshot.selectedApplicationCount)",
+            "ConfiguredIntervalMinutes=\(configuredIntervalMinutes)",
+            "ConfigurationID=\(pulseSnapshot.shortID)",
+            "RegistrationIntervalMinutes=\(pulseSnapshot.configurationIntervalMinutes)",
+            "PlannedEventCount=\(pulseSnapshot.plannedEventCount)",
+            "ObservedRegisteredEventCount=\(observedRegisteredEventCount.map { String($0) } ?? "none")",
+            "MaximumThresholdMinutes=\(pulseSnapshot.maximumThresholdMinutes)",
+            "CallbackCount=\(pulseSnapshot.callbackCount)",
+            "AcceptedRequestCount=\(pulseSnapshot.acceptedRequestCount)",
+            "FailedRequestCount=\(pulseSnapshot.failedRequestCount)",
+            "MostRecentAcceptedThresholdMinutes=\(pulseSnapshot.mostRecentAcceptedThresholdMinutes.map { String($0) } ?? "none")",
+            "NextPlannedThresholdMinutes=\(pulseSnapshot.nextPlannedThresholdMinutes.map { String($0) } ?? "none")_plan_only",
         ]
-        let thresholds = PulsePlan.thresholdMinutes.flatMap { minutes -> [String] in
+        let thresholds = pulseSnapshot.recentThresholdMinutes.flatMap { minutes -> [String] in
             let diagnostic = pulseSnapshot.diagnostic(for: minutes)
             let prefix = "Threshold\(minutes)m"
             return [
@@ -154,7 +171,7 @@ final class ElapseModel: ObservableObject {
     }
 
     var experimentDescription: String {
-        pulseSnapshot.experimentID == nil ? "尚未开始" : "第 \(pulseSnapshot.generation) 次（\(pulseSnapshot.shortID)）"
+        pulseSnapshot.experimentID == nil ? "尚未开始" : "第 \(pulseSnapshot.generation) 次（配置 \(pulseSnapshot.shortID)）"
     }
 
     func thresholdCallbackDescription(_ minutes: Int) -> String {
@@ -189,6 +206,32 @@ final class ElapseModel: ObservableObject {
         !isMonitoring && pulseSnapshot.canChangeSelection
     }
 
+    var canChangeInterval: Bool { canChangeSelection }
+
+    func updateInterval(to minutes: Int) {
+        lastAction = "interval_change"
+        guard canChangeInterval else {
+            lastResult = "locked_while_monitoring"
+            statusMessage = "监控运行中不能修改提醒间隔；请先停止监控。"
+            return
+        }
+        guard DayPulsePlan(intervalMinutes: minutes) != nil else {
+            lastResult = "unsupported_interval"
+            statusMessage = "不支持该提醒间隔。"
+            return
+        }
+        guard configuredIntervalMinutes != minutes else { return }
+        UserDefaults.standard.set(minutes, forKey: Self.intervalKey)
+        guard UserDefaults.standard.object(forKey: Self.intervalKey) as? Int == minutes else {
+            lastResult = "interval_save_failed"
+            statusMessage = "提醒间隔未能保存，配置保持不变。"
+            return
+        }
+        configuredIntervalMinutes = minutes
+        lastResult = "interval_saved"
+        statusMessage = "提醒间隔已设为 \(minutes) 分钟；下次开始监控时生效。"
+    }
+
     var canStopExperiment: Bool {
         isMonitoring || pulseSnapshot.phase == .starting || pulseSnapshot.phase == .registered
     }
@@ -215,6 +258,7 @@ final class ElapseModel: ObservableObject {
         guard let pulseStore else {
             pulseStoreStatus = "group_unavailable"
             isMonitoring = false
+            observedRegisteredEventCount = nil
             return
         }
         do {
@@ -223,12 +267,15 @@ final class ElapseModel: ObservableObject {
             if let id = pulseSnapshot.experimentID {
                 let activity = DeviceActivityName(PulsePlan.activityName(for: id))
                 isMonitoring = pulseSnapshot.isCurrentRegistration && center.activities.contains(activity)
+                observedRegisteredEventCount = isMonitoring ? center.events(for: activity).count : nil
             } else {
                 isMonitoring = false
+                observedRegisteredEventCount = nil
             }
         } catch {
             pulseStoreStatus = "read_error"
             isMonitoring = false
+            observedRegisteredEventCount = nil
         }
     }
 
@@ -317,6 +364,11 @@ final class ElapseModel: ObservableObject {
             lastResult = "no_app_selected"
             return
         }
+        guard let plan = DayPulsePlan(intervalMinutes: configuredIntervalMinutes) else {
+            statusMessage = "提醒间隔无效；监控未启动。"
+            lastResult = "invalid_interval"
+            return
+        }
         guard persistSelection() else {
             statusMessage = "所选 App 未能保存；新实验未启动。"
             lastResult = "selection_save_failed"
@@ -363,7 +415,11 @@ final class ElapseModel: ObservableObject {
         let activity = DeviceActivityName(PulsePlan.activityName(for: experimentID))
         do {
             try pulseStore.update {
-                $0.begin(id: experimentID, selectedApplicationCount: selection.applicationTokens.count)
+                $0.begin(
+                    id: experimentID,
+                    selectedApplicationCount: selection.applicationTokens.count,
+                    plan: plan
+                )
             }
         } catch {
             statusMessage = "新实验状态无法保存；监控未启动。"
@@ -377,19 +433,30 @@ final class ElapseModel: ObservableObject {
             intervalEnd: DateComponents(hour: 23, minute: 59, second: 59),
             repeats: false
         )
-        let events = Dictionary(uniqueKeysWithValues: PulsePlan.thresholdMinutes.map { minutes in
+        let events = Dictionary(uniqueKeysWithValues: plan.thresholds.map { minutes in
             let name = DeviceActivityEvent.Name(PulsePlan.eventName(for: minutes))
             let event = DeviceActivityEvent(
                 applications: selection.applicationTokens,
-                threshold: DateComponents(minute: minutes),
+                threshold: plan.thresholdComponents(for: minutes)!,
                 includesPastActivity: false
             )
             return (name, event)
         })
 
-        logger.notice("Starting experiment with \(self.selection.applicationTokens.count, privacy: .public) opaque application tokens")
+        logger.notice("Starting configuration with \(plan.eventCount, privacy: .public) events and \(self.selection.applicationTokens.count, privacy: .public) opaque application tokens")
         do {
             try center.startMonitoring(activity, during: schedule, events: events)
+            let observedCount = center.events(for: activity).count
+            guard center.activities.contains(activity), observedCount == plan.eventCount else {
+                center.stopMonitoring([activity])
+                let code = "registered_event_count_mismatch"
+                try? pulseStore.update { $0.markRegistrationFailed(id: experimentID, errorCode: code) }
+                refreshExperimentState()
+                lastErrorCode = code
+                lastResult = "registration_not_confirmed"
+                statusMessage = "监控返回成功，但系统登记的事件数与计划不符；已停止，请记录诊断。"
+                return
+            }
             do {
                 try pulseStore.update { $0.markRegistered(id: experimentID) }
             } catch {
@@ -406,7 +473,7 @@ final class ElapseModel: ObservableObject {
                 : "登记返回成功，但系统未显示该实验正在监控；请查看脱敏诊断。"
             logger.notice("Monitoring start succeeded; includesPastActivity=false")
         } catch {
-            lastErrorCode = FoundationFeedback.safeErrorCode(error)
+            lastErrorCode = Self.safeRegistrationErrorCode(error)
             try? pulseStore.update {
                 $0.markRegistrationFailed(id: experimentID, errorCode: lastErrorCode ?? "unknown")
             }
@@ -414,6 +481,20 @@ final class ElapseModel: ObservableObject {
             lastResult = "registration_failed"
             statusMessage = "监控登记失败（错误代码 \(lastErrorCode ?? "未知")）。"
             logger.error("Monitoring start failed; code=\(self.lastErrorCode ?? "unknown", privacy: .public)")
+        }
+    }
+
+    private static func safeRegistrationErrorCode(_ error: Error) -> String {
+        guard let monitoringError = error as? DeviceActivityCenter.MonitoringError else {
+            return "other_\(FoundationFeedback.safeErrorCode(error))"
+        }
+        switch monitoringError {
+        case .excessiveActivities: return "excessive_activities"
+        case .intervalTooLong: return "interval_too_long"
+        case .intervalTooShort: return "interval_too_short"
+        case .invalidDateComponents: return "invalid_date_components"
+        case .unauthorized: return "unauthorized"
+        @unknown default: return "device_activity_\(FoundationFeedback.safeErrorCode(error))"
         }
     }
 

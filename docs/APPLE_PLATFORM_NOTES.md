@@ -174,3 +174,15 @@ Compilation was verified in GitHub-hosted CI with Xcode 26.6, iOS SDK 26.5, and 
 3. How do callbacks behave across app switching, lock/unlock, monitor restart, device restart, midnight, and permission changes?
 4. What exact per-app/time-bucket detail can the report extension truthfully render?
 5. Which steps require signing/provisioning/entitlement approval rather than code changes?
+
+## S01-A day-range candidate (2026-10-04)
+
+Apple documents a maximum of 20 concurrent **activities** per app plus extensions, and a minimum scheduled activity interval of 15 minutes. It does not document a per-activity event-dictionary count limit. The S01-A candidate uses one current-day activity with 5/10/15/30/60-minute selectable thresholds, `includesPastActivity=false`, and up to 299 events for the default five-minute interval. Source and CI can prove the generated count and build; only target-iPhone registration can prove this event dictionary is accepted there. `DeviceActivityCenter.events(for:)` is read back to compare registered and planned counts. This still does not prove callback delivery or all-day reliability.
+
+The event ladder uses 25 hours as a planning ceiling (the last complete interval strictly before 1500 minutes), rather than treating every local day as exactly 24 hours. A 23/25-hour DST transition, midnight re-arm, and timezone changes remain for later S01 stages; the fixed current-day schedule does not implement them.
+
+Official docs:
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter/monitoringerror/excessiveactivities
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter/monitoringerror/intervaltooshort
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init(applications:categories:webdomains:threshold:includespastactivity:)

@@ -1,6 +1,7 @@
 import Foundation
 
 enum PulsePlan {
+    // Historical S00 finite experiment, retained for old snapshots/tests only.
     static let intervalMinutes = 5
     static let maximumTestMinutes = 30
     static let eventPrefix = "elapse.threshold."
@@ -36,10 +37,51 @@ enum PulsePlan {
         let end = name.index(before: name.endIndex)
         guard start < end,
               let minutes = Int(name[start..<end]),
-              thresholdMinutes.contains(minutes) else {
+              minutes > 0,
+              minutes <= DayPulsePlan.maximumCandidateMinutes,
+              minutes % DayPulsePlan.minimumSupportedMinutes == 0,
+              eventName(for: minutes) == name else {
             return nil
         }
         return minutes
+    }
+}
+
+/// A candidate one-activity ladder for the current local day. This is not an
+/// assertion that Apple accepts this many events or that rollover is automatic.
+struct DayPulsePlan: Equatable {
+    static let supportedIntervals = [5, 10, 15, 30, 60]
+    static let defaultIntervalMinutes = 5
+    static let minimumSupportedMinutes = 5
+    static let candidateDayBoundaryMinutes = 25 * 60
+    static let maximumCandidateMinutes = candidateDayBoundaryMinutes - minimumSupportedMinutes
+
+    let intervalMinutes: Int
+
+    init?(intervalMinutes: Int) {
+        guard Self.supportedIntervals.contains(intervalMinutes) else { return nil }
+        self.intervalMinutes = intervalMinutes
+    }
+
+    var maximumThresholdMinutes: Int {
+        ((Self.candidateDayBoundaryMinutes - 1) / intervalMinutes) * intervalMinutes
+    }
+
+    var eventCount: Int { maximumThresholdMinutes / intervalMinutes }
+
+    var thresholds: [Int] {
+        Array(stride(from: intervalMinutes, through: maximumThresholdMinutes, by: intervalMinutes))
+    }
+
+    func contains(_ minutes: Int) -> Bool {
+        minutes >= intervalMinutes &&
+            minutes <= maximumThresholdMinutes &&
+            minutes % intervalMinutes == 0
+    }
+
+    func thresholdComponents(for minutes: Int) -> DateComponents? {
+        guard contains(minutes) else { return nil }
+        return DateComponents(hour: minutes / 60, minute: minutes % 60)
     }
 }
 
@@ -50,7 +92,7 @@ struct PulseNotificationCopy: Equatable {
     static func safeThresholdCopy(minutes: Int) -> PulseNotificationCopy {
         PulseNotificationCopy(
             title: "\(minutes) 分钟",
-            body: "所选 App 自本次监控开始后已达到 \(minutes) 分钟。"
+            body: "所选 App 使用已达到本轮的 \(minutes) 分钟提醒点。"
         )
     }
 }

@@ -2,7 +2,7 @@ name: S00 TestFlight preparation and explicit upload
 
 on:
   push:
-    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report]
+    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report, codex/s01-a-day-range-interval]
     paths:
       - audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json
       - reports/S00-B/round-01/evidence/s00b-upload-once.json
@@ -10,6 +10,8 @@ on:
       - reports/S00-C/round-01/evidence/s00c-upload-once.json
       - reports/S00-D/round-01/evidence/s00d-prepare-once.json
       - reports/S00-D/round-01/evidence/s00d-upload-once.json
+      - reports/S01-A/round-01/evidence/s01a-prepare-once.json
+      - reports/S01-A/round-01/evidence/s01a-upload-once.json
   workflow_dispatch:
     inputs:
       operation:
@@ -33,7 +35,8 @@ jobs:
       (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-b-first-real-pulse' && github.event.head_commit.message == 'S00-B explicit one-time TestFlight upload') ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-c-continuous-pulses' && (github.event.head_commit.message == 'S00-C explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S00-C explicit one-time TestFlight upload')) ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && (github.event.head_commit.message == 'S00-D explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload'))
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && (github.event.head_commit.message == 'S00-D explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload')) ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && (github.event.head_commit.message == 'S01-A explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload'))
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -90,17 +93,28 @@ jobs:
                   'source_code_sha': previous_main,
                   'version': '0.1.0',
               }
+          elif ref == 'refs/heads/codex/s01-a-day-range-interval':
+              operation = 'prepare' if subprocess.check_output(
+                  ['git', 'log', '-1', '--format=%s'], text=True
+              ).strip() == 'S01-A explicit one-time TestFlight prepare' else 'upload'
+              marker_path = f'reports/S01-A/round-01/evidence/s01a-{operation}-once.json'
+              expected = {
+                  'operation': f's01a-testflight-{operation}-once',
+                  'trigger_id': f'everwhile-s01a-day-range-interval-{operation}-20261004',
+                  'source_code_sha': previous_main,
+                  'version': '0.1.0',
+              }
           else:
               raise AssertionError('Unexpected upload ref')
           changed = subprocess.check_output(
               ['git', 'diff', '--name-status', previous_main, 'HEAD', '--', marker_path], text=True
           ).strip()
           assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this push'
-          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report'):
+          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report', 'refs/heads/codex/s01-a-day-range-interval'):
               all_changed = subprocess.check_output(
                   ['git', 'diff', '--name-only', previous_main, 'HEAD'], text=True
               ).strip()
-              assert all_changed == marker_path, 'S00-C trigger commit must contain only its marker'
+              assert all_changed == marker_path, 'Explicit trigger commit must contain only its marker'
           marker = json.loads(
               Path(marker_path).read_text(encoding='utf-8')
           )
@@ -250,7 +264,8 @@ jobs:
           (github.event_name == 'workflow_dispatch' && inputs.operation == 'upload') ||
           (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/codex/s00-b-first-real-pulse')) ||
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-c-continuous-pulses' && github.event.head_commit.message == 'S00-C explicit one-time TestFlight upload') ||
-          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload')
+          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload') ||
+          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload')
         env:
           APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}

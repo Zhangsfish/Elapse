@@ -1,0 +1,20 @@
+{
+  "stage": "S01-A",
+  "round": 1,
+  "base_main_sha": "edbb69772478177ab58c13cc211c917d421b3da6",
+  "branch": "codex/s01-a-day-range-interval",
+  "code_sha": null,
+  "tested_sha": null,
+  "upload_sha": null,
+  "version": "0.1.0",
+  "build": null,
+  "ordinary_ci": "NOT_RUN",
+  "prepare_only": "NOT_RUN",
+  "signed_ipa": "NOT_RUN",
+  "app_store_processing": "NOT_RUN",
+  "device_registration_5m_299_events": "NOT_RUN",
+  "device_reopen_same_config": "NOT_RUN",
+  "device_registration_15m_99_events": "NOT_RUN",
+  "device_restore_5m": "NOT_RUN",
+  "pulse_delivery_retest": "NOT_RUN_OUT_OF_SCOPE"
+}
