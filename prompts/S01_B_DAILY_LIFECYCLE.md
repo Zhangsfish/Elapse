@@ -31,6 +31,28 @@ S01-B 只解决：
 - config identity、stop-first interval/selection、old callback/completion fail-closed 已通过。
 - Today/report privacy boundary 不变。
 
+## 44.1 午夜前置实测（实现 S01-B 前必须吸收）
+
+在 S01-B 尚未实现前，持有人恰好用 accepted S01-A build 44.1 做到了一个自然午夜观察：
+
+- 23:59：config `f7bce817`，5m，299 planned / 299 system-registered，registered，无错误；
+- 00:01：未 Stop/Start/改配置，同一个 config `f7bce817` 仍显示 299/299、registered、无错误；
+- 44.1 的产品 schedule 仍然是 `repeats=false`。
+
+证据：`reports/S01-B/PREIMPLEMENTATION_MIDNIGHT_2026-10-05.md`。
+
+这个观察非常关键：
+
+**`center.activities` 仍存在 + `events(for:)` 仍为完整数量，只能证明 schedule registration 元数据仍存在；不能证明新一天的 interval 已经开始。**
+
+所以 S01-B 的 reconcile / UI 必须把至少三层状态分开：
+
+1. desired monitoring intent；
+2. system registration present / event-count matched；
+3. current interval lifecycle 已由 `intervalDidStart` 建立 generation / anchor。
+
+不得把第 2 层直接命名成“当前正在计量”或“今天已经开始监控”。
+
 ## 当前 Apple API 事实
 
 开始前用当前 SDK/Apple 官方文档再核对。

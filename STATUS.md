@@ -47,6 +47,20 @@ S01-A 只证明大 event ladder 能登记，不证明全天所有 callback 或�
 | S02 | LOCKED | production UI / Today 可视化研究与体验 |
 | S03 | LOCKED | public distribution |
 
+## 午夜前置观察（44.1，非 S01-B 实现）
+
+持有人在 accepted S01-A build 44.1 上抓到自然午夜边界：
+
+- 23:59：config `f7bce817`，5m，299 planned / 299 system-registered；
+- 00:01：未做 Stop/Start/配置变化，同一 config 仍显示 299/299、registered、无错误。
+
+44.1 仍是 `repeats=false`，所以这**不能证明新一天已开始计量**。它反而证明：
+**registration presence / event-count readback 不能单独作为“当前 interval active”的证据。**
+
+S01-B 必须额外依赖 interval lifecycle generation/anchor（例如真实 `intervalDidStart`）区分“schedule 仍登记”与“当前日 interval 已开始”。
+
+详细记录：`reports/S01-B/PREIMPLEMENTATION_MIDNIGHT_2026-10-05.md`。
+
 ## 当前可靠性边界
 
 Apple 官方文档支持 recurring schedule，并说明当前时间落在 interval 内时 startMonitoring 会立即触发 intervalDidStart。
