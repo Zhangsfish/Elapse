@@ -1,4 +1,4 @@
-# S01-A round 01 — WAITING_FOR_OWNER_TEST
+# S01-A round 01 — READY_FOR_AUDIT
 
 Base main: `edbb69772478177ab58c13cc211c917d421b3da6`.
 Branch: `codex/s01-a-day-range-interval`.
@@ -28,10 +28,12 @@ Internal build: Everwhile `0.1.0 (44.1)`.
 | Target iPhone default 5m/299-event registration | PASS — owner phone screenshot, 299 planned / 299 system-registered, no error |
 | Reopen same config | PASS — owner natural-language report |
 | 15m/99-event new config | PASS — owner phone screenshot, 99/99, new short ID, no error |
-| Restore 5m and leave stopped | PARTIAL — restored, then owner started again; final stop pending |
+| Restore 5m and leave stopped | PASS — owner confirms final stopped state and two selected Apps |
 
 Apple's public 20-activity limit is not an event-count guarantee. Official references and DST boundary are recorded in `docs/APPLE_PLATFORM_NOTES.md`. No long usage session or pulse delivery retest is requested in S01-A.
 
 Local checks: `python -m unittest discover -s scripts/tests -v` PASS (10 tests); `git diff --check` PASS. GitHub-hosted macOS ordinary CI compiled App + Monitor + Report for Simulator and ran Swift logic tests. Prepare/upload jobs compiled unsigned iPhone Release build and inspected the final archive. Apple signing/upload status and the later target-iPhone registration observation are distinct evidence layers.
 
-Target-iPhone registration is now directly observed; see `DEVICE_OBSERVATIONS.md` for exact short IDs, evidence provenance and the separately triaged unknown full-screen prompt. Full-day callback delivery, automatic midnight rollover and DST remain NOT RUN/out of S01-A scope.
+Target-iPhone registration is now directly observed; see `DEVICE_OBSERVATIONS.md` for exact short IDs, evidence provenance and the separately triaged native iPhone Screen Time prompt. Full-day callback delivery, automatic midnight rollover and DST remain NOT RUN/out of S01-A scope.
+
+The owner subsequently confirmed the full-screen time-limit prompt was native iPhone Screen Time, not Everwhile, and explicitly does not want it as a product feature. See device observations. S01-A is submitted for independent cloud audit, **not self-approved or merged**.
