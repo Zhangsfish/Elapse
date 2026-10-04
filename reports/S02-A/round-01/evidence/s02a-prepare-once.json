@@ -1,0 +1,6 @@
+{
+  "operation": "s02a-testflight-prepare-once",
+  "trigger_id": "everwhile-s02a-production-ui-today-prepare-20261005",
+  "source_code_sha": "35de39732c4e6eb4566a502d24c743ffcd59cc56",
+  "version": "0.1.0"
+}
