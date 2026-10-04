@@ -186,3 +186,18 @@ Official docs:
 - https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter/monitoringerror/intervaltooshort
 - https://developer.apple.com/documentation/deviceactivity/deviceactivitycenter
 - https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init(applications:categories:webdomains:threshold:includespastactivity:)
+
+## S01-B recurring lifecycle (2026-10-05)
+
+Apple's current `DeviceActivitySchedule` initializer says `repeats=true` recurs; `repeats=false` stops extension callbacks after the first interval. If monitoring begins within the scheduled interval, the system calls `intervalDidStart(for:)` immediately. `intervalDidEnd(for:)` is called when the device is first used outside the interval (or monitoring stops during an active interval); these callbacks are not a wall-clock guarantee. The S01-B state records actual callbacks and keeps them separate from `DeviceActivityCenter.activities` / `events(for:)` registration metadata. The owner-observed 44.1 midnight persistence proves why this distinction matters; it did not prove new-day usage accrual.
+
+`DeviceActivityEvent` thresholds measure the selected combination within a scheduled interval; `includesPastActivity=false` excludes activity before monitoring begins. S01-B adds a small physical elapsed-time lower-bound guard to reject impossible early callbacks, **not** an independent Screen Time usage meter. Delayed old-cycle callbacks without a cycle identifier remain an OS ambiguity for S01-C. Today protected report data remains in the report extension.
+
+`AuthorizationCenter.authorizationStatus` is observable and may change due to Settings or other external events. S01-B reconciles at launch/foreground/refresh and on publisher changes. Revocation/reapproval behavior is source/unit-tested only here, not claimed as a device result.
+
+Official docs:
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityschedule/init(intervalstart:intervalend:repeats:warningtime:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitymonitor/intervaldidstart(for:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivitymonitor/intervaldidend(for:)
+- https://developer.apple.com/documentation/deviceactivity/deviceactivityevent/init(applications:categories:webdomains:threshold:includespastactivity:)
+- https://developer.apple.com/documentation/familycontrols/authorizationcenter/authorizationstatus

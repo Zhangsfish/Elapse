@@ -1,3 +1,4 @@
+import Combine
 import DeviceActivity
 import FamilyControls
 import Foundation
@@ -11,6 +12,8 @@ final class ElapseModel: ObservableObject {
     @Published private(set) var notificationStatus: UNAuthorizationStatus = .notDetermined
     @Published private(set) var notificationAlertSetting: UNNotificationSetting = .notSupported
     @Published private(set) var isMonitoring = false
+    @Published private(set) var actualRegistrationPresent = false
+    @Published private(set) var systemScheduleRepeatsDaily: Bool?
     @Published private(set) var observedRegisteredEventCount: Int?
     @Published private(set) var configuredIntervalMinutes: Int
     @Published private(set) var pulseSnapshot = PulseExperimentSnapshot()
@@ -26,6 +29,8 @@ final class ElapseModel: ObservableObject {
     private let selectionKey = "elapse.familyActivitySelection"
     private static let intervalKey = "elapse.pulseIntervalMinutes"
     private let testNotificationID = "com.zhangsfish.elapse.s00a.ordinary-test"
+    private var authorizationCancellable: AnyCancellable?
+    private var reconciliationInProgress = false
 
     init() {
         let restored = Self.loadSelection(key: selectionKey)
@@ -42,6 +47,15 @@ final class ElapseModel: ObservableObject {
             lastResult = "legacy_monitor_retired"
         }
         refreshExperimentState()
+        authorizationCancellable = AuthorizationCenter.shared.$authorizationStatus
+            .dropFirst()
+            .sink { [weak self] newStatus in
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    self.authorizationStatus = newStatus
+                    self.reconcileMonitoring()
+                }
+            }
     }
 
     var versionDescription: String {
@@ -114,7 +128,10 @@ final class ElapseModel: ObservableObject {
             "SelectedApplications=\(selection.applicationTokens.count)",
             "SelectedCategories=\(selection.categoryTokens.count)",
             "SelectedWebDomains=\(selection.webDomainTokens.count)",
-            "MonitorRegistration=\(isMonitoring ? "registered_not_verified" : "stopped")",
+            "MonitoringDesired=\(pulseSnapshot.monitoringDesired ? "ON" : "OFF")",
+            "SystemRegistrationPresent=\(actualRegistrationPresent)",
+            "SystemRegistrationExact=\(isMonitoring)",
+            "SystemScheduleRepeatsDaily=\(systemScheduleRepeatsDaily.map { String($0) } ?? "none")",
             "Experiment=\(pulseSnapshot.generation):\(pulseSnapshot.shortID)",
             "ExperimentPhase=\(pulseSnapshot.phase.rawValue)",
             "ExperimentSelectedApplications=\(pulseSnapshot.selectedApplicationCount)",
@@ -124,6 +141,16 @@ final class ElapseModel: ObservableObject {
             "PlannedEventCount=\(pulseSnapshot.plannedEventCount)",
             "ObservedRegisteredEventCount=\(observedRegisteredEventCount.map { String($0) } ?? "none")",
             "MaximumThresholdMinutes=\(pulseSnapshot.maximumThresholdMinutes)",
+            "IntervalGeneration=\(pulseSnapshot.intervalGeneration)",
+            "IntervalCycleKey=\(pulseSnapshot.intervalCycleKey ?? "none")",
+            "IntervalAnchor=\(pulseSnapshot.intervalAnchor.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+            "LastIntervalStartAt=\(pulseSnapshot.lastIntervalStartAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+            "LastIntervalEndAt=\(pulseSnapshot.lastIntervalEndAt.map { ISO8601DateFormatter().string(from: $0) } ?? "none")",
+            "LifecycleState=\(pulseSnapshot.lifecycleState.rawValue)",
+            "RecoveryCount=\(pulseSnapshot.recoveryCount)",
+            "LastRecoveryReason=\(pulseSnapshot.lastRecoveryReason?.rawValue ?? "none")",
+            "PrematureCallbacksRejected=\(pulseSnapshot.prematureCallbackCount)",
+            "UnanchoredCallbacksRejected=\(pulseSnapshot.unanchoredCallbackCount)",
             "CallbackCount=\(pulseSnapshot.callbackCount)",
             "AcceptedRequestCount=\(pulseSnapshot.acceptedRequestCount)",
             "FailedRequestCount=\(pulseSnapshot.failedRequestCount)",
@@ -167,7 +194,7 @@ final class ElapseModel: ObservableObject {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
         notificationStatus = settings.authorizationStatus
         notificationAlertSetting = settings.alertSetting
-        refreshExperimentState()
+        reconcileMonitoring()
     }
 
     var experimentDescription: String {
@@ -191,19 +218,22 @@ final class ElapseModel: ObservableObject {
 
     var experimentRegistrationDescription: String {
         guard pulseStoreStatus == "ready" else { return "共享诊断不可用" }
+        if pulseSnapshot.monitoringDesired && !hasFamilyAuthorization { return "授权阻断，未确认当前计量" }
         switch pulseSnapshot.phase {
         case .idle: return "尚未开始"
         case .starting: return "正在登记"
         case .stopped: return "已停止"
         case .failed: return "登记失败"
         case .registered:
-            guard isMonitoring else { return "登记状态未确认" }
-            return pulseSnapshot.hasReceivedCallback ? "已登记，已收到真实回调" : "已登记，等待真实回调"
+            guard isMonitoring else { return "系统登记不完整，未确认当前计量" }
+            return pulseSnapshot.lifecycleState == .active
+                ? "已登记，已收到 intervalDidStart（不等于用量验证）"
+                : "已登记，尚无当前 interval start 证据"
         }
     }
 
     var canChangeSelection: Bool {
-        !isMonitoring && pulseSnapshot.canChangeSelection
+        !pulseSnapshot.monitoringDesired && !actualRegistrationPresent
     }
 
     var canChangeInterval: Bool { canChangeSelection }
@@ -233,7 +263,7 @@ final class ElapseModel: ObservableObject {
     }
 
     var canStopExperiment: Bool {
-        isMonitoring || pulseSnapshot.phase == .starting || pulseSnapshot.phase == .registered
+        pulseSnapshot.monitoringDesired || actualRegistrationPresent
     }
 
     func updateSelection(_ newSelection: FamilyActivitySelection) {
@@ -258,7 +288,9 @@ final class ElapseModel: ObservableObject {
         guard let pulseStore else {
             pulseStoreStatus = "group_unavailable"
             isMonitoring = false
+            actualRegistrationPresent = false
             observedRegisteredEventCount = nil
+            systemScheduleRepeatsDaily = nil
             return
         }
         do {
@@ -266,16 +298,106 @@ final class ElapseModel: ObservableObject {
             pulseStoreStatus = "ready"
             if let id = pulseSnapshot.experimentID {
                 let activity = DeviceActivityName(PulsePlan.activityName(for: id))
-                isMonitoring = pulseSnapshot.isCurrentRegistration && center.activities.contains(activity)
-                observedRegisteredEventCount = isMonitoring ? center.events(for: activity).count : nil
+                actualRegistrationPresent = center.activities.contains(activity)
+                observedRegisteredEventCount = actualRegistrationPresent ? center.events(for: activity).count : nil
+                systemScheduleRepeatsDaily = actualRegistrationPresent ? center.schedule(for: activity)?.repeats : nil
+                isMonitoring = pulseSnapshot.monitoringDesired &&
+                    pulseSnapshot.isCurrentRegistration && actualRegistrationPresent &&
+                    observedRegisteredEventCount == pulseSnapshot.plannedEventCount &&
+                    systemScheduleRepeatsDaily == true
             } else {
                 isMonitoring = false
+                actualRegistrationPresent = false
                 observedRegisteredEventCount = nil
+                systemScheduleRepeatsDaily = nil
             }
         } catch {
             pulseStoreStatus = "read_error"
             isMonitoring = false
+            actualRegistrationPresent = false
             observedRegisteredEventCount = nil
+            systemScheduleRepeatsDaily = nil
+        }
+    }
+
+    func reconcileMonitoring() {
+        guard !reconciliationInProgress else { return }
+        reconciliationInProgress = true
+        defer { reconciliationInProgress = false }
+        refreshExperimentState()
+        guard let pulseStore, pulseStoreStatus == "ready" else { return }
+
+        let ownedActivities = center.activities.filter {
+            $0 == .elapseDaily || $0.rawValue.hasPrefix(PulsePlan.activityPrefix)
+        }
+        let plan = DayPulsePlan(intervalMinutes: configuredIntervalMinutes)
+        let facts = PulseReconcileFacts(
+            desired: pulseSnapshot.monitoringDesired,
+            authorizationApproved: hasFamilyAuthorization,
+            selectedApplicationsAvailable: !selection.applicationTokens.isEmpty && plan != nil,
+            snapshotPhase: pulseSnapshot.phase,
+            recoveryFailed: pulseSnapshot.phase == .failed && pulseSnapshot.lastRecoveryReason != nil,
+            authorizationWasBlocked: pulseSnapshot.authorizationWasBlocked,
+            snapshotRepeatsDaily: pulseSnapshot.scheduleRepeatsDaily,
+            selectionMatchesSnapshot: pulseSnapshot.selectedApplicationCount == selection.applicationTokens.count &&
+                pulseSnapshot.configurationIntervalMinutes == configuredIntervalMinutes &&
+                pulseSnapshot.plannedEventCount == plan?.eventCount,
+            registeredEventsMatchSelection: registeredEventsMatchSelection(plan: plan),
+            activityPresent: actualRegistrationPresent,
+            observedEventCount: observedRegisteredEventCount,
+            plannedEventCount: pulseSnapshot.plannedEventCount,
+            systemScheduleRepeats: systemScheduleRepeatsDaily
+        )
+        switch PulseReconciliationPolicy.decide(facts) {
+        case .idle, .stopStrays:
+            if !ownedActivities.isEmpty { center.stopMonitoring(ownedActivities) }
+            if let id = pulseSnapshot.experimentID, pulseSnapshot.phase != .stopped {
+                try? pulseStore.update { $0.markStopped(id: id) }
+            }
+            refreshExperimentState()
+        case .blockedAuthorization:
+            try? pulseStore.update { $0.markAuthorizationBlocked() }
+            if !ownedActivities.isEmpty { center.stopMonitoring(ownedActivities) }
+            refreshExperimentState()
+            lastResult = "blocked_authorization"
+            statusMessage = "屏幕使用时间授权未就绪；已停止系统登记，保留监控意图，不自动弹出授权。"
+        case .blockedSelection:
+            if !ownedActivities.isEmpty { center.stopMonitoring(ownedActivities) }
+            if let id = pulseSnapshot.experimentID {
+                try? pulseStore.update { $0.markRegistrationFailed(id: id, errorCode: "selection_unavailable") }
+            }
+            refreshExperimentState()
+            lastResult = "blocked_selection"
+            statusMessage = "所选 App 配置不可用；监控已停止，请检查选择后显式重新开始。"
+        case .keepRegistration:
+            if let id = pulseSnapshot.experimentID, pulseSnapshot.phase == .starting {
+                try? pulseStore.update { $0.markRegistered(id: id) }
+            }
+            let currentName = pulseSnapshot.experimentID.map { PulsePlan.activityName(for: $0) } ?? ""
+            let stray = ownedActivities.filter {
+                $0.rawValue != currentName
+            }
+            if !stray.isEmpty { center.stopMonitoring(stray) }
+            refreshExperimentState()
+        case let .recover(reason):
+            registerNewConfiguration(recoveryReason: reason)
+        case .holdFailure:
+            if !ownedActivities.isEmpty { center.stopMonitoring(ownedActivities) }
+            refreshExperimentState()
+            lastResult = "recovery_failed_no_retry_loop"
+        }
+    }
+
+    private func registeredEventsMatchSelection(plan: DayPulsePlan?) -> Bool {
+        guard actualRegistrationPresent, let plan, let id = pulseSnapshot.experimentID else { return false }
+        let activity = DeviceActivityName(PulsePlan.activityName(for: id))
+        let events = center.events(for: activity)
+        guard events.count == plan.eventCount else { return false }
+        return plan.thresholds.allSatisfy { minutes in
+            guard let event = events[DeviceActivityEvent.Name(PulsePlan.eventName(for: minutes))] else {
+                return false
+            }
+            return event.applications == selection.applicationTokens && !event.includesPastActivity
         }
     }
 
@@ -292,12 +414,14 @@ final class ElapseModel: ObservableObject {
                 ? "屏幕使用时间状态：已授权。"
                 : "授权请求已结束，但当前状态是\(authorizationDescription)；尚不能选择 App。"
             logger.notice("Authorization transition: \(String(describing: before), privacy: .public) -> \(String(describing: self.authorizationStatus), privacy: .public)")
+            reconcileMonitoring()
         } catch {
             authorizationStatus = AuthorizationCenter.shared.authorizationStatus
             lastErrorCode = FoundationFeedback.safeErrorCode(error)
             lastResult = "request_failed"
             statusMessage = "屏幕使用时间授权未完成（错误代码 \(lastErrorCode ?? "未知")）；当前状态：\(authorizationDescription)。"
             logger.error("Family Controls authorization failed; code=\(self.lastErrorCode ?? "unknown", privacy: .public)")
+            reconcileMonitoring()
         }
     }
 
@@ -352,8 +476,14 @@ final class ElapseModel: ObservableObject {
     }
 
     func startMonitoring() {
-        lastAction = "start_experiment"
+        lastAction = "start_monitoring"
         lastErrorCode = nil
+        refreshExperimentState()
+        guard !pulseSnapshot.monitoringDesired && !actualRegistrationPresent else {
+            statusMessage = "已有监控意图或系统登记；请先停止监控。"
+            lastResult = "already_running_or_desired"
+            return
+        }
         guard hasFamilyAuthorization else {
             statusMessage = "请先完成屏幕使用时间授权；未授权不能登记监控。"
             lastResult = "not_authorized"
@@ -364,53 +494,36 @@ final class ElapseModel: ObservableObject {
             lastResult = "no_app_selected"
             return
         }
-        guard let plan = DayPulsePlan(intervalMinutes: configuredIntervalMinutes) else {
+        guard DayPulsePlan(intervalMinutes: configuredIntervalMinutes) != nil else {
             statusMessage = "提醒间隔无效；监控未启动。"
             lastResult = "invalid_interval"
             return
         }
         guard persistSelection() else {
-            statusMessage = "所选 App 未能保存；新实验未启动。"
+            statusMessage = "所选 App 未能保存；监控未启动。"
             lastResult = "selection_save_failed"
             return
         }
-        refreshExperimentState()
-        guard let pulseStore, pulseStoreStatus == "ready" else {
-            statusMessage = "共享诊断不可用，不能开始无法核验回调的新实验。"
+        registerNewConfiguration(recoveryReason: nil)
+    }
+
+    private func registerNewConfiguration(recoveryReason: PulseRecoveryReason?) {
+        guard let pulseStore, pulseStoreStatus == "ready",
+              let plan = DayPulsePlan(intervalMinutes: configuredIntervalMinutes),
+              hasFamilyAuthorization,
+              !selection.applicationTokens.isEmpty else {
+            statusMessage = "监控配置、授权或共享诊断不可用；没有启动新登记。"
             lastResult = "shared_diagnostic_unavailable"
             return
         }
-        guard !isMonitoring else {
-            statusMessage = "已有实验正在运行；请先停止。"
-            lastResult = "already_running"
+        guard persistSelection() else {
+            lastResult = "selection_save_failed"
+            statusMessage = "所选 App 未能保存；没有启动新登记。"
             return
         }
-
-        // Retire both the S00-A fixed activity and any previous experiment.
-        // A delayed old callback is rejected by the experiment identity in
-        // the extension, even after stopMonitoring returns.
         let previousActivities = center.activities.filter {
             $0 == .elapseDaily || $0.rawValue.hasPrefix(PulsePlan.activityPrefix)
         }
-        if !previousActivities.isEmpty {
-            do {
-                if let oldID = pulseSnapshot.experimentID {
-                    try pulseStore.update { $0.markStopped(id: oldID) }
-                }
-            } catch {
-                statusMessage = "无法隔离旧实验；新实验未开始。"
-                lastResult = "shared_diagnostic_write_failed"
-                return
-            }
-            center.stopMonitoring(previousActivities)
-            guard !center.activities.contains(where: { previousActivities.contains($0) }) else {
-                statusMessage = "旧监控仍显示已登记；新实验未开始。"
-                lastResult = "old_monitor_still_registered"
-                refreshExperimentState()
-                return
-            }
-        }
-
         let experimentID = UUID().uuidString.lowercased()
         let activity = DeviceActivityName(PulsePlan.activityName(for: experimentID))
         do {
@@ -418,20 +531,36 @@ final class ElapseModel: ObservableObject {
                 $0.begin(
                     id: experimentID,
                     selectedApplicationCount: selection.applicationTokens.count,
-                    plan: plan
+                    plan: plan,
+                    at: Date(),
+                    repeatsDaily: true,
+                    recoveryReason: recoveryReason
                 )
             }
         } catch {
-            statusMessage = "新实验状态无法保存；监控未启动。"
+            statusMessage = "新配置状态无法保存；监控未启动。"
             lastResult = "shared_diagnostic_write_failed"
             refreshExperimentState()
             return
         }
 
+        // The new identity is committed before old registrations are retired.
+        // A delayed old extension callback is stale even during this handoff.
+        if !previousActivities.isEmpty { center.stopMonitoring(previousActivities) }
+        guard !center.activities.contains(where: { previousActivities.contains($0) }) else {
+            let code = "old_monitor_still_registered"
+            try? pulseStore.update { $0.markRegistrationFailed(id: experimentID, errorCode: code) }
+            lastErrorCode = code
+            lastResult = "recovery_failed_no_retry_loop"
+            statusMessage = "旧登记未能退出；没有启动新监控。"
+            refreshExperimentState()
+            return
+        }
+
         let schedule = DeviceActivitySchedule(
-            intervalStart: DateComponents(hour: 0, minute: 0, second: 0),
-            intervalEnd: DateComponents(hour: 23, minute: 59, second: 59),
-            repeats: false
+            intervalStart: PulseDailySchedule.intervalStart,
+            intervalEnd: PulseDailySchedule.intervalEnd,
+            repeats: PulseDailySchedule.repeats
         )
         let events = Dictionary(uniqueKeysWithValues: plan.thresholds.map { minutes in
             let name = DeviceActivityEvent.Name(PulsePlan.eventName(for: minutes))
@@ -447,14 +576,16 @@ final class ElapseModel: ObservableObject {
         do {
             try center.startMonitoring(activity, during: schedule, events: events)
             let observedCount = center.events(for: activity).count
-            guard center.activities.contains(activity), observedCount == plan.eventCount else {
+            guard center.activities.contains(activity), observedCount == plan.eventCount,
+                  center.schedule(for: activity)?.repeats == true else {
                 center.stopMonitoring([activity])
-                let code = "registered_event_count_mismatch"
+                let code = observedCount == plan.eventCount
+                    ? "registered_schedule_mismatch" : "registered_event_count_mismatch"
                 try? pulseStore.update { $0.markRegistrationFailed(id: experimentID, errorCode: code) }
                 refreshExperimentState()
                 lastErrorCode = code
                 lastResult = "registration_not_confirmed"
-                statusMessage = "监控返回成功，但系统登记的事件数与计划不符；已停止，请记录诊断。"
+                statusMessage = "监控返回成功，但系统登记数或重复日程与计划不符；已停止，请记录诊断。"
                 return
             }
             do {
@@ -467,11 +598,11 @@ final class ElapseModel: ObservableObject {
                 return
             }
             refreshExperimentState()
-            lastResult = isMonitoring ? "registered_not_verified" : "registration_not_confirmed"
+            lastResult = isMonitoring ? "recurring_registered_interval_start_separate" : "registration_not_confirmed"
             statusMessage = isMonitoring
-                ? "新实验已登记；这不等于已经收到使用时间回调。"
-                : "登记返回成功，但系统未显示该实验正在监控；请查看脱敏诊断。"
-            logger.notice("Monitoring start succeeded; includesPastActivity=false")
+                ? "重复日程已登记；请另看 interval generation/anchor，登记本身不证明当前 interval 已启动。"
+                : "登记返回成功，但系统未确认完整重复日程；请查看脱敏诊断。"
+            logger.notice("Recurring monitoring registration succeeded; current interval evidence separate")
         } catch {
             lastErrorCode = Self.safeRegistrationErrorCode(error)
             try? pulseStore.update {
@@ -499,29 +630,37 @@ final class ElapseModel: ObservableObject {
     }
 
     func stopMonitoring() {
-        lastAction = "stop_experiment"
+        lastAction = "stop_monitoring"
         lastErrorCode = nil
         refreshExperimentState()
-        guard let pulseStore, let experimentID = pulseSnapshot.experimentID else {
-            statusMessage = "没有可停止的当前实验。"
-            lastResult = "no_current_experiment"
+        guard let pulseStore, pulseStoreStatus == "ready" else {
+            statusMessage = "共享状态不可写，不能确认关闭自动恢复意图。"
+            lastResult = "shared_diagnostic_unavailable"
             return
         }
-        let activity = DeviceActivityName(PulsePlan.activityName(for: experimentID))
-        var stateSaved = true
+        let experimentID = pulseSnapshot.experimentID
         do {
-            try pulseStore.update { $0.markStopped(id: experimentID) }
+            try pulseStore.update { snapshot in
+                if let experimentID { snapshot.markStopped(id: experimentID) }
+            }
         } catch {
-            stateSaved = false
+            statusMessage = "停止意图未能保存；不能声称已停止。"
+            lastResult = "stop_intent_save_failed"
+            return
         }
-        center.stopMonitoring([activity])
+        let owned = center.activities.filter {
+            $0 == .elapseDaily || $0.rawValue.hasPrefix(PulsePlan.activityPrefix)
+        }
+        if !owned.isEmpty { center.stopMonitoring(owned) }
         refreshExperimentState()
-        let stillRegistered = center.activities.contains(activity)
-        lastResult = stateSaved && !stillRegistered ? "stopped_late_callbacks_not_excluded" : "stop_unconfirmed"
-        statusMessage = stateSaved && !stillRegistered
-            ? "实验已停止；旧回调仍可能迟到，但不会归入新实验。"
+        let stillRegistered = center.activities.contains {
+            $0 == .elapseDaily || $0.rawValue.hasPrefix(PulsePlan.activityPrefix)
+        }
+        lastResult = !pulseSnapshot.monitoringDesired && !stillRegistered ? "stopped_desired_off" : "stop_unconfirmed"
+        statusMessage = !pulseSnapshot.monitoringDesired && !stillRegistered
+            ? "监控已停止，自动恢复意图关闭；旧回调仍会被隔离。"
             : "已请求停止，但状态未完全确认；请查看脱敏诊断。"
-        logger.notice("Monitoring stop returned; active=\(self.isMonitoring, privacy: .public)")
+        logger.notice("Monitoring stop returned; desired=\(self.pulseSnapshot.monitoringDesired, privacy: .public)")
     }
 
     private func persistSelection() -> Bool {

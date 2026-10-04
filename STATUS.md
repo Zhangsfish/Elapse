@@ -4,7 +4,9 @@ Updated: 2026-10-04
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01-A COMPLETE — PASS_WITH_NOTES。S01-B READY；S01-C / S02 / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01-A COMPLETE — PASS_WITH_NOTES。S01-B IN_PROGRESS；S01-C / S02 / S03 LOCKED。**
+
+Codex 在 `codex/s01-b-daily-lifecycle` 执行 S01-B；代码、CI/TestFlight 与短时设备观察记录于 `reports/S01-B/round-01/`。未获云端审核前不得标记 PASS 或解锁 S01-C。
 
 S01-A PR #18 exact head `e7adced2834d3a4831d9b24ff6ae7dc421df68b5` 已由云端审核并合并为 `4fbb88be370e1481ec644a5cfbf7823680f0504e`。审计见 [S01-A cloud audit](audits/S01/S01_A_AUDIT_2026-10-04.md)。
 
@@ -42,7 +44,7 @@ S01-A 只证明大 event ladder 能登记，不证明全天所有 callback 或�
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S01-A | COMPLETE — PASS_WITH_NOTES | full-range interval plan + 299-event registration feasibility |
-| S01-B | **READY** | repeating daily schedule、lifecycle generation、reboot/reconcile recovery |
+| S01-B | **IN_PROGRESS** | repeating daily schedule、lifecycle generation、reboot/reconcile recovery |
 | S01-C | LOCKED | 真实午夜 rollover、permission revoke/regrant、timezone/DST 边界 |
 | S02 | LOCKED | production UI / Today 可视化研究与体验 |
 | S03 | LOCKED | public distribution |

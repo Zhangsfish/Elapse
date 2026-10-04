@@ -52,8 +52,8 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S01-A 日内提醒配置") {
-                    Text("所选 App 使用从本轮开始后累计；提醒点不等于 Today 总量。此版只验证当天计划登记，尚不自动跨日续接。")
+                Section("S01-B 每日提醒与生命周期") {
+                    Text("提醒点不等于 Today 总量。希望监控、系统登记和当前 interval 启动是三件事；登记仍在不证明今天已开始计量。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                     Picker("提醒间隔", selection: Binding(
@@ -72,11 +72,22 @@ struct ContentView: View {
                     }
                     LabeledContent("配置", value: model.experimentDescription)
                     LabeledContent("配置 ID", value: model.pulseSnapshot.shortID)
+                    LabeledContent("希望监控", value: model.pulseSnapshot.monitoringDesired ? "ON" : "OFF")
                     LabeledContent("登记间隔", value: "\(model.pulseSnapshot.configurationIntervalMinutes) 分钟")
                     LabeledContent("计划事件数", value: "\(model.pulseSnapshot.plannedEventCount)")
                     LabeledContent("系统登记事件数", value: model.observedRegisteredEventCount.map { String($0) } ?? "未确认")
+                    LabeledContent("每日重复日程", value: model.systemScheduleRepeatsDaily.map { $0 ? "YES" : "NO" } ?? "未确认")
                     LabeledContent("登记状态", value: model.experimentRegistrationDescription)
                     LabeledContent("登记错误", value: model.pulseSnapshot.safeErrorCode ?? "无")
+                    LabeledContent("当前 interval", value: model.pulseSnapshot.lifecycleState.rawValue)
+                    LabeledContent("interval generation", value: "\(model.pulseSnapshot.intervalGeneration)")
+                    LabeledContent("interval anchor", value: model.pulseSnapshot.intervalAnchor.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
+                    LabeledContent("最近 interval start", value: model.pulseSnapshot.lastIntervalStartAt.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
+                    LabeledContent("最近 interval end", value: model.pulseSnapshot.lastIntervalEndAt.map { $0.formatted(date: .abbreviated, time: .standard) } ?? "未收到")
+                    LabeledContent("自动恢复次数", value: "\(model.pulseSnapshot.recoveryCount)")
+                    LabeledContent("最近恢复原因", value: model.pulseSnapshot.lastRecoveryReason?.rawValue ?? "无")
+                    LabeledContent("拒绝的过早回调", value: "\(model.pulseSnapshot.prematureCallbackCount)")
+                    LabeledContent("拒绝的无 anchor 回调", value: "\(model.pulseSnapshot.unanchoredCallbackCount)")
                     LabeledContent("已收到回调", value: "\(model.pulseSnapshot.callbackCount)")
                     LabeledContent("已接受通知请求", value: "\(model.pulseSnapshot.acceptedRequestCount)")
                     LabeledContent("通知请求失败", value: "\(model.pulseSnapshot.failedRequestCount)")

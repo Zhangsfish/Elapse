@@ -1,0 +1,21 @@
+{
+  "stage": "S01-B",
+  "round": 1,
+  "base_main_sha": "07b889afe456aa408104b3643b2c8281d3cf99a1",
+  "branch": "codex/s01-b-daily-lifecycle",
+  "code_sha": null,
+  "tested_sha": null,
+  "upload_sha": null,
+  "version": "0.1.0",
+  "build": null,
+  "ordinary_ci": "NOT_RUN",
+  "prepare_only": "NOT_RUN",
+  "signed_ipa": "NOT_RUN",
+  "app_store_processing": "NOT_RUN",
+  "device_initial_recurring_299_events_and_anchor": "NOT_RUN",
+  "device_app_reopen_same_config": "NOT_RUN",
+  "device_reboot_reconcile": "NOT_RUN",
+  "device_stop_no_resurrection": "NOT_RUN",
+  "real_midnight_rollover": "NOT_RUN_OUT_OF_SCOPE",
+  "real_authorization_revoke_regrant": "NOT_RUN_OUT_OF_SCOPE"
+}
