@@ -187,6 +187,9 @@ struct ContentView: View {
                let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 Button("home.openSettings") { openURL(settingsURL) }
             }
+            if model.canStopExperiment {
+                Button("home.stop", role: .destructive) { model.stopMonitoring() }
+            }
         } else if model.canStopExperiment {
             Button { model.stopMonitoring() } label: {
                 Text("home.stop").frame(maxWidth: .infinity)
