@@ -4,104 +4,82 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01-A COMPLETE — PASS_WITH_NOTES。S01-B COMPLETE — PASS_WITH_NOTES。S01-C READY；S02 / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A READY；S02-B / S03 LOCKED。**
 
-S01-B PR #19 exact head `aa725b8a4a7cbd26b93b28cc286b6a36f87d7f7d` 已由云端独立审核并合并为 `60efd1622ea8b0c5148c78764bea274d51c11885`。
+S01-B PR #19 已由云端审核并合并；accepted internal baseline 仍为 **Everwhile 0.1.0 (47.1)**。
 
-正式审计：
-[`audits/S01/S01_B_AUDIT_2026-10-05.md`](audits/S01/S01_B_AUDIT_2026-10-05.md)
+S01-C 已收口：
+- 真实 Screen Time / Family Controls revoke 后，desired intent 保持 ON，system registration / recurring 变为未确认，状态正确 fail closed；
+- 重新授权后自动创建新 config，恢复 5m、299/299、recurring YES、active interval generation/anchor；
+- latest recovery reason = `authorizationReapproved`；
+- 47.1 自然午夜 `generation N -> N+1` 没有为验收再次熬夜重复实测；历史午夜观察 + S01-B repeating lifecycle/source/unit tests 已覆盖主要风险，剩余项作为 residual runtime risk 接受，未来真实出现问题再修。
 
-Accepted internal baseline:
-**Everwhile 0.1.0 (47.1)**
-
-S01-B 已证明：
-
-- 产品 schedule 使用 daily `repeats=true`；
-- desired monitoring intent、system registration、current interval lifecycle 三层状态分开；
-- `intervalDidStart` 建立 generation / anchor，并对同一 local cycle 幂等；
-- 新 interval 清空 interval-local receipts，保留当前 config；
-- unanchored / stale / physically-impossible premature callback fail closed；
-- launch / foreground / refresh reconciliation；
-- registration missing / mismatch 自动恢复为新 config；
-- authorization blocked / reapproved 状态机已通过 SOURCE + UNIT_TEST；
-- 目标 iPhone 真实看到 5m、299/299、recurring YES、active interval generation / anchor；
-- App reopen 与整机 reboot 后 registration 保持；
-- Stop 后 reopen desired OFF，不自动复活；
-- signed IPA / Family Controls / App Group / TestFlight / Apple processing VALID 全部通过。
-
-S01-B **没有**证明：
-- 自然午夜后新 interval 一定真正开始；
-- 真实 revoke / regrant 已在设备通过；
-- 全天每个 threshold callback 都可靠；
-- timezone / DST 真机边界。
+正式收口：
+[`audits/S01/S01_C_CLOSEOUT_2026-10-05.md`](audits/S01/S01_C_CLOSEOUT_2026-10-05.md)
 
 ## 唯一当前任务
 
-**[S01-C：calendar / permission 最小实证](prompts/S01_C_CALENDAR_PERMISSION_ACCEPTANCE.md)**
+**[S02-A：production UI shell + Today redesign](prompts/S02_A_PRODUCTION_UI_TODAY.md)**
 
-本轮只做两个高价值真机边界：
+设计基线：
+[`docs/S02_UX_RESEARCH_AND_DIRECTION.md`](docs/S02_UX_RESEARCH_AND_DIRECTION.md)
 
-1. **一次真实 Screen Time revoke / regrant**
-   - revoke 后 desired 保留，但 registration fail closed；
-   - regrant 后自动恢复为新 config；
-   - recurring YES + 299/299 + 新 generation/anchor。
+S02-A 只解决第一轮正式产品体验：
 
-2. **一次自然午夜 rollover**
-   - 不 Stop / Start；
-   - 不改 interval / selection；
-   - 关键 PASS 证据不是“仍有 299/299”，而是同 config 下 generation 从 N -> N+1，并出现新一天 anchor。
+- 把当前“工程控制台”主界面改成安静、稀疏、普通用户可理解的产品首页；
+- 主界面只优先回答：Everwhile 是否开启、提醒间隔、选了几个 App、今天时间去了哪里；
+- S00/S01 标签、config UUID、299 events、generation/anchor、callback/recovery counters、普通通知自检等退出主界面，保留在 Advanced / Diagnostics；
+- Today 重做为：
+  - 今日所选 App 总时长 hero；
+  - 真实 hourly aggregate 的紧凑柱状图；
+  - 各 App duration 排名；
+  - 不虚构精确 session；
+- 修复正的亚分钟使用显示 `0m`：改为 `<1m` 或等价本地化表达；
+- 建立简体中文 + English localization；
+- light/dark、Dynamic Type、VoiceOver、颜色非唯一编码；
+- 不碰 S01 监控状态机，除非真实 UI integration bug 暴露；
+- 一轮很轻的 TestFlight 真机 UI 验收即可，不重复 S01 生命周期测试。
 
-用户要求测试适度收口：**发现真实问题再修，不为了覆盖率额外折腾手机。**
-
-本轮不要求：
-- 手动改 timezone；
-- 手动改系统时间；
-- 模拟 DST；
-- 全天刷 App；
-- 等 pulse；
-- Today 重测；
-- S02 UI 美化。
-
-若 47.1 两个 gate 都通过，不需要重新出包。
-只有真实发现 runtime bug 并修改源码时，才出新 internal build 并只复测受影响项。
-
-## 阶段状态
+## S02 分层
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S00 | COMPLETE — PASS_WITH_NOTES | functional baseline |
-| S01-A | COMPLETE — PASS_WITH_NOTES | full-day event ladder + interval |
-| S01-B | COMPLETE — PASS_WITH_NOTES | repeating lifecycle + reconcile/reboot recovery |
-| S01-C | **READY** | natural midnight + real permission recovery |
-| S02 | LOCKED | production UI / Today hierarchy + visualization |
+| S02-A | **READY** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
+| S02-B | LOCKED | onboarding / “选择 App”教学 / copy-spacing-accessibility polish |
 | S03 | LOCKED | public distribution |
-
-## 当前可靠性边界
-
-Apple 当前文档支持 recurring schedule，并说明 startMonitoring 时若当前时间位于 interval 内，会立即触发 `intervalDidStart`。
-
-Everwhile 仍坚持：
-**registration presence / event count 不等于当前 interval active，更不等于精确 usage。**
-
-Callback 是系统信号，不是无条件可信的精确用量证明；明显过早 callback 必须 fail closed。
 
 ## 产品边界
 
-Awareness before control。只报时，不裁判。
+**Awareness before control.**
+
+Everwhile 是感知工具，不是纪律工具。
 
 不引入：
 - Shield / block；
-- Screen Time 强制限制；
-- streak / score；
-- 羞耻 / 教练；
+- streak / score / leaderboard；
+- guilt / coach / “culprit app”；
+- 强制反思；
 - cloud/account/analytics/ads/AI。
 
-Today 视觉“毛坯”和显示精度债务继续留给 S02，不在 S01-C 顺手处理。
+保护数据边界不变：
+DeviceActivityReport 的 App identity / per-App usage / hourly usage 保持在 report extension 内，不为了首页方便搬进 App Group。
+
+## 当前可靠性边界
+
+不会因为进入 S02 就偷偷扩大技术结论：
+
+- registration presence / event count 不等于 current interval active；
+- callback 不等于完美的精确 usage clock；
+- 47.1 自然午夜 generation rollover 是 residual risk，不是 device-proven；
+- timezone/DST 未做人工真机操纵；
+- all-day every-threshold reliability 未证明。
+
+这些不阻塞 UI 工作，除非真实回归出现。
 
 ## 分工
 
-- Codex：执行 S01-C，仅在必要时带持有人做一个手机动作；整理 reports；完成后停在 `READY_FOR_AUDIT`。
-- 持有人：只做真实 revoke/regrant 与自然午夜观察。
-- 云端 ChatGPT：独立审核 exact SHA / evidence，通过后 merge 并解锁 S02。
+- Codex：执行当前唯一 S02-A，实现、CI/TestFlight、带持有人做一轮很短的 UI 真机验收、整理 reports，最后停在 `READY_FOR_AUDIT`。
+- 持有人：只做必要的 iPhone 视觉/交互确认。
+- 云端 ChatGPT：独立审核 exact SHA / diff / CI / device evidence，通过后 merge 并只解锁 S02-B。
 
 持有人不手动 merge，不点 Actions，不整理 reports。
