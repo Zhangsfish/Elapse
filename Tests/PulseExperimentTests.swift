@@ -25,6 +25,59 @@ final class PulseExperimentTests: XCTestCase {
         XCTAssertEqual(state.receive(eventName: event, activityName: PulsePlan.activityName(for: secondID), at: callbackDate), .request(minutes: 5))
     }
 
+    func testFullDayHighThresholdReceiptsAndNewIntervalIdentity() throws {
+        let five = try XCTUnwrap(DayPulsePlan(intervalMinutes: 5))
+        let fifteen = try XCTUnwrap(DayPulsePlan(intervalMinutes: 15))
+        var state = PulseExperimentSnapshot()
+        state.begin(id: firstID, selectedApplicationCount: 2, plan: five)
+        state.markRegistered(id: firstID)
+        XCTAssertEqual(state.configurationIntervalMinutes, 5)
+        XCTAssertEqual(state.plannedEventCount, 299)
+        XCTAssertEqual(state.maximumThresholdMinutes, 1495)
+        let firstActivity = PulsePlan.activityName(for: firstID)
+        for minutes in [5, 720, 1495] {
+            let event = PulsePlan.eventName(for: minutes)
+            let receivedAt = callbackDate.addingTimeInterval(TimeInterval(minutes))
+            XCTAssertEqual(state.receive(eventName: event, activityName: firstActivity, at: receivedAt), .request(minutes: minutes))
+            state.finishRequest(eventName: event, activityName: firstActivity, errorCode: nil, at: receivedAt)
+        }
+        XCTAssertEqual(state.receiptKeys.count, 3)
+        XCTAssertEqual(state.callbackCount, 3)
+        XCTAssertEqual(state.acceptedRequestCount, 3)
+        XCTAssertEqual(state.mostRecentAcceptedThresholdMinutes, 1495)
+        XCTAssertNil(state.nextPlannedThresholdMinutes)
+        XCTAssertEqual(state.recentThresholdMinutes.count, 3)
+        state.markStopped(id: firstID)
+        state.begin(id: secondID, selectedApplicationCount: 2, plan: fifteen)
+        state.markRegistered(id: secondID)
+        XCTAssertEqual(state.configurationIntervalMinutes, 15)
+        XCTAssertEqual(state.plannedEventCount, 99)
+        XCTAssertEqual(state.maximumThresholdMinutes, 1485)
+        XCTAssertTrue(state.receiptKeys.isEmpty)
+        XCTAssertEqual(state.callbackCount, 0)
+        XCTAssertEqual(state.nextPlannedThresholdMinutes, 15)
+        XCTAssertEqual(state.receive(eventName: PulsePlan.eventName(for: 15), activityName: firstActivity, at: callbackDate), .stale)
+        XCTAssertEqual(state.receive(eventName: PulsePlan.eventName(for: 10), activityName: PulsePlan.activityName(for: secondID), at: callbackDate), .invalid)
+        XCTAssertEqual(state.receive(eventName: PulsePlan.eventName(for: 15), activityName: PulsePlan.activityName(for: secondID), at: callbackDate), .request(minutes: 15))
+        state.finishRequest(eventName: PulsePlan.eventName(for: 1495), activityName: firstActivity, errorCode: nil, at: callbackDate)
+        XCTAssertEqual(state.staleCompletionCount, 1)
+    }
+
+    func testFullDaySnapshotPersistenceAndIncompleteConfigFailsClosed() throws {
+        let plan = try XCTUnwrap(DayPulsePlan(intervalMinutes: 60))
+        var state = PulseExperimentSnapshot()
+        state.begin(id: firstID, selectedApplicationCount: 2, plan: plan)
+        state.markRegistered(id: firstID)
+        let encoded = try JSONEncoder().encode(state)
+        XCTAssertEqual(try JSONDecoder().decode(PulseExperimentSnapshot.self, from: encoded), state)
+        let incomplete = """
+        {"experimentID":"\(firstID)","generation":1,"phase":"registered","selectedApplicationCount":2,
+         "configurationIntervalMinutes":60,"thresholds":{},"receiptKeys":[],
+         "staleCallbackCount":0,"duplicateCallbackCount":0,"staleCompletionCount":0,"invalidCallbackCount":0}
+        """
+        XCTAssertThrowsError(try JSONDecoder().decode(PulseExperimentSnapshot.self, from: Data(incomplete.utf8)))
+    }
+
     func testDuplicateAndStaleCallbacksAreSeparated() {
         var state = PulseExperimentSnapshot()
         state.begin(id: firstID, selectedApplicationCount: 2)

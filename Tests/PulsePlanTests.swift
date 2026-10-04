@@ -6,8 +6,31 @@ final class PulsePlanTests: XCTestCase {
         XCTAssertEqual(PulsePlan.thresholdMinutes, [5, 10, 15, 20, 25, 30])
     }
 
+    func testProductIntervalsAndFullDayCandidateLadders() throws {
+        XCTAssertEqual(DayPulsePlan.defaultIntervalMinutes, 5)
+        XCTAssertEqual(DayPulsePlan.supportedIntervals, [5, 10, 15, 30, 60])
+        XCTAssertNil(DayPulsePlan(intervalMinutes: 1))
+        XCTAssertNil(DayPulsePlan(intervalMinutes: 7))
+        for (interval, count, maximum) in [
+            (5, 299, 1495), (10, 149, 1490), (15, 99, 1485),
+            (30, 49, 1470), (60, 24, 1440),
+        ] {
+            let plan = try XCTUnwrap(DayPulsePlan(intervalMinutes: interval))
+            XCTAssertEqual(plan.eventCount, count)
+            XCTAssertEqual(plan.maximumThresholdMinutes, maximum)
+            XCTAssertEqual(plan.thresholds.first, interval)
+            XCTAssertEqual(plan.thresholds.last, maximum)
+            XCTAssertEqual(plan.thresholds.count, count)
+            XCTAssertFalse(plan.contains(maximum + interval))
+            XCTAssertEqual(plan.thresholdComponents(for: maximum)?.hour, maximum / 60)
+            XCTAssertEqual(plan.thresholdComponents(for: maximum)?.minute, maximum % 60)
+        }
+        // 25h is only a planning ceiling: 23h, 24h and 25h calendar days
+        // require later lifecycle/DST validation, not an assumed fixed day.
+    }
+
     func testEventNameRoundTrip() {
-        for minutes in PulsePlan.thresholdMinutes {
+        for minutes in [5, 30, 60, 720, 1440, 1495] {
             let name = PulsePlan.eventName(for: minutes)
             XCTAssertEqual(PulsePlan.minutes(fromEventName: name), minutes)
         }
@@ -24,6 +47,8 @@ final class PulsePlanTests: XCTestCase {
         XCTAssertNil(PulsePlan.minutes(fromEventName: "elapse.threshold.7m"))
         XCTAssertNil(PulsePlan.minutes(fromEventName: "other.threshold.5m"))
         XCTAssertNil(PulsePlan.minutes(fromEventName: "elapse.threshold.5"))
+        XCTAssertNil(PulsePlan.minutes(fromEventName: "elapse.threshold.005m"))
+        XCTAssertNil(PulsePlan.minutes(fromEventName: "elapse.threshold.1500m"))
     }
 
     func testNotificationCopyUsesNamedCumulativeThreshold() {
@@ -31,9 +56,10 @@ final class PulsePlanTests: XCTestCase {
             PulseNotificationCopy.safeThresholdCopy(minutes: 20),
             PulseNotificationCopy(
                 title: "20 分钟",
-                body: "所选 App 自本次监控开始后已达到 20 分钟。"
+                body: "所选 App 使用已达到本轮的 20 分钟提醒点。"
             )
         )
+        XCTAssertFalse(PulseNotificationCopy.safeThresholdCopy(minutes: 20).body.contains("今天"))
     }
 
     func testReceiptIsScopedToExperimentNotCalendarDay() {

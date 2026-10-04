@@ -38,6 +38,9 @@ struct PulseExperimentSnapshot: Codable, Equatable {
     var generation = 0
     var phase: PulseExperimentPhase = .idle
     var selectedApplicationCount = 0
+    var configurationIntervalMinutes = PulsePlan.intervalMinutes
+    var plannedEventCount = PulsePlan.thresholdMinutes.count
+    var maximumThresholdMinutes = PulsePlan.maximumTestMinutes
     var thresholds: [Int: PulseThresholdDiagnostic] = [:]
     var safeErrorCode: String?
     var staleCallbackCount = 0
@@ -52,6 +55,7 @@ struct PulseExperimentSnapshot: Codable, Equatable {
     // an existing App Group file remains readable; new writes use thresholds.
     private enum CodingKeys: String, CodingKey {
         case experimentID, generation, phase, selectedApplicationCount, thresholds
+        case configurationIntervalMinutes, plannedEventCount, maximumThresholdMinutes
         case safeErrorCode, staleCallbackCount, duplicateCallbackCount
         case staleCompletionCount, invalidCallbackCount, receiptKeys
         case fiveMinuteCallbackAt, fiveMinuteRequestAt, fiveMinuteRequestStatus
@@ -63,6 +67,28 @@ struct PulseExperimentSnapshot: Codable, Equatable {
         generation = try values.decode(Int.self, forKey: .generation)
         phase = try values.decode(PulseExperimentPhase.self, forKey: .phase)
         selectedApplicationCount = try values.decode(Int.self, forKey: .selectedApplicationCount)
+        let newPlanKeys = [
+            values.contains(.configurationIntervalMinutes),
+            values.contains(.plannedEventCount),
+            values.contains(.maximumThresholdMinutes),
+        ]
+        if newPlanKeys.allSatisfy({ !$0 }) {
+            // Pre-S01-A snapshots represent the accepted six-event S00 plan.
+            configurationIntervalMinutes = PulsePlan.intervalMinutes
+            plannedEventCount = PulsePlan.thresholdMinutes.count
+            maximumThresholdMinutes = PulsePlan.maximumTestMinutes
+        } else {
+            guard newPlanKeys.allSatisfy({ $0 }) else {
+                throw DecodingError.dataCorruptedError(
+                    forKey: .plannedEventCount,
+                    in: values,
+                    debugDescription: "Incomplete monitoring configuration"
+                )
+            }
+            configurationIntervalMinutes = try values.decode(Int.self, forKey: .configurationIntervalMinutes)
+            plannedEventCount = try values.decode(Int.self, forKey: .plannedEventCount)
+            maximumThresholdMinutes = try values.decode(Int.self, forKey: .maximumThresholdMinutes)
+        }
         if values.contains(.thresholds) {
             thresholds = try values.decode([Int: PulseThresholdDiagnostic].self, forKey: .thresholds)
         } else {
@@ -94,6 +120,20 @@ struct PulseExperimentSnapshot: Codable, Equatable {
                 debugDescription: "Active experiment is missing its identity"
             )
         }
+        let dayPlan = DayPulsePlan(intervalMinutes: configurationIntervalMinutes)
+        let isLegacyPlan = configurationIntervalMinutes == PulsePlan.intervalMinutes &&
+            plannedEventCount == PulsePlan.thresholdMinutes.count &&
+            maximumThresholdMinutes == PulsePlan.maximumTestMinutes
+        let isDayPlan = dayPlan != nil &&
+            plannedEventCount == dayPlan?.eventCount &&
+            maximumThresholdMinutes == dayPlan?.maximumThresholdMinutes
+        guard isLegacyPlan || isDayPlan else {
+            throw DecodingError.dataCorruptedError(
+                forKey: .plannedEventCount,
+                in: values,
+                debugDescription: "Invalid monitoring configuration"
+            )
+        }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -102,6 +142,9 @@ struct PulseExperimentSnapshot: Codable, Equatable {
         try values.encode(generation, forKey: .generation)
         try values.encode(phase, forKey: .phase)
         try values.encode(selectedApplicationCount, forKey: .selectedApplicationCount)
+        try values.encode(configurationIntervalMinutes, forKey: .configurationIntervalMinutes)
+        try values.encode(plannedEventCount, forKey: .plannedEventCount)
+        try values.encode(maximumThresholdMinutes, forKey: .maximumThresholdMinutes)
         try values.encode(thresholds, forKey: .thresholds)
         try values.encodeIfPresent(safeErrorCode, forKey: .safeErrorCode)
         try values.encode(staleCallbackCount, forKey: .staleCallbackCount)
@@ -119,6 +162,29 @@ struct PulseExperimentSnapshot: Codable, Equatable {
         thresholds.values.contains { $0.callbackReceived }
     }
 
+    var callbackCount: Int { thresholds.values.filter(\.callbackReceived).count }
+    var acceptedRequestCount: Int { thresholds.values.filter { $0.requestStatus == .accepted }.count }
+    var failedRequestCount: Int { thresholds.values.filter { $0.requestStatus == .failed }.count }
+
+    var mostRecentAcceptedThresholdMinutes: Int? {
+        thresholds.filter { $0.value.requestStatus == .accepted }
+            .max { left, right in
+                (left.value.requestAt ?? .distantPast) < (right.value.requestAt ?? .distantPast)
+            }?.key
+    }
+
+    /// A plan cursor, not a measurement of current Screen Time usage.
+    var nextPlannedThresholdMinutes: Int? {
+        let next = (thresholds.keys.max() ?? 0) + configurationIntervalMinutes
+        return next <= maximumThresholdMinutes ? next : nil
+    }
+
+    var recentThresholdMinutes: [Int] {
+        Array(thresholds.sorted {
+            ($0.value.callbackAt ?? .distantPast) > ($1.value.callbackAt ?? .distantPast)
+        }.prefix(3).map(\.key))
+    }
+
     var shortID: String {
         guard let experimentID else { return "none" }
         return String(experimentID.prefix(8))
@@ -132,11 +198,20 @@ struct PulseExperimentSnapshot: Codable, Equatable {
         phase != .starting && phase != .registered
     }
 
-    mutating func begin(id: String, selectedApplicationCount: Int) {
+    func containsPlannedThreshold(_ minutes: Int) -> Bool {
+        minutes >= configurationIntervalMinutes &&
+            minutes <= maximumThresholdMinutes &&
+            minutes % configurationIntervalMinutes == 0
+    }
+
+    mutating func begin(id: String, selectedApplicationCount: Int, plan: DayPulsePlan? = nil) {
         generation += 1
         experimentID = id
         phase = .starting
         self.selectedApplicationCount = selectedApplicationCount
+        configurationIntervalMinutes = plan?.intervalMinutes ?? PulsePlan.intervalMinutes
+        plannedEventCount = plan?.eventCount ?? PulsePlan.thresholdMinutes.count
+        maximumThresholdMinutes = plan?.maximumThresholdMinutes ?? PulsePlan.maximumTestMinutes
         thresholds = [:]
         safeErrorCode = nil
         staleCallbackCount = 0
@@ -173,7 +248,8 @@ struct PulseExperimentSnapshot: Codable, Equatable {
             staleCallbackCount += 1
             return .stale
         }
-        guard let minutes = PulsePlan.minutes(fromEventName: eventName) else {
+        guard let minutes = PulsePlan.minutes(fromEventName: eventName),
+              containsPlannedThreshold(minutes) else {
             invalidCallbackCount += 1
             return .invalid
         }
@@ -207,6 +283,7 @@ struct PulseExperimentSnapshot: Codable, Equatable {
               callbackID == experimentID,
               isCurrentRegistration,
               let minutes = PulsePlan.minutes(fromEventName: eventName),
+              containsPlannedThreshold(minutes),
               var diagnostic = thresholds[minutes],
               diagnostic.requestStatus == .submitting else {
             staleCompletionCount += 1

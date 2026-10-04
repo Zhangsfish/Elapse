@@ -4,7 +4,9 @@ Updated: 2026-10-04
 
 ## 当前结论
 
-**S00 FUNCTIONAL ACCEPTANCE COMPLETE — PASS_WITH_NOTES。S01-A READY；S01-B / S01-C / S02 / S03 LOCKED。**
+**S00 FUNCTIONAL ACCEPTANCE COMPLETE — PASS_WITH_NOTES。S01-A READY_FOR_AUDIT；S01-B / S01-C / S02 / S03 LOCKED。**
+
+S01-A 由 Codex 在 [PR #18](https://github.com/Zhangsfish/Elapse/pull/18) 实施；当前状态 **READY_FOR_AUDIT**，不是云端批准的 PASS。`0.1.0 (44.1)` 内部 TestFlight processing `VALID`；目标 iPhone 观察到 5m 计划/系统登记 **299/299**、15m **99/99**、不同配置 ID、无登记错误，重开后状态保持。最后监控已停止、间隔恢复 5m、所选 App 仍 2 个。证据和限制见 `reports/S01-A/round-01/`。Codex 不合并或解锁 S01-B。
 
 S00-D PR #17 的精确 head `ebaf1c7a23a9f93856428e4df5b6dba71020bf39` 已由云端独立审核并合并为 `3771b556334a5dc1b15e42287183bc9e8f1bef95`。审计见 [S00-D cloud audit](audits/S00/S00_D_AUDIT_2026-10-04.md)。
 
@@ -39,7 +41,7 @@ Apple 当前公开文档给出 activity 同时监控上限 20，但未公开每 
 
 | 子阶段 | 状态 | 目的 |
 |---|---|---|
-| S01-A | **READY** | 日内全天 threshold plan、interval 配置、大 event ladder 注册可行性 |
+| S01-A | **READY_FOR_AUDIT** | build 44.1 的短时真机 registration/config 观察已完成；等待云端独立审核 |
 | S01-B | LOCKED | 自动跨日 / config change / app & device restart / permission recovery |
 | S01-C | LOCKED | 自然日 rollover、timezone/DST 与持续使用验收 |
 
@@ -56,7 +58,7 @@ Apple 当前公开文档给出 activity 同时监控上限 20，但未公开每 
 | accepted device build | 0.1.0 (41.1) | PR #17 / TestFlight run 37141044938 |
 | Today real content | PASS — OWNER + report extension | two nonzero selected-App rows, total/hourly content |
 | Today zero/unavailable | PASS — SOURCE + UNIT_TEST | device NOT_RUN |
-| S01 all-day engine | NOT_IMPLEMENTED | current PulsePlan still 5–30 only |
+| S01-A day-range candidate | READY_FOR_AUDIT | 5m/299 和 15m/99 真机登记；跨日/重启恢复仍 LOCKED |
 
 ## UX follow-up
 

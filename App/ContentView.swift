@@ -38,7 +38,7 @@ struct ContentView: View {
                     }
                     .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
                     if !model.canChangeSelection {
-                        Text("实验运行中已锁定选择；先停止实验再修改。")
+                        Text("监控运行中已锁定选择；先停止监控再修改。")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
@@ -52,15 +52,39 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00-C 连续提醒实验") {
-                    Text("所选 App 使用时间在本次开始后累计；启动前的活动不计入。回调可能延迟，通知请求成功不等于横幅已显示。")
+                Section("S01-A 日内提醒配置") {
+                    Text("所选 App 使用从本轮开始后累计；提醒点不等于 Today 总量。此版只验证当天计划登记，尚不自动跨日续接。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                    LabeledContent("实验", value: model.experimentDescription)
+                    Picker("提醒间隔", selection: Binding(
+                        get: { model.configuredIntervalMinutes },
+                        set: { model.updateInterval(to: $0) }
+                    )) {
+                        ForEach(DayPulsePlan.supportedIntervals, id: \.self) { minutes in
+                            Text("\(minutes) 分钟").tag(minutes)
+                        }
+                    }
+                    .disabled(!model.canChangeInterval)
+                    if !model.canChangeInterval {
+                        Text("监控运行中已锁定间隔；先停止监控再修改。")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    LabeledContent("配置", value: model.experimentDescription)
+                    LabeledContent("配置 ID", value: model.pulseSnapshot.shortID)
+                    LabeledContent("登记间隔", value: "\(model.pulseSnapshot.configurationIntervalMinutes) 分钟")
+                    LabeledContent("计划事件数", value: "\(model.pulseSnapshot.plannedEventCount)")
+                    LabeledContent("系统登记事件数", value: model.observedRegisteredEventCount.map { String($0) } ?? "未确认")
                     LabeledContent("登记状态", value: model.experimentRegistrationDescription)
-                    ForEach(PulsePlan.thresholdMinutes, id: \.self) { minutes in
+                    LabeledContent("登记错误", value: model.pulseSnapshot.safeErrorCode ?? "无")
+                    LabeledContent("已收到回调", value: "\(model.pulseSnapshot.callbackCount)")
+                    LabeledContent("已接受通知请求", value: "\(model.pulseSnapshot.acceptedRequestCount)")
+                    LabeledContent("通知请求失败", value: "\(model.pulseSnapshot.failedRequestCount)")
+                    LabeledContent("最近已接受提醒点", value: model.pulseSnapshot.mostRecentAcceptedThresholdMinutes.map { "\($0) 分钟" } ?? "无")
+                    LabeledContent("计划下一档（非实时计量）", value: model.pulseSnapshot.nextPlannedThresholdMinutes.map { "\($0) 分钟" } ?? "无")
+                    ForEach(model.pulseSnapshot.recentThresholdMinutes, id: \.self) { minutes in
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("\(minutes) 分钟")
+                            Text("最近回调 · \(minutes) 分钟")
                                 .font(.headline)
                             Text("回调：\(model.thresholdCallbackDescription(minutes))")
                             Text("通知：\(model.thresholdRequestDescription(minutes))")
@@ -69,15 +93,15 @@ struct ContentView: View {
                     }
                     LabeledContent("拒绝的旧回调", value: "\(model.pulseSnapshot.staleCallbackCount)")
                     LabeledContent("拒绝的重复回调", value: "\(model.pulseSnapshot.duplicateCallbackCount)")
-                    Button("开始新实验") {
+                    Button("开始监控") {
                         model.startMonitoring()
                     }
                     .disabled(!model.hasFamilyAuthorization || model.selection.applicationTokens.isEmpty || !model.canChangeSelection || model.pulseStoreStatus != "ready")
-                    Button("停止实验", role: .destructive) {
+                    Button("停止监控", role: .destructive) {
                         model.stopMonitoring()
                     }
                     .disabled(!model.canStopExperiment)
-                    Button("刷新实验诊断") {
+                    Button("刷新监控诊断") {
                         Task { await model.refreshState() }
                     }
                 }
@@ -99,7 +123,7 @@ struct ContentView: View {
                     }
                 }
 
-                Section("S00-A/B/C 脱敏诊断") {
+                Section("脱敏诊断") {
                     LabeledContent("版本", value: model.versionDescription)
                     Text(model.diagnosticSummary)
                         .font(.footnote.monospaced())
