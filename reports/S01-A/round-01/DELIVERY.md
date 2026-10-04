@@ -25,9 +25,13 @@ Internal build: Everwhile `0.1.0 (44.1)`.
 | Ordinary secret-free CI | PASS — [implementation run 37179340332](https://github.com/Zhangsfish/Elapse/actions/runs/37179340332), [upload SHA run 37179600062](https://github.com/Zhangsfish/Elapse/actions/runs/37179600062) |
 | Prepare-only archive | PASS — [run 37179460432](https://github.com/Zhangsfish/Elapse/actions/runs/37179460432); upload step skipped |
 | Signed IPA / TestFlight processing | PASS — [run 37179597166](https://github.com/Zhangsfish/Elapse/actions/runs/37179597166); exact IPA audit, upload accepted, processing VALID, INTERNAL_ONLY / IN_BETA_TESTING, internal group assigned |
-| Target iPhone default 5m/299-event registration | NOT RUN |
-| Reopen same config, 15m/99-event new config, restore 5m | NOT RUN |
+| Target iPhone default 5m/299-event registration | PASS — owner phone screenshot, 299 planned / 299 system-registered, no error |
+| Reopen same config | PASS — owner natural-language report |
+| 15m/99-event new config | PASS — owner phone screenshot, 99/99, new short ID, no error |
+| Restore 5m and leave stopped | PARTIAL — restored, then owner started again; final stop pending |
 
 Apple's public 20-activity limit is not an event-count guarantee. Official references and DST boundary are recorded in `docs/APPLE_PLATFORM_NOTES.md`. No long usage session or pulse delivery retest is requested in S01-A.
 
-Local checks: `python -m unittest discover -s scripts/tests -v` PASS (10 tests); `git diff --check` PASS. GitHub-hosted macOS ordinary CI compiled App + Monitor + Report for Simulator and ran Swift logic tests. Prepare/upload jobs compiled unsigned iPhone Release build and inspected the final archive. Apple signing/upload status is distinct from the still-unrun target-iPhone registration gate.
+Local checks: `python -m unittest discover -s scripts/tests -v` PASS (10 tests); `git diff --check` PASS. GitHub-hosted macOS ordinary CI compiled App + Monitor + Report for Simulator and ran Swift logic tests. Prepare/upload jobs compiled unsigned iPhone Release build and inspected the final archive. Apple signing/upload status and the later target-iPhone registration observation are distinct evidence layers.
+
+Target-iPhone registration is now directly observed; see `DEVICE_OBSERVATIONS.md` for exact short IDs, evidence provenance and the separately triaged unknown full-screen prompt. Full-day callback delivery, automatic midnight rollover and DST remain NOT RUN/out of S01-A scope.
