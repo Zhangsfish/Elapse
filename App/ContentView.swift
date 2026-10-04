@@ -14,7 +14,7 @@ struct ContentView: View {
             authorized: model.hasFamilyAuthorization,
             selectedAppCount: model.selection.applicationTokens.count,
             desired: model.pulseSnapshot.monitoringDesired,
-            exactRegistration: model.isMonitoring,
+            exactRegistration: model.isMonitoring && model.systemScheduleRepeatsDaily == true,
             intervalActive: model.pulseSnapshot.lifecycleState == .active,
             intervalCycleIsToday: model.pulseSnapshot.intervalCycleKey == PulseCycle.key(for: Date()),
             registrationFailed: model.pulseSnapshot.phase == .failed
@@ -176,12 +176,7 @@ struct ContentView: View {
 
     @ViewBuilder
     private var primaryAction: some View {
-        if model.canStopExperiment {
-            Button { model.stopMonitoring() } label: {
-                Text("home.stop").frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-        } else if !model.hasFamilyAuthorization {
+        if !model.hasFamilyAuthorization {
             Button {
                 Task { await model.requestFamilyAuthorization() }
             } label: {
@@ -192,6 +187,11 @@ struct ContentView: View {
                let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 Button("home.openSettings") { openURL(settingsURL) }
             }
+        } else if model.canStopExperiment {
+            Button { model.stopMonitoring() } label: {
+                Text("home.stop").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
         } else if model.selection.applicationTokens.isEmpty {
             Button { pickerPresented = true } label: {
                 Text("home.chooseApps").frame(maxWidth: .infinity)
