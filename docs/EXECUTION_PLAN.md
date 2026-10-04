@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前已接受的设备基础已推进到 Everwhile `0.1.0 (38.1)`。S00-A/B/C 均已完成云端精确 SHA 审核并给出 PASS_WITH_NOTES。S00-C 合并 commit 为 `bba53845b78eb657b0daa29019abb202a29de81a`：5/10/15/20/25/30 六档逐阈值诊断与一个真实连续 experiment 已通过，且不宣称精确 callback 延迟。当前由 `STATUS.md` 只解锁 S00-D；S01 及之后仍锁定。审计见 `audits/S00/S00_A_AUDIT_2026-10-03.md`、`audits/S00/S00_B_AUDIT_2026-10-03.md` 与 `audits/S00/S00_C_AUDIT_2026-10-04.md`。
+当前已接受的完整 S00 基线为 Everwhile `0.1.0 (41.1)`。S00-A/B/C/D 均已完成云端 exact-SHA 审核并给出 PASS_WITH_NOTES；S00 functional acceptance 完成。S00-D 合并 commit 为 `3771b556334a5dc1b15e42287183bc9e8f1bef95`：current-user/current-iPhone Today、selected-App total/per-app/hourly aggregate 与 privacy boundary 已通过。当前由 `STATUS.md` 只解锁 S01-A。
 
 ## 顺序与门槛
 
@@ -16,7 +16,9 @@ Updated: 2026-10-03
 | **S00-B：第一次真实报时** | 一个共享 App 池；5 分钟阈值；可取得的回调/请求诊断；可重复测试 | A 约 2 分钟 + B 约 3 分钟；未选 App/锁屏不冒充所选使用；同日重试不被旧去重记录抑制；用户观察可见通知 | 云端审计 PASS 后 S00-C |
 | **S00-C：有限范围连续提醒** | 验证现有 10/15/20/25/30 分钟；切换、迟到、重复与停止行为 | 顺序/去重/停止及错误语义；记录实际偏差，不宣称系统精确准点 | 云端审计 PASS 后 S00-D |
 | **S00-D：真实 Today** | 在 report 扩展内显示每日各 App 时长与小时汇总 | 明确设备/用户范围；真实数据渲染；区分加载/空数据/不可用；不伪造会话；解释与监控起点的口径差异 | S00 整体验收 PASS 后 S01 |
-| **S01：全天可用** | 从 30 分钟实验扩展到日常使用；间隔配置；跨日、时区、重启/撤权/重授及恢复 | 默认 5 分钟，但可配置；已测的日内范围；不需每天手动维护；明确总量/提醒口径与 OS 限制 | S01 单独审计后 S02 |
+| **S01-A：日内全天范围 + interval** | 从固定 5–30 扩展到 current-day full-range threshold plan；default 5、可配置 interval；验证大 event ladder registration | 默认 5；至少 5/10/15/30/60；真实 iPhone 5-minute full-day candidate registration；无长时间刷 App | 云端审计后 S01-B |
+| **S01-B：自动跨日与恢复** | midnight re-arm / config change / app & device restart / revoke-regrant | 不需每天手动维护；短设备恢复测试；状态与 config 不漂移 | 云端审计后 S01-C |
+| **S01-C：calendar/lifecycle 验收** | 自然日 rollover、timezone/DST 与持续运行口径 | 最小真实 rollover 证据；不伪造连续性；明确 OS 限制 | S01 整体验收后 S02 |
 | **S02：轻量体验与回顾** | 稀疏明确的正式界面、中文/英文文案、报表可读性、诊断与用户界面分层 | 使用流程短；保留事实边界；默认不弹课程/打分/反思；不以美化代替可靠性 | S02 单独审计后 S03 |
 | **S03：公开分发准备** | 固化内部交付；隐私/支持资料、商店文案、区域合规与外部测试 | 精确候选 build、明确区域与持有人发布授权 | 未授权不得 App Review/公开上架 |
 
