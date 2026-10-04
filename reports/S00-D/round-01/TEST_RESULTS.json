@@ -1,7 +1,7 @@
 {
   "task": "S00-D",
   "round": "01",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "base_main_sha": "a80ae5a3b84a1952488a9cfb25773ae11ac7c9e0",
   "branch": "codex/s00-d-real-today-report",
   "code_sha": "0e4bec3ffefdfaf92fd8060fdec7934e9a839827",
@@ -19,6 +19,13 @@
     "prepare_only": "PASS_37140907283_NO_APPLE_SECRETS",
     "signed_ipa": "PASS_37141044938",
     "testflight_processing": "PASS_VALID_INTERNAL_GROUP_ASSIGNED_37141044938",
-    "device_today_nonzero": "NOT_RUN"
+    "device_today_nonzero": "PASS_OWNER_REPORT_OWNER_SCREENSHOT_BUILD_41.1",
+    "device_current_user_iphone_scope": "PASS_OWNER_SCREENSHOT",
+    "device_two_opaque_app_rows": "PASS_OWNER_SCREENSHOT_IDENTITIES_NOT_COMMITTED",
+    "device_midnight_hourly_bucket": "PASS_OWNER_SCREENSHOT_DIRECTIONAL_ONLY",
+    "device_last_updated": "PASS_OWNER_SCREENSHOT",
+    "device_zero_usage": "NOT_RUN_SOURCE_UNIT_TEST_ONLY",
+    "device_unavailable": "NOT_RUN_SOURCE_UNIT_TEST_ONLY",
+    "device_loading_completion": "SYSTEM_MANAGED_LOADING_NOT_ASSERTED"
   }
 }
