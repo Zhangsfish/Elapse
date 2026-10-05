@@ -35,4 +35,5 @@ Upload run: https://github.com/Zhangsfish/Elapse/actions/runs/37269743274
 2026-10-05T05:58:48.8513240Z S00_TF_INTERNAL_BETA_STATE=IN_BETA_TESTING
 2026-10-05T05:58:48.8515510Z S00_TF_BUILD_ASSIGNED_TO_INTERNAL_GROUP=TRUE
 
-Device duration-axis rendering: NOT_RUN; awaiting owner.
+Device duration-axis rendering at release time: NOT_RUN.
+Follow-up source (not CI log): 2026-10-05 owner chat reply "没问题，很好" after the Today axis/clipping inspection request; OWNER_REPORTED_PASS. See DEVICE_OBSERVATIONS.md for scope and limitations.

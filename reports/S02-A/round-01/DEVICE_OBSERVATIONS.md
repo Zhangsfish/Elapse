@@ -1,6 +1,6 @@
 # S02-A device observations
 
-Status: WAITING_FOR_OWNER_TEST on Everwhile 0.1.0 (56.1), which is VALID and assigned to the internal group. The owner has reviewed 50.1 and 53.1; observations are separated by build below.
+Status: READY_FOR_AUDIT on Everwhile 0.1.0 (56.1), which is VALID and assigned to the internal group. The owner has reviewed 50.1, 53.1 and the 56.1 duration-axis revision; observations are separated by build below. This records owner feedback, not independent audit approval.
 
 Owner observations, 2026-10-05 (three private screenshots and natural-language feedback in the Codex chat):
 
@@ -13,8 +13,10 @@ Repairs delivered in 53.1: distinct semantic Stop treatment with visible icon/te
 
 53.1 follow-up (2026-10-05, private screenshot and natural-language feedback in this Codex chat): the owner said the report now looks good. The screenshot confirms the grouped total/hourly/app sections render and the trailing bar fits. The remaining request was an absolute duration y-axis with two or three sparse labels that adapt to the highest hourly bar (for example, a 25-minute peak uses 15/30-minute reference labels; 44 uses 25/50). The hidden y-axis only conveyed relative bar heights. No private screenshot or usage values are published here.
 
-56.1 delivery: the duration axis is implemented; it has a zero baseline and sparse localized duration labels at whole-minute positions. CI (47 Swift tests), prepare, final signed IPA audit, upload and VALID processing passed; existing internal group assignment confirmed. Actual on-device axis rendering remains NOT_RUN.
+56.1 delivery: the duration axis is implemented; it has a zero baseline and sparse localized duration labels at whole-minute positions. CI (47 Swift tests), prepare, final signed IPA audit, upload and VALID processing passed; existing internal group assignment confirmed.
 
-Remaining short round on the next build: inspect only Today duration-axis labels and clipping. No pulse wait, reboot, permission revocation, or midnight test.
+56.1 follow-up (2026-10-05, natural-language feedback in this Codex chat): after being asked to inspect the new Today duration-axis labels and clipping, the owner replied “没问题，很好”. Record the revision as OWNER_REPORTED_PASS: no rendering issue was reported. No new screenshot was supplied, so this does not assert independently measured tick values or a complete quantitative reconciliation.
+
+No further phone action is requested for this round. Runtime dark mode, Dynamic Type, VoiceOver, Chinese-language UI inspection and a separate explicit revised ON/OFF-button appearance check remain NOT_RUN; source support, localization tests and packaged resources are distinct evidence. No pulse wait, reboot, permission revocation, or midnight test was added.
 
 Provenance: owner descriptions and any screenshot shared in this Codex chat. Private screenshot files will not be added to Git without explicit consent.
