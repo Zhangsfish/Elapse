@@ -1,28 +1,29 @@
 {
   "stage": "S02-A",
-  "status": "IN_PROGRESS_UI_REVISION",
+  "status": "WAITING_FOR_OWNER_TEST",
   "baseMainSHA": "c8d8b81294dceff2eaa09a3abb4643340abc3719",
-  "runtimeCodeSHA": "a5329c1887ae63fafb5fdd4ef2ab0dd28fd29bee",
-  "testedAndUploadSHA": "0edc5f39a4fa6a5c7436d28d3ea2a33c07b3d1cf",
+  "runtimeCodeSHA": "145c41dbf34aa5840884a06e1b5a2946ce84df43",
+  "prepareTestedSHA": "fe6abf9da977e90861e1de67ac9d29a366a64387",
+  "testedAndUploadSHA": "ea51beccd0c1ee83792c996dc2aed10b443bf827",
   "version": "0.1.0",
-  "build": "50.1",
+  "build": "53.1",
   "ordinaryCI": {
     "status": "PASS",
-    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229178469",
-    "swiftTests": "43 passed",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37266709568",
+    "runtimeSourceCIURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37266173236",
+    "swiftTests": "44 passed, 0 failures",
     "localizationPackaging": "PASS"
   },
   "prepareOnly": {
     "status": "PASS",
-    "sourceWasBeforeFinalStopUIAdjustment": true,
-    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229098457"
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37266364892"
   },
   "explicitUpload": {
     "status": "PASS",
-    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37229402515",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37266706335",
     "unsignedArchive": "PASS",
     "signedIPAAndFamilyControls": "PASS",
-    "signedIPASHA256": "5cfdcf4fb7c60bb9e69aa6ec1be21b2758bea9b69b1331a40c6151e1d488af17",
+    "signedIPASHA256": "f6db2dd7e31cfb46909fc44b965148a19690a7efa7ca2201a7b0cade384a2df1",
     "uploadAccepted": "PASS",
     "processing": "VALID",
     "audience": "INTERNAL_ONLY",
@@ -30,6 +31,7 @@
   },
   "deviceHome": "50.1_PASS_WITH_UI_NOTES",
   "deviceToday": "50.1_PASS_WITH_VISUAL_NOTES",
+  "revisedBuildDeviceReview": "NOT_RUN",
   "runtimeLightDarkDynamicTypeVoiceOver": "NOT_RUN",
   "s01LifecycleRetest": "NOT_RUN_NOT_REQUIRED",
   "publicRelease": "NOT_RUN_OUT_OF_SCOPE"

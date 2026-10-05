@@ -4,9 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A IN_PROGRESS（50.1 真机 UI 反馈修订中）；S02-B / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A WAITING_FOR_OWNER_TEST（53.1 外观修订待确认）；S02-B / S03 LOCKED。**
 
-S02-A PR #20 的首版普通 CI、无密钥 prepare、分发签名、TestFlight 上传与 processing VALID 已完成。内部版 **Everwhile 0.1.0 (50.1)** 已分配内部测试组。持有人确认首页状态与 Today 数值正常，同时指出英文文案生硬、Start/Stop 缺少视觉区分、Today 仍不够精致；Codex 正在同一 PR 修订并准备新版短验收。详见 `reports/S02-A/round-01/`。这不是 S02-A 验收批准；不可自行 merge 或解锁 S02-B。
+S02-A PR #20 内部版 **Everwhile 0.1.0 (53.1)** 已通过普通 CI、prepare、最终分发签名检查、上传与 processing VALID，并分配到原内部测试组。修订源于持有人 50.1 反馈：状态/数值正确，但 Start/Stop 区分不足、Today 外观仍需改进；本次已调整按钮、双语文案、Today 分组与当前小时图表边界。现仅待新版短外观确认。详见 `reports/S02-A/round-01/`。这不是 S02-A 验收批准；不可自行 merge 或解锁 S02-B。
 
 S01-B PR #19 已由云端审核并合并；accepted internal baseline 仍为 **Everwhile 0.1.0 (47.1)**。
 
@@ -46,7 +46,7 @@ S02-A 只解决第一轮正式产品体验：
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S02-A | **IN_PROGRESS** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
+| S02-A | **WAITING_FOR_OWNER_TEST** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
 | S02-B | LOCKED | onboarding / “选择 App”教学 / copy-spacing-accessibility polish |
 | S03 | LOCKED | public distribution |
 
