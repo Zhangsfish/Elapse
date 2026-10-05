@@ -3,6 +3,7 @@ import SwiftUI
 /// Teaching only: no permission requests, picker, monitor actions or private usage.
 struct QuickStartTutorialView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         NavigationStack {
@@ -33,22 +34,26 @@ struct QuickStartTutorialView: View {
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .safeAreaInset(edge: .bottom) {
-                Button("tutorial.done") { dismiss() }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity)
-                    .padding(16)
-                    .background(.regularMaterial)
-                    .accessibilityIdentifier("tutorial-done")
+                // A navigation-bar button caps text growth. Both exits instead
+                // live in an unconstrained footer that stacks at accessibility sizes.
+                AnyLayout(dynamicTypeSize.isAccessibilitySize
+                    ? AnyLayout(VStackLayout(spacing: 12))
+                    : AnyLayout(HStackLayout(spacing: 12))) {
+                    Button("tutorial.skip") { dismiss() }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("tutorial-skip")
+                    Button("tutorial.done") { dismiss() }
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("tutorial-done")
+                }
+                .font(.body)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+                .padding(16)
+                .background(.regularMaterial)
             }
             .navigationTitle("tutorial.title")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("tutorial.skip") { dismiss() }
-                        .accessibilityIdentifier("tutorial-skip")
-                }
-            }
         }
     }
 }

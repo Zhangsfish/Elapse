@@ -1,45 +1,42 @@
 # S02-B delivery
 
-State: **IN_PROGRESS — owner-requested first-visit/replay revision**. 59.1 home accepted; inline tutorial placement CHANGES_REQUESTED. New runtime must be tested/uploaded separately. No stage approval.
+State: **IN_PROGRESS — revised internal upload**. No stage approval.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
-Runtime / ordinary-CI-tested SHA: `e1d6a5c81041d93e0f121c0ed757eb8fff391c89`.
-Prepare-tested SHA: `9a58c1d43c45edbe1f31172ce6ff97ddfb6e7fef`.
-Upload / release-tested SHA: `764825461b913f777fae9aea84019b049f4502e5`.
-Only marker additions differ between these three SHAs; no runtime edits after the tested candidate.
-Historical internal build: **Everwhile 0.1.0 (59.1)**; processing VALID, INTERNAL_ONLY, IN_BETA_TESTING, assigned to the existing internal group. The SHAs/results below describe 59.1, not the in-progress first-visit revision.
-Final evidence/marker-cleanup head SHA is recorded in PR metadata after this document commit (avoids a self-referential commit hash).
 
-## Changes
+## Active first-visit revision
 
-Single-screen setup remains permission -> selection -> Start -> quiet ON/Stop. Initial 59.1 used a generic optional inline selection illustration; owner asked to replace that placement. The revised tutorial is a skippable single first-visit sheet with a pinned Continue footer and a question-mark replay entry. Existing saved setup suppresses automatic upgrade presentation; Reduce Motion/VoiceOver use a static illustration; actual selection remains FamilyActivityPicker. Owner direction/reference: `evidence/owner-onboarding-revision.md`.
+- Runtime code: `c9501d1efc79066da3eb4120d9c56bc05f6ce566`.
+- Ordinary/prepare-tested: `b0f859394e21e76d87108a324568fb4c9c242e20`.
+- Upload candidate: `eb882a25ab29f7a10565204378a575d1fac9fcbc`.
+- Only explicit markers differ between these SHAs; no runtime edits after candidate.
+- Candidate: **Everwhile 0.1.0 (62.1)**; final signed/internal result pending.
+- Final documentation/marker-cleanup head is recorded in PR metadata after commit.
 
-First-use source inspection exposed a UI integration gap: notification permission was only reachable in Advanced. First Start now requests the existing notification authorization method only when notDetermined, then calls the unchanged startMonitoring method. A brief normal-home note distinguishes disabled alerts from monitoring; settings access is available without forcing a new onboarding page. Existing allowed users are not re-prompted.
+Owner accepted 59.1 home but rejected the inline teaching placement. Direct owner direction supersedes the prompt's inline/help preference, without adding mandatory multi-page onboarding. Inspected current [Lecture Asset tutorial](https://github.com/Zhangsfish/lecture-asset/blob/a04fe9b073dbe06d264ac7fa62c707e4f594a617/App/TutorialView.swift): borrow optional first visit, immediate Skip, replay and pinned footer, not its five-page photo workflow.
 
-Pulse copy uses the Monitor bundle's en/zh-Hans resources and the actual threshold. Pure and resource-backed tests cover multiple thresholds and safe missing-resource English fallback. Tagline matches Everwhile's product direction.
+Everwhile now has one short, scrollable native teaching sheet, shown on first visit and replayable from the home question mark. Skip, Continue or swipe closes it. Existing saved selection/interval suppresses automatic upgrade presentation; neither is decoded/changed/cleared by the tutorial. Seen state is one App-owned standard UserDefaults flag covered by existing CA92.1. Teaching does not request permission, open the picker, Start/Stop monitoring, or read private report data. Illustration uses generic symbols only; Reduce Motion/VoiceOver is static.
 
-Duration formatting follows the bundle's resolved localization, not every `zh` locale. Explicit Traditional Chinese scripts use English in the pure fallback resolver; no Traditional Chinese product language added. Home summary and report App rows stack at accessibility sizes; chart height scales with Dynamic Type. Aggregation, lifecycle, registration semantics, groups, capabilities and IDs are unchanged.
+Files: ContentView presentation/replay; new QuickStartTutorialView and TutorialVisitStore; existing generic teaching policy; en/zh-Hans tutorial strings; pure/XCTest UI/resource checks; reports/STATUS. No S01 model/lifecycle/registration or Today aggregation changes in this revision. Apple APIs remain native sheet/dismiss/safeAreaInset; current SDK build passed.
 
-PRODUCT_SPEC previously contained historical `today` pulse wording inconsistent with current interval semantics; this stage updates only that copy contract to the active prompt's reminder-point wording.
+## Active checks and limits
 
-## Verification boundaries
+Windows: 12 Python tests, Bash syntax and whitespace PASS; no local Xcode/Swift and no new dependency installation.
+[Prepare-only](https://github.com/Zhangsfish/Elapse/actions/runs/37321300215): 54 Swift tests / 0 failures, 12 Python tests, effective capabilities, unsigned iPhone build/archive, metadata and en/zh-Hans App/Monitor/Report resources PASS. 61.1 not uploaded; no Apple secrets.
+[Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37321308582): simulator build, 54 Swift / 12 Python tests, localization/capabilities PASS. UI **BLOCKED_ENV / NOT_RUN**, simulator stuck in locationd migration before testing. Initial candidate UI also hit the bounded boot timeout; a superseded attempt was cancelled. No failed assertion disguised as an environment issue.
+[Exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37322850738): pending; UI check reruns independently.
+[Explicit internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37322839283): pending. Final signatures/profile allowances, accepted upload, VALID processing and existing internal-group availability must be separately recorded.
 
-Windows has no Xcode. Use existing macos-26 CI / XcodeGen / native XCTest and internal TestFlight route. Ordinary CI uses no secrets. New packaging assertions cover App, Monitor and Report in simulator/device/archive. Native UI smoke runs on a clean simulator with English light and zh-Hans dark/accessibility text; it cannot prove Screen Time behavior or human VoiceOver quality.
+Exact revision provenance/limits: `evidence/first-visit-validation.md`; owner direction/reference: `evidence/owner-onboarding-revision.md`. No raw signing logs, profiles, tokens or private screenshots published.
 
-Apple references verified against current official documentation: [bundle language selection](https://developer.apple.com/documentation/foundation/bundle/preferredlocalizations), [Reduce Motion](https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion), [Dynamic Type](https://developer.apple.com/videos/play/wwdc2024/10074/). Current SDK compilation remains separate evidence.
+## Retained S02-B work / historical 59.1
 
-## Results / evidence
+Before this revision, S02-B added bilingual actual-threshold Monitor notifications, the Everwhile tagline, supported-locale fallback, first-Start notification-permission entry and accessibility-sized layout polish. These remain unchanged. PRODUCT_SPEC copy was aligned with the factual reminder-point contract. The existing Home state resolver still distinguishes desired intent, registration and active current interval. Report usage stays inside the extension; groups, Bundle IDs/capabilities and accepted product boundaries are unchanged.
 
-- Windows: `python -m unittest discover -s scripts/tests` (12 PASS), YAML parse of project/workflows, `git diff --check`, Bash syntax PASS. No local Swift/Xcode installed or new dependencies installed.
-- [Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37306828901): SUCCESS at runtime SHA; Xcode 26.6 / Swift 6.3.3 / XcodeGen 2.46.0 on macos-26. **53 Swift tests / 0 failures**, 12 Python tests, simulator build, generated/effective capabilities and App/Monitor/Report en + zh-Hans packaging PASS.
-- [Ordinary CI at exact upload SHA](https://github.com/Zhangsfish/Elapse/actions/runs/37308632112): SUCCESS; 53 Swift tests / 0 failures, 12 Python tests, simulator/resource checks and both native UI/accessibility tests reran PASS. No runtime change between runtime candidate and upload SHA.
-- Native simulator tests: English light/default text and zh-Hans dark/largest accessibility text PASS; automated Dynamic Type/text-clipping audit PASS. Four clean-simulator screenshots from the preceding passing runtime candidate were visually inspected. No fabricated permissions/usage, no owner screenshots. See `evidence/ordinary-ci.md` for exact provenance/limits.
-- [Prepare-only](https://github.com/Zhangsfish/Elapse/actions/runs/37308195208): SUCCESS at prepare SHA; unsigned Release iPhone build/archive, metadata, capabilities and en/zh-Hans pulse keys in all three archived bundles PASS. No Apple secrets read. Build 58.1 was not uploaded. See `evidence/prepare-only.md`.
-- [Explicit internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37308628567): SUCCESS at upload SHA; 53 Swift / 12 Python tests, device/archive/localization checks PASS. Exact signed IPA SHA-256 `5faffbafcde3997d7b3ab8a7581f8523fc031a1a9152c55d9876097ea7aa3789`; signatures, Family Controls claims and profile allowances on App/Monitor/Report PASS. App/Monitor groups expected; Report group not required. Apple accepted upload; processing VALID; internal group assignment confirmed. Safe exact summaries in `evidence/internal-release.txt`; no raw signing logs, profile or private key published.
-- Upload is a marker-only branch push with exact explicit commit message. Both newly added one-time markers are removed after execution; ordinary code/document changes cannot authorize another upload. No main push/upload policy expansion.
+Historical 59.1 runtime `e1d6a5c81041d93e0f121c0ed757eb8fff391c89`, prepare `9a58c1d43c45edbe1f31172ce6ff97ddfb6e7fef`, upload `764825461b913f777fae9aea84019b049f4502e5`. Old 53 Swift / 12 Python + two native simulator tests PASS; exact signed IPA/profile claims PASS; processing VALID/internal group confirmed. Old evidence remains `evidence/ordinary-ci.md`, `evidence/prepare-only.md`, `evidence/internal-release.txt`. Those screenshots/tests cover the **old inline teaching**, not the revised first-visit sheet.
 
-Source + pure tests cover existing-selection teaching suppression, Reduce Motion/VoiceOver static fallback, both language copies across 5..1495-minute thresholds, missing-resource English fallback and Hans/Hant/unsupported locale resolution. Actual system language choice is bundle-managed; no Traditional Chinese resources added.
+## Owner / audit boundary
 
-Human VoiceOver, physical Reduce Motion and physical notification-language display remain **NOT_RUN**. Simulator audit is not a human reader test. Source/resource-backed tests + compiled Monitor resources provide notification-copy evidence, so no new pulse-wait task is needed. Authorized first-use and live report at large text are SOURCE_INSPECTED, not simulated private usage. Report data stays inside the extension; S01 lifecycle/reconcile/plan and Today aggregation are unchanged.
+59.1 installed and home OWNER_REPORTED_PASS; teaching CHANGES_REQUESTED. **Revised build owner observation NOT_RUN.** After internal delivery ask only a short question-mark replay/exit check. No reinstall, clearing selection, reboot, permission revocation, midnight, long usage or S01/pulse retest.
 
-59.1 owner feedback: current version confirmed, home normal; teaching placement CHANGES_REQUESTED. Revised first-visit/replay checks and build are pending; no clearing selections, reboot, permission revocation, midnight, long usage or S01 retest. After new internal delivery, ask one short replay/exit check and stay WAITING_FOR_OWNER_TEST until observed. S03 remains LOCKED; PR not approved or merged.
+Human VoiceOver, physical Reduce Motion and physical notification-language display remain NOT_RUN. Source/pure/resource tests and actual bundle packaging verify notification copy without making the owner wait for a pulse. System-language choice remains bundle-managed; only English + zh-Hans shipped. S03 LOCKED; PR neither approved nor merged.
