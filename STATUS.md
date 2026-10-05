@@ -4,9 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A IN_PROGRESS（53.1 布局已获认可，补充动态时长纵轴）；S02-B / S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A WAITING_FOR_OWNER_TEST（56.1 动态时长纵轴待短确认）；S02-B / S03 LOCKED。**
 
-S02-A PR #20 内部版 **Everwhile 0.1.0 (53.1)** 已通过普通 CI、prepare、最终分发签名检查、上传与 processing VALID，并分配到原内部测试组。持有人认可新的 Today 布局，并要求小时图补充动态时长纵轴，避免只能看相对高度；该修订正在同一 PR 实现与验证。详见 `reports/S02-A/round-01/`。这不是 S02-A 验收批准；不可自行 merge 或解锁 S02-B。
+S02-A PR #20 内部版 **Everwhile 0.1.0 (56.1)** 已通过普通 CI（47 个 Swift tests）、prepare、最终分发签名检查、上传与 processing VALID，并分配到原内部测试组。持有人认可 53.1 的 Today 布局；56.1 按其反馈补充 2–3 个带时长单位的动态纵轴刻度，保留真实秒数柱高和零基线。现只待新版 Today 刻度的短确认。详见 `reports/S02-A/round-01/`。这不是 S02-A 验收批准；不可自行 merge 或解锁 S02-B。
 
 S01-B PR #19 已由云端审核并合并；accepted internal baseline 仍为 **Everwhile 0.1.0 (47.1)**。
 
@@ -46,7 +46,7 @@ S02-A 只解决第一轮正式产品体验：
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S02-A | **IN_PROGRESS** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
+| S02-A | **WAITING_FOR_OWNER_TEST** | production shell + Today hierarchy/chart + diagnostics separation + bilingual foundation |
 | S02-B | LOCKED | onboarding / “选择 App”教学 / copy-spacing-accessibility polish |
 | S03 | LOCKED | public distribution |
 
