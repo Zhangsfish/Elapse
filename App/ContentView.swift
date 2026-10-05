@@ -9,21 +9,13 @@ struct ContentView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
-    @State private var selectionTipsPresented = false
+    @State private var tutorialPresented = TutorialVisitStore.reserveFirstVisit()
     @State private var notificationPermissionInProgress = false
 
     private var summaryLayout: AnyLayout {
         dynamicTypeSize.isAccessibilitySize
             ? AnyLayout(VStackLayout(alignment: .leading, spacing: 12))
             : AnyLayout(HStackLayout(alignment: .top, spacing: 18))
-    }
-
-    private var inlineSelectionGuide: Bool {
-        AppSelectionTeaching.showInline(
-            authorized: model.hasFamilyAuthorization,
-            selectedAppCount: model.selection.applicationTokens.count,
-            canChangeSelection: model.canChangeSelection
-        )
     }
 
     private var monitoringStatus: HomeMonitoringStatus {
@@ -130,19 +122,6 @@ struct ContentView: View {
                         }
                         .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
                         .accessibilityHint(Text(model.canChangeSelection ? "home.chooseApps.hint" : "home.editLocked"))
-                        if inlineSelectionGuide {
-                            AppSelectionTeachingView().padding(.horizontal, 18).padding(.bottom, 16)
-                        } else {
-                            Button("selectionGuide.help") { selectionTipsPresented.toggle() }
-                                .font(.caption)
-                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                                .padding(.horizontal, 18)
-                                .padding(.bottom, 12)
-                                .accessibilityIdentifier("selection-tips")
-                            if selectionTipsPresented {
-                                AppSelectionTeachingView().padding(.horizontal, 18).padding(.bottom, 16)
-                            }
-                        }
                         Divider().padding(.leading, 52)
                         AnyLayout(dynamicTypeSize.isAccessibilitySize
                             ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
@@ -201,6 +180,13 @@ struct ContentView: View {
             .controlSize(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
+                    Button { tutorialPresented = true } label: {
+                        Image(systemName: "questionmark.circle")
+                            .accessibilityLabel(Text("tutorial.replay"))
+                    }
+                    .accessibilityIdentifier("tutorial-replay")
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
                         DiagnosticsView()
                     } label: {
@@ -208,6 +194,11 @@ struct ContentView: View {
                             .accessibilityLabel(Text("home.diagnostics"))
                     }
                 }
+            }
+            .sheet(isPresented: $tutorialPresented) {
+                QuickStartTutorialView()
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
             }
             .familyActivityPicker(
                 isPresented: $pickerPresented,

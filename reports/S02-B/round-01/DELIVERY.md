@@ -1,18 +1,18 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST**; engineering/distribution complete, short owner UI observation NOT_RUN. No stage approval.
+State: **IN_PROGRESS — owner-requested first-visit/replay revision**. 59.1 home accepted; inline tutorial placement CHANGES_REQUESTED. New runtime must be tested/uploaded separately. No stage approval.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 Runtime / ordinary-CI-tested SHA: `e1d6a5c81041d93e0f121c0ed757eb8fff391c89`.
 Prepare-tested SHA: `9a58c1d43c45edbe1f31172ce6ff97ddfb6e7fef`.
 Upload / release-tested SHA: `764825461b913f777fae9aea84019b049f4502e5`.
 Only marker additions differ between these three SHAs; no runtime edits after the tested candidate.
-Internal build: **Everwhile 0.1.0 (59.1)**; processing VALID, INTERNAL_ONLY, IN_BETA_TESTING, assigned to the existing internal group.
+Historical internal build: **Everwhile 0.1.0 (59.1)**; processing VALID, INTERNAL_ONLY, IN_BETA_TESTING, assigned to the existing internal group. The SHAs/results below describe 59.1, not the in-progress first-visit revision.
 Final evidence/marker-cleanup head SHA is recorded in PR metadata after this document commit (avoids a self-referential commit hash).
 
 ## Changes
 
-Single-screen setup remains permission -> selection -> Start -> quiet ON/Stop. A generic, optional selection illustration shows two checkmarks and confirmation; it appears inline only with authorization, no selected apps and editable selection. Returning users can open Selection tips without clearing their choices. Reduce Motion/VoiceOver use static illustration; actual selection remains FamilyActivityPicker.
+Single-screen setup remains permission -> selection -> Start -> quiet ON/Stop. Initial 59.1 used a generic optional inline selection illustration; owner asked to replace that placement. The revised tutorial is a skippable single first-visit sheet with a pinned Continue footer and a question-mark replay entry. Existing saved setup suppresses automatic upgrade presentation; Reduce Motion/VoiceOver use a static illustration; actual selection remains FamilyActivityPicker. Owner direction/reference: `evidence/owner-onboarding-revision.md`.
 
 First-use source inspection exposed a UI integration gap: notification permission was only reachable in Advanced. First Start now requests the existing notification authorization method only when notDetermined, then calls the unchanged startMonitoring method. A brief normal-home note distinguishes disabled alerts from monitoring; settings access is available without forcing a new onboarding page. Existing allowed users are not re-prompted.
 
@@ -42,4 +42,4 @@ Source + pure tests cover existing-selection teaching suppression, Reduce Motion
 
 Human VoiceOver, physical Reduce Motion and physical notification-language display remain **NOT_RUN**. Simulator audit is not a human reader test. Source/resource-backed tests + compiled Monitor resources provide notification-copy evidence, so no new pulse-wait task is needed. Authorized first-use and live report at large text are SOURCE_INSPECTED, not simulated private usage. Report data stays inside the extension; S01 lifecycle/reconcile/plan and Today aggregation are unchanged.
 
-Remaining required step: one short existing-user home / optional Selection tips inspection on 59.1. No clearing selections, reboot, permission revocation, midnight, new long usage or S01 retest. Stay WAITING_FOR_OWNER_TEST; only after actual feedback submit READY_FOR_AUDIT for cloud review. S03 remains LOCKED; PR not approved or merged.
+59.1 owner feedback: current version confirmed, home normal; teaching placement CHANGES_REQUESTED. Revised first-visit/replay checks and build are pending; no clearing selections, reboot, permission revocation, midnight, long usage or S01 retest. After new internal delivery, ask one short replay/exit check and stay WAITING_FOR_OWNER_TEST until observed. S03 remains LOCKED; PR not approved or merged.

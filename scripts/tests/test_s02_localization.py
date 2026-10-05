@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 KEY_PATTERN = re.compile(r'^"([^"]+)"\s*=\s*"((?:[^"\\]|\\.)*)";\s*$', re.MULTILINE)
-REFERENCE_PATTERN = re.compile(r'"((?:home|diagnostics|today|report|selectionGuide|pulse)\.[A-Za-z0-9.]+)"')
+REFERENCE_PATTERN = re.compile(r'"((?:home|diagnostics|today|report|selectionGuide|tutorial|pulse)\.[A-Za-z0-9.]+)"')
 
 
 class S02LocalizationTests(unittest.TestCase):
@@ -20,6 +20,7 @@ class S02LocalizationTests(unittest.TestCase):
             languages[language] = {key for key, _ in pairs}
         self.assertEqual(languages["en"], languages["zh-Hans"])
         for file in (ROOT / "App" / "ContentView.swift", ROOT / "App" / "AppSelectionTeachingView.swift",
+                     ROOT / "App" / "QuickStartTutorialView.swift",
                      ROOT / "ReportExtension" / "ElapseReportExtension.swift", ROOT / "Shared" / "PulsePlan.swift"):
             references = set(REFERENCE_PATTERN.findall(file.read_text(encoding="utf-8")))
             self.assertFalse(references - languages["en"], f"Missing localizations in {file}")

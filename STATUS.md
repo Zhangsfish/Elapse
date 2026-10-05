@@ -4,9 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS；S03 LOCKED。**
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21) 已完成实现与自动检查，内部 **Everwhile 0.1.0 (59.1)** 已 processing VALID 并分配到现有内部组；尚未获得本轮手机 UI 反馈，不宣称阶段通过。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。下一步仅更新版本并做一轮简短首页/选择提示观察，不重做 S01 或等待 pulse。
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：内部 **59.1** 已 VALID；持有人确认首页正常，但要求教学改为“首次打开可跳过、之后可重播”，而不是首页折叠提示。该直接产品反馈覆盖旧 prompt 的 inline/help 呈现偏好，仍只在 S02-B 内返工。新版检查/内部包准备中；不重做 S01、Today 或等待 pulse。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -58,7 +58,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | 59.1 internal build ready; short home/teaching observation pending |
+| S02-B | **IN_PROGRESS** | owner-requested first-visit tutorial + replay revision |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

@@ -19,7 +19,14 @@
 "home.chooseApps" = "Choose apps";
 "home.chooseApps.hint" = "Opens Apple's app picker. You can select more than one app.";
 "home.editLocked" = "Stop monitoring before changing apps or the reminder interval.";
-"selectionGuide.help" = "Selection tips";
+"tutorial.title" = "Quick start";
+"tutorial.replay" = "Replay quick start";
+"tutorial.skip" = "Skip";
+"tutorial.done" = "Continue";
+"tutorial.permission.title" = "Allow Screen Time access";
+"tutorial.permission.detail" = "On the home screen, allow Screen Time so Everwhile can observe the apps you choose.";
+"tutorial.start.title" = "Choose an interval, then Start";
+"tutorial.start.detail" = "Allow notifications when asked. Usage across your selected apps adds up to reminder points. Reminders do not block your apps.";
 "selectionGuide.title" = "Choose more than one app";
 "selectionGuide.exampleApp" = "Example app";
 "selectionGuide.confirm" = "Confirm selection";

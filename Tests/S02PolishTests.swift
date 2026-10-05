@@ -3,12 +3,27 @@ import XCTest
 @testable import ElapseCore
 
 final class S02PolishTests: XCTestCase {
-    func testReturningUsersDoNotGetInlineTeaching() {
-        XCTAssertTrue(AppSelectionTeaching.showInline(authorized: true, selectedAppCount: 0, canChangeSelection: true))
-        XCTAssertFalse(AppSelectionTeaching.showInline(authorized: false, selectedAppCount: 0, canChangeSelection: true))
-        XCTAssertFalse(AppSelectionTeaching.showInline(authorized: true, selectedAppCount: 0, canChangeSelection: false))
-        for count in [1, 2, 5] {
-            XCTAssertFalse(AppSelectionTeaching.showInline(authorized: true, selectedAppCount: count, canChangeSelection: true))
+    func testFirstTutorialVisitIsReservedOnceEvenAfterSkip() throws {
+        let suite = "EverwhileTutorialTest.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        XCTAssertTrue(TutorialVisitStore.reserveFirstVisit(defaults: defaults))
+        XCTAssertFalse(TutorialVisitStore.reserveFirstVisit(defaults: defaults))
+        XCTAssertTrue(defaults.bool(forKey: TutorialVisitStore.visitKey))
+    }
+
+    func testUpgradeDoesNotForceTutorialOrChangeSavedSetup() throws {
+        for legacyKey in ["elapse.familyActivitySelection", "elapse.pulseIntervalMinutes"] {
+            let suite = "EverwhileTutorialTest.\(UUID().uuidString)"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            // A fake opaque value, not a real Screen Time token.
+            let existing: Any = legacyKey.hasSuffix("Selection") ? Data([1, 2, 3]) as Any : 15 as Any
+            defaults.set(existing, forKey: legacyKey)
+            XCTAssertFalse(TutorialVisitStore.reserveFirstVisit(defaults: defaults))
+            XCTAssertFalse(TutorialVisitStore.reserveFirstVisit(defaults: defaults))
+            if let data = existing as? Data { XCTAssertEqual(defaults.data(forKey: legacyKey), data) }
+            else { XCTAssertEqual(defaults.integer(forKey: legacyKey), 15) }
         }
     }
 

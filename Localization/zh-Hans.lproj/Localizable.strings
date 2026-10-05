@@ -19,7 +19,14 @@
 "home.chooseApps" = "选择 App";
 "home.chooseApps.hint" = "打开 Apple 的 App 选择器，可以选择多个 App。";
 "home.editLocked" = "请先停止监控，再修改 App 或提醒间隔。";
-"selectionGuide.help" = "选择提示";
+"tutorial.title" = "新手教学";
+"tutorial.replay" = "重播新手教学";
+"tutorial.skip" = "跳过";
+"tutorial.done" = "继续";
+"tutorial.permission.title" = "允许屏幕使用时间访问";
+"tutorial.permission.detail" = "在首页允许屏幕使用时间访问，让 Everwhile 留意你选择的 App。";
+"tutorial.start.title" = "选好提醒间隔，再开始";
+"tutorial.start.detail" = "出现提示时允许通知。所选 App 的使用时间共同累计到提醒点；提醒不会阻止你继续使用。";
 "selectionGuide.title" = "可以选择多个 App";
 "selectionGuide.exampleApp" = "示例 App";
 "selectionGuide.confirm" = "确认选择";
