@@ -1,6 +1,7 @@
 # S02-B device observations
 
-State: **IN_PROGRESS**; owner requested tutorial placement revision after 59.1 observation.
+State: **WAITING_FOR_OWNER_TEST**; owner requested tutorial placement revision after 59.1 observation.
+Revised internal build: **Everwhile 0.1.0 (65.1)**. Exact signed IPA PASS, processing VALID, existing internal group assignment TRUE / IN_BETA_TESTING confirmed by read-only run 37328896729 at 2026-10-05T14:57:38Z. Revised owner installation/observation NOT_RUN.
 Historical internal build: **Everwhile 0.1.0 (59.1)**; processing VALID / existing internal group assignment confirmed by the release pipeline. Owner confirmed this installed version.
 S02-A 56.1 approval is upstream, not evidence of this revision.
 

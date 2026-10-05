@@ -1,16 +1,16 @@
 # S02-B delivery
 
-State: **IN_PROGRESS — revised internal upload**. No stage approval.
+State: **WAITING_FOR_OWNER_TEST**. No stage approval.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
 ## Active first-visit revision
 
-- Runtime code: `c9501d1efc79066da3eb4120d9c56bc05f6ce566`.
-- Ordinary/prepare-tested: `b0f859394e21e76d87108a324568fb4c9c242e20`.
-- Upload candidate: `eb882a25ab29f7a10565204378a575d1fac9fcbc`.
+- Runtime code: `2117717d2061128204bf89aec51cd9ef141c376f`.
+- Ordinary/prepare-tested: `fdeddf4827ea62a323d38e892712779de4b10c28`.
+- Signed/upload-tested: `b6ff74e1188e307290ac12be2594d1eb965a0a46`.
 - Only explicit markers differ between these SHAs; no runtime edits after candidate.
-- Candidate: **Everwhile 0.1.0 (62.1)**; final signed/internal result pending.
+- Delivered: **Everwhile 0.1.0 (65.1)**; signed IPA PASS, Apple processing VALID, existing internal group assignment TRUE / IN_BETA_TESTING.
 - Final documentation/marker-cleanup head is recorded in PR metadata after commit.
 
 Owner accepted 59.1 home but rejected the inline teaching placement. Direct owner direction supersedes the prompt's inline/help preference, without adding mandatory multi-page onboarding. Inspected current [Lecture Asset tutorial](https://github.com/Zhangsfish/lecture-asset/blob/a04fe9b073dbe06d264ac7fa62c707e4f594a617/App/TutorialView.swift): borrow optional first visit, immediate Skip, replay and pinned footer, not its five-page photo workflow.
@@ -22,10 +22,13 @@ Files: ContentView presentation/replay; new QuickStartTutorialView and TutorialV
 ## Active checks and limits
 
 Windows: 12 Python tests, Bash syntax and whitespace PASS; no local Xcode/Swift and no new dependency installation.
-[Prepare-only](https://github.com/Zhangsfish/Elapse/actions/runs/37321300215): 54 Swift tests / 0 failures, 12 Python tests, effective capabilities, unsigned iPhone build/archive, metadata and en/zh-Hans App/Monitor/Report resources PASS. 61.1 not uploaded; no Apple secrets.
-[Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37321308582): simulator build, 54 Swift / 12 Python tests, localization/capabilities PASS. UI **BLOCKED_ENV / NOT_RUN**, simulator stuck in locationd migration before testing. Initial candidate UI also hit the bounded boot timeout; a superseded attempt was cancelled. No failed assertion disguised as an environment issue.
-[Exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37322850738): pending; UI check reruns independently.
-[Explicit internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37322839283): pending. Final signatures/profile allowances, accepted upload, VALID processing and existing internal-group availability must be separately recorded.
+[Prepare-only](https://github.com/Zhangsfish/Elapse/actions/runs/37325275231): 54 Swift tests / 0 failures, 12 Python tests, effective capabilities, unsigned iPhone build/archive, metadata and en/zh-Hans App/Monitor/Report resources PASS. 64.1 not uploaded; no Apple secrets.
+[Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37325288715): simulator build, 54 Swift / 12 Python tests, localization/capabilities and both native first-visit/replay tests PASS. English light/default and Chinese dark/largest accessibility text; automated Dynamic Type/text-clipping checks PASS. Four clean-simulator home/tutorial PNGs visually inspected. This is not human VoiceOver or physical Screen Time proof.
+[Exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37326743639): 54 Swift / 12 Python, simulator build/resources/capabilities PASS. Its additional UI attempt was **BLOCKED_ENV_BOOT_TIMEOUT / NOT_RUN**, not UI PASS; runtime is identical to the already passing prepare-tested candidate.
+[Explicit internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37326734165): unsigned checks PASS; exact final signed IPA/App/Monitor/Report signatures and Family Controls/profile allowances PASS; upload ACCEPTED; processing VALID at 14:49Z. The immediate group query was FALSE (not yet available), not a signing problem.
+[Read-only availability recheck](https://github.com/Zhangsfish/Elapse/actions/runs/37328896729) at unchanged main `c1480eb0021c1fc2261a54ace4576feb7c537d8d`: exact **65.1**, VALID, INTERNAL_ONLY, IN_BETA_TESTING, existing internal group TRUE / assignment TRUE at 14:57:38Z. No second upload, assignment mutation, new tester/group or owner account operation. Safe final summaries: `evidence/first-visit-release.txt`. One-time upload/prepare markers removed after execution; ordinary docs pushes do not upload.
+
+Initial candidate attempts had real BLOCKED_ENV boot timeouts. A later run executed the new UI and failed Dynamic Type specifically at the navigation-bar Skip button. Cropped/full attachments confirmed the element. Both exits now use a pinned unconstrained footer that stacks at accessibility sizes; the unchanged audit passed after the fix. Superseded 62.1: final signing/profile claims and upload ACCEPTED, but processing PENDING at the bounded poll end; it is not the final UI candidate. Safe evidence: `evidence/superseded-release-62.txt` and `evidence/first-visit-validation.md`. No failing UI test is relabelled as an environment issue.
 
 Exact revision provenance/limits: `evidence/first-visit-validation.md`; owner direction/reference: `evidence/owner-onboarding-revision.md`. No raw signing logs, profiles, tokens or private screenshots published.
 

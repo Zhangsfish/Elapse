@@ -26,6 +26,7 @@ Reduce Motion fallback, teaching does not mutate live product state.
 ## Bounded Everwhile implementation
 
 - One short, scrollable native sheet on first visit; Skip and Continue close it.
+- Both exits stay in a pinned footer, horizontal normally / vertical at accessibility sizes; this fixes the new navigation-bar Skip Dynamic Type audit failure without suppressing the check.
 - Generic selection illustration reused; no private identities, permission requests,
   picker actions or monitoring actions in the tutorial.
 - Home right-hand question-mark button replays the same sheet from the beginning.

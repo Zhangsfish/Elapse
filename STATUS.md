@@ -4,9 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST；S03 LOCKED。**
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：内部 **59.1** 已 VALID；持有人确认首页正常，但要求教学改为“首次打开可跳过、之后可重播”，而不是首页折叠提示。该直接产品反馈覆盖旧 prompt 的 inline/help 呈现偏好，仍只在 S02-B 内返工。新版检查/内部包准备中；不重做 S01、Today 或等待 pulse。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：持有人接受 **59.1** 首页，但要求教学改为“首次打开可跳过、之后可重播”。该直接反馈覆盖旧 prompt 的 inline/help 偏好。新版 **65.1** 已交付：54 Swift / 12 Python、unsigned archive、资源与最终签名 PASS；Apple processing VALID，后续只读复核确认现有内部组已分配 / IN_BETA_TESTING。首次教学/重播与中文深色最大字体两项 native UI/audit 在相同 runtime candidate PASS；upload SHA 的额外 UI 检查因 boot timeout 为 NOT_RUN。等待一次简短问号重播/退出观察；不重做 S01、Today 或等待 pulse。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -58,7 +58,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **IN_PROGRESS** | owner-requested first-visit tutorial + replay revision |
+| S02-B | **WAITING_FOR_OWNER_TEST** | delivered 65.1; short tutorial replay/exit observation pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界
