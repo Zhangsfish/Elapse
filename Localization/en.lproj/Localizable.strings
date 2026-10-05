@@ -34,6 +34,8 @@
 "home.stop" = "Stop monitoring";
 "home.allowScreenTime" = "Allow Screen Time";
 "home.openSettings" = "Open Everwhile Settings";
+"home.notifications.firstStart" = "When you start, iOS will ask permission to show reminders.";
+"home.notifications.disabled" = "Notifications are off. Monitoring can continue, but reminders may not appear. You can enable alerts in Settings.";
 "diagnostics.title" = "Advanced";
 "diagnostics.permissions" = "Permissions";
 "diagnostics.screenTime" = "Screen Time";

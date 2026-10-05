@@ -10,6 +10,7 @@ struct ContentView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
     @State private var selectionTipsPresented = false
+    @State private var notificationPermissionInProgress = false
 
     private var summaryLayout: AnyLayout {
         dynamicTypeSize.isAccessibilitySize
@@ -106,6 +107,18 @@ struct ContentView: View {
                             .accessibilityElement(children: .combine)
                         }
                         primaryAction
+                        if model.hasFamilyAuthorization && !model.selection.applicationTokens.isEmpty {
+                            if model.notificationStatus == .notDetermined {
+                                Text("home.notifications.firstStart")
+                                    .font(.caption).foregroundStyle(.secondary)
+                            } else if model.notificationStatus != .authorized || model.notificationAlertSetting != .enabled {
+                                Text("home.notifications.disabled")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                                    Button("home.openSettings") { openURL(settingsURL) }
+                                }
+                            }
+                        }
                     }
                     .padding(20)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -240,12 +253,22 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
         } else {
-            Button { model.startMonitoring() } label: {
+            Button {
+                notificationPermissionInProgress = true
+                Task {
+                    defer { notificationPermissionInProgress = false }
+                    // First-use UI integration only; registration/reconcile stay unchanged.
+                    if model.notificationStatus == .notDetermined {
+                        await model.requestNotificationAuthorization()
+                    }
+                    model.startMonitoring()
+                }
+            } label: {
                 Label("home.start", systemImage: "play.fill")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!model.canChangeSelection || model.pulseStoreStatus != "ready")
+            .disabled(notificationPermissionInProgress || !model.canChangeSelection || model.pulseStoreStatus != "ready")
         }
     }
 

@@ -7,6 +7,8 @@ Branch: `codex/s02-b-onboarding-polish`. Exact runtime/tested/upload SHAs, PR an
 
 Single-screen setup remains permission -> selection -> Start -> quiet ON/Stop. A generic, optional selection illustration shows two checkmarks and confirmation; it appears inline only with authorization, no selected apps and editable selection. Returning users can open Selection tips without clearing their choices. Reduce Motion/VoiceOver use static illustration; actual selection remains FamilyActivityPicker.
 
+First-use source inspection exposed a UI integration gap: notification permission was only reachable in Advanced. First Start now requests the existing notification authorization method only when notDetermined, then calls the unchanged startMonitoring method. A brief normal-home note distinguishes disabled alerts from monitoring; settings access is available without forcing a new onboarding page. Existing allowed users are not re-prompted.
+
 Pulse copy uses the Monitor bundle's en/zh-Hans resources and the actual threshold. Pure and resource-backed tests cover multiple thresholds and safe missing-resource English fallback. Tagline matches Everwhile's product direction.
 
 Duration formatting follows the bundle's resolved localization, not every `zh` locale. Explicit Traditional Chinese scripts use English in the pure fallback resolver; no Traditional Chinese product language added. Home summary and report App rows stack at accessibility sizes; chart height scales with Dynamic Type. Aggregation, lifecycle, registration semantics, groups, capabilities and IDs are unchanged.

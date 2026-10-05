@@ -34,6 +34,8 @@
 "home.stop" = "停止监控";
 "home.allowScreenTime" = "授权屏幕使用时间";
 "home.openSettings" = "打开 Everwhile 设置";
+"home.notifications.firstStart" = "首次开始时，iOS 会请求显示提醒的权限。";
+"home.notifications.disabled" = "通知未开启。监控可继续，但提醒可能不显示；可在设置中开启提醒显示。";
 "diagnostics.title" = "高级诊断";
 "diagnostics.permissions" = "权限";
 "diagnostics.screenTime" = "屏幕使用时间";

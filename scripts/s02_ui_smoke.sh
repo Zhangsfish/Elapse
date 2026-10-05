@@ -19,7 +19,7 @@ xcrun simctl bootstatus "$device" -b
 xcrun simctl ui "$device" appearance light
 xcrun simctl ui "$device" content_size large
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
-  -configuration Debug -destination "platform=iOS Simulator,id=$device" \
+  -configuration Debug -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/en-light.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testEnglishHomeAndOptionalTeaching \
@@ -27,7 +27,7 @@ xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
 xcrun simctl ui "$device" appearance dark
 xcrun simctl ui "$device" content_size accessibility-extra-extra-extra-large
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
-  -configuration Debug -destination "platform=iOS Simulator,id=$device" \
+  -configuration Debug -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/zh-dark-large.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testSimplifiedChineseHomeAtAccessibilitySize \
