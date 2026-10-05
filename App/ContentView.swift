@@ -7,7 +7,23 @@ struct ContentView: View {
     @EnvironmentObject private var model: ElapseModel
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.openURL) private var openURL
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
+    @State private var selectionTipsPresented = false
+
+    private var summaryLayout: AnyLayout {
+        dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 12))
+            : AnyLayout(HStackLayout(alignment: .top, spacing: 18))
+    }
+
+    private var inlineSelectionGuide: Bool {
+        AppSelectionTeaching.showInline(
+            authorized: model.hasFamilyAuthorization,
+            selectedAppCount: model.selection.applicationTokens.count,
+            canChangeSelection: model.canChangeSelection
+        )
+    }
 
     private var monitoringStatus: HomeMonitoringStatus {
         HomeMonitoringStatus.resolve(
@@ -49,6 +65,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Everwhile").font(.largeTitle.bold())
+                            .accessibilityAddTraits(.isHeader)
                         Text("home.tagline")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -63,7 +80,7 @@ struct ContentView: View {
                         }
                         .accessibilityElement(children: .combine)
 
-                        HStack(spacing: 18) {
+                        summaryLayout {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("home.interval")
                                     .font(.caption)
@@ -74,7 +91,8 @@ struct ContentView: View {
                                 }
                                 .font(.headline.monospacedDigit())
                             }
-                            Spacer(minLength: 8)
+                            .accessibilityElement(children: .combine)
+                            if !dynamicTypeSize.isAccessibilitySize { Spacer(minLength: 8) }
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("home.selected")
                                     .font(.caption)
@@ -85,8 +103,8 @@ struct ContentView: View {
                                 }
                                 .font(.headline.monospacedDigit())
                             }
+                            .accessibilityElement(children: .combine)
                         }
-                        .accessibilityElement(children: .combine)
                         primaryAction
                     }
                     .padding(20)
@@ -98,11 +116,28 @@ struct ContentView: View {
                             actionRow("home.chooseApps", icon: "square.stack.3d.up")
                         }
                         .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
+                        .accessibilityHint(Text(model.canChangeSelection ? "home.chooseApps.hint" : "home.editLocked"))
+                        if inlineSelectionGuide {
+                            AppSelectionTeachingView().padding(.horizontal, 18).padding(.bottom, 16)
+                        } else {
+                            Button("selectionGuide.help") { selectionTipsPresented.toggle() }
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                .padding(.horizontal, 18)
+                                .padding(.bottom, 12)
+                                .accessibilityIdentifier("selection-tips")
+                            if selectionTipsPresented {
+                                AppSelectionTeachingView().padding(.horizontal, 18).padding(.bottom, 16)
+                            }
+                        }
                         Divider().padding(.leading, 52)
-                        HStack {
+                        AnyLayout(dynamicTypeSize.isAccessibilitySize
+                            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
+                            : AnyLayout(HStackLayout(spacing: 8))) {
                             Image(systemName: "clock")
                                 .frame(width: 28)
                                 .foregroundStyle(.secondary)
+                                .accessibilityHidden(true)
                             Picker("home.changeInterval", selection: Binding(
                                 get: { model.configuredIntervalMinutes },
                                 set: { model.updateInterval(to: $0) }
@@ -150,6 +185,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
             }
             .background(Color(uiColor: .systemGroupedBackground))
+            .controlSize(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
@@ -183,6 +219,7 @@ struct ContentView: View {
                 Text("home.allowScreenTime").frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .accessibilityIdentifier("allow-screen-time")
             if model.isFamilyAuthorizationDenied,
                let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 Button("home.openSettings") { openURL(settingsURL) }

@@ -67,7 +67,7 @@ final class ElapseMonitorExtension: DeviceActivityMonitor {
             return
         }
 
-        let copy = PulseNotificationCopy.safeThresholdCopy(minutes: minutes)
+        let copy = PulseNotificationCopy.localizedThresholdCopy(minutes: minutes)
         let content = UNMutableNotificationContent()
         content.title = copy.title
         content.body = copy.body

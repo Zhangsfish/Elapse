@@ -1,4 +1,4 @@
-"home.tagline" = "Stay aware of your time.";
+"home.tagline" = "Feel time passing. Nothing else.";
 "home.status.permission" = "Screen Time access needed";
 "home.status.apps" = "Choose apps to begin";
 "home.status.off" = "Everwhile is off";
@@ -17,6 +17,15 @@
 "home.app" = "app";
 "home.apps" = "apps";
 "home.chooseApps" = "Choose apps";
+"home.chooseApps.hint" = "Opens Apple's app picker. You can select more than one app.";
+"home.editLocked" = "Stop monitoring before changing apps or the reminder interval.";
+"selectionGuide.help" = "Selection tips";
+"selectionGuide.title" = "Choose more than one app";
+"selectionGuide.exampleApp" = "Example app";
+"selectionGuide.confirm" = "Confirm selection";
+"selectionGuide.detail" = "In Apple's picker, expand a category, select the apps you want, then confirm your selection. Time spent across those apps counts toward the same reminders.";
+"pulse.title" = "%ld minutes";
+"pulse.body" = "Selected apps reached the %ld-minute reminder point.";
 "home.changeInterval" = "Reminder interval";
 "home.today" = "Today";
 "home.today.detail" = "See time by hour and app";

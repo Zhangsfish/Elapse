@@ -1,4 +1,4 @@
-"home.tagline" = "看见时间的流逝。";
+"home.tagline" = "感受时间流逝。仅此而已。";
 "home.status.permission" = "需要屏幕使用时间授权";
 "home.status.apps" = "先选择 App";
 "home.status.off" = "Everwhile 已关闭";
@@ -17,6 +17,15 @@
 "home.app" = "个 App";
 "home.apps" = "个 App";
 "home.chooseApps" = "选择 App";
+"home.chooseApps.hint" = "打开 Apple 的 App 选择器，可以选择多个 App。";
+"home.editLocked" = "请先停止监控，再修改 App 或提醒间隔。";
+"selectionGuide.help" = "选择提示";
+"selectionGuide.title" = "可以选择多个 App";
+"selectionGuide.exampleApp" = "示例 App";
+"selectionGuide.confirm" = "确认选择";
+"selectionGuide.detail" = "在 Apple 的选择器中展开类别，选中想要留意的 App，再确认选择。这些 App 的使用时间共同累计到同一提醒点。";
+"pulse.title" = "%ld 分钟";
+"pulse.body" = "所选 App 已达到 %ld 分钟提醒点。";
 "home.changeInterval" = "提醒间隔";
 "home.today" = "今天";
 "home.today.detail" = "按小时和 App 查看使用时间";

@@ -35,18 +35,20 @@ Elapse requests a quiet notification.
 Target wording:
 
 **Title**
-`5 minutes passed`
+`5 minutes`
 
 **Body**
-`Selected apps today: 120 minutes`
+`Selected apps reached the 5-minute reminder point.`
 
-If the system cannot prove that exactly one clean 5-minute increment elapsed since the previous delivered callback, use safer wording:
+Use the actual cumulative threshold (for example, 120 minutes), not an assumed clean increment since the previous delivered callback:
 
 **Title**
 `120 minutes`
 
 **Body**
-`Selected apps have reached 120 minutes today.`
+`Selected apps reached the 120-minute reminder point.`
+
+The monitoring start/interval anchor and callbacks do not prove a natural-day Today total or an exact delivery time. Simplified Chinese uses the same neutral reminder-point meaning. Today totals come only from the report extension.
 
 No moral language. No “wasted time”. No guilt.
 

@@ -70,11 +70,13 @@ jobs:
             CODE_SIGNING_ALLOWED=NO clean build
           app="$RUNNER_TEMP/ElapseBuild/Build/Products/Debug-iphonesimulator/Elapse.app"
           report="$app/Extensions/ElapseReport.appex"
-          for bundle in "$app" "$report"; do
+          for bundle in "$app" "$report" "$app/PlugIns/ElapseMonitor.appex"; do
             for language in en zh-Hans; do
               resource="$bundle/$language.lproj/Localizable.strings"
               test -f "$resource"
               plutil -lint "$resource"
+              test -n "$(/usr/libexec/PlistBuddy -c 'Print :pulse.title' "$resource")"
+              test -n "$(/usr/libexec/PlistBuddy -c 'Print :pulse.body' "$resource")"
             done
           done
           echo 'S02_LOCALIZATION_PACKAGING_PASS'
@@ -85,3 +87,12 @@ jobs:
           python3 -m unittest discover -s scripts/tests
       - name: Run pure logic unit tests
         run: swift test
+      - name: Check light/dark and large-text first-use UI
+        run: bash scripts/s02_ui_smoke.sh
+      - name: Preserve clean-simulator UI results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s02-ui-smoke
+          path: ${{ runner.temp }}/S02-UI
+          if-no-files-found: ignore

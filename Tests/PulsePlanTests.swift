@@ -53,10 +53,10 @@ final class PulsePlanTests: XCTestCase {
 
     func testNotificationCopyUsesNamedCumulativeThreshold() {
         XCTAssertEqual(
-            PulseNotificationCopy.safeThresholdCopy(minutes: 20),
+            PulseNotificationCopy.safeThresholdCopy(minutes: 20, language: .simplifiedChinese),
             PulseNotificationCopy(
                 title: "20 分钟",
-                body: "所选 App 使用已达到本轮的 20 分钟提醒点。"
+                body: "所选 App 已达到 20 分钟提醒点。"
             )
         )
         XCTAssertFalse(PulseNotificationCopy.safeThresholdCopy(minutes: 20).body.contains("今天"))

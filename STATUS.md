@@ -4,7 +4,7 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS；S03 LOCKED。**
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -56,7 +56,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **READY** | first-use guidance + notification localization + final polish |
+| S02-B | **IN_PROGRESS** | first-use guidance + notification localization + final polish |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

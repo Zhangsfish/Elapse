@@ -1,0 +1,13 @@
+{
+  "stage": "S02-B",
+  "status": "IN_PROGRESS",
+  "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
+  "ordinaryCI": "NOT_RUN",
+  "prepareOnly": "NOT_RUN",
+  "internalTestFlight": "NOT_RUN",
+  "ownerUIObservation": "NOT_RUN",
+  "humanVoiceOver": "NOT_RUN",
+  "physicalReduceMotion": "NOT_RUN",
+  "s01Retest": "NOT_RUN_NOT_REQUIRED",
+  "publicRelease": "NOT_RUN_OUT_OF_SCOPE"
+}

@@ -5,7 +5,19 @@ enum UsageDurationLanguage: Equatable {
     case simplifiedChinese
 
     static func forLocale(_ locale: Locale) -> Self {
-        locale.language.languageCode?.identifier == "zh" ? .simplifiedChinese : .english
+        guard locale.language.languageCode?.identifier == "zh" else { return .english }
+        // Respect explicit scripts before region inference. zh-Hant must not
+        // silently become Simplified Chinese just because its language is zh.
+        if let script = locale.language.script?.identifier {
+            return script == "Hans" ? .simplifiedChinese : .english
+        }
+        return ["CN", "SG"].contains(locale.region?.identifier ?? "") ? .simplifiedChinese : .english
+    }
+
+    static func forBundle(_ bundle: Bundle = .main) -> Self {
+        // Match the localization actually selected for UI resources, rather
+        // than the user's potentially unsupported regional formatting locale.
+        forLocale(Locale(identifier: bundle.preferredLocalizations.first ?? "en"))
     }
 }
 
