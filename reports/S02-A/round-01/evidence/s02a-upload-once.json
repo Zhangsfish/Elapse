@@ -1,0 +1,6 @@
+{
+  "operation": "s02a-testflight-upload-once",
+  "trigger_id": "everwhile-s02a-production-ui-today-upload-20261005",
+  "source_code_sha": "fe6abf9da977e90861e1de67ac9d29a366a64387",
+  "version": "0.1.0"
+}
