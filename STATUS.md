@@ -4,7 +4,9 @@ Updated: 2026-10-05
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST；S03 LOCKED。**
+2026-10-06：持有人已安装 65.1，要求把文字教学改为 Lecture Asset 风格的四个短动作镜头，并明确批准分镜。当前仅返工该教学、CI 和内部版本；旧版视觉结果不沿用为新版本 PASS。
+
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS；S03 LOCKED。**
 
 S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：持有人接受 **59.1** 首页，但要求教学改为“首次打开可跳过、之后可重播”。该直接反馈覆盖旧 prompt 的 inline/help 偏好。新版 **65.1** 已交付：54 Swift / 12 Python、unsigned archive、资源与最终签名 PASS；Apple processing VALID，后续只读复核确认现有内部组已分配 / IN_BETA_TESTING。首次教学/重播与中文深色最大字体两项 native UI/audit 在相同 runtime candidate PASS；upload SHA 的额外 UI 检查因 boot timeout 为 NOT_RUN。等待一次简短问号重播/退出观察；不重做 S01、Today 或等待 pulse。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
@@ -58,7 +60,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | delivered 65.1; short tutorial replay/exit observation pending |
+| S02-B | **IN_PROGRESS** | owner-approved four short animated teaching scenes replace 65.1 text-heavy sheet |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

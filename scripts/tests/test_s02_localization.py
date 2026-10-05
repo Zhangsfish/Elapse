@@ -21,9 +21,22 @@ class S02LocalizationTests(unittest.TestCase):
         self.assertEqual(languages["en"], languages["zh-Hans"])
         for file in (ROOT / "App" / "ContentView.swift", ROOT / "App" / "AppSelectionTeachingView.swift",
                      ROOT / "App" / "QuickStartTutorialView.swift",
+                     ROOT / "App" / "TutorialArtwork.swift", ROOT / "Shared" / "TutorialStoryboard.swift",
                      ROOT / "ReportExtension" / "ElapseReportExtension.swift", ROOT / "Shared" / "PulsePlan.swift"):
             references = set(REFERENCE_PATTERN.findall(file.read_text(encoding="utf-8")))
             self.assertFalse(references - languages["en"], f"Missing localizations in {file}")
+
+    def test_tutorial_is_teaching_only_and_keeps_sample_data_local(self):
+        artwork = (ROOT / "App" / "TutorialArtwork.swift").read_text(encoding="utf-8")
+        view = (ROOT / "App" / "QuickStartTutorialView.swift").read_text(encoding="utf-8")
+        for forbidden in ("import DeviceActivity", "import FamilyControls", "import UserNotifications",
+                          "PulseExperimentStore", "startMonitoring(", "UNNotificationRequest(",
+                          "UserDefaults", "ApplicationToken", "DeviceActivityReport("):
+            self.assertNotIn(forbidden, artwork + view)
+        self.assertIn(".allowsHitTesting(false)", artwork)
+        self.assertIn('Text("tutorial.demo")', view)
+        self.assertIn("paused: settled", view)
+        self.assertIn("scenePhase != .active", view)
 
     def test_notification_templates_and_monitor_resources(self):
         for language in ("en", "zh-Hans"):
