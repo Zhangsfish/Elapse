@@ -1,14 +1,14 @@
 # STATUS
 
-Updated: 2026-10-05
+Updated: 2026-10-06
 
 ## 当前结论
 
-2026-10-06：持有人已安装 65.1，要求把文字教学改为 Lecture Asset 风格的四个短动作镜头，并明确批准分镜。当前仅返工该教学、CI 和内部版本；旧版视觉结果不沿用为新版本 PASS。
+2026-10-06：持有人批准的 Lecture Asset 风格四个短动作镜头已实现：选择 App → 间隔/Start → 共享用时提醒 → Today 示例。首次可跳过、首页问号可重播，老用户不强制弹出。**69.1** 已在现有内部 TestFlight 组可用；等待一轮简短教学观察，旧版视觉结果不沿用为新版本 PASS。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST；S03 LOCKED。**
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：持有人接受 **59.1** 首页，但要求教学改为“首次打开可跳过、之后可重播”。该直接反馈覆盖旧 prompt 的 inline/help 偏好。新版 **65.1** 已交付：54 Swift / 12 Python、unsigned archive、资源与最终签名 PASS；Apple processing VALID，后续只读复核确认现有内部组已分配 / IN_BETA_TESTING。首次教学/重播与中文深色最大字体两项 native UI/audit 在相同 runtime candidate PASS；upload SHA 的额外 UI 检查因 boot timeout 为 NOT_RUN。等待一次简短问号重播/退出观察；不重做 S01、Today 或等待 pulse。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `f05df01...`，tested/prepare `e1fba3d...`，upload `9de0a20...`。58 Swift / 13 Python、unsigned archive、资源/capabilities、两项 native UI 与四段 Dynamic Type/裁切 audit PASS；首轮模拟器 boot timeout 为 NOT_RUN，重跑通过。69.1 最终三 bundle 签名/FAMILY_CONTROLS/profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。短教学的真机安装/视觉观察 NOT_RUN；不重做 S01、Today 或等待 pulse。详情及外观检查限制：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -43,7 +43,7 @@ S02-A notes：
 S02-B 只做最终体验收口：
 
 - 保持单屏渐进式 setup，不做强制多页 onboarding；
-- 在“未选择 App”状态加入一个很轻、不阻塞的“如何选择多个 App”教学提示/动画；
+- 按持有人直接批准的返工方向，首次可跳过的四段短动画教学；首页问号重播，非强制 setup；
 - 使用 generic UI，不暴露真实 App 身份；
 - 动画尊重 Reduce Motion；
 - 用户已有选择时不强制显示；
@@ -60,7 +60,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **IN_PROGRESS** | owner-approved four short animated teaching scenes replace 65.1 text-heavy sheet |
+| S02-B | **WAITING_FOR_OWNER_TEST** | 69.1 four short animated teaching scenes delivered; brief replay observation pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

@@ -34,6 +34,7 @@ Current Apple API references (checked 2026-10-06):
 - https://developer.apple.com/documentation/swiftui/timelineschedule/animation(minimuminterval:paused:)
 - https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion
 
-Runtime/tested/upload SHA, actual checks and new build will be recorded after runs.
+Current 69.1 runtime/tested/upload SHA and actual checks: DELIVERY.md,
+four-scene-validation.md and four-scene-release.txt. Internal availability confirmed.
 65.1 installed OWNER_REPORTED; owner requested visual simplification, not final PASS.
 New runtime owner visual acceptance NOT_RUN. No pulse/reboot/midnight/Today retest.

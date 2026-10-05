@@ -11,5 +11,7 @@ Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the 
 - evidence/first-visit-release.txt: final 65.1 signed/upload/VALID and subsequent read-only existing-group availability evidence.
 - evidence/superseded-release-62.txt: safe superseded 62.1 upload summary; not final UI acceptance or final internal availability.
 - evidence/four-scene-direction.md: owner-approved replacement for the 65.1 text-heavy sheet; Lecture Asset reference, deterministic three-second storyboard and current validation/delivery provenance. Earlier device/UI evidence is historical, not acceptance of this runtime.
+- evidence/four-scene-validation.md: current runtime's passing unit/build/prepare/native tests and screenshot inspection; preserves the first boot-timeout NOT_RUN and appearance limits.
+- evidence/four-scene-release.txt: 69.1 exact signed IPA/ACCEPTED/VALID/IN_BETA_TESTING/existing-group evidence, not physical acceptance.
 
 S01 lifecycle and Today aggregation remain unchanged. Wait for one short owner UI observation as WAITING_FOR_OWNER_TEST; only then submit READY_FOR_AUDIT. Do not merge or unlock S03.

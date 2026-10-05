@@ -1,45 +1,49 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST**. No stage approval.
+State: **WAITING_FOR_OWNER_TEST — 69.1 internally available**. No stage approval.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
-## Active first-visit revision
+## Active owner-approved revision
 
-- Runtime code: `2117717d2061128204bf89aec51cd9ef141c376f`.
-- Ordinary/prepare-tested: `fdeddf4827ea62a323d38e892712779de4b10c28`.
-- Signed/upload-tested: `b6ff74e1188e307290ac12be2594d1eb965a0a46`.
-- Only explicit markers differ between these SHAs; no runtime edits after candidate.
-- Delivered: **Everwhile 0.1.0 (65.1)**; signed IPA PASS, Apple processing VALID, existing internal group assignment TRUE / IN_BETA_TESTING.
-- Final documentation/marker-cleanup head is recorded in PR metadata after commit.
+Owner installed 65.1 but asked for less text and Lecture Asset-style actions. Owner explicitly approved four scenes on 2026-10-06. This replaces the text-heavy sheet, not the accepted home/Today or S01 behavior.
+- Choose multiple generic Apps; confirm.
+- Choose reminder interval; demonstrate Start.
+- Shared selected-App time adds up; example banner.
+- Example Today total, hourly aggregate bars and per-App rows.
 
-Owner accepted 59.1 home but rejected the inline teaching placement. Direct owner direction supersedes the prompt's inline/help preference, without adding mandatory multi-page onboarding. Inspected current [Lecture Asset tutorial](https://github.com/Zhangsfish/lecture-asset/blob/a04fe9b073dbe06d264ac7fa62c707e4f594a617/App/TutorialView.swift): borrow optional first visit, immediate Skip, replay and pinned footer, not its five-page photo workflow.
+One short title/caption per scene; optional Next/Back/Skip/Get started; first visit and home-question-mark replay retained. Demo cards cannot operate real settings. No permission, picker, monitor or notification requests from teaching; sample durations stay local to the App artwork.
+Three-second time-addressable SwiftUI artwork plays once, then pauses; static settled frame with Reduce Motion/VoiceOver/background. Pinned footer stacks at accessibility text sizes. S01 lifecycle/reconcile, Today aggregation, report privacy boundary, App Groups, Bundle IDs and capabilities unchanged.
 
-Everwhile now has one short, scrollable native teaching sheet, shown on first visit and replayable from the home question mark. Skip, Continue or swipe closes it. Existing saved selection/interval suppresses automatic upgrade presentation; neither is decoded/changed/cleared by the tutorial. Seen state is one App-owned standard UserDefaults flag covered by existing CA92.1. Teaching does not request permission, open the picker, Start/Stop monitoring, or read private report data. Illustration uses generic symbols only; Reduce Motion/VoiceOver is static.
+Reference: Lecture Asset current main `4995c1d0d70ebdf3712416bf96ee31219fc67720`, TutorialView/TutorialArtwork. Owner direction and current Apple API links: `evidence/four-scene-direction.md`. No installs or remote media.
 
-Files: ContentView presentation/replay; new QuickStartTutorialView and TutorialVisitStore; existing generic teaching policy; en/zh-Hans tutorial strings; pure/XCTest UI/resource checks; reports/STATUS. No S01 model/lifecycle/registration or Today aggregation changes in this revision. Apple APIs remain native sheet/dismiss/safeAreaInset; current SDK build passed.
+## Exact provenance
 
-## Active checks and limits
+- Runtime code: `f05df01fa52a144664d3ca87ffd8340fddd5cf6f`.
+- Ordinary/prepare-tested: `e1fba3d5ead1790b5ffef2e9118fc82d78ad58df` (marker only).
+- Explicit upload SHA: `9de0a209c653769a2881e68e1586a6f34bacdff7` (upload marker only); **Everwhile 0.1.0 (69.1)**.
+- Final evidence/marker-cleanup head recorded in PR metadata; no source edits after tested build without affected retesting.
 
-Windows: 12 Python tests, Bash syntax and whitespace PASS; no local Xcode/Swift and no new dependency installation.
-[Prepare-only](https://github.com/Zhangsfish/Elapse/actions/runs/37325275231): 54 Swift tests / 0 failures, 12 Python tests, effective capabilities, unsigned iPhone build/archive, metadata and en/zh-Hans App/Monitor/Report resources PASS. 64.1 not uploaded; no Apple secrets.
-[Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37325288715): simulator build, 54 Swift / 12 Python tests, localization/capabilities and both native first-visit/replay tests PASS. English light/default and Chinese dark/largest accessibility text; automated Dynamic Type/text-clipping checks PASS. Four clean-simulator home/tutorial PNGs visually inspected. This is not human VoiceOver or physical Screen Time proof.
-[Exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37326743639): 54 Swift / 12 Python, simulator build/resources/capabilities PASS. Its additional UI attempt was **BLOCKED_ENV_BOOT_TIMEOUT / NOT_RUN**, not UI PASS; runtime is identical to the already passing prepare-tested candidate.
-[Explicit internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37326734165): unsigned checks PASS; exact final signed IPA/App/Monitor/Report signatures and Family Controls/profile allowances PASS; upload ACCEPTED; processing VALID at 14:49Z. The immediate group query was FALSE (not yet available), not a signing problem.
-[Read-only availability recheck](https://github.com/Zhangsfish/Elapse/actions/runs/37328896729) at unchanged main `c1480eb0021c1fc2261a54ace4576feb7c537d8d`: exact **65.1**, VALID, INTERNAL_ONLY, IN_BETA_TESTING, existing internal group TRUE / assignment TRUE at 14:57:38Z. No second upload, assignment mutation, new tester/group or owner account operation. Safe final summaries: `evidence/first-visit-release.txt`. One-time upload/prepare markers removed after execution; ordinary docs pushes do not upload.
+## Checks
 
-Initial candidate attempts had real BLOCKED_ENV boot timeouts. A later run executed the new UI and failed Dynamic Type specifically at the navigation-bar Skip button. Cropped/full attachments confirmed the element. Both exits now use a pinned unconstrained footer that stacks at accessibility sizes; the unchanged audit passed after the fix. Superseded 62.1: final signing/profile claims and upload ACCEPTED, but processing PENDING at the bounded poll end; it is not the final UI candidate. Safe evidence: `evidence/superseded-release-62.txt` and `evidence/first-visit-validation.md`. No failing UI test is relabelled as an environment issue.
+Windows: 13 Python tests, Bash syntax, whitespace PASS; no local Xcode/Swift.
+[Prepare](https://github.com/Zhangsfish/Elapse/actions/runs/37353626575): 58 Swift / 0 failures, 13 Python, XcodeGen/effective entitlements, unsigned iPhone Release build/archive, actual metadata/extensions and en+zh-Hans App/Monitor/Report resources PASS. 68.1 not uploaded; Apple secrets/signing skipped.
+[Ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37353631696), attempt 2: PASS. 58 Swift / 13 Python, simulator build/resources/capabilities and English first-visit/replay + Chinese largest-text replay PASS. All four scenes retain Dynamic Type/text-clipping audits; ten unique clean-simulator captures inspected. Requested dark mode settled in the final Chinese scene, not all captures; exhaustive four-scene dark visual coverage remains unverified. Attempt 1 was a pre-test simulator boot timeout (NOT_RUN), not UI PASS.
+[Explicit upload](https://github.com/Zhangsfish/Elapse/actions/runs/37357058165): PASS. Final signed IPA App/Monitor/Report signatures, expected IDs, Family Controls claims/profile allowance and required App Groups PASS. Exactly those audited bytes uploaded ACCEPTED; 69.1 processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing internal-group assignment TRUE at 18:43:49Z. Safe evidence: `evidence/four-scene-release.txt`. No new account setup or owner Actions click.
+[Extra exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37357063413), job111922047054: PASS. 58 Swift / 13 Python, simulator build/resources/capabilities, English and Chinese-largest-text native UI/audits PASS at the exact upload SHA. Only markers differ from tested runtime.
+Current raw safe extracts/limits: `evidence/four-scene-validation.md`.
+Executed prepare/upload marker files removed; history retains the exact trigger commits.
+Ordinary code/docs pushes and PR merge do not repeat this upload. No workflow change
+was needed for the four-scene revision.
 
-Exact revision provenance/limits: `evidence/first-visit-validation.md`; owner direction/reference: `evidence/owner-onboarding-revision.md`. No raw signing logs, profiles, tokens or private screenshots published.
+## Historical evidence
 
-## Retained S02-B work / historical 59.1
+59.1 home OWNER_REPORTED_PASS; inline teaching CHANGES_REQUESTED. 65.1 installed OWNER_REPORTED; text-heavy teaching also requires revision. Their tests, delivery and screenshots are historical, not four-scene acceptance.
+65.1 runtime2117717..., preparefdeddf4..., uploadb6ff74e... had 54 Swift / 12 Python and two native UI/audit checks PASS at prepare SHA; extra upload-SHA UI attempt BLOCKED_ENV/NOT_RUN. Final signatures PASS, ACCEPTED/VALID/IN_BETA_TESTING/internal group TRUE after read-only run37328896729.
+Safe historic evidence remains first-visit-validation.md / first-visit-release.txt, owner-onboarding-revision.md and original ordinary-ci.md / prepare-only.md / internal-release.txt. Superseded62.1 real Dynamic Type failure and bounded processing PENDING remain explicitly recorded.
 
-Before this revision, S02-B added bilingual actual-threshold Monitor notifications, the Everwhile tagline, supported-locale fallback, first-Start notification-permission entry and accessibility-sized layout polish. These remain unchanged. PRODUCT_SPEC copy was aligned with the factual reminder-point contract. The existing Home state resolver still distinguishes desired intent, registration and active current interval. Report usage stays inside the extension; groups, Bundle IDs/capabilities and accepted product boundaries are unchanged.
+## Device / audit boundary
 
-Historical 59.1 runtime `e1d6a5c81041d93e0f121c0ed757eb8fff391c89`, prepare `9a58c1d43c45edbe1f31172ce6ff97ddfb6e7fef`, upload `764825461b913f777fae9aea84019b049f4502e5`. Old 53 Swift / 12 Python + two native simulator tests PASS; exact signed IPA/profile claims PASS; processing VALID/internal group confirmed. Old evidence remains `evidence/ordinary-ci.md`, `evidence/prepare-only.md`, `evidence/internal-release.txt`. Those screenshots/tests cover the **old inline teaching**, not the revised first-visit sheet.
-
-## Owner / audit boundary
-
-59.1 installed and home OWNER_REPORTED_PASS; teaching CHANGES_REQUESTED. **Revised build owner observation NOT_RUN.** After internal delivery ask only a short question-mark replay/exit check. No reinstall, clearing selection, reboot, permission revocation, midnight, long usage or S01/pulse retest.
-
-Human VoiceOver, physical Reduce Motion and physical notification-language display remain NOT_RUN. Source/pure/resource tests and actual bundle packaging verify notification copy without making the owner wait for a pulse. System-language choice remains bundle-managed; only English + zh-Hans shipped. S03 LOCKED; PR neither approved nor merged.
+69.1 four-scene build installation and owner visual acceptance **NOT_RUN**. After update ask only a short home question-mark replay / exit observation; no reinstall, selection clearing, reboot, revocation, midnight, pulse wait or Today retest.
+Human VoiceOver, physical Reduce Motion and physical notification-language display remain NOT_RUN. Source/pure/resource/native tests are labelled separately. No private screenshots or raw signing materials published.
+Remain in S02-B. No self-approval/merge/S03 unlock; READY_FOR_AUDIT only after required new owner evidence.
