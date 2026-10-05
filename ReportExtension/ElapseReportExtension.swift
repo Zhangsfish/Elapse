@@ -1,3 +1,4 @@
+import Charts
 import DeviceActivity
 import FamilyControls
 import ManagedSettings
@@ -115,102 +116,153 @@ private struct HourlyUsage: Identifiable {
 
 private struct TodayReportView: View {
     let configuration: TodayReportConfiguration
+    @Environment(\.locale) private var locale
 
-    private var maximumBucketDuration: TimeInterval {
-        configuration.hourlyBuckets.map(\.duration).max() ?? 0
+    private var chartPlan: TodayHourlyChartPlan {
+        TodayHourlyChartPlan(
+            buckets: Dictionary(
+                uniqueKeysWithValues: configuration.hourlyBuckets.map { ($0.start, $0.duration) }
+            ),
+            now: Date()
+        )
     }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("当前用户 · 当前 iPhone · 今天截至现在")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-
-                if let lastUpdatedDate = configuration.lastUpdatedDate {
-                    Text("系统报告更新于 \(lastUpdatedDate, format: .dateTime.hour().minute())")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-
+            VStack(alignment: .leading, spacing: 16) {
                 switch configuration.state {
                 case .unavailable:
-                    Text("当前还没有可用的屏幕使用时间报告数据。这不代表所选 App 使用时间为零。")
+                    ContentUnavailableView(
+                        "report.unavailable.title",
+                        systemImage: "hourglass",
+                        description: Text("report.unavailable.detail")
+                    )
+                    .frame(maxWidth: .infinity)
+                    .reportCard()
                 case .zeroUsage:
-                    Text("今天截至目前没有可显示的所选 App 使用记录。")
-                case .content:
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("所选 App 今日总时长")
-                            .font(.headline)
-                        Text(durationText(configuration.totalDuration))
-                            .font(.title2.monospacedDigit())
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("report.total")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Text(durationText(0))
+                            .font(.system(.largeTitle, design: .rounded, weight: .semibold))
+                            .monospacedDigit()
+                        Text("report.zero")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
+                case .content:
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("report.total")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Text(durationText(configuration.totalDuration))
+                            .font(.system(.largeTitle, design: .rounded, weight: .semibold))
+                            .monospacedDigit()
+                            .minimumScaleFactor(0.75)
+                        if let lastUpdatedDate = configuration.lastUpdatedDate {
+                            HStack(spacing: 4) {
+                                Text("report.updated")
+                                Text(lastUpdatedDate, format: .dateTime.hour().minute())
+                            }
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
 
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("各所选 App")
-                            .font(.headline)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("report.hourly").font(.headline)
+                        Chart(chartPlan.bars, id: \.start) { bucket in
+                            BarMark(
+                                x: .value(String(localized: "report.hour"), bucket.start, unit: .hour),
+                                y: .value(String(localized: "report.duration"), bucket.seconds),
+                                width: .fixed(11)
+                            )
+                            .foregroundStyle(Color.accentColor.opacity(0.75))
+                            .accessibilityLabel(bucket.start.formatted(.dateTime.hour()))
+                            .accessibilityValue(durationText(bucket.seconds))
+                        }
+                        .chartXScale(domain: chartPlan.start...chartPlan.end)
+                        .chartYScale(domain: 0...chartPlan.maximumSeconds)
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .hour, count: 4)) { _ in
+                                AxisGridLine()
+                                AxisValueLabel(format: .dateTime.hour())
+                            }
+                        }
+                        .chartYAxis {
+                            AxisMarks(position: .leading, values: chartPlan.yAxisTicks) { value in
+                                AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))
+                                    .foregroundStyle(Color.secondary.opacity(0.2))
+                                AxisValueLabel {
+                                    if let seconds = value.as(Double.self) {
+                                        Text(durationText(seconds))
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                        }
+                        .frame(height: 136)
+                        .accessibilityLabel(Text("report.hourly"))
+                        Text("report.hourlyNote")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
+
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("report.apps").font(.headline)
+                            .padding(.bottom, 8)
                         ForEach(configuration.applications) { item in
-                            HStack {
+                            HStack(spacing: 10) {
                                 Label(item.token)
-                                Spacer()
+                                    .lineLimit(2)
+                                Spacer(minLength: 8)
                                 Text(durationText(item.duration))
                                     .monospacedDigit()
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
+                            .padding(.vertical, 11)
+                            .accessibilityElement(children: .combine)
+                            if item.id != configuration.applications.last?.id {
+                                Divider()
                             }
                         }
                     }
-
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("所选 App 每小时汇总")
-                            .font(.headline)
-                        Text("小时汇总，不是精确的 App 打开或关闭时间线。")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                        ForEach(configuration.hourlyBuckets) { bucket in
-                            HourlyUsageRow(
-                                bucket: bucket,
-                                maximumDuration: maximumBucketDuration
-                            )
-                        }
-                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
                 }
+                Text("today.systemLoading")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 4)
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 16)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .scrollIndicators(.hidden)
+        .background(Color(uiColor: .systemGroupedBackground))
     }
 
     private func durationText(_ duration: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = duration >= 3600 ? [.hour, .minute] : [.minute]
-        formatter.unitsStyle = .abbreviated
-        formatter.zeroFormattingBehavior = .dropAll
-        return formatter.string(from: duration) ?? "0m"
+        UsageDurationFormatter.format(duration, language: .forLocale(locale))
     }
 }
 
-private struct HourlyUsageRow: View {
-    let bucket: HourlyUsage
-    let maximumDuration: TimeInterval
-
-    private var fraction: Double {
-        guard maximumDuration > 0 else { return 0 }
-        return bucket.duration / maximumDuration
-    }
-
-    var body: some View {
-        HStack(spacing: 8) {
-            Text(bucket.start, format: .dateTime.hour())
-                .font(.caption.monospacedDigit())
-                .frame(width: 52, alignment: .leading)
-            GeometryReader { proxy in
-                RoundedRectangle(cornerRadius: 3)
-                    .fill(.blue.opacity(0.65))
-                    .frame(width: max(2, proxy.size.width * fraction))
-            }
-            .frame(height: 10)
-            Text("\(Int(bucket.duration / 60))m")
-                .font(.caption.monospacedDigit())
-                .frame(width: 42, alignment: .trailing)
-        }
+private extension View {
+    func reportCard() -> some View {
+        padding(20)
+            .background(
+                Color(uiColor: .secondarySystemGroupedBackground),
+                in: RoundedRectangle(cornerRadius: 20)
+            )
     }
 }
 

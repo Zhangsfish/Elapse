@@ -1,0 +1,45 @@
+{
+  "stage": "S02-A",
+  "status": "READY_FOR_AUDIT",
+  "baseMainSHA": "c8d8b81294dceff2eaa09a3abb4643340abc3719",
+  "runtimeCodeSHA": "8d7c2b09c62fd3b33734f54c04d1f8be767c5812",
+  "prepareTestedSHA": "432be4d983eb90ca2f539f225e88ecc706ebdc4e",
+  "testedAndUploadSHA": "61150f3d1e12857ebf393d8e0eb6edb31116c395",
+  "version": "0.1.0",
+  "build": "56.1",
+  "ordinaryCI": {
+    "status": "PASS",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37269746949",
+    "prepareTestedCIURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37269483347",
+    "swiftTests": "47 passed, 0 failures",
+    "localizationPackaging": "PASS"
+  },
+  "prepareOnly": {
+    "status": "PASS",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37269479724"
+  },
+  "explicitUpload": {
+    "status": "PASS",
+    "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37269743274",
+    "unsignedArchive": "PASS",
+    "signedIPAAndFamilyControls": "PASS",
+    "signedIPASHA256": "abbd067a5058e7a3e3fab3048c12c9f1c49cc06a90d16d1eb053dbc0365f52e3",
+    "uploadAccepted": "PASS",
+    "processing": "VALID",
+    "audience": "INTERNAL_ONLY",
+    "internalGroupAssignment": "PASS"
+  },
+  "deviceHome": "50.1_PASS_WITH_UI_NOTES",
+  "deviceToday": "56.1_AXIS_REVISION_OWNER_REPORTED_PASS",
+  "durationAxisSourceAndUnitTests": "PASS",
+  "revisedBuildDeviceReview": "56.1_OWNER_REPORTED_PASS",
+  "deviceReviewProvenance": "2026-10-05 Codex chat: owner replied 没问题，很好 after the Today axis/clipping inspection request; no new screenshot",
+  "revisedHomeButtonAppearanceRuntime": "NOT_RUN",
+  "chineseUIRuntime": "NOT_RUN",
+  "lightModeRuntime": "53.1_TODAY_LAYOUT_PASS",
+  "darkModeRuntime": "NOT_RUN",
+  "dynamicTypeRuntime": "NOT_RUN",
+  "voiceOverRuntime": "NOT_RUN",
+  "s01LifecycleRetest": "NOT_RUN_NOT_REQUIRED",
+  "publicRelease": "NOT_RUN_OUT_OF_SCOPE"
+}

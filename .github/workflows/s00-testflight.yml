@@ -2,7 +2,7 @@ name: S00 TestFlight preparation and explicit upload
 
 on:
   push:
-    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report, codex/s01-a-day-range-interval, codex/s01-b-daily-lifecycle]
+    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report, codex/s01-a-day-range-interval, codex/s01-b-daily-lifecycle, codex/s02-a-production-ui-today]
     paths:
       - audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json
       - reports/S00-B/round-01/evidence/s00b-upload-once.json
@@ -14,6 +14,8 @@ on:
       - reports/S01-A/round-01/evidence/s01a-upload-once.json
       - reports/S01-B/round-01/evidence/s01b-prepare-once.json
       - reports/S01-B/round-01/evidence/s01b-upload-once.json
+      - reports/S02-A/round-01/evidence/s02a-prepare-once.json
+      - reports/S02-A/round-01/evidence/s02a-upload-once.json
   workflow_dispatch:
     inputs:
       operation:
@@ -39,7 +41,8 @@ jobs:
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-c-continuous-pulses' && (github.event.head_commit.message == 'S00-C explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S00-C explicit one-time TestFlight upload')) ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && (github.event.head_commit.message == 'S00-D explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload')) ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && (github.event.head_commit.message == 'S01-A explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload')) ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && (github.event.head_commit.message == 'S01-B explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload'))
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && (github.event.head_commit.message == 'S01-B explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload')) ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-a-production-ui-today' && (github.event.head_commit.message == 'S02-A explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S02-A explicit one-time TestFlight upload'))
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -118,13 +121,24 @@ jobs:
                   'source_code_sha': previous_main,
                   'version': '0.1.0',
               }
+          elif ref == 'refs/heads/codex/s02-a-production-ui-today':
+              operation = 'prepare' if subprocess.check_output(
+                  ['git', 'log', '-1', '--format=%s'], text=True
+              ).strip() == 'S02-A explicit one-time TestFlight prepare' else 'upload'
+              marker_path = f'reports/S02-A/round-01/evidence/s02a-{operation}-once.json'
+              expected = {
+                  'operation': f's02a-testflight-{operation}-once',
+                  'trigger_id': f'everwhile-s02a-production-ui-today-{operation}-20261005',
+                  'source_code_sha': previous_main,
+                  'version': '0.1.0',
+              }
           else:
               raise AssertionError('Unexpected upload ref')
           changed = subprocess.check_output(
               ['git', 'diff', '--name-status', previous_main, 'HEAD', '--', marker_path], text=True
           ).strip()
           assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this push'
-          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report', 'refs/heads/codex/s01-a-day-range-interval', 'refs/heads/codex/s01-b-daily-lifecycle'):
+          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report', 'refs/heads/codex/s01-a-day-range-interval', 'refs/heads/codex/s01-b-daily-lifecycle', 'refs/heads/codex/s02-a-production-ui-today'):
               all_changed = subprocess.check_output(
                   ['git', 'diff', '--name-only', previous_main, 'HEAD'], text=True
               ).strip()
@@ -223,6 +237,14 @@ jobs:
           test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Info.plist")" = '0.1.0'
           test -f "$app/PrivacyInfo.xcprivacy"
           plutil -lint "$app/PrivacyInfo.xcprivacy"
+          for bundle in "$app" "$app/Extensions/ElapseReport.appex"; do
+            for language in en zh-Hans; do
+              resource="$bundle/$language.lproj/Localizable.strings"
+              test -f "$resource"
+              plutil -lint "$resource"
+            done
+          done
+          echo 'S02_LOCALIZATION_DEVICE_BUILD_PASS'
 
           for extension in \
             'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor|privacy' \
@@ -259,6 +281,14 @@ jobs:
           test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIconName' "$app/Info.plist")" = 'AppIcon'
           test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app/Info.plist")" = "$build_number"
           test -f "$app/PrivacyInfo.xcprivacy"
+          for bundle in "$app" "$app/Extensions/ElapseReport.appex"; do
+            for language in en zh-Hans; do
+              resource="$bundle/$language.lproj/Localizable.strings"
+              test -f "$resource"
+              plutil -lint "$resource"
+            done
+          done
+          echo 'S02_LOCALIZATION_ARCHIVE_PASS'
 
           for bundled_extension in \
             'PlugIns/ElapseMonitor.appex|com.zhangsfish.elapse.monitor' \
@@ -280,7 +310,8 @@ jobs:
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-c-continuous-pulses' && github.event.head_commit.message == 'S00-C explicit one-time TestFlight upload') ||
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s00-d-real-today-report' && github.event.head_commit.message == 'S00-D explicit one-time TestFlight upload') ||
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload') ||
-          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload')
+          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload') ||
+          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-a-production-ui-today' && github.event.head_commit.message == 'S02-A explicit one-time TestFlight upload')
         env:
           APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
