@@ -194,7 +194,19 @@ private struct TodayReportView: View {
                                 AxisValueLabel(format: .dateTime.hour())
                             }
                         }
-                        .chartYAxis(.hidden)
+                        .chartYAxis {
+                            AxisMarks(position: .leading, values: chartPlan.yAxisTicks) { value in
+                                AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))
+                                    .foregroundStyle(Color.secondary.opacity(0.2))
+                                AxisValueLabel {
+                                    if let seconds = value.as(Double.self) {
+                                        Text(durationText(seconds))
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                        }
                         .frame(height: 136)
                         .accessibilityLabel(Text("report.hourly"))
                         Text("report.hourlyNote")

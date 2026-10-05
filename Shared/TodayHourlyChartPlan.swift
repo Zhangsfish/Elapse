@@ -24,5 +24,17 @@ struct TodayHourlyChartPlan {
         }.sorted { $0.start < $1.start }
     }
 
-    var maximumSeconds: TimeInterval { max(60, bars.map(\.seconds).max() ?? 0) }
+    /// Axis ceiling only; bar heights retain the original seconds.
+    /// Whole-minute ticks avoid labelling a fractional minute as a rounded value.
+    var maximumSeconds: TimeInterval {
+        let peak = bars.map(\.seconds).max() ?? 0
+        guard peak > 60 else { return 60 }
+        let step: TimeInterval = peak <= 600 ? 120 : 600
+        return ceil(peak / step) * step
+    }
+
+    var yAxisTicks: [TimeInterval] {
+        let ceiling = maximumSeconds
+        return ceiling == 60 ? [0, ceiling] : [0, ceiling / 2, ceiling]
+    }
 }
