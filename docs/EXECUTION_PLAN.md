@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前功能基线已推进到 Everwhile `0.1.0 (47.1)`。S00 完成；S01-A/B 完成云端 exact-SHA 审核；S01-C 的真实 revoke/regrant 已通过，47.1 自然午夜 generation rollover 未专门重复实测并作为 residual risk 接受。S01 整体 COMPLETE — PASS_WITH_NOTES。当前由 `STATUS.md` 只解锁 S02-A。
+当前功能基线已推进到 Everwhile `0.1.0 (56.1)`。S00 / S01 完成；S02-A 的 production home + Today 已完成云端 exact-SHA 审核并给出 PASS_WITH_NOTES。当前由 `STATUS.md` 只解锁 S02-B，做首次使用、通知本地化与最终体验收口。
 
 ## 顺序与门槛
 
@@ -19,8 +19,8 @@ Updated: 2026-10-03
 | **S01-A：日内全天范围 + interval** | 从固定 5–30 扩展到 current-day full-range threshold plan；default 5、可配置 interval；验证大 event ladder registration | 默认 5；至少 5/10/15/30/60；真实 iPhone 5-minute full-day candidate registration；无长时间刷 App | 云端审计后 S01-B |
 | **S01-B：每日重复调度与生命周期恢复** | repeats=true、interval generation/anchor、premature callback guard、desired-vs-registration reconciliation、app/device restart recovery | 不需每天手动 Start；短 reopen + reboot 设备测试；authorization recovery source/tests | 云端审计后 S01-C |
 | **S01-C：calendar / permission 实证** | permission revoke/regrant 真机；自然午夜、timezone/DST 残余风险分层 | 真实 revoke/regrant PASS；自然午夜不重复折腾持有人，明确 residual risk | S01 整体 COMPLETE — PASS_WITH_NOTES |
-| **S02-A：production UI + Today** | 正式首页信息层级、Today 总量/小时图/各 App、诊断下沉、显示精度、zh-Hans/English 基础 | 一轮轻量真机 UI 验收；事实口径不退化；existing tests + formatter/chart tests；TestFlight | 云端审计后 S02-B |
-| **S02-B：onboarding / polish** | 首次设置、选择 App 教学、文案与间距/无障碍收口 | 不增加控制/打分/羞耻；短流程；最终视觉/文案验收 | 云端审计后 S03 |
+| **S02-A：production UI + Today** | 正式首页信息层级、Today 总量/小时图/各 App、诊断下沉、显示精度、zh-Hans/English 基础 | COMPLETE — PASS_WITH_NOTES；56.1 owner UI acceptance + 47 tests + signed TestFlight | S02-B READY |
+| **S02-B：onboarding / polish** | 单屏渐进式首次设置、选择 App 轻教学、pulse notification 双语、copy/spacing/accessibility 收口 | 不增加控制/打分/羞耻；一轮轻量最终体验验收 | 云端审计后 S03 |
 | **S03：公开分发准备** | 固化内部交付；隐私/支持资料、商店文案、区域合规与外部测试 | 精确候选 build、明确区域与持有人发布授权 | 未授权不得 App Review/公开上架 |
 
 后续每个子阶段只有在解锁时才写完整执行任务，避免一次性大 prompt 让 Codex 顺手做完整个产品。
