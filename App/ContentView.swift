@@ -81,7 +81,7 @@ struct ContentView: View {
                                     .foregroundStyle(.secondary)
                                 HStack(spacing: 4) {
                                     Text(verbatim: "\(model.selection.applicationTokens.count)")
-                                    Text("home.apps")
+                                    Text(model.selection.applicationTokens.count == 1 ? "home.app" : "home.apps")
                                 }
                                 .font(.headline.monospacedDigit())
                             }
@@ -191,10 +191,12 @@ struct ContentView: View {
                 Button("home.stop", role: .destructive) { model.stopMonitoring() }
             }
         } else if model.canStopExperiment {
-            Button { model.stopMonitoring() } label: {
-                Text("home.stop").frame(maxWidth: .infinity)
+            Button(role: .destructive) { model.stopMonitoring() } label: {
+                Label("home.stop", systemImage: "stop.fill")
+                    .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.bordered)
+            .tint(.red)
         } else if model.selection.applicationTokens.isEmpty {
             Button { pickerPresented = true } label: {
                 Text("home.chooseApps").frame(maxWidth: .infinity)
@@ -202,7 +204,8 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         } else {
             Button { model.startMonitoring() } label: {
-                Text("home.start").frame(maxWidth: .infinity)
+                Label("home.start", systemImage: "play.fill")
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .disabled(!model.canChangeSelection || model.pulseStoreStatus != "ready")
@@ -290,14 +293,15 @@ struct TodayReportView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("today.scope").font(.footnote)
-            Text("today.systemLoading")
-                .font(.footnote)
+        VStack(alignment: .leading, spacing: 0) {
+            Text("today.scope")
+                .font(.caption)
                 .foregroundStyle(.secondary)
+                .padding(.horizontal, 20)
+                .padding(.top, 6)
             DeviceActivityReport(.elapseToday, filter: filter)
         }
-        .padding(.horizontal)
+        .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("today.title")
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -129,7 +129,7 @@ private struct TodayReportView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 26) {
+            VStack(alignment: .leading, spacing: 16) {
                 switch configuration.state {
                 case .unavailable:
                     ContentUnavailableView(
@@ -137,6 +137,8 @@ private struct TodayReportView: View {
                         systemImage: "hourglass",
                         description: Text("report.unavailable.detail")
                     )
+                    .frame(maxWidth: .infinity)
+                    .reportCard()
                 case .zeroUsage:
                     VStack(alignment: .leading, spacing: 8) {
                         Text("report.total")
@@ -149,6 +151,8 @@ private struct TodayReportView: View {
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
                 case .content:
                     VStack(alignment: .leading, spacing: 6) {
                         Text("report.total")
@@ -167,16 +171,18 @@ private struct TodayReportView: View {
                             .foregroundStyle(.secondary)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
 
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 12) {
                         Text("report.hourly").font(.headline)
                         Chart(chartPlan.bars, id: \.start) { bucket in
                             BarMark(
                                 x: .value(String(localized: "report.hour"), bucket.start, unit: .hour),
                                 y: .value(String(localized: "report.duration"), bucket.seconds),
-                                width: .fixed(9)
+                                width: .fixed(11)
                             )
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(Color.accentColor.opacity(0.75))
                             .accessibilityLabel(bucket.start.formatted(.dateTime.hour()))
                             .accessibilityValue(durationText(bucket.seconds))
                         }
@@ -189,41 +195,62 @@ private struct TodayReportView: View {
                             }
                         }
                         .chartYAxis(.hidden)
-                        .frame(height: 168)
+                        .frame(height: 136)
                         .accessibilityLabel(Text("report.hourly"))
                         Text("report.hourlyNote")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
 
-                    VStack(alignment: .leading, spacing: 14) {
+                    VStack(alignment: .leading, spacing: 0) {
                         Text("report.apps").font(.headline)
+                            .padding(.bottom, 8)
                         ForEach(configuration.applications) { item in
-                            VStack(alignment: .leading, spacing: 7) {
-                                HStack(spacing: 8) {
-                                    Label(item.token)
-                                        .lineLimit(2)
-                                    Spacer(minLength: 8)
-                                    Text(durationText(item.duration))
-                                        .monospacedDigit()
-                                        .fixedSize(horizontal: true, vertical: false)
-                                }
-                                ProgressView(value: item.duration, total: configuration.totalDuration)
-                                    .tint(.secondary)
-                                    .accessibilityHidden(true)
+                            HStack(spacing: 10) {
+                                Label(item.token)
+                                    .lineLimit(2)
+                                Spacer(minLength: 8)
+                                Text(durationText(item.duration))
+                                    .monospacedDigit()
+                                    .fixedSize(horizontal: true, vertical: false)
                             }
+                            .padding(.vertical, 11)
                             .accessibilityElement(children: .combine)
+                            if item.id != configuration.applications.last?.id {
+                                Divider()
+                            }
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .reportCard()
                 }
+                Text("today.systemLoading")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 4)
             }
+            .padding(.horizontal, 20)
             .padding(.vertical, 16)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .scrollIndicators(.hidden)
+        .background(Color(uiColor: .systemGroupedBackground))
     }
 
     private func durationText(_ duration: TimeInterval) -> String {
         UsageDurationFormatter.format(duration, language: .forLocale(locale))
+    }
+}
+
+private extension View {
+    func reportCard() -> some View {
+        padding(20)
+            .background(
+                Color(uiColor: .secondarySystemGroupedBackground),
+                in: RoundedRectangle(cornerRadius: 20)
+            )
     }
 }
 

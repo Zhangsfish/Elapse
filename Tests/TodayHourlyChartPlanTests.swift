@@ -14,6 +14,7 @@ final class TodayHourlyChartPlanTests: XCTestCase {
         XCTAssertEqual(plan.bars, [TodayHourlyBar(start: first, seconds: 120), TodayHourlyBar(start: second, seconds: 30)])
         XCTAssertEqual(plan.maximumSeconds, 120)
         XCTAssertEqual(plan.start, calendar.startOfDay(for: now))
+        XCTAssertEqual(plan.end, calendar.dateInterval(of: .hour, for: now)?.end)
     }
 
     func testSubminuteBarIsNotRoundedAway() {
@@ -21,5 +22,16 @@ final class TodayHourlyChartPlanTests: XCTestCase {
         let plan = TodayHourlyChartPlan(buckets: [now: 1], now: now)
         XCTAssertEqual(plan.bars.first?.seconds, 1)
         XCTAssertEqual(plan.maximumSeconds, 60)
+    }
+
+    func testCurrentHourHasTrailingDomainSpace() {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Asia/Shanghai")!
+        let now = calendar.date(from: DateComponents(year: 2026, month: 10, day: 5, hour: 12, minute: 53))!
+        let hourStart = calendar.dateInterval(of: .hour, for: now)!.start
+        let plan = TodayHourlyChartPlan(buckets: [hourStart: 90], now: now, calendar: calendar)
+        XCTAssertEqual(plan.end, calendar.dateInterval(of: .hour, for: now)!.end)
+        XCTAssertGreaterThan(plan.end, now)
+        XCTAssertEqual(plan.bars, [TodayHourlyBar(start: hourStart, seconds: 90)])
     }
 }

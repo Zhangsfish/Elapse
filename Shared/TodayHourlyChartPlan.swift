@@ -14,7 +14,10 @@ struct TodayHourlyChartPlan {
     init(buckets: [Date: TimeInterval], now: Date, calendar: Calendar = .current) {
         let dayStart = calendar.startOfDay(for: now)
         start = dayStart
-        end = max(now, dayStart.addingTimeInterval(1))
+        // A mark for the current hour represents the whole hour. Ending the
+        // domain at "now" can cut its bar off at the trailing edge.
+        end = calendar.dateInterval(of: .hour, for: now)?.end
+            ?? max(now, dayStart.addingTimeInterval(1))
         bars = buckets.compactMap { hour, seconds in
             guard hour >= dayStart, hour <= now, seconds.isFinite, seconds > 0 else { return nil }
             return TodayHourlyBar(start: hour, seconds: seconds)

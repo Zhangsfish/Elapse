@@ -1,6 +1,6 @@
 {
   "stage": "S02-A",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "IN_PROGRESS_UI_REVISION",
   "baseMainSHA": "c8d8b81294dceff2eaa09a3abb4643340abc3719",
   "runtimeCodeSHA": "a5329c1887ae63fafb5fdd4ef2ab0dd28fd29bee",
   "testedAndUploadSHA": "0edc5f39a4fa6a5c7436d28d3ea2a33c07b3d1cf",
@@ -28,8 +28,8 @@
     "audience": "INTERNAL_ONLY",
     "internalGroupAssignment": "PASS"
   },
-  "deviceHome": "NOT_RUN",
-  "deviceToday": "NOT_RUN",
+  "deviceHome": "50.1_PASS_WITH_UI_NOTES",
+  "deviceToday": "50.1_PASS_WITH_VISUAL_NOTES",
   "runtimeLightDarkDynamicTypeVoiceOver": "NOT_RUN",
   "s01LifecycleRetest": "NOT_RUN_NOT_REQUIRED",
   "publicRelease": "NOT_RUN_OUT_OF_SCOPE"
