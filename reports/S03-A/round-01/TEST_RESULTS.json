@@ -7,12 +7,12 @@
   "base_main": "e63cbe8c6327ff5e1e0bed1a209800c7ef661a4a",
   "frozen_runtime_sha": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
   "version_build": "0.1.0 (91.1)",
-  "implementation_tested_sha": "6d87a50f7db244f364712ccd33da1423d22d05aa",
+  "implementation_tested_sha": "d188500258946a4450035a51cf14429b08c11150",
   "capture_source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
   "existing_upload_sha": "d633b5b627933d71aac221a3bb2f6aae29fd82a2",
   "production_runtime_change": false,
   "new_upload": "NOT_RUN_NOT_NEEDED_NO_RUNTIME_CHANGE",
-  "python_tests": {"status": "PASS_LOCAL", "passed": 28, "failed": 0},
+  "python_tests": {"status": "PASS_LOCAL", "passed": 29, "failed": 0},
   "capture": {
     "status": "PASS",
     "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
@@ -36,9 +36,17 @@
   "ordinary_ci_snapshot": {
     "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37501399700",
     "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
-    "generation_simulator_packaging_helper_swift_steps": "PASS",
-    "ui_step": "RUNNING_AT_REPORT_SNAPSHOT",
-    "new_head_checks": "PENDING_PR_CHECKS"
+    "generation_simulator_packaging_helper_steps": "PASS",
+    "swift_tests": {"status": "PASS", "passed": 60, "failed": 0},
+    "ui_english": "FAIL_AT_IMMEDIATE_TUTORIAL_DISAPPEARANCE_ASSERTION",
+    "ui_zh_Hans_dark_large": "PASS",
+    "test_only_fix": "BOUNDED_NONEXISTENCE_WAIT_NEGATIVE_ASSERTION_RETAINED",
+    "new_head_checks": "PENDING_PR_CHECKS_NOT_A_PASS"
+  },
+  "preflight_ci_first_run": {
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37503916636",
+    "source_sha": "912bfacc40fe48fbc79010cb60226f02fba1fe6a",
+    "status": "PASS", "python_tests": 28
   },
   "source_privacy_metadata": "PASS_STATIC_SOURCE_ONLY_NOT_LEGAL_APPROVAL",
   "existing_91_1_final_signatures": "PASS_INHERITED_EXACT_IPA_EVIDENCE",

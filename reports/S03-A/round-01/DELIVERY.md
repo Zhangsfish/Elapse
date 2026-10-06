@@ -9,7 +9,7 @@ PR [#22](https://github.com/Zhangsfish/Elapse/pull/22) · `codex/s03-a-app-store
 - Frozen functional runtime: `fab87acc8f4b863451d9c91ee7605b4c33c47789`, **0.1.0 (91.1)**.
 - Fresh Release capture source: `6e5a82fc60236c5bc9a408207fcd6ad102cacffa`;
   [capture CI](https://github.com/Zhangsfish/Elapse/actions/runs/37501370483) **PASS**.
-- Asset/preflight implementation tested locally: `6d87a50f7db244f364712ccd33da1423d22d05aa`.
+- Asset/preflight/test-only implementation tested locally: `d188500258946a4450035a51cf14429b08c11150`.
   Later delivery/STATUS changes are documentation only. PR head is recorded by GitHub.
 - Existing signed/internal upload: `d633b5b627933d71aac221a3bb2f6aae29fd82a2`;
   [upload](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045).
@@ -49,7 +49,7 @@ render zh-Hans at identical geometry. Chinese final images are **NOT_RUN**.
 
 ## Executed checks
 
-- Python **28/28 PASS**: existing 19 + nine S03 tests, missing/duplicate/path-traversal/
+- Python **29/29 PASS**: existing 19 + ten S03 tests, missing/duplicate/path-traversal/
   wrong-size/skipped/failing capture rejection, UTF-8 metadata limits, static pages,
   source privacy/bundle boundary and frozen production tree/hashes.
 - Real capture XCTest **1/1 PASS**, 0 skipped/failed; generated effective entitlements PASS.
@@ -62,12 +62,21 @@ render zh-Hans at identical geometry. Chinese final images are **NOT_RUN**.
   content, privacy navigation, no external resource requests. Local files only,
   **not public HTTPS proof**. `evidence/public-pages-local-browser.json` + two previews.
 - Ordinary macOS CI [37501399700](https://github.com/Zhangsfish/Elapse/actions/runs/37501399700)
-  had generated project/simulator/localization/helper/Swift steps PASS; UI step still
-  running at this report snapshot. Final head checks remain available on PR #22.
-  Do not convert a boot exemption or pending UI run into a PASS.
-- New `S03 secret-free store preflight` workflow repeats the 28 tests and static/
+  **FAILED** existing English smoke at S02PolishUITests.swift:89; generated project,
+  simulator/localization/helper and **60 Swift tests PASS**; Hans dark/large-text UI PASS.
+  The failure immediately checked tutorial-skip existence after seeing the underlying
+  About sheet's Done button. A dismissal race is suspected; no product regression
+  is excluded merely from that suspicion. Test-only change adds Apple's bounded
+  `waitForNonExistence(timeout: 5)` and retains the negative assertion. No runtime
+  edit, failure suppression or fixed sleep. Final rerun is pending on PR #22;
+  do not call ordinary CI PASS until its actual UI assertion passes.
+  See `evidence/ordinary-ci-first-attempt.md`.
+- New `S03 secret-free store preflight` workflow repeats the 29 tests and static/
   hash checks on the PR; no Apple credentials. Capture and preflight workflows
   never export/upload a signed app. Existing ordinary CI remains secret-free.
+  Its initial [28-test run](https://github.com/Zhangsfish/Elapse/actions/runs/37503916636)
+  passed on `912bfacc40fe48fbc79010cb60226f02fba1fe6a`; the new bounded-wait test
+  is additionally passed locally and awaits the final head's CI run.
 
 Reproduce with installed tools, no dependency install:
 
