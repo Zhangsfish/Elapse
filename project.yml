@@ -61,6 +61,7 @@ targets:
     sources:
       - path: MonitorExtension
       - path: Shared
+      - path: Localization
       - path: AppResources/PrivacyInfo.xcprivacy
         buildPhase: resources
     settings:
@@ -75,6 +76,7 @@ targets:
     info:
       path: MonitorExtension/Info.plist
       properties:
+        CFBundleDevelopmentRegion: en
         CFBundleDisplayName: Everwhile Monitor
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
@@ -118,6 +120,18 @@ targets:
       path: ReportExtension/ElapseReport.entitlements
       properties:
         com.apple.developer.family-controls: true
+  ElapseUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests
+    dependencies:
+      - target: Elapse
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zhangsfish.elapse.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Elapse
 schemes:
   Elapse:
     build:
@@ -125,3 +139,6 @@ schemes:
         Elapse: all
         ElapseMonitor: all
         ElapseReport: all
+    test:
+      targets:
+        - ElapseUITests

@@ -1,10 +1,20 @@
 # STATUS
 
-Updated: 2026-10-05
+Updated: 2026-10-06
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY；S03 LOCKED。**
+2026-10-06：PR #21 历史 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604) 的教程返工已通过后续 cloud review；69.1 / 78.1 / 81.1 保留为历史。当前不再重做教程、Today 或主体功能。
+
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME 91.1；S03 LOCKED。**
+
+持有人最新要求已实现：首页菜单只留“关于与支持”；重播教学仍在支持页内；删除“无账号、无广告、无分析。”及英文对应句/unused key。Runtime `fab87ac...` / tested `7fa2cae...` / upload `d633b5b...`，同一 PR #21。[Ordinary37478243056](https://github.com/Zhangsfish/Elapse/actions/runs/37478243056) 60 Swift / 19 Python、真实 Release 中英文 UI / 大字体裁切审计 PASS（无豁免）；[prepare37478236216](https://github.com/Zhangsfish/Elapse/actions/runs/37478236216) unsigned iPhone build/archive、三 bundle 双语资源/metadata/capabilities PASS，90.1 NOT_UPLOADED。[Upload37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045) **0.1.0 (91.1)** 最终三 bundle 签名/Family Controls/profile allowance PASS，精确审计字节 ACCEPTED，VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T14:48:06Z）。一次性 markers 已清理；报告清理 head 的 CI 与 runtime-tested CI 分开。持有人在 91.1 交付后回复“没问题，你自己合并一下。这个可以当做最终版本了”：最终菜单/支持页收口记为 OWNER_REPORTED_PASS（build 由上下文关联，未另报版本/截图）。功能候选冻结，READY_FOR_AUDIT；本次明确授权 Codex 合并 PR #21，是单次例外，不冒充云端独立审计/自批，不解锁 S03，也不授权公开上架。实际合并结果与最终 SHA 查看 PR 记录；后续默认 cloud-led 规则不变。教程/Today/S01 不改，不再要求手机操作。下文 88.1 为历史，不替代新候选验收。
+
+2026-10-06 [cloud follow-up review](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) 对 runtime `a21a857...` / head `e6bbd50...` 给出教程与本地化 PASS，冻结教程。随后新增 Release-hidden diagnostics / 原生双语支持页并交付 88.1；其双入口/两句隐私文案已被持有人最新要求覆盖。81.1 / 88.1 是历史候选，不代替 91.1 的设备验收。
+
+持有人指出 78.1 教程第二幕圆环容易被误读为已用时间，已确认并实现静态时钟 + 所选提醒间隔的渐显预览；只返工该幕，不动真实监控/Today。78.1 与 69.1 检查均属于历史候选，不沿用其视觉验收。
+
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：历史 88.1 public-support runtime `600dea2...`，tested `e6ce828...`，upload `bc9b1f5...`（只有一次性 marker 差异）。60 Swift / 19 Python、simulator 与 unsigned Release build/archive、App/Monitor/Report 中英文资源与 capabilities PASS；[ordinary/native Release UI 37470762886](https://github.com/Zhangsfish/Elapse/actions/runs/37470762886) 两种语言真实执行并 PASS，无裁切审计豁免。[Prepare 37470755631](https://github.com/Zhangsfish/Elapse/actions/runs/37470755631) 87.1 NOT_UPLOADED。[Upload 37473140237](https://github.com/Zhangsfish/Elapse/actions/runs/37473140237) **0.1.0 (88.1)** 最终三 bundle 签名 / Family Controls / profile allowance PASS，精确审计字节 ACCEPTED，processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T13:50:40Z）。此前支持页的真实 textClipped 失败保留，不转写为 PASS。这是历史交付记录，不替代 91.1 的新手机确认。同一 draft PR，不批准、不 merge、不解锁 S03；一次性 markers 已清理，报告/清理 head 的 CI 与 runtime-tested CI 分开。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -39,7 +49,7 @@ S02-A notes：
 S02-B 只做最终体验收口：
 
 - 保持单屏渐进式 setup，不做强制多页 onboarding；
-- 在“未选择 App”状态加入一个很轻、不阻塞的“如何选择多个 App”教学提示/动画；
+- 按持有人与云端返工方向，首次可跳过的四段连续短动画教学；首页单菜单重播，非强制 setup；
 - 使用 generic UI，不暴露真实 App 身份；
 - 动画尊重 Reduce Motion；
 - 用户已有选择时不强制显示；
@@ -56,7 +66,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **READY** | first-use guidance + notification localization + final polish |
+| S02-B | **READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME** | 91.1 functional candidate frozen; explicit owner-directed PR #21 merge exception; cloud final audit not claimed |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

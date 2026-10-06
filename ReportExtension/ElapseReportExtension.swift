@@ -116,7 +116,14 @@ private struct HourlyUsage: Identifiable {
 
 private struct TodayReportView: View {
     let configuration: TodayReportConfiguration
-    @Environment(\.locale) private var locale
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .caption) private var chartHeight = 136.0
+
+    private var appRowLayout: AnyLayout {
+        dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 6))
+            : AnyLayout(HStackLayout(alignment: .center, spacing: 10))
+    }
 
     private var chartPlan: TodayHourlyChartPlan {
         TodayHourlyChartPlan(
@@ -207,7 +214,7 @@ private struct TodayReportView: View {
                                 }
                             }
                         }
-                        .frame(height: 136)
+                        .frame(height: chartHeight)
                         .accessibilityLabel(Text("report.hourly"))
                         Text("report.hourlyNote")
                             .font(.caption)
@@ -220,10 +227,10 @@ private struct TodayReportView: View {
                         Text("report.apps").font(.headline)
                             .padding(.bottom, 8)
                         ForEach(configuration.applications) { item in
-                            HStack(spacing: 10) {
+                            appRowLayout {
                                 Label(item.token)
-                                    .lineLimit(2)
-                                Spacer(minLength: 8)
+                                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
+                                if !dynamicTypeSize.isAccessibilitySize { Spacer(minLength: 8) }
                                 Text(durationText(item.duration))
                                     .monospacedDigit()
                                     .fixedSize(horizontal: true, vertical: false)
@@ -252,7 +259,7 @@ private struct TodayReportView: View {
     }
 
     private func durationText(_ duration: TimeInterval) -> String {
-        UsageDurationFormatter.format(duration, language: .forLocale(locale))
+        UsageDurationFormatter.format(duration, language: .forBundle())
     }
 }
 

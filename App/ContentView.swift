@@ -7,7 +7,20 @@ struct ContentView: View {
     @EnvironmentObject private var model: ElapseModel
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.openURL) private var openURL
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
+    @State private var tutorialPresented = TutorialVisitStore.reserveFirstVisit()
+    @State private var aboutPresented = false
+    #if DEBUG
+    @State private var diagnosticsPresented = false
+    #endif
+    @State private var notificationPermissionInProgress = false
+
+    private var summaryLayout: AnyLayout {
+        dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 12))
+            : AnyLayout(HStackLayout(alignment: .top, spacing: 18))
+    }
 
     private var monitoringStatus: HomeMonitoringStatus {
         HomeMonitoringStatus.resolve(
@@ -49,6 +62,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Everwhile").font(.largeTitle.bold())
+                            .accessibilityAddTraits(.isHeader)
                         Text("home.tagline")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -63,7 +77,7 @@ struct ContentView: View {
                         }
                         .accessibilityElement(children: .combine)
 
-                        HStack(spacing: 18) {
+                        summaryLayout {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("home.interval")
                                     .font(.caption)
@@ -74,7 +88,8 @@ struct ContentView: View {
                                 }
                                 .font(.headline.monospacedDigit())
                             }
-                            Spacer(minLength: 8)
+                            .accessibilityElement(children: .combine)
+                            if !dynamicTypeSize.isAccessibilitySize { Spacer(minLength: 8) }
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("home.selected")
                                     .font(.caption)
@@ -85,9 +100,21 @@ struct ContentView: View {
                                 }
                                 .font(.headline.monospacedDigit())
                             }
+                            .accessibilityElement(children: .combine)
                         }
-                        .accessibilityElement(children: .combine)
                         primaryAction
+                        if model.hasFamilyAuthorization && !model.selection.applicationTokens.isEmpty {
+                            if model.notificationStatus == .notDetermined {
+                                Text("home.notifications.firstStart")
+                                    .font(.caption).foregroundStyle(.secondary)
+                            } else if model.notificationStatus != .authorized || model.notificationAlertSetting != .enabled {
+                                Text("home.notifications.disabled")
+                                    .font(.caption).foregroundStyle(.secondary)
+                                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                                    Button("home.openSettings") { openURL(settingsURL) }
+                                }
+                            }
+                        }
                     }
                     .padding(20)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -98,11 +125,15 @@ struct ContentView: View {
                             actionRow("home.chooseApps", icon: "square.stack.3d.up")
                         }
                         .disabled(!model.hasFamilyAuthorization || !model.canChangeSelection)
+                        .accessibilityHint(Text(model.canChangeSelection ? "home.chooseApps.hint" : "home.editLocked"))
                         Divider().padding(.leading, 52)
-                        HStack {
+                        AnyLayout(dynamicTypeSize.isAccessibilitySize
+                            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
+                            : AnyLayout(HStackLayout(spacing: 8))) {
                             Image(systemName: "clock")
                                 .frame(width: 28)
                                 .foregroundStyle(.secondary)
+                                .accessibilityHidden(true)
                             Picker("home.changeInterval", selection: Binding(
                                 get: { model.configuredIntervalMinutes },
                                 set: { model.updateInterval(to: $0) }
@@ -150,15 +181,31 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
             }
             .background(Color(uiColor: .systemGroupedBackground))
+            .controlSize(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        DiagnosticsView()
+                    Menu {
+                        Button("about.title", systemImage: "info.circle") { aboutPresented = true }
+                            .accessibilityIdentifier("about-open")
+                        #if DEBUG
+                        Button("home.diagnostics", systemImage: "slider.horizontal.3") { diagnosticsPresented = true }
+                            .accessibilityIdentifier("developer-diagnostics")
+                        #endif
                     } label: {
-                        Image(systemName: "info.circle")
-                            .accessibilityLabel(Text("home.diagnostics"))
+                        Image(systemName: "ellipsis.circle")
+                            .accessibilityLabel(Text("home.menu"))
                     }
+                    .accessibilityIdentifier("home-menu")
                 }
+            }
+            #if DEBUG
+            .navigationDestination(isPresented: $diagnosticsPresented) { DiagnosticsView() }
+            #endif
+            .sheet(isPresented: $aboutPresented) { AboutSupportView() }
+            .sheet(isPresented: $tutorialPresented) {
+                QuickStartTutorialView()
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
             }
             .familyActivityPicker(
                 isPresented: $pickerPresented,
@@ -183,6 +230,7 @@ struct ContentView: View {
                 Text("home.allowScreenTime").frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .accessibilityIdentifier("allow-screen-time")
             if model.isFamilyAuthorizationDenied,
                let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 Button("home.openSettings") { openURL(settingsURL) }
@@ -203,12 +251,22 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
         } else {
-            Button { model.startMonitoring() } label: {
+            Button {
+                notificationPermissionInProgress = true
+                Task {
+                    defer { notificationPermissionInProgress = false }
+                    // First-use UI integration only; registration/reconcile stay unchanged.
+                    if model.notificationStatus == .notDetermined {
+                        await model.requestNotificationAuthorization()
+                    }
+                    model.startMonitoring()
+                }
+            } label: {
                 Label("home.start", systemImage: "play.fill")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!model.canChangeSelection || model.pulseStoreStatus != "ready")
+            .disabled(notificationPermissionInProgress || !model.canChangeSelection || model.pulseStoreStatus != "ready")
         }
     }
 
@@ -230,6 +288,7 @@ struct ContentView: View {
     }
 }
 
+#if DEBUG
 private struct DiagnosticsView: View {
     @EnvironmentObject private var model: ElapseModel
 
@@ -280,6 +339,7 @@ private struct DiagnosticsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+#endif
 
 struct TodayReportView: View {
     let selection: FamilyActivitySelection

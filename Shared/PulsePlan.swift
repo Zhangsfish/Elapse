@@ -89,10 +89,37 @@ struct PulseNotificationCopy: Equatable {
     let title: String
     let body: String
 
-    static func safeThresholdCopy(minutes: Int) -> PulseNotificationCopy {
+    static let titleKey = "pulse.title"
+    static let bodyKey = "pulse.body"
+
+    static func safeThresholdCopy(
+        minutes: Int,
+        language: UsageDurationLanguage = .english
+    ) -> PulseNotificationCopy {
+        switch language {
+        case .english:
+            return PulseNotificationCopy(
+                title: "\(minutes) minutes",
+                body: "Selected apps reached the \(minutes)-minute reminder point."
+            )
+        case .simplifiedChinese:
+            return PulseNotificationCopy(
+                title: "\(minutes) 分钟",
+                body: "所选 App 已达到 \(minutes) 分钟提醒点。"
+            )
+        }
+    }
+
+    static func localizedThresholdCopy(minutes: Int, bundle: Bundle = .main) -> PulseNotificationCopy {
+        // Resolve using this process's packaged bundle. Missing resources
+        // fall back to safe English, never a raw key or a claim of today total.
         PulseNotificationCopy(
-            title: "\(minutes) 分钟",
-            body: "所选 App 使用已达到本轮的 \(minutes) 分钟提醒点。"
+            title: String(format: bundle.localizedString(forKey: titleKey, value: "%ld minutes", table: nil), minutes),
+            body: String(format: bundle.localizedString(
+                forKey: bodyKey,
+                value: "Selected apps reached the %ld-minute reminder point.",
+                table: nil
+            ), minutes)
         )
     }
 }
