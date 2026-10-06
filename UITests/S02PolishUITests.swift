@@ -97,7 +97,7 @@ final class S02PolishUITests: XCTestCase {
                           "The support header stays at the top, not above a squeezed Form")
         XCTAssertTrue(app.buttons["about-tutorial-replay"].exists)
         attach(app, name: "\(language)-about-top")
-        try app.performAccessibilityAudit(for: [.dynamicType, .textClipped])
+        try auditSupport(app, scope: "\(language)-about-top")
 
         scrollTo(app.buttons["about-email"], in: app)
         let copy = app.buttons["about-copy-email"]
@@ -111,7 +111,7 @@ final class S02PolishUITests: XCTestCase {
         XCTAssertNotNil(version.label.range(of: #"^\d+\.\d+\.\d+ \(\d+(\.\d+)?\)$"#, options: .regularExpression))
         XCTAssertFalse(app.buttons["developer-diagnostics"].exists)
         attach(app, name: "\(language)-about-version")
-        try app.performAccessibilityAudit(for: [.dynamicType, .textClipped])
+        try auditSupport(app, scope: "\(language)-about-version")
         app.buttons["about-close"].tap()
         XCTAssertTrue(app.buttons["home-menu"].waitForExistence(timeout: 5))
     }
@@ -122,5 +122,15 @@ final class S02PolishUITests: XCTestCase {
             app.swipeUp()
         }
         XCTAssertTrue(element.exists && element.isHittable, "Form content must be reachable by scrolling")
+    }
+
+    private func auditSupport(_ app: XCUIApplication, scope: String) throws {
+        try app.performAccessibilityAudit(for: [.dynamicType, .textClipped]) { issue in
+            // Generic clean-simulator UI only. Never suppress a finding.
+            print("S02B_SUPPORT_AUDIT_ISSUE scope=\(scope) type=\(issue.auditType) "
+                  + "summary=\(issue.compactDescription) detail=\(issue.detailedDescription) "
+                  + "element=\(issue.element?.debugDescription ?? "none")")
+            return false
+        }
     }
 }
