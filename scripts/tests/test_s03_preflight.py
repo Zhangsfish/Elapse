@@ -104,6 +104,13 @@ class S03PreflightTests(unittest.TestCase):
     def test_frozen_production_capture_hashes_and_preflight(self):
         self.assertEqual(preflight.run()["status"], "PASS")
 
+    def test_existing_ui_dismissal_wait_is_bounded_and_keeps_assertion(self):
+        test_source = (ROOT / "UITests/S02PolishUITests.swift").read_text(encoding="utf-8")
+        helper = test_source.split("private func closeSupportAfterReplay", 1)[1].split("/// Run", 1)[0]
+        self.assertIn('XCTAssertTrue(app.buttons["tutorial-skip"].waitForNonExistence(timeout: 5))', helper)
+        self.assertIn('XCTAssertFalse(app.buttons["tutorial-skip"].exists)', helper)
+        self.assertNotIn('sleep(', helper)
+
 
 if __name__ == "__main__":
     unittest.main()
