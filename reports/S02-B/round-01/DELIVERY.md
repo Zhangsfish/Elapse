@@ -1,10 +1,18 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST — corrected second scene only**. Same PR #21; no merge/approval; S03 LOCKED.
+State: **IN_PROGRESS — public About & Support / DEBUG-only diagnostics**. Same PR #21; no merge/approval; S03 LOCKED.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
-## Current second-scene correction — 2026-10-06
+## Current public support closeout — 2026-10-06
+
+[Cloud follow-up](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) passes/freeze tutorial/localization at runtime a21a857 / head e6bbd50. Owner authorizes this final bounded change. Release excludes diagnostics entry/state/destination/view with compile-time DEBUG guards; model untouched. Public menu has Replay Quick Start + About & Support only. Native Form: short usage rows/replay, fixed public email/mailto/copy, system-open homepage, exactly two privacy sentences and dynamic Bundle version/build. English + zh-Hans keys match; no missing/unused keys; home attention/checking copy no longer exposes registration/diagnostics. No tutorial artwork/chrome, Today, S01, capabilities, IDs or App Group change.
+
+Reference: Lecture Asset current main `13e943ab2854c6153e5398f0c8a5fa41a9f22df4`, App/AboutSupportView.swift; structure only, shorter copy. Current [Apple OpenURLAction](https://developer.apple.com/documentation/swiftui/openurlaction) / [UIPasteboard.string](https://developer.apple.com/documentation/uikit/uipasteboard/string) checked, no API discrepancy or dependency. Email copying only writes the owner-specified public address; no clipboard reading. Adaptive sheet header respects largest text without toolbar-scale exemptions; native Form rows scroll.
+
+Local: 18 Python tests and whitespace PASS. No local Swift/Xcode on Windows; macOS Swift/native Release menu/support tests, simulator/resources, unsigned archive and new internal delivery pending. Current physical menu/support observations NOT_RUN. Later device request only these two surfaces, no tutorial/Today/pulse/reboot/revocation/midnight.
+
+## Previous second-scene correction — 81.1
 
 Owner observed that the filling clock ring in 78.1 resembles elapsed usage, then approved a static clock + selected interval preview. Removed the ring/rotation; the localized 5-minute value fades in with selection, while chip press/release and Start→ON remain continuous. No new copy/API/dependency; all other scenes and actual monitoring/Today unchanged. Added a regression guard for no elapsed-time visual in this scene. 15 local Python tests PASS; new macOS checks and internal delivery PASS. 78.1 evidence below is prior-candidate evidence, not acceptance of the new code.
 

@@ -6,7 +6,9 @@ Updated: 2026-10-06
 
 2026-10-06：云端对 PR #21 exact head `07fee7599cde672dd91c0094c20350d0e8bca234` 给出 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604)。持有人授权在同一 PR 返工四幕连续动画、画布/导航层级、首页单菜单与死文案清理。69.1 观察保留为历史，不代表新候选已验收。主体功能不重做。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST — corrected second scene only；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS — public About & Support / DEBUG-only diagnostics；S03 LOCKED。**
+
+2026-10-06 [cloud follow-up review](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) 对 runtime `a21a857...` / head `e6bbd50...` 给出教程与本地化 PASS，冻结教程。持有人授权最后收口：Release 菜单只保留重播教学 / 关于与支持；诊断 UI 全部仅限 DEBUG；原生简短双语支持页。当前新实现与 Release-native 测试进行中，需新 internal build。81.1 是上一候选，不代替新 UI 的设备验收。只等持有人看新菜单和支持页，不再看教程 / Today，不重测 S01。
 
 持有人指出 78.1 教程第二幕圆环容易被误读为已用时间，已确认并实现静态时钟 + 所选提醒间隔的渐显预览；只返工该幕，不动真实监控/Today。78.1 与 69.1 检查均属于历史候选，不沿用其视觉验收。
 
@@ -62,7 +64,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | PR #21 corrected second scene; 81.1 signed/VALID/internal group confirmed, brief visual acceptance pending |
+| S02-B | **IN_PROGRESS** | PR #21 final public support surface; tutorial frozen, new Release-native checks/internal build pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

@@ -54,7 +54,7 @@ fi
 xcrun simctl ui "$device" appearance light
 xcrun simctl ui "$device" content_size large
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
-  -configuration Debug -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
+  -configuration Release -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/en-light.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testEnglishFirstVisitAndReplay \
@@ -62,9 +62,9 @@ xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
 xcrun simctl ui "$device" appearance dark
 xcrun simctl ui "$device" content_size accessibility-extra-extra-extra-large
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
-  -configuration Debug -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
+  -configuration Release -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/zh-dark-large.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testSimplifiedChineseReplayAtAccessibilitySize \
   CODE_SIGNING_ALLOWED=NO
-echo 'S02B_UI_SMOKE_PASS light_en dark_zhHans accessibility_size automated_layout_audit'
+echo 'S02B_UI_SMOKE_PASS release_menu_about light_en dark_zhHans accessibility_size automated_layout_audit'

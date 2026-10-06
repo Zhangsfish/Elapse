@@ -10,7 +10,10 @@ struct ContentView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
     @State private var tutorialPresented = TutorialVisitStore.reserveFirstVisit()
+    @State private var aboutPresented = false
+    #if DEBUG
     @State private var diagnosticsPresented = false
+    #endif
     @State private var notificationPermissionInProgress = false
 
     private var summaryLayout: AnyLayout {
@@ -184,7 +187,12 @@ struct ContentView: View {
                     Menu {
                         Button("tutorial.replay", systemImage: "play.rectangle") { tutorialPresented = true }
                             .accessibilityIdentifier("tutorial-replay")
+                        Button("about.title", systemImage: "info.circle") { aboutPresented = true }
+                            .accessibilityIdentifier("about-open")
+                        #if DEBUG
                         Button("home.diagnostics", systemImage: "slider.horizontal.3") { diagnosticsPresented = true }
+                            .accessibilityIdentifier("developer-diagnostics")
+                        #endif
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .accessibilityLabel(Text("home.menu"))
@@ -192,7 +200,10 @@ struct ContentView: View {
                     .accessibilityIdentifier("home-menu")
                 }
             }
+            #if DEBUG
             .navigationDestination(isPresented: $diagnosticsPresented) { DiagnosticsView() }
+            #endif
+            .sheet(isPresented: $aboutPresented) { AboutSupportView() }
             .sheet(isPresented: $tutorialPresented) {
                 QuickStartTutorialView()
                     .presentationDetents([.large])
@@ -279,6 +290,7 @@ struct ContentView: View {
     }
 }
 
+#if DEBUG
 private struct DiagnosticsView: View {
     @EnvironmentObject private var model: ElapseModel
 
@@ -329,6 +341,7 @@ private struct DiagnosticsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+#endif
 
 struct TodayReportView: View {
     let selection: FamilyActivitySelection

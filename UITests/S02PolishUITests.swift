@@ -61,6 +61,7 @@ final class S02PolishUITests: XCTestCase {
         app.launch()
         XCTAssertTrue(app.buttons["allow-screen-time"].waitForExistence(timeout: 15))
         XCTAssertFalse(skip.exists, "Automatic tutorial does not repeat")
+        try checkPublicSupport(app, language: language)
     }
 
     private func attach(_ app: XCUIApplication, name: String) {
@@ -76,5 +77,48 @@ final class S02PolishUITests: XCTestCase {
         app.buttons["home-menu"].tap()
         XCTAssertTrue(app.buttons["tutorial-replay"].waitForExistence(timeout: 5))
         app.buttons["tutorial-replay"].tap()
+    }
+
+    /// Run on the real Release binary: no DEBUG settings or fake model state.
+    private func checkPublicSupport(_ app: XCUIApplication, language: String) throws {
+        let chinese = language == "zh-Hans"
+        app.buttons["home-menu"].tap()
+        XCTAssertTrue(app.buttons["tutorial-replay"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["about-open"].exists)
+        XCTAssertFalse(app.buttons["developer-diagnostics"].exists)
+        for name in ["Advanced diagnostics", "Advanced Diagnostics", "Developer Diagnostics", "高级诊断", "开发者诊断"] {
+            XCTAssertFalse(app.buttons[name].exists, "Release menu must not expose developer tools")
+        }
+        attach(app, name: "\(language)-release-menu")
+        app.buttons["about-open"].tap()
+        XCTAssertTrue(app.staticTexts[chinese ? "关于与支持" : "About & Support"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["about-close"].isHittable)
+        XCTAssertTrue(app.buttons["about-tutorial-replay"].exists)
+        attach(app, name: "\(language)-about-top")
+        try app.performAccessibilityAudit(for: [.dynamicType, .textClipped])
+
+        scrollTo(app.buttons["about-email"], in: app)
+        let copy = app.buttons["about-copy-email"]
+        scrollTo(copy, in: app)
+        copy.tap()
+        XCTAssertTrue(app.buttons[chinese ? "已复制" : "Copied"].waitForExistence(timeout: 2))
+        scrollTo(app.buttons["about-homepage"], in: app)
+        // Do not launch Mail/browser or send anything from a simulator test.
+        let version = app.staticTexts["about-version"]
+        scrollTo(version, in: app)
+        XCTAssertNotNil(version.label.range(of: #"^\d+\.\d+\.\d+ \(\d+(\.\d+)?\)$"#, options: .regularExpression))
+        XCTAssertFalse(app.buttons["developer-diagnostics"].exists)
+        attach(app, name: "\(language)-about-version")
+        try app.performAccessibilityAudit(for: [.dynamicType, .textClipped])
+        app.buttons["about-close"].tap()
+        XCTAssertTrue(app.buttons["home-menu"].waitForExistence(timeout: 5))
+    }
+
+    private func scrollTo(_ element: XCUIElement, in app: XCUIApplication) {
+        for _ in 0..<8 {
+            if element.exists && element.isHittable { return }
+            app.swipeUp()
+        }
+        XCTAssertTrue(element.exists && element.isHittable, "Form content must be reachable by scrolling")
     }
 }

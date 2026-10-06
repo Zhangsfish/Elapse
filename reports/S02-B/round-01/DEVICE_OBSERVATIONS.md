@@ -1,6 +1,10 @@
 # S02-B device observations
 
-State: **WAITING_FOR_OWNER_TEST — corrected second scene only**.
+State: **IN_PROGRESS — public support closeout**.
+
+Cloud follow-up comment 6011357941 passes/freeze tutorial/localization at a21a857 / e6bbd50. This is cloud source/artifact review, not a new physical owner observation. Owner authorizes DEBUG-only diagnostics and short bilingual About & Support. New build preparation pending; menu/support physical observations **NOT_RUN**. Only inspect home `…` menu and About & Support after internal delivery. No further tutorial, Today or functional checklist. READY_FOR_AUDIT only after actual owner response; no merge/S03 unlock.
+
+## Prior 81.1 observations / superseded owner step
 Owner feedback on78.1: the upper clock ring appears mostly elapsed immediately after selecting5minutes. Owner approved static clock + selected interval preview, with no counting/filling/rotating visual. This is CHANGES_REQUESTED for that scene, not whole-candidate acceptance. New candidate inspection NOT_RUN; only the corrected second scene needs a short look after delivery.
 Build association follows this conversation's78.1 handoff; the owner did not restate the build or attach a new screenshot. Do not infer other physical visual checks from this narrow feedback.
 

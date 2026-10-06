@@ -2,6 +2,8 @@
 
 Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the S02-A independent audit. This folder records bounded onboarding/localization/accessibility polish, not stage approval.
 
+Current 2026-10-06 dispatch: cloud follow-up comment 6011357941 passes/freeze tutorial and localization; owner authorizes only public About & Support and DEBUG-only diagnostics. Reference Lecture Asset main `13e943ab2854c6153e5398f0c8a5fa41a9f22df4`, App/AboutSupportView.swift. Reuse this folder/same PR #21. Do not rework tutorial/Today/S01, merge or unlock S03. New runtime needs Release-native menu/support tests and new internal build. Owner only looks at menu + support page; physical observations NOT_RUN until supplied.
+
 - DELIVERY.md: exact base/runtime/tested/upload SHAs, build and CI/distribution provenance.
 - TEST_RESULTS.json: automated results versus source inspection and owner observations.
 - DEVICE_OBSERVATIONS.md: this round only; no inherited device PASS from 56.1.
