@@ -211,10 +211,16 @@ struct TutorialArtwork: View {
     private func drawingValue(_ value: String, size: CGFloat, weight: Font.Weight = .regular,
                               color: Color = .primary, alignment: Alignment = .center) -> some View {
         Canvas { context, bounds in
-            let textAlignment: TextAlignment = alignment == .leading ? .leading : (alignment == .trailing ? .trailing : .center)
             let text = Text(value).font(.system(size: size, weight: weight)).foregroundColor(color)
-                .multilineTextAlignment(textAlignment)
-            context.draw(text, in: CGRect(origin: .zero, size: bounds))
+            let resolved = context.resolve(text)
+            let natural = resolved.measure(in: CGSize(width: .infinity, height: .infinity))
+            if natural.width > bounds.width {
+                context.draw(resolved, in: CGRect(origin: .zero, size: bounds))
+            } else {
+                let x = alignment == .leading ? 0 : (alignment == .trailing ? bounds.width : bounds.width / 2)
+                let anchor: UnitPoint = alignment == .leading ? .leading : (alignment == .trailing ? .trailing : .center)
+                context.draw(resolved, at: CGPoint(x: x, y: bounds.height / 2), anchor: anchor)
+            }
         }
     }
 }
