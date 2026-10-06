@@ -4,11 +4,11 @@ Updated: 2026-10-06
 
 ## 当前结论
 
-2026-10-06：持有人批准的 Lecture Asset 风格四个短动作镜头已实现：选择 App → 间隔/Start → 共享用时提醒 → Today 示例。首次可跳过、首页问号可重播，老用户不强制弹出。**69.1** 已在现有内部 TestFlight 组可用；等待一轮简短教学观察，旧版视觉结果不沿用为新版本 PASS。
+2026-10-06：持有人针对当前交付回复“没啥问题，就是效果稍微还可以优化，先停在这里吧”。69.1 四段教学的简短视觉验收已收到；动画细节作为后续可选打磨，本轮不再改实现。仅提交报告供云端独立审核，不代表已批准公开上架。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY_FOR_AUDIT；S03 LOCKED。**
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `f05df01...`，tested/prepare `e1fba3d...`，upload `9de0a20...`。58 Swift / 13 Python、unsigned archive、资源/capabilities、两项 native UI 与四段 Dynamic Type/裁切 audit PASS；首轮模拟器 boot timeout 为 NOT_RUN，重跑通过。69.1 最终三 bundle 签名/FAMILY_CONTROLS/profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。短教学的真机安装/视觉观察 NOT_RUN；不重做 S01、Today 或等待 pulse。详情及外观检查限制：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `f05df01...`，tested/prepare `e1fba3d...`，upload `9de0a20...`。58 Swift / 13 Python、unsigned archive、资源/capabilities、两项 native UI 与四段 Dynamic Type/裁切 audit PASS；首轮模拟器 boot timeout 为 NOT_RUN，重跑通过。69.1 最终三 bundle 签名/FAMILY_CONTROLS/profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。此前文档 head `0251cc2...` 普通 CI 也完整通过。持有人口述当前教学可接受并同意停止打磨；未提供新截图或逐按钮记录，不扩写为全量真机检查。详情及剩余限制：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -60,7 +60,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | 69.1 four short animated teaching scenes delivered; brief replay observation pending |
+| S02-B | **READY_FOR_AUDIT** | 69.1 teaching owner-accepted with optional animation-polish note; independent audit pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

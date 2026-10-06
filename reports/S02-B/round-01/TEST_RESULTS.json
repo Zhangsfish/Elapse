@@ -1,6 +1,6 @@
 {
   "stage": "S02-B",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
   "runtimeCodeSHA": "f05df01fa52a144664d3ca87ffd8340fddd5cf6f",
   "ordinaryCITestedSHA": "e1fba3d5ead1790b5ffef2e9118fc82d78ad58df",
@@ -17,7 +17,7 @@
     "demoOnlyBoundary": "SOURCE_AND_PYTHON_TEST_PASS",
     "boundedFramesNavigation": "FOUR_NEW_SWIFT_TESTS_PASS",
     "returningUsers": "NO_FORCED_UPGRADE_TUTORIAL",
-    "physicalAcceptance": "NOT_RUN"
+    "physicalAcceptance": "OWNER_REPORTED_ACCEPTABLE_WITH_POLISH_NOTE"
   },
   "ordinaryCI": {
     "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37353631696",
@@ -65,8 +65,8 @@
     "internalBetaState": "IN_BETA_TESTING",
     "existingInternalGroupAssigned": true,
     "confirmedAtUTC": "2026-10-05T18:43:49Z",
-    "ownerInstallation": "NOT_RUN",
-    "ownerVisualAcceptance": "NOT_RUN"
+    "ownerInstallation": "OWNER_REPORTED_CONTEXT_NOT_NEW_BUILD_SCREENSHOT",
+    "ownerVisualAcceptance": "OWNER_REPORTED_ACCEPTABLE_WITH_POLISH_NOTE"
   },
   "nativeSimulatorUI": {
     "status": "PASS",
@@ -103,6 +103,29 @@
     "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37357063413",
     "testedSHA": "9de0a209c653769a2881e68e1586a6f34bacdff7",
     "job": 111922047054,
+    "swiftTests": 58,
+    "pythonTests": 13,
+    "nativeEnglishChineseUIAndLayoutAudit": "PASS",
+    "secrets": "NOT_USED"
+  },
+  "ownerCloseout": {
+    "dateLocal": "2026-10-06",
+    "feedback": "没啥问题，就是效果稍微还可以优化，先停在这里吧",
+    "source": "Direct reply to 69.1 handoff; no new screenshot or restated build number",
+    "visualAcceptance": "OWNER_REPORTED_ACCEPTABLE_WITH_POLISH_NOTE",
+    "animationRefinement": "DEFERRED_OPTIONAL_NOT_CURRENT_WORK",
+    "physicalIndividualButtons": "NOT_ITEMIZED_NOT_INFERRED",
+    "extraPhoneTests": "NONE_THIS_ROUND",
+    "runtimeChange": false,
+    "uploadRequired": false,
+    "independentCloudAudit": "PENDING",
+    "publicReleaseAuthorized": false
+  },
+  "previousEvidenceHeadCI": {
+    "testedSHA": "0251cc2cb637764d9e95814a4510d22eda7148db",
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37358794703",
+    "job": 111927874783,
+    "status": "PASS",
     "swiftTests": 58,
     "pythonTests": 13,
     "nativeEnglishChineseUIAndLayoutAudit": "PASS",

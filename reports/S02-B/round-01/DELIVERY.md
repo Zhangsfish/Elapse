@@ -1,6 +1,6 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST — 69.1 internally available**. No stage approval.
+State: **READY_FOR_AUDIT — owner brief acceptance received**. Independent stage verdict/merge pending; S03 LOCKED.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
@@ -32,6 +32,7 @@ Windows: 13 Python tests, Bash syntax, whitespace PASS; no local Xcode/Swift.
 [Explicit upload](https://github.com/Zhangsfish/Elapse/actions/runs/37357058165): PASS. Final signed IPA App/Monitor/Report signatures, expected IDs, Family Controls claims/profile allowance and required App Groups PASS. Exactly those audited bytes uploaded ACCEPTED; 69.1 processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing internal-group assignment TRUE at 18:43:49Z. Safe evidence: `evidence/four-scene-release.txt`. No new account setup or owner Actions click.
 [Extra exact-upload ordinary CI](https://github.com/Zhangsfish/Elapse/actions/runs/37357063413), job111922047054: PASS. 58 Swift / 13 Python, simulator build/resources/capabilities, English and Chinese-largest-text native UI/audits PASS at the exact upload SHA. Only markers differ from tested runtime.
 Current raw safe extracts/limits: `evidence/four-scene-validation.md`.
+[Previous evidence-head CI](https://github.com/Zhangsfish/Elapse/actions/runs/37358794703), `0251cc2cb637764d9e95814a4510d22eda7148db`, job111927874783: 58 Swift / 13 Python, simulator build/resources/capabilities and both native UI/layout-audit checks PASS. This closeout edits documentation only, not the tested/uploaded runtime.
 Executed prepare/upload marker files removed; history retains the exact trigger commits.
 Ordinary code/docs pushes and PR merge do not repeat this upload. No workflow change
 was needed for the four-scene revision.
@@ -44,6 +45,6 @@ Safe historic evidence remains first-visit-validation.md / first-visit-release.t
 
 ## Device / audit boundary
 
-69.1 four-scene build installation and owner visual acceptance **NOT_RUN**. After update ask only a short home question-mark replay / exit observation; no reinstall, selection clearing, reboot, revocation, midnight, pulse wait or Today retest.
+2026-10-06 owner replied to the 69.1 handoff: “没啥问题，就是效果稍微还可以优化，先停在这里吧。” Record general tutorial visual acceptance as **OWNER_REPORTED_ACCEPTABLE_WITH_POLISH_NOTE**. Build association is conversation context; no new screenshot/restated build number or per-button log. Do not manufacture separate physical Next/Back/Skip, language, VoiceOver or Reduce Motion PASS. See DEVICE_OBSERVATIONS.md. Animation details are deferred optional polish, not further work authorized in this round. No new code, upload or S01/Today retest.
 Human VoiceOver, physical Reduce Motion and physical notification-language display remain NOT_RUN. Source/pure/resource/native tests are labelled separately. No private screenshots or raw signing materials published.
-Remain in S02-B. No self-approval/merge/S03 unlock; READY_FOR_AUDIT only after required new owner evidence.
+Remain at READY_FOR_AUDIT in S02-B. No self-approval/merge/S03 unlock or App Review submission. Product functionality is implemented, but public distribution preparation (privacy/support/store materials, regional requirements and exact candidate/release authorization) remains the locked next stage, not completed work.
