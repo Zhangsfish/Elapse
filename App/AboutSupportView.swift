@@ -63,13 +63,16 @@ struct AboutSupportView: View {
                     }
                     Section("about.privacyTitle") {
                         Text("about.privacySimple")
+                            .fixedSize(horizontal: false, vertical: true)
                         Text("about.privacyLocal")
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     Section("about.versionTitle") {
                         Text(verbatim: version)
                             .accessibilityIdentifier("about-version")
                     }
                 }
+                .labelStyle(SupportRowLabelStyle())
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .toolbar(.hidden, for: .navigationBar)
@@ -93,5 +96,21 @@ struct AboutSupportView: View {
         let version = info?["CFBundleShortVersionString"] as? String ?? "—"
         let build = info?["CFBundleVersion"] as? String ?? "—"
         return "\(version) (\(build))"
+    }
+}
+
+/// Keep multiline row titles at their natural height, including large text.
+/// Symbols are decorative; the localized title is the VoiceOver content.
+private struct SupportRowLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            configuration.icon
+                .foregroundStyle(.tint)
+                .accessibilityHidden(true)
+            configuration.title
+                .fixedSize(horizontal: false, vertical: true)
+                .layoutPriority(1)
+        }
+        .accessibilityElement(children: .combine)
     }
 }

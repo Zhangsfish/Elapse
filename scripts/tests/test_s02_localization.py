@@ -61,6 +61,10 @@ class S02LocalizationTests(unittest.TestCase):
         self.assertGreaterEqual(about.count('.fixedSize(horizontal: false, vertical: true)'), 2,
                                 'Title and header must keep their intrinsic height above the Form')
         self.assertIn('.toolbar(.hidden, for: .navigationBar)', about)
+        self.assertIn('.labelStyle(SupportRowLabelStyle())', about)
+        row_style = about.split('private struct SupportRowLabelStyle', 1)[1]
+        self.assertIn('configuration.title\n                .fixedSize(horizontal: false, vertical: true)', row_style)
+        self.assertIn('.accessibilityHidden(true)', row_style)
         privacy = about.split('Section("about.privacyTitle")', 1)[1].split(
             'Section("about.versionTitle")', 1)[0]
         self.assertEqual(privacy.count('Text("about.privacy'), 2)
