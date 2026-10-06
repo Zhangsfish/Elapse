@@ -1,0 +1,6 @@
+{
+  "operation": "s02b-testflight-prepare-once",
+  "trigger_id": "everwhile-s02b-onboarding-polish-prepare-20261005",
+  "source_code_sha": "a21a85728bb5780213e9c03319f721215108e91a",
+  "version": "0.1.0"
+}
