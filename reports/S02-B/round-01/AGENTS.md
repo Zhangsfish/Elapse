@@ -1,6 +1,6 @@
 # S02-B round 01 task memory
 
-Owner follow-up 2026-10-06 supersedes the two-item home menu/two-sentence privacy copy: Release home menu contains About & Support only; Replay Quick Start remains inside that page. Remove privacySimple in both locales, retain privacyLocal. No tutorial artwork/Today/S01 changes. Existing 88.1 checks are historical, not this revision's acceptance. Update native nested-sheet replay navigation and repeat affected automated/build checks.
+Owner follow-up 2026-10-06 supersedes the two-item home menu/two-sentence privacy copy: Release home menu contains About & Support only; Replay Quick Start remains inside that page. Removed privacySimple in both locales, retained privacyLocal. No tutorial artwork/Today/S01 changes. Existing 88.1 checks are historical, not this revision's acceptance. Native nested-sheet replay navigation / Release en-light + zh-Hans-dark-largest audits PASS; current 91.1 signed/ACCEPTED/VALID/internal group assigned. WAITING_FOR_OWNER_TEST for menu/privacy only; do not infer physical acceptance or stage approval. See support-menu-refinement-release.txt for exact current provenance.
 
 Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the S02-A independent audit. This folder records bounded onboarding/localization/accessibility polish, not stage approval.
 
@@ -27,3 +27,4 @@ Historical owner follow-up, before the cloud freeze: the second-scene filling ri
 
 - evidence/interval-preview-release.txt: historical 81.1 second-scene correction and signed/internal delivery. Subsequent cloud follow-up freezes/passes the tutorial. Its prior owner step is superseded by the public support closeout, not current dispatch.
 - evidence/public-support-release.txt: current Release menu/About provenance; real native clipping failures, intrinsic-header and multiline/decorative-symbol fixes; actual passing Release en-light / zh-Hans-dark-largest native assertions/audits and safe distribution evidence. No audit finding exemptions. Owner only inspects menu + support; no tutorial/Today/S01 retest. READY_FOR_AUDIT requires actual new owner feedback.
+- evidence/support-menu-refinement-release.txt: latest owner-requested one-item home menu / local-data-only privacy sentence; current validation/distribution provenance. Prior 88.1 evidence remains historical. No physical acceptance until new feedback.

@@ -1,8 +1,18 @@
 # S02-B delivery
 
-State: **IN_PROGRESS — owner-requested menu/privacy refinement**. Same [draft PR #21](https://github.com/Zhangsfish/Elapse/pull/21); no merge/approval; S03 LOCKED. READY_FOR_AUDIT only after current menu/support feedback.
+State: **WAITING_FOR_OWNER_TEST — owner-requested menu/privacy refinement delivered**. Same [draft PR #21](https://github.com/Zhangsfish/Elapse/pull/21); no merge/approval; S03 LOCKED. READY_FOR_AUDIT only after current menu/support feedback.
 
-Current owner request: home menu has About & Support only; replay stays within About & Support. Remove “No account, no ads, no analytics.” / “无账号、无广告、无分析。” and its unused key in both locales; retain local-data privacy sentence. 19 Python tests PASS locally; affected native Release tests/build/TestFlight pending. The previous 88.1 delivery below is historical, not validation of this revision.
+Current owner request: home menu has About & Support only; replay stays within About & Support. Remove “No account, no ads, no analytics.” / “无账号、无广告、无分析。” and its unused key in both locales; retain local-data privacy sentence. The previous 88.1 delivery below is historical, not validation of this revision.
+
+## Current refinement provenance
+
+- Runtime `fab87acc8f4b863451d9c91ee7605b4c33c47789`; tested `7fa2cae8478ec0429989be4eaf78413724b7f8b2`; upload `d633b5b627933d71aac221a3bb2f6aae29fd82a2` (marker-only delta). No runtime edits after tested SHA.
+- [Ordinary 37478243056](https://github.com/Zhangsfish/Elapse/actions/runs/37478243056), job112319292436 **PASS**: 60 Swift / 19 Python, XcodeGen, simulator/localization, both actual Release en-light / zh-Hans-dark-largest native UI tests and Dynamic Type/textClipped audits, no exemption/boot-timeout skip. Assert one public menu entry, replay from support and return after Get started/Skip, copy/version/Done. Five menu/support PNGs inspected: one menu item and one privacy sentence; largest text scrolls. Artifact11421155863 / sha256:2d65f07e7b39e9a011c2e4c232acfa216efb68f4b5cc0c65b08ff23abe1ee800.
+- [Prepare 37478236216](https://github.com/Zhangsfish/Elapse/actions/runs/37478236216), job112319245481 **PASS**: 90.1 NOT_UPLOADED; unsigned iPhone Release build/archive, effective entitlements/metadata, all three bundles' en + zh-Hans resources. No Apple secrets. macos-26 / Xcode26.6 / Swift6.3.3 / XcodeGen2.46.
+- [Internal upload 37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045), job112326163559 **PASS**: **Everwhile 0.1.0 (91.1)**. Final signed App/Monitor/Report Bundle IDs expected, code signatures valid, Family Controls claims/profile allowances TRUE, required App Groups PASS. IPA SHA256 `8ebd4450b98dea08fe9fa6a9ddf0c419ef54a6a903359c627988a6413703e261`; exact audited bytes ACCEPTED. Processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T14:48:06Z. Device/archive localization packaging is separate from final signature audit. Executed prepare/upload markers removed; report/cleanup-only head cannot trigger upload. Its CI remains separate from runtime-tested PASS; final head recorded in PR comment.
+- Local 19 Python / Bash syntax / whitespace PASS; local Swift/Xcode NOT_RUN_UNAVAILABLE. No tool installation.
+- Only App/ContentView.swift, App/AboutSupportView.swift, both locales and affected source/native tests changed since e9448b5. Tutorial artwork/chrome, Shared/model, Monitor/Report, project.yml, Bundle IDs/capabilities/S01/Today/privacy boundary unchanged.
+- Current physical menu/support acceptance NOT_RUN. No tutorial/Today/S01 owner retest; WAITING_FOR_OWNER_TEST after internal delivery. Exact safe evidence: evidence/support-menu-refinement-release.txt.
 Branch: `codex/s02-b-onboarding-polish`. Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 
 ## Previous 88.1 scope / authority (superseded menu/privacy copy)

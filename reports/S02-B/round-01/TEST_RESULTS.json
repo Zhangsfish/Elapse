@@ -1,6 +1,6 @@
 {
   "stage": "S02-B",
-  "status": "IN_PROGRESS",
+  "status": "WAITING_FOR_OWNER_TEST",
   "prURL": "https://github.com/Zhangsfish/Elapse/pull/21",
   "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
   "priorPRHeadSHA": "e9448b5a998eb1d783ebafd0b78fc3095d561e70",
@@ -17,24 +17,69 @@
     "privacy": "LOCAL_DATA_SENTENCE_ONLY",
     "enZhHansMissingUnusedKeys": "PASS"
   },
-  "runtimeCodeSHA": "PENDING",
+  "runtimeCodeSHA": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
   "ordinaryCI": {
-    "status": "PENDING"
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37478243056",
+    "job": 112319292436,
+    "status": "PASS",
+    "testedSHA": "7fa2cae8478ec0429989be4eaf78413724b7f8b2",
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "nativeEnglishRelease": "PASS",
+    "nativeZhHansDarkLargestTextRelease": "PASS",
+    "singleAboutOnlyMenu": "PASS",
+    "nestedSupportReplayReturn": "PASS_GET_STARTED_AND_SKIP",
+    "supportCopyDynamicVersionDone": "PASS",
+    "dynamicTypeTextClippedAudits": "PASS_NO_EXEMPTION",
+    "uiArtifact": 11421155863,
+    "uiArtifactDigest": "sha256:2d65f07e7b39e9a011c2e4c232acfa216efb68f4b5cc0c65b08ff23abe1ee800",
+    "appearanceInspection": "Five clean-simulator menu/support PNGs inspected. One menu entry in both locales, replay inside support, single retained privacy sentence. Largest text scrolls; physical UI/VoiceOver NOT_RUN.",
+    "appleSecrets": "NOT_USED"
   },
   "prepareOnly": {
-    "status": "PENDING"
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37478236216",
+    "job": 112319245481,
+    "status": "PASS",
+    "testedSHA": "7fa2cae8478ec0429989be4eaf78413724b7f8b2",
+    "build": "90.1_NOT_UPLOADED",
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "unsignedReleaseBuildArchive": "PASS",
+    "effectiveEntitlementsMetadata": "PASS",
+    "appMonitorReportEnZhHans": "PASS",
+    "appleSecrets": "NOT_USED"
   },
   "internalTestFlight": {
-    "status": "PENDING"
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37480245045",
+    "status": "PASS",
+    "uploadSHA": "d633b5b627933d71aac221a3bb2f6aae29fd82a2",
+    "deltaFromTestedSHA": "ONLY_ONE_TIME_UPLOAD_MARKER",
+    "job": 112326163559,
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "unsignedDeviceBuildArchive": "PASS",
+    "appMonitorReportEnZhHansResources": "PASS_DEVICE_AND_ARCHIVE",
+    "distributionExport": "PASS",
+    "finalSignedIPAAudit": "PASS",
+    "signedIPASHA256": "8ebd4450b98dea08fe9fa6a9ddf0c419ef54a6a903359c627988a6413703e261",
+    "appMonitorReportSignaturesAndFamilyControls": "PASS_ALL_THREE",
+    "requiredAppGroupsAndProfileAllowance": "PASS",
+    "exactAuditedBytesUploaded": "ACCEPTED",
+    "processing": "VALID",
+    "audience": "INTERNAL_ONLY",
+    "internalBetaState": "IN_BETA_TESTING",
+    "existingInternalGroupAssigned": true,
+    "confirmedAtUTC": "2026-10-06T14:48:06Z",
+    "appleSecrets": "EXPLICIT_UPLOAD_STEP_ONLY_NO_VALUES_REQUESTED_OR_EXPOSED"
   },
-  "physicalAcceptance": "NOT_RUN_CURRENT_REVISION",
+  "physicalAcceptance": "NOT_RUN_91_1_MENU_AND_PRIVACY_ONLY",
   "s01LifecycleTodayAggregation": "UNCHANGED",
   "reportPrivacyBoundary": "UNCHANGED",
   "tutorialArtworkChrome": "UNCHANGED",
   "s03": "LOCKED",
   "historical88_1": {
     "stage": "S02-B",
-    "status": "WAITING_FOR_OWNER_TEST",
+    "status": "SUPERSEDED_OWNER_REQUESTED_MENU_PRIVACY_REFINEMENT",
     "prURL": "https://github.com/Zhangsfish/Elapse/pull/21",
     "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
     "priorPRHeadSHA": "e6bbd5030fff8c31823a27eda92164fff814863b",
@@ -470,5 +515,10 @@
     "markers": "EXECUTED_PREPARE_AND_UPLOAD_MARKERS_REMOVED_CLEANUP_CANNOT_UPLOAD",
     "cleanupHeadCI": "SEPARATE_PENDING_NOT_RUNTIME_TESTED_PASS; exact cleanup head recorded in PR handoff comment",
     "readiness": "OWNER_MENU_AND_ABOUT_OBSERVATION_REQUIRED_BEFORE_READY_FOR_AUDIT"
-  }
+  },
+  "prepareTestedSHA": "7fa2cae8478ec0429989be4eaf78413724b7f8b2",
+  "uploadTestedSHA": "d633b5b627933d71aac221a3bb2f6aae29fd82a2",
+  "version": "0.1.0",
+  "build": "91.1",
+  "oneTimeMarkers": "REMOVED_AFTER_EXECUTION_NO_DOC_UPLOAD"
 }

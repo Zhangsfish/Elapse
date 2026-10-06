@@ -1,8 +1,14 @@
 # S02-B device observations
 
-State: **IN_PROGRESS — owner-requested menu/privacy refinement**.
+State: **WAITING_FOR_OWNER_TEST — menu/privacy refinement delivered**.
 
 Owner feedback 2026-10-06: remove duplicate home-menu Replay Quick Start because it is already in About & Support; remove “无账号、无广告、无分析。” The reply is a narrow revision request, not full acceptance. New candidate menu/privacy visual observations NOT_RUN; no tutorial/Today/S01 retest requested. Prior 88.1 details below are historical.
+
+## Current 91.1 candidate
+
+Runtime `fab87acc8f4b863451d9c91ee7605b4c33c47789`; tested `7fa2cae8478ec0429989be4eaf78413724b7f8b2`; upload `d633b5b627933d71aac221a3bb2f6aae29fd82a2`. Ordinary37478243056 / prepare37478236216 PASS; native Release en-light / zh-Hans-dark-largest menu, support replay return, copy/version/Done and accessibility audits PASS. Five clean-simulator screenshots inspected; menu has only About & Support, replay remains in support, privacy has only the local-data sentence. These are not physical-iPhone observations.
+
+Internal upload37480245045: **0.1.0 (91.1)** signed / ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T14:48:06Z. Current owner menu/privacy confirmation **NOT_RUN**. Next minimal action: update91.1, open home `…` menu and confirm only About & Support. Then inspect the retained privacy sentence in support; no tutorial/Today/S01 retest. Record natural-language response here; READY_FOR_AUDIT only after actual feedback. No private screenshots published.
 
 ## Previous 88.1 candidate / narrow owner task
 
