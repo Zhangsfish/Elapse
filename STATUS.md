@@ -4,102 +4,101 @@ Updated: 2026-10-06
 
 ## 当前结论
 
-2026-10-06：PR #21 历史 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604) 的教程返工已通过后续 cloud review；69.1 / 78.1 / 81.1 保留为历史。当前不再重做教程、Today 或主体功能。
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A READY；S03-B / S03-C LOCKED。**
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME 91.1；S03 LOCKED。**
+Everwhile 当前冻结功能候选：
 
-持有人最新要求已实现：首页菜单只留“关于与支持”；重播教学仍在支持页内；删除“无账号、无广告、无分析。”及英文对应句/unused key。Runtime `fab87ac...` / tested `7fa2cae...` / upload `d633b5b...`，同一 PR #21。[Ordinary37478243056](https://github.com/Zhangsfish/Elapse/actions/runs/37478243056) 60 Swift / 19 Python、真实 Release 中英文 UI / 大字体裁切审计 PASS（无豁免）；[prepare37478236216](https://github.com/Zhangsfish/Elapse/actions/runs/37478236216) unsigned iPhone build/archive、三 bundle 双语资源/metadata/capabilities PASS，90.1 NOT_UPLOADED。[Upload37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045) **0.1.0 (91.1)** 最终三 bundle 签名/Family Controls/profile allowance PASS，精确审计字节 ACCEPTED，VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T14:48:06Z）。一次性 markers 已清理；报告清理 head 的 CI 与 runtime-tested CI 分开。持有人在 91.1 交付后回复“没问题，你自己合并一下。这个可以当做最终版本了”：最终菜单/支持页收口记为 OWNER_REPORTED_PASS（build 由上下文关联，未另报版本/截图）。功能候选冻结，READY_FOR_AUDIT；本次明确授权 Codex 合并 PR #21，是单次例外，不冒充云端独立审计/自批，不解锁 S03，也不授权公开上架。实际合并结果与最终 SHA 查看 PR 记录；后续默认 cloud-led 规则不变。教程/Today/S01 不改，不再要求手机操作。下文 88.1 为历史，不替代新候选验收。
+- version/build: **0.1.0 (91.1)**
+- functional runtime: `fab87acc8f4b863451d9c91ee7605b4c33c47789`
+- tested SHA: `7fa2cae8478ec0429989be4eaf78413724b7f8b2`
+- signed/internal upload SHA: `d633b5b627933d71aac221a3bb2f6aae29fd82a2`
+- PR #21 final head: `080da9f7a32c0b2837bf8a08092e5bfaa9f03381`
+- merged main: `8a42edc58589da0c15673acf7e83a5d045ea2818`
 
-2026-10-06 [cloud follow-up review](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) 对 runtime `a21a857...` / head `e6bbd50...` 给出教程与本地化 PASS，冻结教程。随后新增 Release-hidden diagnostics / 原生双语支持页并交付 88.1；其双入口/两句隐私文案已被持有人最新要求覆盖。81.1 / 88.1 是历史候选，不代替 91.1 的设备验收。
+PR #21 已合并。91.1 的普通 CI、Release UI 双语/大字体审计、unsigned device/archive、最终三 bundle 签名、Family Controls profile allowance、App Group、TestFlight upload/processing 均通过。持有人已明确接受当前功能版本为最终功能候选。
 
-持有人指出 78.1 教程第二幕圆环容易被误读为已用时间，已确认并实现静态时钟 + 所选提醒间隔的渐显预览；只返工该幕，不动真实监控/Today。78.1 与 69.1 检查均属于历史候选，不沿用其视觉验收。
+正式 S02-B 收口：
+[`audits/S02/S02_B_AUDIT_2026-10-06.md`](audits/S02/S02_B_AUDIT_2026-10-06.md)
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：历史 88.1 public-support runtime `600dea2...`，tested `e6ce828...`，upload `bc9b1f5...`（只有一次性 marker 差异）。60 Swift / 19 Python、simulator 与 unsigned Release build/archive、App/Monitor/Report 中英文资源与 capabilities PASS；[ordinary/native Release UI 37470762886](https://github.com/Zhangsfish/Elapse/actions/runs/37470762886) 两种语言真实执行并 PASS，无裁切审计豁免。[Prepare 37470755631](https://github.com/Zhangsfish/Elapse/actions/runs/37470755631) 87.1 NOT_UPLOADED。[Upload 37473140237](https://github.com/Zhangsfish/Elapse/actions/runs/37473140237) **0.1.0 (88.1)** 最终三 bundle 签名 / Family Controls / profile allowance PASS，精确审计字节 ACCEPTED，processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T13:50:40Z）。此前支持页的真实 textClipped 失败保留，不转写为 PASS。这是历史交付记录，不替代 91.1 的新手机确认。同一 draft PR，不批准、不 merge、不解锁 S03；一次性 markers 已清理，报告/清理 head 的 CI 与 runtime-tested CI 分开。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
+S02 残余可靠性边界继续记录但不再扩功能：
+- 47.1 自然午夜 generation rollover 未专门重复实测；
+- timezone/DST 未人工真机操纵；
+- all-day every-threshold callback reliability 未宣称；
+- human VoiceOver / external Mail/browser 未单独 owner test。
 
-S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
-
-正式审计：
-[`audits/S02/S02_A_AUDIT_2026-10-05.md`](audits/S02/S02_A_AUDIT_2026-10-05.md)
-
-Accepted internal baseline:
-**Everwhile 0.1.0 (56.1)**
-
-S02-A 已证明：
-- 主界面已从工程控制台变为正式产品层级；
-- 正常用户优先看到监控状态、提醒间隔、所选 App 数与 Today；
-- config / event / lifecycle / callback / test-notification 等工程诊断下沉到 Advanced；
-- Home 状态不会只凭 registration 就宣称 ON，仍要求 current interval lifecycle evidence；
-- Today 保持真实 selected-App total / hourly aggregate / per-App rows；
-- 小时图使用真实 bucket seconds，不伪造 session；
-- 正的亚分钟使用显示为 `<1m` / `<1分钟`；
-- en + zh-Hans 资源真实打包进 App 与 Report；
-- 47 Swift tests / 0 failures；
-- Everwhile 56.1 signed IPA / Family Controls / TestFlight / Apple processing VALID；
-- 持有人已确认 56.1 duration-axis / clipping 表现“没问题，很好”。
-
-S02-A notes：
-- dark mode / Dynamic Type / VoiceOver / zh-Hans runtime inspection 未逐项真机跑；
-- 最终 Start/Stop 新外观未单独再拍一轮；
-- 这些进入 S02-B 做收口，不阻塞当前阶段。
+这些不是 S03 功能开发项。
 
 ## 唯一当前任务
 
-**[S02-B：first-use guidance + bilingual product polish](prompts/S02_B_ONBOARDING_POLISH.md)**
+**[S03-A：App Store preflight, metadata and assets](prompts/S03_A_APP_STORE_PREFLIGHT.md)**
 
-S02-B 只做最终体验收口：
+总体发布框架：
+[`docs/S03_APP_STORE_RELEASE_PLAN.md`](docs/S03_APP_STORE_RELEASE_PLAN.md)
 
-- 保持单屏渐进式 setup，不做强制多页 onboarding；
-- 按持有人与云端返工方向，首次可跳过的四段连续短动画教学；首页单菜单重播，非强制 setup；
-- 使用 generic UI，不暴露真实 App 身份；
-- 动画尊重 Reduce Motion；
-- 用户已有选择时不强制显示；
-- 把真实 pulse notification 也做成 English + 简体中文；
-- notification copy 保持中性、事实性，不声称 today total 或精确 wall-clock；
-- 文案统一到 Everwhile 的产品声音；
-- 处理 S02-A 留下的 dark/Dynamic Type/VoiceOver/locale edge；
-- 不重做 Today；
-- 不碰 S01 生命周期；
-- 一轮很轻的 TestFlight 最终体验确认。
+S03-A 只做上架准备，不提交审核：
+
+1. 核 Family Controls Distribution：
+   - main App；
+   - DeviceActivity Monitor extension；
+   - DeviceActivity Report extension。
+   91.1 签名已证明 profile allowance，但仍要记录 Developer portal `Assigned` 状态；如果自动化无法查，只给持有人一个最小 portal 动作。
+
+2. 准备公开：
+   - Privacy Policy page；
+   - Support page；
+   - 无登录、无 analytics/remote JS。
+
+3. 独立审 App Privacy：
+   - 源码；
+   - PrivacyInfo.xcprivacy；
+   - 网络/SDK；
+   - support email/browser；
+   - 形成 App Store Connect 回答草稿。
+
+4. 准备 English + zh-Hans：
+   - App Store name/subtitle/description/keywords；
+   - review notes；
+   - 4 张左右截图；
+   - Support/Privacy URL；
+   - category 建议。
+
+5. Region：
+   - 默认建议 **United States first**；
+   - China mainland 在 ICP 状态确认前标记 blocked，不自动选择；
+   - storefront 最终列表必须持有人批准。
 
 ## 阶段状态
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
-| S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME** | 91.1 functional candidate frozen; explicit owner-directed PR #21 merge exception; cloud final audit not claimed |
-| S03 | LOCKED | public distribution / App Store preparation |
+| S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
+| S03-A | **READY** | entitlement/account preflight + privacy/support + metadata + screenshots |
+| S03-B | LOCKED | App Store Connect data entry + exact build + submit to App Review |
+| S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
-## 产品边界
+## S03 硬边界
 
-**Awareness before control.**
+S03 不是重新开发产品。
 
-Everwhile 只让时间变得可感知，不替用户裁判。
+不允许因为准备上架顺手改：
+- monitoring lifecycle；
+- Today aggregation；
+- tutorial；
+- notification semantics；
+- App Group/privacy architecture；
+- Bundle IDs/capabilities。
 
-不引入：
-- Shield / block；
-- streak / score / leaderboard；
-- guilt / coach；
-- 强制反思；
-- cloud/account/analytics/ads/AI。
+只有 Apple/地区明确要求 runtime 变化时，才开最小独立修复并重新签名验证。
 
-保护数据边界不变：
-DeviceActivityReport 的 App identity / per-App usage / hourly usage 继续留在 report extension。
+## 发布原则
 
-## 可靠性边界
+默认：
+- 免费；
+- iPhone-only；
+- English + zh-Hans；
+- owner-controlled manual release；
+- 不自动全球开放；
+- 不自动提交 App Review；
+- 不自动公开发布。
 
-S02 不扩大 S01 的技术结论：
-- registration 不等于 current interval active；
-- callback 不等于完美精确 usage clock；
-- 47.1 自然午夜 generation rollover 仍是 residual risk；
-- timezone/DST 未做人工真机操纵；
-- all-day every-threshold reliability 未证明。
-
-这些不阻塞 S02-B，除非真实回归出现。
-
-## 分工
-
-- Codex：执行当前唯一 S02-B，CI/TestFlight、带持有人做一轮很短的最终体验确认、整理 reports，停在 `READY_FOR_AUDIT`。
-- 持有人：只做必要的 iPhone 视觉/交互确认。
-- 云端 ChatGPT：独立审核 exact SHA，通过后 merge 并只解锁 S03。
-
-持有人不手动 merge，不点 Actions，不整理 reports。
+持有人不需要重复 S01/S02 真机测试。
