@@ -1,12 +1,22 @@
 # S02-B delivery
 
-State: **IN_PROGRESS — owner-requested second-scene correction**. Same PR #21; no merge/approval; S03 LOCKED.
+State: **WAITING_FOR_OWNER_TEST — corrected second scene only**. Same PR #21; no merge/approval; S03 LOCKED.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
 ## Current second-scene correction — 2026-10-06
 
-Owner observed that the filling clock ring in78.1 resembles elapsed usage, then approved a static clock + selected interval preview. Removed the ring/rotation; the localized5-minute value fades in with selection, while chip press/release and Start→ON remain continuous. No new copy/API/dependency; all other scenes and actual monitoring/Today unchanged. Added a regression guard for no elapsed-time visual in this scene.15 local Python tests PASS; new macOS checks/internal build pending.78.1 evidence below is prior-candidate evidence, not acceptance of the new code.
+Owner observed that the filling clock ring in 78.1 resembles elapsed usage, then approved a static clock + selected interval preview. Removed the ring/rotation; the localized 5-minute value fades in with selection, while chip press/release and Start→ON remain continuous. No new copy/API/dependency; all other scenes and actual monitoring/Today unchanged. Added a regression guard for no elapsed-time visual in this scene. 15 local Python tests PASS; new macOS checks and internal delivery PASS. 78.1 evidence below is prior-candidate evidence, not acceptance of the new code.
+
+Runtime `a21a85728bb5780213e9c03319f721215108e91a`; ordinary/prepare-tested `5fefc21abac31c2bf87c15093ddf914c17dba07d` (marker only). [Prepare 37423164305](https://github.com/Zhangsfish/Elapse/actions/runs/37423164305), job 112136836173: **PASS**, 60 Swift / 15 Python; unsigned Release build/archive, effective entitlements/metadata, App/Monitor/Report en+zh-Hans resources; **80.1 NOT_UPLOADED**, no Apple secrets.
+
+[Ordinary 37423169387](https://github.com/Zhangsfish/Elapse/actions/runs/37423169387), job 112137196237: **PASS**, 60 Swift / 15 Python, simulator build, both actual native English/Chinese-large-text UI tests and four-scene layout audits (no exemption). Artifact 11394775844: eleven clean-simulator PNGs inspected, including corrected second scenes in English light/Chinese dark; static clock + chosen value, no elapsed ring. Largest-text content is scrollable below pinned navigation, not all visible in one viewport. One Chinese second-scene capture has a transient blank Next label; actual navigation tests/audits pass, not a promise that each capture shows every settled control. Still images do not prove measured frame rate or physical animation acceptance.
+
+Upload marker-only SHA `3c15db6cb114bbb6862d0a4c7191899dd0b6d367`; [internal upload 37424768327](https://github.com/Zhangsfish/Elapse/actions/runs/37424768327), job 112141818458: **PASS — Everwhile 0.1.0 (81.1)**. Final App/Monitor/Report signatures, expected Bundle IDs, Family Controls claims/profile allowance and required App Groups PASS. Exactly the audited IPA bytes uploaded ACCEPTED; processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:45:06Z. Safe evidence: `evidence/interval-preview-release.txt`. Executed markers removed in this evidence closeout; ordinary pushes/merge do not upload again. No Apple credential/workflow changes or owner Actions click.
+
+Only `App/TutorialArtwork.swift` and `scripts/tests/test_s02_localization.py` changed implementation/test behavior in this correction; remaining edits are status/reports/temporary markers. Protected source/config diff against prior delivery `bdca465...` is empty for Home/model/tutorial chrome, Shared, Monitor, Report, localization, project.yml and existing Swift/UI tests. No runtime edits after tested SHA. Documentation-only cleanup head CI remains pending at handoff; passing runtime CI above is not a claim about that new head.
+
+Owner next action: update to 81.1, home `…` → Replay quick start / 重播新手教学 → Next / 下一步, look only at the corrected interval scene. Physical acceptance **NOT_RUN**; no functional retest. On actual acceptance update this same PR to READY_FOR_AUDIT; do not self-approve/merge/unlock S03.
 
 ## Previous cloud-requested revision — 78.1
 
@@ -18,7 +28,7 @@ Owner observed that the filling clock ring in78.1 resembles elapsed usage, then 
 
 [New internal upload](https://github.com/Zhangsfish/Elapse/actions/runs/37421509866), job112131672984: **PASS — Everwhile 0.1.0 (78.1)**. Final App/Monitor/Report signatures, expected Bundle IDs, Family Controls claims/profile allowance and required App Groups PASS. Exactly the audited IPA bytes uploaded ACCEPTED; processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:07:40Z. Safe evidence: `evidence/cloud-polish-release.txt`. No workflow/credential changes or owner Actions click. Executed one-time markers removed in evidence closeout, so docs/merge cannot replay this upload.
 
-Owner visual acceptance of this candidate remains **NOT_RUN**; only inspect four tutorial animations and the single home menu. No S01/Today/pulse/reboot/revocation/midnight retest. 69.1 observation below is historical and does not transfer to this candidate. Upon actual acceptance, update this same PR to READY_FOR_AUDIT, without self-approval/merge/S03 unlock.
+The 78.1 handoff requested four tutorial animations and the single home menu. It is superseded by the owner's second-scene correction above, not whole-candidate acceptance. No S01/Today/pulse/reboot/revocation/midnight retest. 69.1 observation below is historical and does not transfer to a later candidate. Upon actual acceptance, update this same PR to READY_FOR_AUDIT, without self-approval/merge/S03 unlock.
 
 ## Historical owner-approved 69.1 revision
 

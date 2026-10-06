@@ -1,11 +1,18 @@
 # S02-B device observations
 
-State: **IN_PROGRESS — owner-requested second-scene correction**.
+State: **WAITING_FOR_OWNER_TEST — corrected second scene only**.
 Owner feedback on78.1: the upper clock ring appears mostly elapsed immediately after selecting5minutes. Owner approved static clock + selected interval preview, with no counting/filling/rotating visual. This is CHANGES_REQUESTED for that scene, not whole-candidate acceptance. New candidate inspection NOT_RUN; only the corrected second scene needs a short look after delivery.
+Build association follows this conversation's78.1 handoff; the owner did not restate the build or attach a new screenshot. Do not infer other physical visual checks from this narrow feedback.
+
+New candidate: **Everwhile 0.1.0 (81.1)**; runtime `a21a857...`, tested `5fefc21...`, upload `3c15db6...`. Final signed IPA PASS; ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T06:45:06Z, run 37424768327. New physical observation **NOT_RUN**.
+
+One short action only: update to 81.1, home `…` → Replay quick start / 重播新手教学 → Next / 下一步; inspect the static clock + chosen interval preview in the second scene. No pulse waiting, reboot, revocation, midnight or Today test. Owner feedback will be recorded here before READY_FOR_AUDIT.
+
+## Previous78.1 delivery and superseded handoff
 
 Previous candidate: **Everwhile 0.1.0 (78.1)**; runtime14bd931, tested97120c9, upload8351242. Final three-bundle signed IPA audit PASS; ACCEPTED / VALID / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:07:40Z, run37421509866. Exact SHA evidence is in DELIVERY / TEST_RESULTS / evidence/cloud-polish-release.txt.
 
-New candidate visual acceptance: **NOT_RUN**. Owner only needs to update78.1, open home **… → 重播新手教学 / Replay quick start**, and inspect the four animations plus the single home menu. No functional retest, reinstall, reboot, revocation, midnight or pulse waiting. Await natural-language feedback in this conversation; do not transfer old69.1 acceptance below. Cloud comment6009677604 requested polish of reviewed head07fee759; owner authorized it.
+The78.1 handoff requested four animations plus one home menu; that handoff is superseded by the owner's second-scene correction above. No whole-candidate visual PASS was supplied. No functional retest, reinstall, reboot, revocation, midnight or pulse waiting. Do not transfer old69.1 acceptance below. Cloud comment6009677604 requested polish of reviewed head07fee759; owner authorized it.
 
 Historical delivered build: **Everwhile 0.1.0 (69.1)**. Final signatures PASS, processing VALID / IN_BETA_TESTING / existing internal group assigned at 2026-10-05T18:43:49Z; run37357058165.
 
@@ -28,4 +35,4 @@ No further phone checklist this round. Existing-user upgrade does not force auto
 
 Human VoiceOver / physical Reduce Motion / actual notification display remain NOT_RUN unless observed. Do not copy private screenshots into Git.
 
-Current observation is the owner's short natural-language acceptance above, not transferred from 59.1/65.1. Today requires no new functional test; no S01 or pulse-wait checklist. Optional animation-effect refinement remains a non-blocking product note for later discussion; no new feature scope or S03 unlock.
+The 69.1 natural-language acceptance is historical, not transferred from 59.1/65.1 or to later candidates. Today requires no new functional test; no S01 or pulse-wait checklist. Current second-scene acceptance remains NOT_RUN as stated at the top; no S03 unlock.

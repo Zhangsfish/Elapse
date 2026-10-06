@@ -14,9 +14,11 @@ Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the 
 - evidence/four-scene-validation.md: current runtime's passing unit/build/prepare/native tests and screenshot inspection; preserves the first boot-timeout NOT_RUN and appearance limits.
 - evidence/four-scene-release.txt: 69.1 exact signed IPA/ACCEPTED/VALID/IN_BETA_TESTING/existing-group evidence, not physical acceptance.
 
-S01 lifecycle and Today aggregation remain unchanged. The 69.1 owner acceptance is historical. Cloud audit comment 6009677604 requested narrow product-polish revision on reviewed head 07fee759; the owner authorized it on 2026-10-06. Current78.1 signed/internal candidate is WAITING_FOR_OWNER_TEST: four refined tutorial animations and one home menu only. Keep prior evidence separate from the new candidate. Do not self-approve, merge, unlock S03 or infer public-release authorization.
+S01 lifecycle and Today aggregation remain unchanged. The 69.1 owner acceptance is historical. Cloud audit comment 6009677604 requested narrow product-polish revision on reviewed head 07fee759; the owner authorized it on 2026-10-06. The 78.1 handoff is superseded by the owner's second-scene correction below. Keep prior evidence separate from the new candidate. Do not self-approve, merge, unlock S03 or infer public-release authorization.
 
 - evidence/cloud-polish-revision.md: five audit findings, exact reference/source boundaries and new candidate validation/distribution; this supersedes the old four-scene implementation, not its historical evidence.
 - evidence/cloud-polish-release.txt: final78.1 safe signed IPA / exact upload / VALID / existing internal group evidence; no physical visual PASS inferred.
 
 2026-10-06 owner follow-up: the second-scene filling ring incorrectly looks like elapsed usage. Approved static clock + chosen interval preview, retaining selection/press/Start→ON; only this artwork changes.78.1 delivery is now prior-candidate evidence. New code requires new tests/internal build and only a short second-scene look. Same PR #21; S03 LOCKED.
+
+- evidence/interval-preview-release.txt: new 81.1 second-scene correction, exact runtime/tested/upload SHAs, safe final signed/VALID/internal group and clean-simulator screenshot provenance. Current state WAITING_FOR_OWNER_TEST, corrected second scene only; physical acceptance NOT_RUN. Markers removed after execution; docs-only head CI pending separately from passing runtime CI.
