@@ -1,10 +1,10 @@
 # STATUS
 
-Updated: 2026-10-06
+Updated: 2026-10-07
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A READY；S03-B / S03-C LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A IN_PROGRESS — WAITING_FOR_OWNER_VISUAL_REVIEW；S03-B / S03-C LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -31,6 +31,14 @@ S02 残余可靠性边界继续记录但不再扩功能：
 ## 唯一当前任务
 
 **[S03-A：App Store preflight, metadata and assets](prompts/S03_A_APP_STORE_PREFLIGHT.md)**
+
+PR [#22](https://github.com/Zhangsfish/Elapse/pull/22)，分支 `codex/s03-a-app-store-preflight`。
+English Pass 1 已完成真实 Release 采集、四张英文草稿、contact sheet、manifest 和像素校验。
+等待持有人审英文视觉方向；**未开始最终 zh-Hans 截图，未 READY_FOR_AUDIT**。
+交付/已执行检查/剩余 gate：[`reports/S03-A/round-01/DELIVERY.md`](reports/S03-A/round-01/DELIVERY.md)。
+91.1 runtime 保持冻结；本轮没有新 TestFlight、App Review 或公开发布。
+Support/Privacy 静态源码及部署 workflow 已准备，但公开 URL 尚 NOT_LIVE。
+91.1 签名 gate 复核与 portal Assigned 确认分开；91.1 INTERNAL_ONLY 不可直接提交 App Review。
 
 总体发布框架：
 [`docs/S03_APP_STORE_RELEASE_PLAN.md`](docs/S03_APP_STORE_RELEASE_PLAN.md)
@@ -72,7 +80,7 @@ S03-A 只做上架准备，不提交审核：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
-| S03-A | **READY** | entitlement/account preflight + privacy/support + metadata + screenshots |
+| S03-A | **IN_PROGRESS — WAITING_FOR_OWNER_VISUAL_REVIEW** | English Pass 1 + preflight drafts; Chinese final assets gated |
 | S03-B | LOCKED | App Store Connect data entry + exact build + submit to App Review |
 | S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
