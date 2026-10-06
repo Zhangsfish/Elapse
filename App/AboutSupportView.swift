@@ -62,8 +62,6 @@ struct AboutSupportView: View {
                         .accessibilityIdentifier("about-homepage")
                     }
                     Section("about.privacyTitle") {
-                        Text("about.privacySimple")
-                            .fixedSize(horizontal: false, vertical: true)
                         Text("about.privacyLocal")
                             .fixedSize(horizontal: false, vertical: true)
                     }

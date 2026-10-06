@@ -185,8 +185,6 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button("tutorial.replay", systemImage: "play.rectangle") { tutorialPresented = true }
-                            .accessibilityIdentifier("tutorial-replay")
                         Button("about.title", systemImage: "info.circle") { aboutPresented = true }
                             .accessibilityIdentifier("about-open")
                         #if DEBUG

@@ -1,5 +1,7 @@
 # S02-B round 01 task memory
 
+Owner follow-up 2026-10-06 supersedes the two-item home menu/two-sentence privacy copy: Release home menu contains About & Support only; Replay Quick Start remains inside that page. Remove privacySimple in both locales, retain privacyLocal. No tutorial artwork/Today/S01 changes. Existing 88.1 checks are historical, not this revision's acceptance. Update native nested-sheet replay navigation and repeat affected automated/build checks.
+
 Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the S02-A independent audit. This folder records bounded onboarding/localization/accessibility polish, not stage approval.
 
 Current 2026-10-06 dispatch: cloud follow-up comment 6011357941 passes/freeze tutorial and localization; owner authorizes only public About & Support and DEBUG-only diagnostics. Reference Lecture Asset main `13e943ab2854c6153e5398f0c8a5fa41a9f22df4`, App/AboutSupportView.swift. Reuse this folder/same PR #21. Do not rework tutorial/Today/S01, merge or unlock S03. New runtime needs Release-native menu/support tests and new internal build. Owner only looks at menu + support page; physical observations NOT_RUN until supplied.

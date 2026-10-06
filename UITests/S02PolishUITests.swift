@@ -51,12 +51,14 @@ final class S02PolishUITests: XCTestCase {
             }
             next.tap()
         }
+        closeSupportAfterReplay(app)
         XCTAssertTrue(app.buttons["allow-screen-time"].waitForExistence(timeout: 5))
         XCTAssertFalse(XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists)
         // Replay always begins at scene one; Skip is usable immediately.
         replay(app)
         XCTAssertTrue(app.staticTexts[titles[0]].waitForExistence(timeout: 5))
         skip.tap()
+        closeSupportAfterReplay(app)
         app.terminate()
         app.launch()
         XCTAssertTrue(app.buttons["allow-screen-time"].waitForExistence(timeout: 15))
@@ -73,18 +75,27 @@ final class S02PolishUITests: XCTestCase {
 
     private func replay(_ app: XCUIApplication) {
         XCTAssertTrue(app.buttons["home-menu"].isHittable)
-        XCTAssertFalse(app.buttons["tutorial-replay"].exists, "Replay is secondary, inside one menu")
+        XCTAssertFalse(app.buttons["tutorial-replay"].exists, "Replay is inside About & Support only")
         app.buttons["home-menu"].tap()
-        XCTAssertTrue(app.buttons["tutorial-replay"].waitForExistence(timeout: 5))
-        app.buttons["tutorial-replay"].tap()
+        XCTAssertTrue(app.buttons["about-open"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["tutorial-replay"].exists)
+        app.buttons["about-open"].tap()
+        XCTAssertTrue(app.buttons["about-tutorial-replay"].waitForExistence(timeout: 5))
+        app.buttons["about-tutorial-replay"].tap()
+    }
+
+    private func closeSupportAfterReplay(_ app: XCUIApplication) {
+        XCTAssertTrue(app.buttons["about-close"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["tutorial-skip"].exists)
+        app.buttons["about-close"].tap()
     }
 
     /// Run on the real Release binary: no DEBUG settings or fake model state.
     private func checkPublicSupport(_ app: XCUIApplication, language: String) throws {
         let chinese = language == "zh-Hans"
         app.buttons["home-menu"].tap()
-        XCTAssertTrue(app.buttons["tutorial-replay"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.buttons["about-open"].exists)
+        XCTAssertTrue(app.buttons["about-open"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["tutorial-replay"].exists)
         XCTAssertFalse(app.buttons["developer-diagnostics"].exists)
         for name in ["Advanced diagnostics", "Advanced Diagnostics", "Developer Diagnostics", "高级诊断", "开发者诊断"] {
             XCTAssertFalse(app.buttons[name].exists, "Release menu must not expose developer tools")
@@ -108,6 +119,7 @@ final class S02PolishUITests: XCTestCase {
         // Do not launch Mail/browser or send anything from a simulator test.
         let version = app.staticTexts["about-version"]
         scrollTo(version, in: app)
+        XCTAssertFalse(app.staticTexts[chinese ? "无账号、无广告、无分析。" : "No account, no ads, no analytics."].exists)
         XCTAssertNotNil(version.label.range(of: #"^\d+\.\d+\.\d+ \(\d+(\.\d+)?\)$"#, options: .regularExpression))
         XCTAssertFalse(app.buttons["developer-diagnostics"].exists)
         attach(app, name: "\(language)-about-version")

@@ -1,9 +1,11 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST — public support closeout**. Same [draft PR #21](https://github.com/Zhangsfish/Elapse/pull/21); no merge/approval; S03 LOCKED. READY_FOR_AUDIT only after current menu/support feedback.
+State: **IN_PROGRESS — owner-requested menu/privacy refinement**. Same [draft PR #21](https://github.com/Zhangsfish/Elapse/pull/21); no merge/approval; S03 LOCKED. READY_FOR_AUDIT only after current menu/support feedback.
+
+Current owner request: home menu has About & Support only; replay stays within About & Support. Remove “No account, no ads, no analytics.” / “无账号、无广告、无分析。” and its unused key in both locales; retain local-data privacy sentence. 19 Python tests PASS locally; affected native Release tests/build/TestFlight pending. The previous 88.1 delivery below is historical, not validation of this revision.
 Branch: `codex/s02-b-onboarding-polish`. Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 
-## Current scope / authority
+## Previous 88.1 scope / authority (superseded menu/privacy copy)
 
 [Cloud follow-up](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) passes/freeze tutorial/localization at runtime `a21a857...` / head `e6bbd50...`. Owner authorizes only public About & Support and DEBUG-only diagnostics. Release excludes diagnostics entry/state/destination/view at compile time; no hidden path. Public menu has Replay Quick Start + About & Support only. Native Form: short usage rows/replay, fixed email/mailto/copy, system-open homepage, exactly two privacy sentences and dynamic Bundle version/build. Home checking/attention copy no longer exposes engineering diagnostics.
 
@@ -11,7 +13,7 @@ Changed implementation/tests: App/ContentView.swift, new App/AboutSupportView.sw
 
 Reference: Lecture Asset current main `13e943ab2854c6153e5398f0c8a5fa41a9f22df4`, App/AboutSupportView.swift; structure only, shorter copy. Current [Apple OpenURLAction](https://developer.apple.com/documentation/swiftui/openurlaction) / [UIPasteboard.string](https://developer.apple.com/documentation/uikit/uipasteboard/string) checked, no API discrepancy/dependency. Copy only writes the owner-specified public email; no clipboard reading. Native Form scrolls; adaptive sheet header supports accessibility text sizes.
 
-## Exact provenance / checks
+## Previous 88.1 exact provenance / checks
 
 - Runtime code: `600dea22fb710cb9319d53b4a136774ee1a55c4b` (initial support implementation, intrinsic header, multiline Form row titles and decorative symbols).
 - Ordinary/prepare-tested: `e6ce82840d05061cf16def95cb174e514757ad2c` (prepare marker only).

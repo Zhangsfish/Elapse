@@ -40,8 +40,9 @@ class S02LocalizationTests(unittest.TestCase):
                           "sendOrdinaryTestNotification", "UIPasteboard"):
             self.assertNotIn(forbidden, release)
         menu = release.split("Menu {", 1)[1].split("} label:", 1)[0]
-        self.assertEqual(menu.count("Button("), 2)
-        self.assertIn('Button("tutorial.replay"', menu)
+        self.assertEqual(menu.count("Button("), 1)
+        self.assertNotIn('"tutorial.replay"', menu)
+        self.assertNotIn('"tutorial-replay"', menu)
         self.assertIn('Button("about.title"', menu)
         self.assertIn('.sheet(isPresented: $aboutPresented) { AboutSupportView() }', release)
 
@@ -67,7 +68,9 @@ class S02LocalizationTests(unittest.TestCase):
         self.assertIn('.accessibilityHidden(true)', row_style)
         privacy = about.split('Section("about.privacyTitle")', 1)[1].split(
             'Section("about.versionTitle")', 1)[0]
-        self.assertEqual(privacy.count('Text("about.privacy'), 2)
+        self.assertEqual(privacy.count('Text("about.privacy'), 1)
+        self.assertNotIn('"about.privacySimple"', about)
+        self.assertIn('Button("tutorial.replay", systemImage: "play.circle")', about)
         for forbidden in ("ElapseModel", "PulseExperimentStore", "UserDefaults", "URLSession",
                           "DeviceActivity", "FamilyControls", "diagnosticSummary"):
             self.assertNotIn(forbidden, about)
@@ -88,17 +91,18 @@ class S02LocalizationTests(unittest.TestCase):
         public_keys = set(REFERENCE_PATTERN.findall(public_views))
         expected = {
             "en": ("About & Support", "Choose apps · Set interval · Start",
-                   "Today shows total · by hour · by app", "No account, no ads, no analytics.",
+                   "Today shows total · by hour · by app",
                    "Screen Time data stays on this iPhone and is not uploaded by Everwhile."),
             "zh-Hans": ("关于与支持", "选择 App · 设置间隔 · 开始",
-                        "Today 显示总量 · 每小时 · 各 App", "无账号、无广告、无分析。",
+                        "Today 显示总量 · 每小时 · 各 App",
                         "屏幕使用时间数据留在这台 iPhone 上，Everwhile 不会上传。"),
         }
         for language, values in expected.items():
             strings = dict(KEY_PATTERN.findall((ROOT / "Localization" / f"{language}.lproj" /
                                                 "Localizable.strings").read_text(encoding="utf-8")))
             self.assertEqual(tuple(strings[key] for key in ("about.title", "about.setup", "about.today",
-                                                           "about.privacySimple", "about.privacyLocal")), values)
+                                                           "about.privacyLocal")), values)
+            self.assertNotIn("about.privacySimple", strings)
             for key in public_keys:
                 self.assertNotRegex(strings[key], r'(?i)\b(test|diagnostics?|uuid|configuration|events?|generation|callbacks?|recoveries|recovery|development)\b|高级诊断|回调|代数|配置 ID|事件数|S0[0123]')
 

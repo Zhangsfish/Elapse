@@ -1,8 +1,10 @@
 # S02-B device observations
 
-State: **WAITING_FOR_OWNER_TEST — public support closeout**.
+State: **IN_PROGRESS — owner-requested menu/privacy refinement**.
 
-## Current candidate / narrow owner task
+Owner feedback 2026-10-06: remove duplicate home-menu Replay Quick Start because it is already in About & Support; remove “无账号、无广告、无分析。” The reply is a narrow revision request, not full acceptance. New candidate menu/privacy visual observations NOT_RUN; no tutorial/Today/S01 retest requested. Prior 88.1 details below are historical.
+
+## Previous 88.1 candidate / narrow owner task
 
 [Cloud follow-up](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) passes/freeze tutorial/localization at runtime a21a857 / head e6bbd50. That is cloud source/artifact review, not a new physical observation. Owner authorizes only Release-hidden diagnostics and short bilingual About & Support.
 

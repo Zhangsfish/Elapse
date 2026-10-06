@@ -6,7 +6,9 @@ Updated: 2026-10-06
 
 2026-10-06：PR #21 历史 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604) 的教程返工已通过后续 cloud review；69.1 / 78.1 / 81.1 保留为历史。当前不再重做教程、Today 或主体功能。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST — public About & Support / DEBUG-only diagnostics；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS — owner-requested menu/privacy refinement；S03 LOCKED。**
+
+持有人最新要求覆盖旧双入口/两句隐私文案：首页菜单只留“关于与支持”；重播教学仍在支持页内；删除“无账号、无广告、无分析。”及英文对应句。两种语言同步删除 unused key。新实现本地 19 Python PASS，native Release/prepare/internal build 待验证；下文 88.1 为历史候选，不代替新 UI 的验收。教程/Today/S01 不改。
 
 2026-10-06 [cloud follow-up review](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) 对 runtime `a21a857...` / head `e6bbd50...` 给出教程与本地化 PASS，冻结教程。持有人授权最后收口：Release 菜单只保留重播教学 / 关于与支持；诊断 UI 全部仅限 DEBUG；原生简短双语支持页。新实现已完成自动验证与 internal TestFlight 88.1 交付；81.1 是上一候选，不代替新 UI 的设备验收。只等持有人看新菜单和支持页，不再看教程 / Today，不重测 S01。
 
@@ -64,7 +66,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | PR #21 public support surface; 88.1 internal VALID; owner only checks menu + About |
+| S02-B | **IN_PROGRESS** | PR #21 owner-requested one-entry menu / one-sentence privacy; new build pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界
