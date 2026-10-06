@@ -14,6 +14,8 @@ Read, in order:
 6. `docs/PRODUCT_SPEC.md`
 7. current About & Support / localization / PrivacyInfo.xcprivacy / entitlements / project.yml
 8. current release workflows and 91.1 evidence
+9. `docs/S03_SCREENSHOT_PRODUCTION.md`
+10. Lecture Asset screenshot reference files listed inside that document
 
 Reference main at task creation:
 `8a42edc58589da0c15673acf7e83a5d045ea2818`
@@ -151,32 +153,60 @@ Explicitly say:
 
 Keep notes concise and reviewer-oriented.
 
-## F. Screenshot package
+## F. Screenshot package — independent visual production lane
 
-Prepare an App Store screenshot source set for English + zh-Hans.
+**This is the highest visual-quality deliverable in S03-A. Do not treat it as a small sub-bullet.**
+
+Before doing screenshot work, read:
+- `docs/S03_SCREENSHOT_PRODUCTION.md`;
+- the exact Lecture Asset screenshot workflows/renderers/validators referenced there.
+
+Follow that production model:
+- fresh Release simulator capture;
+- deterministic/synthetic non-private state;
+- raw captures preserved separately;
+- fixed 1320×2868 marketing canvas;
+- consistent Everwhile visual system and phone geometry;
+- deterministic renderer;
+- contact sheet;
+- render manifest;
+- pixel/dimension/profile/provenance validation;
+- English geometry frozen before Chinese.
+
+### Mandatory two-pass gate
+
+**Pass 1 only: storyboard + English draft.**
+
+Create:
+- `store-assets/SCREENSHOT_STORYBOARD.md`;
+- four English draft Store PNGs;
+- `store-assets/CONTACT_SHEET_EN.png`;
+- raw English captures;
+- manifest + image validation.
+
+Then STOP screenshot finalization and ask the owner to visually review the English contact sheet.
+
+Do not produce/freeze final zh-Hans assets before that owner review.
+
+Other S03-A documentation work may continue, but the PR must not become READY_FOR_AUDIT while screenshot direction is awaiting owner review.
+
+After owner approval, Pass 2:
+- build zh-Hans set with identical visual geometry;
+- generate `CONTACT_SHEET_ZH_HANS.png`;
+- validate English frozen bytes + Chinese geometry/text bounds;
+- prepare final 4+4 assets.
+
+Target story:
+1. Awareness — Feel time passing / 感受时间流逝
+2. Choose apps + interval
+3. A reminder, not a restriction
+4. Today — total / by hour / by app
 
 Do not use private owner app names/usage.
 
-Use actual app UI / tutorial artwork / sanitized simulator states only.
+Use actual Release UI or the real in-app tutorial/sample scenes. Never invent fake exact-session screens or inject screenshot-only private-style data into production.
 
-Target a small 4-image story:
-1. Home
-2. Choose apps / interval
-3. neutral reminder
-4. Today
-
-Create:
-`store-assets/en/`
-`store-assets/zh-Hans/`
-
-Include:
-- raw capture;
-- final composed PNG;
-- a manifest recording source commit/build, locale, dimensions and marketing caption.
-
-Follow Apple's current accepted iPhone screenshot dimensions and no-alpha requirement.
-
-Do not fabricate a live Today report with fake exact sessions. If the tutorial Today illustration is used, make the marketing frame clearly represent the in-app tutorial/sample rather than pretending it is private real usage.
+Final structure and validators must follow `docs/S03_SCREENSHOT_PRODUCTION.md`.
 
 ## G. Region + account checklist
 
