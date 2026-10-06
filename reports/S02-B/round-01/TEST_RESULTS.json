@@ -1,6 +1,6 @@
 {
   "stage": "S02-B",
-  "status": "WAITING_FOR_OWNER_TEST",
+  "status": "READY_FOR_AUDIT",
   "prURL": "https://github.com/Zhangsfish/Elapse/pull/21",
   "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
   "priorPRHeadSHA": "e9448b5a998eb1d783ebafd0b78fc3095d561e70",
@@ -72,7 +72,13 @@
     "confirmedAtUTC": "2026-10-06T14:48:06Z",
     "appleSecrets": "EXPLICIT_UPLOAD_STEP_ONLY_NO_VALUES_REQUESTED_OR_EXPOSED"
   },
-  "physicalAcceptance": "NOT_RUN_91_1_MENU_AND_PRIVACY_ONLY",
+  "physicalAcceptance": {
+    "status": "OWNER_REPORTED_PASS_FINAL_VISUAL_CLOSEOUT",
+    "ownerReply": "没问题，你自己合并一下。这个可以当做最终版本了",
+    "buildLinkage": "91.1_IMMEDIATE_CONVERSATION_CONTEXT_NOT_RESTATED_OR_INDEPENDENTLY_INSPECTED",
+    "newScreenshots": false,
+    "scope": "Requested menu/support visual closeout only; no new S01/Today/notification/VoiceOver/external URL evidence"
+  },
   "s01LifecycleTodayAggregation": "UNCHANGED",
   "reportPrivacyBoundary": "UNCHANGED",
   "tutorialArtworkChrome": "UNCHANGED",
@@ -520,5 +526,13 @@
   "uploadTestedSHA": "d633b5b627933d71aac221a3bb2f6aae29fd82a2",
   "version": "0.1.0",
   "build": "91.1",
-  "oneTimeMarkers": "REMOVED_AFTER_EXECUTION_NO_DOC_UPLOAD"
+  "oneTimeMarkers": "REMOVED_AFTER_EXECUTION_NO_DOC_UPLOAD",
+  "ownerMergeAuthorization": {
+    "scope": "ONE_TIME_CODEX_MERGE_PR_21",
+    "source": "DIRECT_LATEST_OWNER_MESSAGE",
+    "independentCloudFinalAudit": "NOT_CLAIMED",
+    "runtimeFrozen": true,
+    "publicReleaseAuthorized": false,
+    "s03": "LOCKED"
+  }
 }

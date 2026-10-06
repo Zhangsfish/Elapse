@@ -1,5 +1,7 @@
 # S02-B round 01 task memory
 
+Latest direct owner reply after91.1 delivery: “没问题，你自己合并一下。这个可以当做最终版本了”。 Requested final menu/support closeout OWNER_REPORTED_PASS; build linkage is conversational (owner did not restate the build or supply new screenshots). READY_FOR_AUDIT, runtime frozen. The owner authorizes Codex merge for this PR only, superseding earlier no-merge direction for this action; no self/cloud approval or S03/public-release authorization. Record exact final head/merge SHA in PR comments. Remaining unobserved checks stay NOT_RUN. Historical no-merge/waiting directions below are superseded only by this explicit exception.
+
 Owner follow-up 2026-10-06 supersedes the two-item home menu/two-sentence privacy copy: Release home menu contains About & Support only; Replay Quick Start remains inside that page. Removed privacySimple in both locales, retained privacyLocal. No tutorial artwork/Today/S01 changes. Existing 88.1 checks are historical, not this revision's acceptance. Native nested-sheet replay navigation / Release en-light + zh-Hans-dark-largest audits PASS; current 91.1 signed/ACCEPTED/VALID/internal group assigned. WAITING_FOR_OWNER_TEST for menu/privacy only; do not infer physical acceptance or stage approval. See support-menu-refinement-release.txt for exact current provenance.
 
 Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the S02-A independent audit. This folder records bounded onboarding/localization/accessibility polish, not stage approval.

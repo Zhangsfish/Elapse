@@ -1,6 +1,6 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST — owner-requested menu/privacy refinement delivered**. Same [draft PR #21](https://github.com/Zhangsfish/Elapse/pull/21); no merge/approval; S03 LOCKED. READY_FOR_AUDIT only after current menu/support feedback.
+State: **READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME**. Same [PR #21](https://github.com/Zhangsfish/Elapse/pull/21); S03 LOCKED. Owner replied “没问题，你自己合并一下。这个可以当做最终版本了” after 91.1 delivery. Final visual closeout is OWNER_REPORTED_PASS (build linked conversationally, not restated/independently inspected). Runtime frozen; no new phone tests or upload. Owner authorizes a one-time Codex merge exception; no independent cloud approval is claimed. Merge result and final head are recorded in PR comments; repository default cloud-led rules remain unchanged for future tasks.
 
 Current owner request: home menu has About & Support only; replay stays within About & Support. Remove “No account, no ads, no analytics.” / “无账号、无广告、无分析。” and its unused key in both locales; retain local-data privacy sentence. The previous 88.1 delivery below is historical, not validation of this revision.
 
@@ -12,7 +12,7 @@ Current owner request: home menu has About & Support only; replay stays within A
 - [Internal upload 37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045), job112326163559 **PASS**: **Everwhile 0.1.0 (91.1)**. Final signed App/Monitor/Report Bundle IDs expected, code signatures valid, Family Controls claims/profile allowances TRUE, required App Groups PASS. IPA SHA256 `8ebd4450b98dea08fe9fa6a9ddf0c419ef54a6a903359c627988a6413703e261`; exact audited bytes ACCEPTED. Processing VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T14:48:06Z. Device/archive localization packaging is separate from final signature audit. Executed prepare/upload markers removed; report/cleanup-only head cannot trigger upload. Its CI remains separate from runtime-tested PASS; final head recorded in PR comment.
 - Local 19 Python / Bash syntax / whitespace PASS; local Swift/Xcode NOT_RUN_UNAVAILABLE. No tool installation.
 - Only App/ContentView.swift, App/AboutSupportView.swift, both locales and affected source/native tests changed since e9448b5. Tutorial artwork/chrome, Shared/model, Monitor/Report, project.yml, Bundle IDs/capabilities/S01/Today/privacy boundary unchanged.
-- Current physical menu/support acceptance NOT_RUN. No tutorial/Today/S01 owner retest; WAITING_FOR_OWNER_TEST after internal delivery. Exact safe evidence: evidence/support-menu-refinement-release.txt.
+- Current requested menu/support visual closeout OWNER_REPORTED_PASS. No tutorial/Today/S01 owner retest. Documentation-only owner-acceptance commit does not change runtime or require another internal build. Exact safe evidence: evidence/support-menu-refinement-release.txt; conversational provenance and remaining NOT_RUN items: DEVICE_OBSERVATIONS.md.
 Branch: `codex/s02-b-onboarding-polish`. Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 
 ## Previous 88.1 scope / authority (superseded menu/privacy copy)

@@ -6,9 +6,9 @@ Updated: 2026-10-06
 
 2026-10-06：PR #21 历史 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604) 的教程返工已通过后续 cloud review；69.1 / 78.1 / 81.1 保留为历史。当前不再重做教程、Today 或主体功能。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST — menu/privacy refinement 91.1 delivered；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME 91.1；S03 LOCKED。**
 
-持有人最新要求已实现：首页菜单只留“关于与支持”；重播教学仍在支持页内；删除“无账号、无广告、无分析。”及英文对应句/unused key。Runtime `fab87ac...` / tested `7fa2cae...` / upload `d633b5b...`，同一 PR #21。[Ordinary37478243056](https://github.com/Zhangsfish/Elapse/actions/runs/37478243056) 60 Swift / 19 Python、真实 Release 中英文 UI / 大字体裁切审计 PASS（无豁免）；[prepare37478236216](https://github.com/Zhangsfish/Elapse/actions/runs/37478236216) unsigned iPhone build/archive、三 bundle 双语资源/metadata/capabilities PASS，90.1 NOT_UPLOADED。[Upload37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045) **0.1.0 (91.1)** 最终三 bundle 签名/Family Controls/profile allowance PASS，精确审计字节 ACCEPTED，VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T14:48:06Z）。一次性 markers 已清理；报告清理 head 的 CI 与 runtime-tested CI 分开。新手机菜单/隐私确认 NOT_RUN，只等这一小项。教程/Today/S01 不改；不批准、不 merge、不解锁 S03。下文 88.1 为历史，不替代新候选验收。
+持有人最新要求已实现：首页菜单只留“关于与支持”；重播教学仍在支持页内；删除“无账号、无广告、无分析。”及英文对应句/unused key。Runtime `fab87ac...` / tested `7fa2cae...` / upload `d633b5b...`，同一 PR #21。[Ordinary37478243056](https://github.com/Zhangsfish/Elapse/actions/runs/37478243056) 60 Swift / 19 Python、真实 Release 中英文 UI / 大字体裁切审计 PASS（无豁免）；[prepare37478236216](https://github.com/Zhangsfish/Elapse/actions/runs/37478236216) unsigned iPhone build/archive、三 bundle 双语资源/metadata/capabilities PASS，90.1 NOT_UPLOADED。[Upload37480245045](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045) **0.1.0 (91.1)** 最终三 bundle 签名/Family Controls/profile allowance PASS，精确审计字节 ACCEPTED，VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配（2026-10-06T14:48:06Z）。一次性 markers 已清理；报告清理 head 的 CI 与 runtime-tested CI 分开。持有人在 91.1 交付后回复“没问题，你自己合并一下。这个可以当做最终版本了”：最终菜单/支持页收口记为 OWNER_REPORTED_PASS（build 由上下文关联，未另报版本/截图）。功能候选冻结，READY_FOR_AUDIT；本次明确授权 Codex 合并 PR #21，是单次例外，不冒充云端独立审计/自批，不解锁 S03，也不授权公开上架。实际合并结果与最终 SHA 查看 PR 记录；后续默认 cloud-led 规则不变。教程/Today/S01 不改，不再要求手机操作。下文 88.1 为历史，不替代新候选验收。
 
 2026-10-06 [cloud follow-up review](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6011357941) 对 runtime `a21a857...` / head `e6bbd50...` 给出教程与本地化 PASS，冻结教程。随后新增 Release-hidden diagnostics / 原生双语支持页并交付 88.1；其双入口/两句隐私文案已被持有人最新要求覆盖。81.1 / 88.1 是历史候选，不代替 91.1 的设备验收。
 
@@ -66,7 +66,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | PR #21 one-entry menu / one-sentence privacy; 91.1 internal VALID |
+| S02-B | **READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME** | 91.1 functional candidate frozen; explicit owner-directed PR #21 merge exception; cloud final audit not claimed |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

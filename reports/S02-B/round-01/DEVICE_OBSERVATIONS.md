@@ -1,6 +1,12 @@
 # S02-B device observations
 
-State: **WAITING_FOR_OWNER_TEST — menu/privacy refinement delivered**.
+State: **READY_FOR_AUDIT — OWNER_ACCEPTED_FINAL_RUNTIME**.
+
+## Latest owner acceptance / merge direction
+
+After the 91.1 delivery and menu-confirmation request, the owner replied: “没问题，你自己合并一下。这个可以当做最终版本了”。 Record this as **OWNER_REPORTED_PASS** for the requested final menu/support visual closeout and owner acceptance of the current functional candidate. The reply did not restate the installed build or provide new screenshots; linkage to 91.1 comes from the immediate conversation context, not independent device inspection. It does not add per-button, VoiceOver, external Mail/browser or S01 reliability evidence.
+
+The owner explicitly authorizes Codex to merge this PR as a one-time exception to cloud-only merging. This is not an independent cloud audit or self-approval. Runtime is frozen at fab87ac / internally delivered 0.1.0 (91.1). No more device operations requested; S03 remains LOCKED and public release is not authorized.
 
 Owner feedback 2026-10-06: remove duplicate home-menu Replay Quick Start because it is already in About & Support; remove “无账号、无广告、无分析。” The reply is a narrow revision request, not full acceptance. New candidate menu/privacy visual observations NOT_RUN; no tutorial/Today/S01 retest requested. Prior 88.1 details below are historical.
 
@@ -8,7 +14,7 @@ Owner feedback 2026-10-06: remove duplicate home-menu Replay Quick Start because
 
 Runtime `fab87acc8f4b863451d9c91ee7605b4c33c47789`; tested `7fa2cae8478ec0429989be4eaf78413724b7f8b2`; upload `d633b5b627933d71aac221a3bb2f6aae29fd82a2`. Ordinary37478243056 / prepare37478236216 PASS; native Release en-light / zh-Hans-dark-largest menu, support replay return, copy/version/Done and accessibility audits PASS. Five clean-simulator screenshots inspected; menu has only About & Support, replay remains in support, privacy has only the local-data sentence. These are not physical-iPhone observations.
 
-Internal upload37480245045: **0.1.0 (91.1)** signed / ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T14:48:06Z. Current owner menu/privacy confirmation **NOT_RUN**. Next minimal action: update91.1, open home `…` menu and confirm only About & Support. Then inspect the retained privacy sentence in support; no tutorial/Today/S01 retest. Record natural-language response here; READY_FOR_AUDIT only after actual feedback. No private screenshots published.
+Internal upload37480245045: **0.1.0 (91.1)** signed / ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / existing group assigned TRUE at 2026-10-06T14:48:06Z. Requested final visual closeout **OWNER_REPORTED_PASS**, with conversational build linkage as noted above. No new tutorial/Today/S01 testing or private screenshots. READY_FOR_AUDIT; owner-direct merge authorization recorded separately from any cloud verdict.
 
 ## Previous 88.1 candidate / narrow owner task
 
