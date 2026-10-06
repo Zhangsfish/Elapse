@@ -61,14 +61,16 @@ struct TutorialArtwork: View {
 
     private var interval: some View {
         ZStack {
-            Circle().stroke(blue.opacity(0.13), lineWidth: 1.5).frame(width: 104, height: 104)
-                .position(x: 170, y: 99)
-            Circle().trim(from: 0, to: frame.intervalSelection * 0.72)
-                .stroke(blue, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                .frame(width: 104, height: 104).rotationEffect(.degrees(-90)).position(x: 170, y: 99)
-            Image(systemName: "clock").font(.system(size: 38, weight: .light))
-                .foregroundStyle(blue).rotationEffect(.degrees(-8 * (1 - frame.intervalSelection)))
-                .position(x: 170, y: 99)
+            // Setting preview, not elapsed time: no filling ring, rotating hands
+            // or countdown. Only the chosen value fades in after the press.
+            VStack(spacing: 10) {
+                Image(systemName: "clock").font(.system(size: 28, weight: .light))
+                    .foregroundStyle(blue)
+                drawingValue(duration(5), size: 36, weight: .semibold, color: blue)
+                    .frame(width: 240, height: 48)
+                    .opacity(frame.intervalSelection)
+                    .offset(y: 4 * (1 - frame.intervalSelection))
+            }.position(x: 170, y: 99)
             ForEach(Array([5, 15, 30].enumerated()), id: \.offset) { item in
                 let chosen = item.offset == 0 ? frame.intervalSelection : 0
                 drawingValue(duration(item.element), size: 18, weight: .semibold)

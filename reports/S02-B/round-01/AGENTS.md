@@ -18,3 +18,5 @@ S01 lifecycle and Today aggregation remain unchanged. The 69.1 owner acceptance 
 
 - evidence/cloud-polish-revision.md: five audit findings, exact reference/source boundaries and new candidate validation/distribution; this supersedes the old four-scene implementation, not its historical evidence.
 - evidence/cloud-polish-release.txt: final78.1 safe signed IPA / exact upload / VALID / existing internal group evidence; no physical visual PASS inferred.
+
+2026-10-06 owner follow-up: the second-scene filling ring incorrectly looks like elapsed usage. Approved static clock + chosen interval preview, retaining selection/press/Start→ON; only this artwork changes.78.1 delivery is now prior-candidate evidence. New code requires new tests/internal build and only a short second-scene look. Same PR #21; S03 LOCKED.

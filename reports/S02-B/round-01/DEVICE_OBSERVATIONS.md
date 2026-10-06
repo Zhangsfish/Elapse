@@ -1,7 +1,9 @@
 # S02-B device observations
 
-State: **WAITING_FOR_OWNER_TEST — new cloud polish candidate delivered**.
-Current candidate: **Everwhile 0.1.0 (78.1)**; runtime14bd931, tested97120c9, upload8351242. Final three-bundle signed IPA audit PASS; ACCEPTED / VALID / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:07:40Z, run37421509866. Exact SHA evidence is in DELIVERY / TEST_RESULTS / evidence/cloud-polish-release.txt.
+State: **IN_PROGRESS — owner-requested second-scene correction**.
+Owner feedback on78.1: the upper clock ring appears mostly elapsed immediately after selecting5minutes. Owner approved static clock + selected interval preview, with no counting/filling/rotating visual. This is CHANGES_REQUESTED for that scene, not whole-candidate acceptance. New candidate inspection NOT_RUN; only the corrected second scene needs a short look after delivery.
+
+Previous candidate: **Everwhile 0.1.0 (78.1)**; runtime14bd931, tested97120c9, upload8351242. Final three-bundle signed IPA audit PASS; ACCEPTED / VALID / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:07:40Z, run37421509866. Exact SHA evidence is in DELIVERY / TEST_RESULTS / evidence/cloud-polish-release.txt.
 
 New candidate visual acceptance: **NOT_RUN**. Owner only needs to update78.1, open home **… → 重播新手教学 / Replay quick start**, and inspect the four animations plus the single home menu. No functional retest, reinstall, reboot, revocation, midnight or pulse waiting. Await natural-language feedback in this conversation; do not transfer old69.1 acceptance below. Cloud comment6009677604 requested polish of reviewed head07fee759; owner authorized it.
 

@@ -6,7 +6,9 @@ Updated: 2026-10-06
 
 2026-10-06：云端对 PR #21 exact head `07fee7599cde672dd91c0094c20350d0e8bca234` 给出 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604)。持有人授权在同一 PR 返工四幕连续动画、画布/导航层级、首页单菜单与死文案清理。69.1 观察保留为历史，不代表新候选已验收。主体功能不重做。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST — cloud polish revision；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS — owner-requested interval-teaching correction；S03 LOCKED。**
+
+持有人指出 78.1 教程第二幕圆环容易被误读为已用时间，已确认改为静态时钟 + 所选提醒间隔的渐显预览；只返工该幕，不动真实监控/Today。下面 78.1 检查属于上一候选，新修改需重新 CI / internal build，不沿用其视觉验收。
 
 S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `14bd931...`，ordinary/prepare-tested `97120c9...`，upload `8351242...`；只有一次性 marker 差异。60 Swift / 14 Python、simulator/unsigned Release build/archive、App/Monitor/Report 中英文资源、capabilities、两项 native UI 与四幕 Dynamic Type/裁切 audit PASS。**78.1** 最终三 bundle 签名 / Family Controls / profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。一次性 marker 已清理。新包真机视觉 **NOT_RUN**，仅等持有人看四幕连续动画与首页单「…」菜单；不重测 S01/Today/pulse，不要求重启/撤权/等午夜。69.1 认可仅是历史，不转移到新候选。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
@@ -60,7 +62,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **WAITING_FOR_OWNER_TEST** | PR #21 polish CI/internal78.1 delivered; four tutorial animations + one home-menu visual check only |
+| S02-B | **IN_PROGRESS** | PR #21 second-scene setting preview correction; new tests/internal build pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

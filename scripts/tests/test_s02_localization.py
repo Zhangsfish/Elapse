@@ -52,6 +52,19 @@ class S02LocalizationTests(unittest.TestCase):
         for prefix in ("selectionGuide.", "tutorial.permission.", "tutorial.start."):
             self.assertFalse(any(key.startswith(prefix) for key in keys))
 
+    def test_interval_teaching_previews_setting_not_elapsed_time(self):
+        artwork = (ROOT / "App" / "TutorialArtwork.swift").read_text(encoding="utf-8")
+        interval = artwork.split("private var interval: some View {", 1)[1].split(
+            "private var reminder: some View {", 1)[0]
+        self.assertIn('Image(systemName: "clock")', interval)
+        self.assertIn('drawingValue(duration(5), size: 36', interval)
+        self.assertIn('.opacity(frame.intervalSelection)', interval)
+        for elapsed_visual in ('Circle()', '.trim(', '.rotationEffect(', 'sharedUsageProgress'):
+            self.assertNotIn(elapsed_visual, interval)
+        self.assertIn('frame.intervalPress', interval)
+        self.assertIn('frame.startPress', interval)
+        self.assertIn('frame.monitoringProgress', interval)
+
     def test_notification_templates_and_monitor_resources(self):
         for language in ("en", "zh-Hans"):
             pairs = dict(KEY_PATTERN.findall(

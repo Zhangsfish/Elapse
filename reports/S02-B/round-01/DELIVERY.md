@@ -1,10 +1,14 @@
 # S02-B delivery
 
-State: **WAITING_FOR_OWNER_TEST — cloud-requested product-polish revision**. Same PR #21; no merge/approval; S03 LOCKED.
+State: **IN_PROGRESS — owner-requested second-scene correction**. Same PR #21; no merge/approval; S03 LOCKED.
 Base main: `c1480eb0021c1fc2261a54ace4576feb7c537d8d`.
 Branch / draft PR: `codex/s02-b-onboarding-polish` / [#21](https://github.com/Zhangsfish/Elapse/pull/21).
 
-## Current cloud-requested revision — 2026-10-06
+## Current second-scene correction — 2026-10-06
+
+Owner observed that the filling clock ring in78.1 resembles elapsed usage, then approved a static clock + selected interval preview. Removed the ring/rotation; the localized5-minute value fades in with selection, while chip press/release and Start→ON remain continuous. No new copy/API/dependency; all other scenes and actual monitoring/Today unchanged. Added a regression guard for no elapsed-time visual in this scene.15 local Python tests PASS; new macOS checks/internal build pending.78.1 evidence below is prior-candidate evidence, not acceptance of the new code.
+
+## Previous cloud-requested revision — 78.1
 
 [Cloud comment](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604) reviewed `07fee759...`: CHANGES_REQUESTED, product polish only. Runtime `14bd931ac3e2da342f15760a4ace33fa0a28e6e3`; ordinary/prepare-tested `97120c9f64f73f71f49589ea63b5c8e9b14e49a6`; upload marker `8351242adbecde205f87f1e70423e054f478a02a`. Only markers differ across tested/upload SHAs. Continuous 60 Hz requested playback/fixed drawing canvas, four scene motion/composition, simplified chrome, single home menu, dead view/copy removed. Scope/provenance: `evidence/cloud-polish-revision.md`. Native audit exposed capped text scaling of UIKit toolbar Skip; same top-trailing position now uses a height-adaptive header, with audits retained.
 
