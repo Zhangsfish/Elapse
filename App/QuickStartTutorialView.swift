@@ -46,6 +46,24 @@ struct QuickStartTutorialView: View {
                 .padding(24).frame(maxWidth: 500).frame(maxWidth: .infinity)
             }
             .background(Color(uiColor: .systemGroupedBackground))
+            .safeAreaInset(edge: .top) {
+                // The system toolbar caps text scaling (native audit reproduced
+                // on Skip). Keep the same top-trailing chrome in a growing header.
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    Text("tutorial.title").font(.headline)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 0)
+                    Button("tutorial.skip") { dismiss() }
+                        .font(.body).buttonStyle(.plain)
+                        .foregroundStyle(Color.accentColor)
+                        .fixedSize(horizontal: true, vertical: true)
+                        .padding(.horizontal, 8).padding(.vertical, 6)
+                        .frame(minWidth: 44, minHeight: 44)
+                        .accessibilityIdentifier("tutorial-skip")
+                }
+                .padding(.horizontal, 24).padding(.vertical, 8)
+                .background(Color(uiColor: .systemGroupedBackground))
+            }
             .safeAreaInset(edge: .bottom) {
                 AnyLayout(dynamicTypeSize.isAccessibilitySize
                     ? AnyLayout(VStackLayout(spacing: 10))
@@ -62,15 +80,7 @@ struct QuickStartTutorialView: View {
                 .font(.body).controlSize(.large)
                 .frame(maxWidth: .infinity).padding(16).background(.regularMaterial)
             }
-            .navigationTitle("tutorial.title").navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("tutorial.skip") { dismiss() }
-                        .font(.body)
-                        .frame(minWidth: 44, minHeight: 44)
-                        .accessibilityIdentifier("tutorial-skip")
-                }
-            }
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
