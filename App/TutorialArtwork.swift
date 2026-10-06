@@ -1,13 +1,17 @@
 import SwiftUI
 
-/// Generic local drawing only. Fixed sample values are not protected report data.
+/// Read-only, generic illustrations on a 340 × 390 design canvas. All motion is
+/// time-addressable; the final frame is also the Reduce Motion/VoiceOver artwork.
+/// Sample durations never enter monitoring, App Group or the real Today report.
 struct TutorialArtwork: View {
     let scene: TutorialScene
     let frame: TutorialFrame
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    private let blue = Color.accentColor
 
     var body: some View {
-        Group {
+        ZStack {
+            Ellipse().fill(blue.opacity(0.07)).frame(width: 270, height: 230)
+                .blur(radius: 35).position(x: 170, y: 208)
             switch scene {
             case .chooseApps: selection
             case .chooseInterval: interval
@@ -15,169 +19,212 @@ struct TutorialArtwork: View {
             case .today: today
             }
         }
-        .padding(20)
-        .frame(maxWidth: .infinity, minHeight: 290)
-        .background(Color(uiColor: .secondarySystemGroupedBackground),
-                    in: RoundedRectangle(cornerRadius: 24))
+        .frame(width: 340, height: 390)
         .allowsHitTesting(false)
     }
 
     private var selection: some View {
-        VStack(spacing: 16) {
+        ZStack {
             ForEach(0..<3) { row in
-                HStack(spacing: 14) {
-                    appSymbol(row, selected: row < frame.selectedRows)
-                    Text(LocalizedStringKey(appKey(row))).font(.body.weight(.medium))
-                    Spacer(minLength: 8)
-                    Image(systemName: row < frame.selectedRows ? "checkmark.circle.fill" : "circle")
-                        .font(.title2)
-                        .foregroundStyle(row < frame.selectedRows ? Color.accentColor : Color.secondary)
-                        .scaleEffect(row < frame.selectedRows ? 1.05 : 1)
+                let chosen = frame.selection(row)
+                let arrive = frame.snap(from: Double(row) * 0.09, to: 0.5 + Double(row) * 0.09)
+                HStack(spacing: 16) {
+                    appSymbol(row).frame(width: 46, height: 46)
+                    drawingText(appKey(row), size: 17, weight: .semibold, alignment: .leading)
+                    Spacer(minLength: 0)
+                    ZStack {
+                        Circle().stroke(blue.opacity(0.25), lineWidth: 1.5)
+                        Circle().fill(blue).opacity(chosen)
+                        CheckStroke().trim(from: 0, to: chosen)
+                            .stroke(.white, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
+                            .padding(7)
+                    }.frame(width: 28, height: 28)
                 }
-                .padding(12)
-                .background(Color(uiColor: .tertiarySystemGroupedBackground),
-                            in: RoundedRectangle(cornerRadius: 16))
-                .overlay(alignment: .trailing) {
-                    touch(visible: frame.time > 0.25 && frame.time < 1.65
-                          && row == (frame.time < 1 ? 0 : 1))
-                        .offset(x: -12, y: 16)
-                }
+                .padding(16).frame(width: 288, height: 72)
+                .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 21))
+                .overlay(RoundedRectangle(cornerRadius: 21).stroke(blue.opacity(0.35 * chosen), lineWidth: 1.5))
+                .shadow(color: blue.opacity(0.06 + chosen * 0.04), radius: 12, y: 6)
+                .scaleEffect(1 + 0.025 * chosen)
+                .position(x: 170 + 18 * (1 - arrive), y: 92 + CGFloat(row) * 84)
+                .opacity(frame.progress(from: Double(row) * 0.09, to: 0.35 + Double(row) * 0.09))
             }
-            Label(frame.selectionConfirmed ? "tutorial.demo.selected" : "tutorial.demo.confirm",
-                  systemImage: frame.selectionConfirmed ? "checkmark" : "hand.tap")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(frame.selectionConfirmed ? Color.accentColor : Color.secondary)
+            ZStack {
+                drawingText("tutorial.demo.confirm", size: 15, weight: .semibold)
+                    .opacity(1 - frame.selectionConfirmation)
+                drawingText("tutorial.demo.selected", size: 15, weight: .semibold, color: blue)
+                    .opacity(frame.selectionConfirmation)
+            }.frame(width: 240, height: 34).position(x: 170, y: 335)
+            touch(opacity: frame.selectionHandOpacity)
+                .position(x: 289, y: frame.selectionHandY)
         }
     }
 
     private var interval: some View {
-        VStack(spacing: 28) {
-            Image(systemName: "clock").font(.largeTitle).foregroundStyle(Color.accentColor)
-            AnyLayout(dynamicTypeSize.isAccessibilitySize
-                ? AnyLayout(VStackLayout(spacing: 10)) : AnyLayout(HStackLayout(spacing: 10))) {
-                ForEach([5, 15, 30], id: \.self) { minutes in
-                    Text(duration(minutes))
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal, 12).padding(.vertical, 14)
-                        .background(minutes == 5 && frame.intervalChosen
-                            ? Color.accentColor.opacity(0.16) : Color.secondary.opacity(0.08),
-                                    in: RoundedRectangle(cornerRadius: 14))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 14).stroke(
-                                minutes == 5 && frame.intervalChosen ? Color.accentColor : Color.clear,
-                                lineWidth: 2)
-                        }
-                }
+        ZStack {
+            Circle().stroke(blue.opacity(0.13), lineWidth: 1.5).frame(width: 104, height: 104)
+                .position(x: 170, y: 99)
+            Circle().trim(from: 0, to: frame.intervalSelection * 0.72)
+                .stroke(blue, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                .frame(width: 104, height: 104).rotationEffect(.degrees(-90)).position(x: 170, y: 99)
+            Image(systemName: "clock").font(.system(size: 38, weight: .light))
+                .foregroundStyle(blue).rotationEffect(.degrees(-8 * (1 - frame.intervalSelection)))
+                .position(x: 170, y: 99)
+            ForEach(Array([5, 15, 30].enumerated()), id: \.offset) { item in
+                let chosen = item.offset == 0 ? frame.intervalSelection : 0
+                drawingValue(duration(item.element), size: 18, weight: .semibold)
+                    .frame(width: 86, height: 62)
+                    .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 19))
+                    .overlay(RoundedRectangle(cornerRadius: 19).fill(blue.opacity(chosen * 0.12)))
+                    .overlay(RoundedRectangle(cornerRadius: 19).stroke(blue.opacity(chosen), lineWidth: 2))
+                    .shadow(color: blue.opacity(chosen * 0.12), radius: 12, y: 5)
+                    .scaleEffect(1 - 0.07 * (item.offset == 0 ? frame.intervalPress : 0))
+                    .offset(y: -3 * chosen)
+                    .position(x: 72 + CGFloat(item.offset) * 98, y: 200)
             }
-            .overlay(alignment: .leading) {
-                touch(visible: frame.time > 0.3 && frame.time < 1.2).offset(x: 24, y: 20)
-            }
-            Label(frame.monitoringOn ? "home.status.on" : "home.start",
-                  systemImage: frame.monitoringOn ? "checkmark.circle.fill" : "play.fill")
-                .font(.body.weight(.semibold))
-                .foregroundStyle(frame.monitoringOn ? Color.primary : Color.white)
-                .padding(18).frame(maxWidth: .infinity)
-                .background(frame.monitoringOn ? Color.accentColor.opacity(0.14) : Color.accentColor,
-                            in: RoundedRectangle(cornerRadius: 18))
-                .overlay(alignment: .trailing) {
-                    touch(visible: frame.time > 1.35 && frame.time < 2.15).offset(x: -22, y: 20)
-                }
+            ZStack {
+                Capsule().fill(blue).opacity(1 - frame.monitoringProgress)
+                Capsule().fill(blue.opacity(0.12)).opacity(frame.monitoringProgress)
+                HStack(spacing: 9) {
+                    Image(systemName: "play.fill").font(.system(size: 13))
+                    drawingText("home.start", size: 16, weight: .semibold, color: .white)
+                }.padding(.horizontal, 25).foregroundStyle(.white)
+                    .opacity(1 - frame.monitoringProgress).scaleEffect(1 - 0.12 * frame.monitoringProgress)
+                HStack(spacing: 9) {
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(blue)
+                    drawingText("home.status.on", size: 16, weight: .semibold, color: blue)
+                }.padding(.horizontal, 25).opacity(frame.monitoringProgress)
+                    .scaleEffect(0.85 + 0.15 * frame.snap(from: 1.65, to: 2.5))
+            }.frame(width: 284 - 18 * frame.monitoringProgress, height: 60)
+                .scaleEffect(1 - 0.04 * frame.startPress)
+                .position(x: 170, y: 289)
+            touch(opacity: frame.intervalHandOpacity)
+                .position(x: 83 + 160 * frame.progress(from: 0.95, to: 1.35), y: frame.intervalHandY)
         }
     }
 
     private var reminder: some View {
-        VStack(spacing: 24) {
-            HStack(spacing: 18) {
-                appSymbol(0, selected: true).scaleEffect(frame.time < 1.3 ? 1.15 : 1)
-                Image(systemName: "plus").foregroundStyle(.secondary)
-                appSymbol(1, selected: true)
-                    .scaleEffect(frame.time >= 1.3 && frame.time < 2.3 ? 1.15 : 1)
+        ZStack {
+            ForEach(0..<2) { row in
+                let pulse = frame.progress(from: 0.3 + Double(row) * 0.85, to: 0.65 + Double(row) * 0.85)
+                    * (1 - frame.progress(from: 1 + Double(row) * 0.85, to: 1.3 + Double(row) * 0.85))
+                appSymbol(row).frame(width: 60, height: 60).scaleEffect(1 + 0.1 * pulse)
+                    .position(x: row == 0 ? 115 : 225, y: 91)
             }
-            Text("tutorial.demo.shared").font(.subheadline).foregroundStyle(.secondary)
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Capsule().fill(Color.secondary.opacity(0.12))
-                    Capsule().fill(Color.accentColor)
-                        .frame(width: geometry.size.width * CGFloat(frame.sharedUsageProgress))
-                }
-            }.frame(height: 8)
-            VStack(alignment: .leading, spacing: 8) {
-                Label("Everwhile", systemImage: "bell.badge").font(.caption.weight(.medium))
-                Text("tutorial.demo.fiveMinutes").font(.headline)
-                Text("tutorial.demo.pulse").font(.subheadline)
-            }
-            .padding(16).frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(uiColor: .tertiarySystemGroupedBackground),
-                        in: RoundedRectangle(cornerRadius: 20))
-            .opacity(frame.bannerOpacity).offset(y: -12 * (1 - frame.bannerOpacity))
+            Image(systemName: "plus").font(.system(size: 15, weight: .medium))
+                .foregroundStyle(blue.opacity(0.6)).position(x: 170, y: 91)
+            drawingText("tutorial.demo.shared", size: 14, color: .secondary)
+                .frame(width: 260, height: 28).position(x: 170, y: 148)
+            Capsule().fill(blue.opacity(0.12)).frame(width: 250, height: 7).position(x: 170, y: 180)
+            Capsule().fill(blue).frame(width: 250 * frame.sharedUsageProgress, height: 7)
+                .position(x: 45 + 125 * frame.sharedUsageProgress, y: 180)
+            ZStack(alignment: .topLeading) {
+                RoundedRectangle(cornerRadius: 25).fill(Color(uiColor: .secondarySystemGroupedBackground))
+                    .shadow(color: blue.opacity(0.13), radius: 20, y: 10)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "bell").font(.system(size: 12)).foregroundStyle(blue)
+                        drawingValue("Everwhile", size: 12, weight: .medium, alignment: .leading)
+                    }.frame(height: 16)
+                    drawingText("tutorial.demo.fiveMinutes", size: 21, weight: .semibold, alignment: .leading)
+                        .frame(height: 25)
+                    drawingText("tutorial.demo.pulse", size: 14, color: .secondary, alignment: .leading)
+                        .frame(height: 44)
+                }.padding(21)
+            }.frame(width: 292, height: 145)
+                .scaleEffect(0.95 + 0.05 * frame.bannerPosition)
+                .position(x: 170, y: 290 - 78 * (1 - frame.bannerPosition))
+                .opacity(frame.bannerOpacity)
         }
     }
 
     private var today: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Text("today.title").font(.headline)
-                Spacer()
-                Image(systemName: "chevron.right").foregroundStyle(.secondary)
+        ZStack {
+            RoundedRectangle(cornerRadius: 28).fill(Color(uiColor: .secondarySystemGroupedBackground))
+                .shadow(color: blue.opacity(0.09), radius: 18, y: 9)
+                .frame(width: 300, height: 350).position(x: 170, y: 198)
+            drawingText("today.title", size: 14, weight: .semibold, alignment: .leading)
+                .frame(width: 250, height: 22).position(x: 170, y: 58)
+            VStack(alignment: .leading, spacing: 6) {
+                drawingText("report.total", size: 11, color: .secondary, alignment: .leading).frame(height: 16)
+                drawingValue(duration(30), size: 32, weight: .bold, alignment: .leading).frame(height: 38)
+            }.frame(width: 250).position(x: 170, y: 112)
+                .offset(y: 8 * (1 - frame.totalOpacity)).opacity(frame.totalOpacity)
+            drawingText("report.hourly", size: 11, color: .secondary, alignment: .leading)
+                .frame(width: 250, height: 18).position(x: 170, y: 169)
+            Canvas { context, _ in
+                var baseline = Path()
+                baseline.move(to: CGPoint(x: 0, y: 75))
+                baseline.addLine(to: CGPoint(x: 250, y: 75))
+                context.stroke(baseline, with: .color(blue.opacity(0.15)), lineWidth: 1)
+                // Fixed illustrative hourly shape, never real sessions or protected usage.
+                for (index, height) in [24.0, 10, 39, 0, 62, 28, 48, 16].enumerated() {
+                    let grown = height * frame.barGrowth(index)
+                    let rect = CGRect(x: Double(index) * 32, y: 75 - grown, width: 17, height: grown)
+                    context.fill(Path(roundedRect: rect, cornerRadius: 3), with: .color(blue.opacity(0.8)))
+                }
+            }.frame(width: 250, height: 76).position(x: 170, y: 221)
+            ForEach(0..<2) { row in
+                let appear = frame.rowAppearance(row)
+                HStack(spacing: 12) {
+                    appSymbol(row).frame(width: 33, height: 33)
+                    drawingText(appKey(row), size: 14, weight: .medium, alignment: .leading)
+                    drawingValue(duration(row == 0 ? 20 : 10), size: 14, weight: .semibold, alignment: .trailing)
+                        .frame(width: 60)
+                }.frame(width: 250, height: 38)
+                    .position(x: 170 + 14 * (1 - appear), y: 299 + CGFloat(row) * 47)
+                    .opacity(appear)
             }
-            .overlay(alignment: .trailing) {
-                touch(visible: !frame.reportOpened).offset(y: 20)
+        }.opacity(frame.reportProgress).scaleEffect(0.94 + 0.06 * frame.reportProgress)
+    }
+
+    private func appSymbol(_ row: Int) -> some View {
+        GeometryReader { geometry in
+            let side = geometry.size.width
+            ZStack {
+                RoundedRectangle(cornerRadius: side * 0.27).fill(blue.opacity(0.11))
+                Image(systemName: ["square.stack", "bubble.left.and.bubble.right", "headphones"][row])
+                    .font(.system(size: side * 0.43, weight: .medium)).foregroundStyle(blue)
             }
-            VStack(alignment: .leading, spacing: 4) {
-                Text("report.total").font(.caption).foregroundStyle(.secondary)
-                Text(duration(30)).font(.largeTitle.bold())
-            }.opacity(frame.totalOpacity)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("report.hourly").font(.caption).foregroundStyle(.secondary)
-                HStack(alignment: .bottom, spacing: 10) {
-                    ForEach(Array([12.0, 0, 30, 0, 48, 18].enumerated()), id: \.offset) { item in
-                        RoundedRectangle(cornerRadius: 3).fill(Color.accentColor.opacity(0.8))
-                            .frame(maxWidth: .infinity).frame(height: CGFloat(item.element))
-                    }
-                }.frame(height: 52, alignment: .bottom)
-            }.opacity(frame.hourlyOpacity)
-            VStack(spacing: 10) {
-                demoUsageRow(0, minutes: 20)
-                demoUsageRow(1, minutes: 10)
-            }.opacity(frame.appRowsOpacity)
         }
     }
 
-    private func duration(_ minutes: Int) -> String {
-        UsageDurationFormatter.format(Double(minutes * 60),
-            language: UsageDurationLanguage.forBundle())
-    }
-
-    private func demoUsageRow(_ row: Int, minutes: Int) -> some View {
-        AnyLayout(dynamicTypeSize.isAccessibilitySize
-            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
-            : AnyLayout(HStackLayout(spacing: 12))) {
-            appSymbol(row, selected: false)
-            Text(LocalizedStringKey(appKey(row))).font(.subheadline)
-            if !dynamicTypeSize.isAccessibilitySize { Spacer(minLength: 8) }
-            Text(duration(minutes)).font(.subheadline.monospacedDigit())
-        }
+    private func touch(opacity: Double) -> some View {
+        Image(systemName: "hand.point.up.left.fill").font(.system(size: 31))
+            .foregroundStyle(Color(uiColor: .systemBackground))
+            .overlay(Image(systemName: "hand.point.up.left").font(.system(size: 31)).foregroundStyle(blue))
+            .shadow(color: blue.opacity(0.2), radius: 5, y: 4).opacity(opacity)
     }
 
     private func appKey(_ row: Int) -> String {
         ["tutorial.demo.appA", "tutorial.demo.appB", "tutorial.demo.appC"][row]
     }
-
-    private func appSymbol(_ row: Int, selected: Bool) -> some View {
-        Image(systemName: ["square.stack", "bubble.left.and.bubble.right", "headphones"][row])
-            .font(.title3).foregroundStyle(selected ? Color.accentColor : Color.primary)
-            .frame(width: 44, height: 44)
-            .background(Color.accentColor.opacity(selected ? 0.13 : 0.06),
-                        in: RoundedRectangle(cornerRadius: 12))
+    private func duration(_ minutes: Int) -> String {
+        UsageDurationFormatter.format(Double(minutes * 60), language: UsageDurationLanguage.forBundle())
     }
+    private func drawingText(_ key: String, size: CGFloat, weight: Font.Weight = .regular,
+                             color: Color = .primary, alignment: Alignment = .center) -> some View {
+        drawingValue(NSLocalizedString(key, comment: "Tutorial illustration"), size: size,
+                     weight: weight, color: color, alignment: alignment)
+    }
+    /// Graphics labels are not controls. The parent has a localized VoiceOver
+    /// summary; title, caption, Skip and navigation remain real Dynamic Type text.
+    private func drawingValue(_ value: String, size: CGFloat, weight: Font.Weight = .regular,
+                              color: Color = .primary, alignment: Alignment = .center) -> some View {
+        Canvas { context, bounds in
+            let textAlignment: TextAlignment = alignment == .leading ? .leading : (alignment == .trailing ? .trailing : .center)
+            let text = Text(value).font(.system(size: size, weight: weight)).foregroundColor(color)
+                .multilineTextAlignment(textAlignment)
+            context.draw(text, in: CGRect(origin: .zero, size: bounds))
+        }
+    }
+}
 
-    private func touch(visible: Bool) -> some View {
-        Image(systemName: "hand.point.up.left.fill").font(.title2)
-            .foregroundStyle(Color(uiColor: .systemBackground))
-            .shadow(color: .primary.opacity(0.35), radius: 1)
-            .overlay {
-                Image(systemName: "hand.point.up.left").font(.title2).foregroundStyle(Color.accentColor)
-            }
-            .opacity(visible ? 1 : 0)
+private struct CheckStroke: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 0, y: rect.height * 0.5))
+        path.addLine(to: CGPoint(x: rect.width * 0.37, y: rect.height * 0.88))
+        path.addLine(to: CGPoint(x: rect.width, y: rect.height * 0.1))
+        return path
     }
 }

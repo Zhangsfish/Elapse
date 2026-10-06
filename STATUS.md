@@ -4,9 +4,9 @@ Updated: 2026-10-06
 
 ## 当前结论
 
-2026-10-06：持有人针对当前交付回复“没啥问题，就是效果稍微还可以优化，先停在这里吧”。69.1 四段教学的简短视觉验收已收到；动画细节作为后续可选打磨，本轮不再改实现。仅提交报告供云端独立审核，不代表已批准公开上架。
+2026-10-06：云端对 PR #21 exact head `07fee7599cde672dd91c0094c20350d0e8bca234` 给出 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604)。持有人授权在同一 PR 返工四幕连续动画、画布/导航层级、首页单菜单与死文案清理。69.1 观察保留为历史，不代表新候选已验收。主体功能不重做。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B READY_FOR_AUDIT；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS — cloud polish revision；S03 LOCKED。**
 
 S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `f05df01...`，tested/prepare `e1fba3d...`，upload `9de0a20...`。58 Swift / 13 Python、unsigned archive、资源/capabilities、两项 native UI 与四段 Dynamic Type/裁切 audit PASS；首轮模拟器 boot timeout 为 NOT_RUN，重跑通过。69.1 最终三 bundle 签名/FAMILY_CONTROLS/profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。此前文档 head `0251cc2...` 普通 CI 也完整通过。持有人口述当前教学可接受并同意停止打磨；未提供新截图或逐按钮记录，不扩写为全量真机检查。详情及剩余限制：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
@@ -43,7 +43,7 @@ S02-A notes：
 S02-B 只做最终体验收口：
 
 - 保持单屏渐进式 setup，不做强制多页 onboarding；
-- 按持有人直接批准的返工方向，首次可跳过的四段短动画教学；首页问号重播，非强制 setup；
+- 按持有人与云端返工方向，首次可跳过的四段连续短动画教学；首页单菜单重播，非强制 setup；
 - 使用 generic UI，不暴露真实 App 身份；
 - 动画尊重 Reduce Motion；
 - 用户已有选择时不强制显示；
@@ -60,7 +60,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **READY_FOR_AUDIT** | 69.1 teaching owner-accepted with optional animation-polish note; independent audit pending |
+| S02-B | **IN_PROGRESS** | PR #21 cloud-requested animation/chrome polish; new build/device evidence pending |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界

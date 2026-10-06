@@ -10,6 +10,7 @@ struct ContentView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var pickerPresented = false
     @State private var tutorialPresented = TutorialVisitStore.reserveFirstVisit()
+    @State private var diagnosticsPresented = false
     @State private var notificationPermissionInProgress = false
 
     private var summaryLayout: AnyLayout {
@@ -180,21 +181,18 @@ struct ContentView: View {
             .controlSize(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { tutorialPresented = true } label: {
-                        Image(systemName: "questionmark.circle")
-                            .accessibilityLabel(Text("tutorial.replay"))
-                    }
-                    .accessibilityIdentifier("tutorial-replay")
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        DiagnosticsView()
+                    Menu {
+                        Button("tutorial.replay", systemImage: "play.rectangle") { tutorialPresented = true }
+                            .accessibilityIdentifier("tutorial-replay")
+                        Button("home.diagnostics", systemImage: "slider.horizontal.3") { diagnosticsPresented = true }
                     } label: {
-                        Image(systemName: "info.circle")
-                            .accessibilityLabel(Text("home.diagnostics"))
+                        Image(systemName: "ellipsis.circle")
+                            .accessibilityLabel(Text("home.menu"))
                     }
+                    .accessibilityIdentifier("home-menu")
                 }
             }
+            .navigationDestination(isPresented: $diagnosticsPresented) { DiagnosticsView() }
             .sheet(isPresented: $tutorialPresented) {
                 QuickStartTutorialView()
                     .presentationDetents([.large])

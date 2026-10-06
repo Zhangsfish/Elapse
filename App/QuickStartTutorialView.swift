@@ -15,9 +15,16 @@ struct QuickStartTutorialView: View {
                         .font(.title2.bold()).multilineTextAlignment(.center)
                         .accessibilityAddTraits(.isHeader)
                         .accessibilityIdentifier("tutorial-scene-title")
-                    TutorialPlayback(scene: scene, animated: AppSelectionTeaching.shouldAnimate(
-                        reduceMotion: reduceMotion, voiceOver: voiceOver))
-                        .id(scene)
+                    GeometryReader { geometry in
+                        let scale = min(1, geometry.size.width / 340)
+                        TutorialPlayback(scene: scene, animated: AppSelectionTeaching.shouldAnimate(
+                            reduceMotion: reduceMotion, voiceOver: voiceOver))
+                            .id(scene)
+                            .scaleEffect(scale, anchor: .top)
+                            .frame(width: geometry.size.width, height: 390 * scale, alignment: .top)
+                    }
+                        .aspectRatio(340.0 / 390.0, contentMode: .fit)
+                        .frame(maxWidth: 340)
                         .accessibilityElement(children: .ignore)
                         .accessibilityLabel(LocalizedStringKey(scene.voiceKey))
                         .accessibilityIdentifier("tutorial-artwork")
@@ -31,11 +38,10 @@ struct QuickStartTutorialView: View {
                                 .fill(item == scene ? Color.accentColor : Color.secondary.opacity(0.25))
                                 .frame(width: item == scene ? 20 : 6, height: 6)
                         }
-                        Text("\(scene.rawValue + 1) / \(TutorialScene.allCases.count)").font(.caption)
                     }
-                    .accessibilityElement(children: .combine)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text("\(scene.rawValue + 1) / \(TutorialScene.allCases.count)"))
                     .accessibilityIdentifier("tutorial-page")
-                    Text("tutorial.demo").font(.caption).foregroundStyle(.secondary)
                 }
                 .padding(24).frame(maxWidth: 500).frame(maxWidth: .infinity)
             }
@@ -44,8 +50,6 @@ struct QuickStartTutorialView: View {
                 AnyLayout(dynamicTypeSize.isAccessibilitySize
                     ? AnyLayout(VStackLayout(spacing: 10))
                     : AnyLayout(HStackLayout(spacing: 12))) {
-                    Button("tutorial.skip") { dismiss() }
-                        .buttonStyle(.bordered).accessibilityIdentifier("tutorial-skip")
                     if scene != .chooseApps {
                         Button("tutorial.previous") { scene = scene.previous }
                             .buttonStyle(.bordered).accessibilityIdentifier("tutorial-previous")
@@ -59,6 +63,14 @@ struct QuickStartTutorialView: View {
                 .frame(maxWidth: .infinity).padding(16).background(.regularMaterial)
             }
             .navigationTitle("tutorial.title").navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("tutorial.skip") { dismiss() }
+                        .font(.body)
+                        .frame(minWidth: 44, minHeight: 44)
+                        .accessibilityIdentifier("tutorial-skip")
+                }
+            }
         }
     }
 }
@@ -76,7 +88,7 @@ private struct TutorialPlayback: View {
             if !animated || scenePhase != .active {
                 TutorialArtwork(scene: scene, frame: TutorialFrame(time: TutorialFrame.duration))
             } else {
-                TimelineView(.animation(minimumInterval: 1.0 / 30, paused: settled)) { context in
+                TimelineView(.animation(minimumInterval: 1.0 / 60, paused: settled)) { context in
                     TutorialArtwork(scene: scene, frame: TutorialFrame(time: settled
                         ? TutorialFrame.duration : context.date.timeIntervalSince(start)))
                 }

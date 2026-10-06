@@ -32,7 +32,7 @@ final class S02PolishUITests: XCTestCase {
         XCTAssertFalse(skip.exists)
         XCTAssertFalse(app.staticTexts["299"].exists)
         attach(app, name: "\(language)-home")
-        app.buttons["tutorial-replay"].tap()
+        replay(app)
         let next = app.buttons["tutorial-next"]
         for index in titles.indices {
             XCTAssertTrue(app.staticTexts[titles[index]].waitForExistence(timeout: 5))
@@ -54,7 +54,7 @@ final class S02PolishUITests: XCTestCase {
         XCTAssertTrue(app.buttons["allow-screen-time"].waitForExistence(timeout: 5))
         XCTAssertFalse(XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists)
         // Replay always begins at scene one; Skip is usable immediately.
-        app.buttons["tutorial-replay"].tap()
+        replay(app)
         XCTAssertTrue(app.staticTexts[titles[0]].waitForExistence(timeout: 5))
         skip.tap()
         app.terminate()
@@ -68,5 +68,13 @@ final class S02PolishUITests: XCTestCase {
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
+    }
+
+    private func replay(_ app: XCUIApplication) {
+        XCTAssertTrue(app.buttons["home-menu"].isHittable)
+        XCTAssertFalse(app.buttons["tutorial-replay"].exists, "Replay is secondary, inside one menu")
+        app.buttons["home-menu"].tap()
+        XCTAssertTrue(app.buttons["tutorial-replay"].waitForExistence(timeout: 5))
+        app.buttons["tutorial-replay"].tap()
     }
 }

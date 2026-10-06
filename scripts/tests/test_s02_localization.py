@@ -19,7 +19,7 @@ class S02LocalizationTests(unittest.TestCase):
             self.assertEqual(len(pairs), len(set(key for key, _ in pairs)))
             languages[language] = {key for key, _ in pairs}
         self.assertEqual(languages["en"], languages["zh-Hans"])
-        for file in (ROOT / "App" / "ContentView.swift", ROOT / "App" / "AppSelectionTeachingView.swift",
+        for file in (ROOT / "App" / "ContentView.swift",
                      ROOT / "App" / "QuickStartTutorialView.swift",
                      ROOT / "App" / "TutorialArtwork.swift", ROOT / "Shared" / "TutorialStoryboard.swift",
                      ROOT / "ReportExtension" / "ElapseReportExtension.swift", ROOT / "Shared" / "PulsePlan.swift"):
@@ -34,9 +34,23 @@ class S02LocalizationTests(unittest.TestCase):
                           "UserDefaults", "ApplicationToken", "DeviceActivityReport("):
             self.assertNotIn(forbidden, artwork + view)
         self.assertIn(".allowsHitTesting(false)", artwork)
-        self.assertIn('Text("tutorial.demo")', view)
+        self.assertNotIn('Text("tutorial.demo")', view)
+        self.assertIn("minimumInterval: 1.0 / 60", view)
         self.assertIn("paused: settled", view)
         self.assertIn("scenePhase != .active", view)
+
+    def test_no_dead_localizations_or_teaching_view(self):
+        self.assertFalse((ROOT / "App" / "AppSelectionTeachingView.swift").exists())
+        sources = "\n".join(file.read_text(encoding="utf-8")
+                            for folder in ("App", "Shared", "MonitorExtension", "ReportExtension")
+                            for file in (ROOT / folder).glob("*.swift"))
+        references = set(REFERENCE_PATTERN.findall(sources))
+        keys = set(dict(KEY_PATTERN.findall(
+            (ROOT / "Localization/en.lproj/Localizable.strings").read_text(encoding="utf-8"))))
+        self.assertFalse(keys - references, f"Unused keys: {sorted(keys - references)}")
+        self.assertFalse(references - keys, f"Missing keys: {sorted(references - keys)}")
+        for prefix in ("selectionGuide.", "tutorial.permission.", "tutorial.start."):
+            self.assertFalse(any(key.startswith(prefix) for key in keys))
 
     def test_notification_templates_and_monitor_resources(self):
         for language in ("en", "zh-Hans"):
