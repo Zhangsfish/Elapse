@@ -1,0 +1,33 @@
+name: S03 secret-free store preflight
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/s03-preflight.yml
+      - scripts/s03_preflight.py
+      - scripts/tests/**
+      - store-assets/**
+      - public-pages/**
+      - docs/APP_STORE_*.md
+      - docs/APP_REVIEW_NOTES.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run existing and preflight unit tests
+        run: python3 -m unittest discover -s scripts/tests -v
+      - name: Check frozen production trees, capture hashes, pages and metadata
+        run: python3 scripts/s03_preflight.py --output "$RUNNER_TEMP/s03-static-preflight.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: s03-static-preflight
+          path: ${{ runner.temp }}/s03-static-preflight.json
