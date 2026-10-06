@@ -1,0 +1,72 @@
+name: S03 English Release store captures
+
+on:
+  push:
+    branches: [codex/s03-a-app-store-preflight]
+    paths:
+      - .github/workflows/s03-store-screenshots.yml
+      - UITests/S03StoreScreenshotsUITests.swift
+      - store-assets/scripts/export_captures.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: macos-26
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Record frozen production source and Apple toolchain
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/store-evidence"
+          python3 store-assets/scripts/export_captures.py --record-source "$RUNNER_TEMP/store-evidence"
+          { sw_vers; xcodebuild -version; xcrun --sdk iphonesimulator --show-sdk-version; } > "$RUNNER_TEMP/store-evidence/toolchain.txt"
+      - name: Use existing verified XcodeGen route
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip --output "$RUNNER_TEMP/xcodegen.zip"
+          echo "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 --check
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen-release"
+          tool=$(find "$RUNNER_TEMP/xcodegen-release" -type f -name xcodegen -print -quit)
+          test -n "$tool"
+          chmod +x "$tool"
+          echo "$(dirname "$tool")" >> "$GITHUB_PATH"
+      - name: Capture genuine English Release UI on a fresh iPhone
+        run: |
+          set -euo pipefail
+          xcodegen generate --spec project.yml
+          python3 scripts/s00_signing_settings.py
+          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; print(next(r["identifier"] for r in json.load(sys.stdin)["runtimes"] if r["name"].startswith("iOS") and r["isAvailable"]))')
+          device=$(xcrun simctl create 'Everwhile Store English fresh' com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max "$runtime")
+          trap 'xcrun simctl shutdown "$device" || true' EXIT
+          xcrun simctl boot "$device"
+          python3 - "$device" <<'PY'
+          import subprocess,sys
+          subprocess.run(['xcrun','simctl','bootstatus',sys.argv[1],'-b'], check=True, timeout=360)
+          PY
+          xcrun simctl spawn "$device" defaults write NSGlobalDomain AppleLanguages -array en
+          xcrun simctl spawn "$device" defaults write NSGlobalDomain AppleLocale en_US
+          xcrun simctl ui "$device" appearance light
+          xcrun simctl ui "$device" content_size large
+          xcrun simctl status_bar "$device" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          xcodebuild test -project Elapse.xcodeproj -scheme Elapse -configuration Release \
+            -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
+            -derivedDataPath "$RUNNER_TEMP/StoreDerived" CODE_SIGNING_ALLOWED=NO CURRENT_PROJECT_VERSION=91.1 \
+            -only-testing:ElapseUITests/S03StoreScreenshotsUITests/testEnglishStoreScreens \
+            -resultBundlePath "$RUNNER_TEMP/StoreCaptures.xcresult"
+          xcrun xcresulttool get test-results summary --path "$RUNNER_TEMP/StoreCaptures.xcresult" > "$RUNNER_TEMP/store-evidence/test-summary.json"
+          xcrun xcresulttool export attachments --path "$RUNNER_TEMP/StoreCaptures.xcresult" --output-path "$RUNNER_TEMP/store-attachments"
+          python3 store-assets/scripts/export_captures.py "$RUNNER_TEMP/store-attachments" "$RUNNER_TEMP/store-evidence"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s03-store-english-safe-captures
+          path: ${{ runner.temp }}/store-evidence/
+          retention-days: 14
+          if-no-files-found: error
