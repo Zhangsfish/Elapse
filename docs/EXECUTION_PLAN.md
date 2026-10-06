@@ -4,7 +4,7 @@ Updated: 2026-10-03
 
 目标不变：**让时间流逝被感知，不阻止、不裁判。** 保留当前 SwiftUI + FamilyControls + DeviceActivity + UserNotifications 实现，不重写产品。
 
-当前功能基线已推进到 Everwhile `0.1.0 (56.1)`。S00 / S01 完成；S02-A 的 production home + Today 已完成云端 exact-SHA 审核并给出 PASS_WITH_NOTES。当前由 `STATUS.md` 只解锁 S02-B，做首次使用、通知本地化与最终体验收口。
+当前功能/产品候选已冻结为 Everwhile `0.1.0 (91.1)`。S00 / S01 / S02 均完成；S02-B 已云端收口并合并。当前由 `STATUS.md` 只解锁 S03-A，开始 App Store distribution preflight、隐私/支持资料、metadata 与截图准备。
 
 ## 顺序与门槛
 
@@ -21,13 +21,9 @@ Updated: 2026-10-03
 | **S01-C：calendar / permission 实证** | permission revoke/regrant 真机；自然午夜、timezone/DST 残余风险分层 | 真实 revoke/regrant PASS；自然午夜不重复折腾持有人，明确 residual risk | S01 整体 COMPLETE — PASS_WITH_NOTES |
 | **S02-A：production UI + Today** | 正式首页信息层级、Today 总量/小时图/各 App、诊断下沉、显示精度、zh-Hans/English 基础 | COMPLETE — PASS_WITH_NOTES；56.1 owner UI acceptance + 47 tests + signed TestFlight | S02-B READY |
 | **S02-B：onboarding / polish** | 单屏渐进式首次设置、选择 App 轻教学、pulse notification 双语、copy/spacing/accessibility 收口 | 不增加控制/打分/羞耻；一轮轻量最终体验验收 | 云端审计后 S03 |
-| **S03：公开分发准备** | 固化内部交付；隐私/支持资料、商店文案、区域合规与外部测试 | 精确候选 build、明确区域与持有人发布授权 | 未授权不得 App Review/公开上架 |
-
-后续每个子阶段只有在解锁时才写完整执行任务，避免一次性大 prompt 让 Codex 顺手做完整个产品。
-
-## S00-B 已关闭问题（历史依据）
-
-- 现有 `PulseDeliveryDecision.receiptKey` 只含日期与 event；同日 stop/start 没有独立实验 ID。不能再把 stop/start 无条件称作“完整清零”。选择可复测的会话/配置版本策略并测试旧回调，不用系统时间伪造使用量。
+| **S03-A：App Store preflight** | Family Controls distribution gate、public Privacy/Support、App Privacy answers、metadata、screenshots、region/account checklist | no App Review submission; all owner-only blockers explicit | 云端审计后 S03-B |
+| **S03-B：App Store submission** | App Store Connect 填写、exact build、owner regions、submit to App Review | owner approves exact package/regions before submit | review result -> S03-C |
+| **S03-C：review/release** | 回应审核、必要最小修复、owner-controlled public release | no silent automatic launch | COMPLETE |n.receiptKey` 只含日期与 event；同日 stop/start 没有独立实验 ID。不能再把 stop/start 无条件称作“完整清零”。选择可复测的会话/配置版本策略并测试旧回调，不用系统时间伪造使用量。
 - 主 App 的 selection 改变后不会自动替换已登记 events。必须选择并明确实现“运行中禁止修改”或“显式重新开始并固定新配置”，不可让监控集合与 Today 所选集合悄悄不同。
 - Monitor 的详细回调与请求结果只在 OSLog，主 App 看不到，当前 TestFlight/Windows 流程不能据此验收。先提供可观察诊断。若确需 App Group，只共享本 App 配置/实验 ID/脱敏回调事件；不得搬运受保护 report 数据。新增 capability 先用现有授权工具配置/验证，账号本人动作才最小化交给用户。
 - `includesPastActivity=false` 是“启动后的所选使用”实验，不能把对应阈值通知写成已知的“今天总计”。阈值到达、回调接收、通知请求、实际看到通知四者分开。
