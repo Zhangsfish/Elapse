@@ -1,6 +1,6 @@
 {
   "stage": "S02-B",
-  "status": "IN_PROGRESS",
+  "status": "WAITING_FOR_OWNER_TEST",
   "prURL": "https://github.com/Zhangsfish/Elapse/pull/21",
   "baseMainSHA": "c1480eb0021c1fc2261a54ace4576feb7c537d8d",
   "priorPRHeadSHA": "e6bbd5030fff8c31823a27eda92164fff814863b",
@@ -17,15 +17,16 @@
     "mainSHA": "13e943ab2854c6153e5398f0c8a5fa41a9f22df4",
     "path": "App/AboutSupportView.swift"
   },
-  "runtimeCodeSHA": null,
-  "prepareTestedSHA": null,
-  "uploadTestedSHA": null,
+  "runtimeCodeSHA": "600dea22fb710cb9319d53b4a136774ee1a55c4b",
+  "prepareTestedSHA": "e6ce82840d05061cf16def95cb174e514757ad2c",
+  "uploadTestedSHA": "bc9b1f5bdb2e336b80437263c74969cc90a260ce",
   "version": "0.1.0",
-  "build": null,
+  "build": "88.1",
   "localWindows": {
-    "pythonTests": "18 PASS",
+    "pythonTests": "19 PASS",
     "diffWhitespace": "PASS",
-    "newInstall": false
+    "newInstall": false,
+    "swiftXcode": "NOT_RUN_UNAVAILABLE; actual checks executed on macos-26 CI"
   },
   "sourceChecks": {
     "releaseDiagnostics": "DEBUG_GUARDS_ENTRY_STATE_DESTINATION_VIEW",
@@ -39,15 +40,59 @@
     "homeCopyTestingSeams": "REMOVED"
   },
   "ordinaryCI": {
-    "status": "NOT_RUN"
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37470762886",
+    "job": 112293402503,
+    "status": "PASS",
+    "testedSHA": "e6ce82840d05061cf16def95cb174e514757ad2c",
+    "supportAudit": "EXACT_ELEMENT_LOGGING_NO_EXEMPTION_BOTH_LOCALES_FAIL_CLOSED",
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "nativeEnglishReleaseMenuSupport": "PASS",
+    "nativeZhHansLargestTextReleaseMenuSupport": "PASS",
+    "supportTopBottomDynamicTypeTextClipped": "PASS_NO_EXEMPTION",
+    "nativeCopyConfirmationDynamicVersionDone": "PASS",
+    "uiArtifact": 11417900982,
+    "uiArtifactDigest": "sha256:a67ff10015bd104cbda31bab33f022bf7e9d8b3a139b5d78853db47b929783f3",
+    "appearanceInspection": "Five unique clean-simulator PNGs inspected: en menu/support; zh-Hans menu/support top/version after scrolling. Largest text requires scrolling; native Done and copy assertions PASS. Physical UI/VoiceOver remains NOT_RUN.",
+    "appleSecrets": "NOT_USED"
   },
   "prepareOnly": {
-    "status": "NOT_RUN"
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37470755631",
+    "job": 112293294792,
+    "status": "PASS",
+    "testedSHA": "e6ce82840d05061cf16def95cb174e514757ad2c",
+    "build": "87.1_NOT_UPLOADED",
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "unsignedReleaseBuildArchive": "PASS",
+    "effectiveEntitlementsMetadata": "PASS",
+    "appMonitorReportEnZhHans": "PASS",
+    "appleSecrets": "NOT_USED"
   },
   "internalTestFlight": {
-    "status": "NOT_RUN"
+    "status": "PASS",
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37473140237",
+    "job": 112301568941,
+    "uploadSHA": "bc9b1f5bdb2e336b80437263c74969cc90a260ce",
+    "deltaFromTestedSHA": "ONLY_ONE_TIME_UPLOAD_MARKER",
+    "swiftTests": 60,
+    "pythonTests": 19,
+    "unsignedDeviceBuildArchive": "PASS",
+    "appMonitorReportEnZhHansResources": "PASS_DEVICE_AND_ARCHIVE",
+    "distributionExport": "PASS",
+    "finalSignedIPAAudit": "PASS",
+    "signedIPASHA256": "6d50b4c5175198c24c6a1a218ea8300b1cd0a1272d4a70df895bbf96770836ff",
+    "appMonitorReportSignaturesAndFamilyControls": "PASS_ALL_THREE",
+    "requiredAppGroupsAndProfileAllowance": "PASS",
+    "exactAuditedBytesUploaded": "ACCEPTED",
+    "processing": "VALID",
+    "audience": "INTERNAL_ONLY",
+    "internalBetaState": "IN_BETA_TESTING",
+    "existingInternalGroupAssigned": true,
+    "confirmedAtUTC": "2026-10-06T13:50:40Z",
+    "appleSecrets": "EXPLICIT_UPLOAD_STEP_ONLY_NO_VALUES_REQUESTED_OR_EXPOSED"
   },
-  "physicalAcceptance": "NOT_RUN_NEW_CANDIDATE_MENU_AND_ABOUT_ONLY",
+  "physicalAcceptance": "NOT_RUN_88_1_MENU_AND_ABOUT_ONLY",
   "s01LifecycleTodayAggregation": "UNCHANGED",
   "reportPrivacyBoundary": "UNCHANGED",
   "tutorialArtworkChrome": "UNCHANGED",
@@ -352,5 +397,43 @@
     },
     "ownerNextAction": "Inspect corrected tutorial second scene only: home menu > Replay quick start / 重播新手教学 > Next / 下一步. No functional retest.",
     "evidenceCleanupHeadCI": "PENDING_DOCUMENTATION_ONLY_HEAD"
-  }
+  },
+  "supersededSupportAttempt": {
+    "runtimeSHA": "c8bf5cb580cba36a1c91e4d5a9b9772806820c33",
+    "testedSHA": "2d040f928d554e46ceac739b6f4b4263372ea54f",
+    "ordinaryRunURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37462669862",
+    "ordinaryStatus": "FAILED_REAL_NATIVE_TEXT_CLIPPED",
+    "uiArtifact": 11414367823,
+    "uiDigest": "sha256:6e4f8608fce5d4261244bead26fd7421d91aea4f09d14c2391c1848a046dd9c1",
+    "observation": "Release menu and support top/copy assertions passed. English bottom-view textClipped audit failed. Native screenshots reproduce erased-layout header taking excessive vertical space and clipping the scroll edge. Header now intrinsic; native audits retained, plus top-position assertion.",
+    "prepareRunURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37462661492",
+    "prepareStatus": "PASS",
+    "build": "83.1 NOT_UPLOADED",
+    "swiftTests": 60,
+    "pythonTests": 18
+  },
+  "supportHeaderFixAttempt": {
+    "runtimeCodeSHA": "1bbc48bd2e38800f8aeef6384b188857f8e53581",
+    "testedSHA": "946ffc49356f5969f7ba96f7908a90ddbdafdabe",
+    "ordinaryRunURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37465162866",
+    "status": "FAIL_REAL_NATIVE_TEXT_CLIPPED_SUPPORT_TOP",
+    "artifact": 11415411682,
+    "artifactDigest": "sha256:b7bed5d1f1bf2c54a7748775b41a3d69545981a09692f188082cf5825b254d8c",
+    "headerPositionAssertion": "PASS",
+    "nativeScreenshot": "Header fixed; remaining audit not exempted and runtime not uploaded"
+  },
+  "supportInstrumentationAttempt": {
+    "testedSHA": "7c62fe59a62e2ca417dfc0d4b8148e29e716b7ad",
+    "runURL": "https://github.com/Zhangsfish/Elapse/actions/runs/37468043113",
+    "status": "FAIL_REAL_NATIVE_TEXT_CLIPPED_EN_AND_ZH_HANS_SUPPORT_TOP",
+    "element": "NONE_RETURNED_BY_APPLE",
+    "artifact": 11416586385,
+    "artifactDigest": "sha256:4740f2a7848fff7a225c058543969eef3140e50cae012d56a5a595f02161f315",
+    "nativeScreenshot": "Complete English support content; largest Chinese text wraps/scrolls. Not counted as native audit PASS.",
+    "remediationCandidate": "Titles keep ideal multiline height; SF Symbols decorative and VoiceOver-hidden. All audits retained with no exemptions.",
+    "uploaded": false
+  },
+  "markers": "EXECUTED_PREPARE_AND_UPLOAD_MARKERS_REMOVED_CLEANUP_CANNOT_UPLOAD",
+  "cleanupHeadCI": "SEPARATE_PENDING_NOT_RUNTIME_TESTED_PASS; exact cleanup head recorded in PR handoff comment",
+  "readiness": "OWNER_MENU_AND_ABOUT_OBSERVATION_REQUIRED_BEFORE_READY_FOR_AUDIT"
 }
