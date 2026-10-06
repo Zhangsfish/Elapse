@@ -68,6 +68,17 @@ class S02LocalizationTests(unittest.TestCase):
                           "DeviceActivity", "FamilyControls", "diagnosticSummary"):
             self.assertNotIn(forbidden, about)
 
+    def test_support_ui_audits_report_elements_without_suppression(self):
+        ui_tests = (ROOT / "UITests/S02PolishUITests.swift").read_text(encoding="utf-8")
+        audit = ui_tests.split("private func auditSupport", 1)[1]
+        self.assertIn("[.dynamicType, .textClipped]", audit)
+        self.assertIn("issue.element?.debugDescription", audit)
+        self.assertIn("return false", audit)
+        self.assertNotIn("return true", audit)
+        smoke = (ROOT / "scripts/s02_ui_smoke.sh").read_text(encoding="utf-8")
+        self.assertEqual(smoke.count("|| ui_status=1"), 2)
+        self.assertIn('exit "$ui_status"', smoke)
+
     def test_public_copy_has_no_testing_seams_and_bilingual_support_is_exact(self):
         public_views = release_content_view() + (ROOT / "App/AboutSupportView.swift").read_text(encoding="utf-8")
         public_keys = set(REFERENCE_PATTERN.findall(public_views))

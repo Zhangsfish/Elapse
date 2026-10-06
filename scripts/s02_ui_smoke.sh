@@ -53,12 +53,13 @@ else
 fi
 xcrun simctl ui "$device" appearance light
 xcrun simctl ui "$device" content_size large
+ui_status=0
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
   -configuration Release -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/en-light.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testEnglishFirstVisitAndReplay \
-  CODE_SIGNING_ALLOWED=NO
+  CODE_SIGNING_ALLOWED=NO || ui_status=1
 xcrun simctl ui "$device" appearance dark
 xcrun simctl ui "$device" content_size accessibility-extra-extra-extra-large
 xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
@@ -66,5 +67,9 @@ xcodebuild test -project Elapse.xcodeproj -scheme Elapse \
   -derivedDataPath "$RUNNER_TEMP/ElapseBuild" \
   -resultBundlePath "$result_root/zh-dark-large.xcresult" \
   -only-testing:ElapseUITests/S02PolishUITests/testSimplifiedChineseReplayAtAccessibilitySize \
-  CODE_SIGNING_ALLOWED=NO
+  CODE_SIGNING_ALLOWED=NO || ui_status=1
+if [[ "$ui_status" -ne 0 ]]; then
+  echo 'S02B_UI_SMOKE_FAIL; both locale results retained, no failed assertion suppressed'
+  exit "$ui_status"
+fi
 echo 'S02B_UI_SMOKE_PASS release_menu_about light_en dark_zhHans accessibility_size automated_layout_audit'
