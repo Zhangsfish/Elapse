@@ -14,6 +14,7 @@ Upstream: root AGENTS.md, STATUS.md, prompts/S02_B_ONBOARDING_POLISH.md and the 
 - evidence/four-scene-validation.md: current runtime's passing unit/build/prepare/native tests and screenshot inspection; preserves the first boot-timeout NOT_RUN and appearance limits.
 - evidence/four-scene-release.txt: 69.1 exact signed IPA/ACCEPTED/VALID/IN_BETA_TESTING/existing-group evidence, not physical acceptance.
 
-S01 lifecycle and Today aggregation remain unchanged. The 69.1 owner acceptance is historical. Cloud audit comment 6009677604 requested narrow product-polish revision on reviewed head 07fee759; the owner authorized it on 2026-10-06. State is IN_PROGRESS until the new CI/internal build and one short visual acceptance. Keep prior evidence separate from the new candidate. Do not self-approve, merge, unlock S03 or infer public-release authorization.
+S01 lifecycle and Today aggregation remain unchanged. The 69.1 owner acceptance is historical. Cloud audit comment 6009677604 requested narrow product-polish revision on reviewed head 07fee759; the owner authorized it on 2026-10-06. Current78.1 signed/internal candidate is WAITING_FOR_OWNER_TEST: four refined tutorial animations and one home menu only. Keep prior evidence separate from the new candidate. Do not self-approve, merge, unlock S03 or infer public-release authorization.
 
 - evidence/cloud-polish-revision.md: five audit findings, exact reference/source boundaries and new candidate validation/distribution; this supersedes the old four-scene implementation, not its historical evidence.
+- evidence/cloud-polish-release.txt: final78.1 safe signed IPA / exact upload / VALID / existing internal group evidence; no physical visual PASS inferred.

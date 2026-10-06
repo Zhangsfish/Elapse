@@ -1,9 +1,13 @@
 # S02-B device observations
 
-State: **READY_FOR_AUDIT**; independent cloud verdict pending.
-Current delivered build: **Everwhile 0.1.0 (69.1)**. Final signatures PASS, processing VALID / IN_BETA_TESTING / existing internal group assigned at 2026-10-05T18:43:49Z; run37357058165.
+State: **WAITING_FOR_OWNER_TEST — new cloud polish candidate delivered**.
+Current candidate: **Everwhile 0.1.0 (78.1)**; runtime14bd931, tested97120c9, upload8351242. Final three-bundle signed IPA audit PASS; ACCEPTED / VALID / IN_BETA_TESTING / existing internal group assigned TRUE at 2026-10-06T06:07:40Z, run37421509866. Exact SHA evidence is in DELIVERY / TEST_RESULTS / evidence/cloud-polish-release.txt.
 
-## Current owner observation — 2026-10-06
+New candidate visual acceptance: **NOT_RUN**. Owner only needs to update78.1, open home **… → 重播新手教学 / Replay quick start**, and inspect the four animations plus the single home menu. No functional retest, reinstall, reboot, revocation, midnight or pulse waiting. Await natural-language feedback in this conversation; do not transfer old69.1 acceptance below. Cloud comment6009677604 requested polish of reviewed head07fee759; owner authorized it.
+
+Historical delivered build: **Everwhile 0.1.0 (69.1)**. Final signatures PASS, processing VALID / IN_BETA_TESTING / existing internal group assigned at 2026-10-05T18:43:49Z; run37357058165.
+
+## Historical owner observation — 69.1 / 2026-10-06
 
 Owner replied after the 69.1 handoff: “没啥问题，就是效果稍微还可以优化，先停在这里吧。是不是可以准备上架了，还有别的活吗，没活就提交上去我去网页chatgpt再想想”。
 

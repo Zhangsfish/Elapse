@@ -6,9 +6,9 @@ Updated: 2026-10-06
 
 2026-10-06：云端对 PR #21 exact head `07fee7599cde672dd91c0094c20350d0e8bca234` 给出 [CHANGES_REQUESTED — product polish only](https://github.com/Zhangsfish/Elapse/pull/21#issuecomment-6009677604)。持有人授权在同一 PR 返工四幕连续动画、画布/导航层级、首页单菜单与死文案清理。69.1 观察保留为历史，不代表新候选已验收。主体功能不重做。
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B IN_PROGRESS — cloud polish revision；S03 LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02-A COMPLETE — PASS_WITH_NOTES。S02-B WAITING_FOR_OWNER_TEST — cloud polish revision；S03 LOCKED。**
 
-S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `f05df01...`，tested/prepare `e1fba3d...`，upload `9de0a20...`。58 Swift / 13 Python、unsigned archive、资源/capabilities、两项 native UI 与四段 Dynamic Type/裁切 audit PASS；首轮模拟器 boot timeout 为 NOT_RUN，重跑通过。69.1 最终三 bundle 签名/FAMILY_CONTROLS/profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。此前文档 head `0251cc2...` 普通 CI 也完整通过。持有人口述当前教学可接受并同意停止打磨；未提供新截图或逐按钮记录，不扩写为全量真机检查。详情及剩余限制：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
+S02-B [PR #21](https://github.com/Zhangsfish/Elapse/pull/21)：当前 runtime `14bd931...`，ordinary/prepare-tested `97120c9...`，upload `8351242...`；只有一次性 marker 差异。60 Swift / 14 Python、simulator/unsigned Release build/archive、App/Monitor/Report 中英文资源、capabilities、两项 native UI 与四幕 Dynamic Type/裁切 audit PASS。**78.1** 最终三 bundle 签名 / Family Controls / profile allowance PASS，ACCEPTED / VALID / INTERNAL_ONLY / IN_BETA_TESTING / 现有组已分配。一次性 marker 已清理。新包真机视觉 **NOT_RUN**，仅等持有人看四幕连续动画与首页单「…」菜单；不重测 S01/Today/pulse，不要求重启/撤权/等午夜。69.1 认可仅是历史，不转移到新候选。详情：[`reports/S02-B/round-01/DELIVERY.md`](reports/S02-B/round-01/DELIVERY.md)。
 
 S02-A PR #20 exact head `dae485a64a20488b2253ec0f109690e114dbbc29` 已由云端独立审核并合并为 `c0eb65a2b1a40950b05270b400eb2f2e62e181af`。
 
@@ -60,7 +60,7 @@ S02-B 只做最终体验收口：
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02-A | COMPLETE — PASS_WITH_NOTES | production home + Today |
-| S02-B | **IN_PROGRESS** | PR #21 cloud-requested animation/chrome polish; new build/device evidence pending |
+| S02-B | **WAITING_FOR_OWNER_TEST** | PR #21 polish CI/internal78.1 delivered; four tutorial animations + one home-menu visual check only |
 | S03 | LOCKED | public distribution / App Store preparation |
 
 ## 产品边界
