@@ -213,7 +213,7 @@ struct TutorialArtwork: View {
         Canvas { context, bounds in
             let text = Text(value).font(.system(size: size, weight: weight)).foregroundColor(color)
             let resolved = context.resolve(text)
-            let natural = resolved.measure(in: CGSize(width: .infinity, height: .infinity))
+            let natural = resolved.measure(in: CGSize(width: CGFloat.infinity, height: CGFloat.infinity))
             if natural.width > bounds.width {
                 context.draw(resolved, in: CGRect(origin: .zero, size: bounds))
             } else {
