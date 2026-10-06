@@ -1,0 +1,445 @@
+{
+  "status": "DRAFT_WAITING_FOR_OWNER_VISUAL_REVIEW",
+  "locale": "en",
+  "reference_sha": "4995c1d0d70ebdf3712416bf96ee31219fc67720",
+  "renderer_pillow_version": "11.1.0",
+  "fonts": [
+    {
+      "file": "segoeui.ttf",
+      "sha256": "8134dbcd09e7b123c9a7f229d49cffbcb01352cc72ea5e1076b65d0dca9f73cd"
+    },
+    {
+      "file": "segoeuib.ttf",
+      "sha256": "aeb9e4a6ec5cc59f4d72df8189032d7dbb28f45161cf1552174818b5465dac4e"
+    }
+  ],
+  "icon_sha256": "7bb6db0340aaf4bad6a76e7dad7b8ab1adfeacccba9db5a098342b3965123a5b",
+  "frames": [
+    {
+      "file": "en/01-awareness.png",
+      "sha256": "269ccec9fda494aba42495b658f91d35bdf08c55f1d003e509c74e895dd1f0db",
+      "raw": "captures/en/01-awareness.png",
+      "raw_sha256": "b5852cdfd14df82aa8551337ccc5ff2fa20803d737791c7f1bffbc93b52a0971",
+      "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+      "source_description": "Genuine unauthorized home; no selected apps",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        220,
+        840,
+        880,
+        1884
+      ],
+      "screen_rect": [
+        232,
+        852,
+        856,
+        1860
+      ],
+      "screen_corner_radius": 92,
+      "phone_bottom_cropped": false,
+      "headline_lines": [
+        "Feel time passing.",
+        "Nothing else."
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            198,
+            126,
+            371,
+            155
+          ],
+          "size": 38,
+          "origin": [
+            198,
+            114
+          ],
+          "bold": true
+        },
+        {
+          "text": "Feel time passing.",
+          "bounds": [
+            104,
+            270,
+            893,
+            363
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true
+        },
+        {
+          "text": "Nothing else.",
+          "bounds": [
+            104,
+            390,
+            692,
+            483
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "en/02-choose-interval.png",
+      "sha256": "d7cc283659fe2890e9f6c5ab7e8b45fef78842979809fc20f3e945b888a2c60a",
+      "raw": "captures/en/02-choose-interval.png",
+      "raw_sha256": "554dbb3e94fa4b94d87586061c90b6cee7769efa34265cdabed46307c3a3c300",
+      "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+      "source_description": "Shipped Quick Start Choose Apps illustration",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        220,
+        840,
+        880,
+        1884
+      ],
+      "screen_rect": [
+        232,
+        852,
+        856,
+        1860
+      ],
+      "screen_corner_radius": 92,
+      "phone_bottom_cropped": false,
+      "headline_lines": [
+        "Choose the apps.",
+        "Pick the interval."
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            198,
+            126,
+            371,
+            155
+          ],
+          "size": 38,
+          "origin": [
+            198,
+            114
+          ],
+          "bold": true
+        },
+        {
+          "text": "Choose the apps.",
+          "bounds": [
+            104,
+            270,
+            856,
+            362
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true
+        },
+        {
+          "text": "Pick the interval.",
+          "bounds": [
+            104,
+            390,
+            847,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true
+        },
+        {
+          "text": "5 \u00b7 10 \u00b7 15 \u00b7 30 \u00b7 60 min",
+          "bounds": [
+            746,
+            631,
+            1105,
+            657
+          ],
+          "size": 34,
+          "origin": [
+            746,
+            620
+          ],
+          "bold": true
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "en/03-reminder.png",
+      "sha256": "3017dca1d4fd2a94cc2f60b8c4f28fee81a3ff0efd631bc4d5ac3402e4b3d1ff",
+      "raw": "captures/en/03-reminder.png",
+      "raw_sha256": "01fdf1ce68e3fc461d7849992368ba967958041c42f677c895a9531e843ca809",
+      "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+      "source_description": "Shipped Quick Start Reminder illustration, not an OS notification",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        220,
+        840,
+        880,
+        1884
+      ],
+      "screen_rect": [
+        232,
+        852,
+        856,
+        1860
+      ],
+      "screen_corner_radius": 92,
+      "phone_bottom_cropped": false,
+      "headline_lines": [
+        "A reminder.",
+        "Not a restriction."
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            198,
+            126,
+            371,
+            155
+          ],
+          "size": 38,
+          "origin": [
+            198,
+            114
+          ],
+          "bold": true
+        },
+        {
+          "text": "A reminder.",
+          "bounds": [
+            104,
+            270,
+            625,
+            341
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true
+        },
+        {
+          "text": "Not a restriction.",
+          "bounds": [
+            104,
+            390,
+            853,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "en/04-today.png",
+      "sha256": "2a13e11ed471e7d02115d36a862aff4d5f6026eceeba651d65b800d0959e1b37",
+      "raw": "captures/en/04-today.png",
+      "raw_sha256": "1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26",
+      "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+      "source_description": "Shipped Quick Start Today illustration, not live usage",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        220,
+        840,
+        880,
+        1884
+      ],
+      "screen_rect": [
+        232,
+        852,
+        856,
+        1860
+      ],
+      "screen_corner_radius": 92,
+      "phone_bottom_cropped": false,
+      "headline_lines": [
+        "See where the",
+        "time went."
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "Total \u00b7 by hour \u00b7 by app",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            198,
+            126,
+            371,
+            155
+          ],
+          "size": 38,
+          "origin": [
+            198,
+            114
+          ],
+          "bold": true
+        },
+        {
+          "text": "See where the",
+          "bounds": [
+            104,
+            270,
+            727,
+            341
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true
+        },
+        {
+          "text": "time went.",
+          "bounds": [
+            104,
+            390,
+            576,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true
+        },
+        {
+          "text": "Total \u00b7 by hour \u00b7 by app",
+          "bounds": [
+            108,
+            508,
+            489,
+            546
+          ],
+          "size": 38,
+          "origin": [
+            108,
+            496
+          ],
+          "bold": false
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    }
+  ]
+}

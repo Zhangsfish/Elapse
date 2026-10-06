@@ -1,0 +1,30 @@
+{
+  "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+  "base_main": "e63cbe8c6327ff5e1e0bed1a209800c7ef661a4a",
+  "frozen_runtime_sha": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
+  "production_trees": {
+    "App": "70662619738828022fc90ed264a4fc78513662e4",
+    "Shared": "ff97ca9f330f5488288dbd6595d3cc767730fa4c",
+    "MonitorExtension": "7f8bc9a5f4d75ca99fd7536783ce5a64eea34a3d",
+    "ReportExtension": "c15377a81f07dc40d91ab3115f80548ec24f75f5",
+    "Localization": "df04f2d8288dee9fc2964587416fc0989eb20afc",
+    "AppResources": "343b3097111428bb3be6278e8dd663a81548fe91",
+    "project.yml": "a34a7e10acc5a708562e208008de87bf6425d888"
+  },
+  "production_diff": [],
+  "configuration": "Release",
+  "locale": "en / en_US",
+  "device": "Fresh iPhone 17 Pro Max simulator",
+  "status_bar": "9:41 / Wi-Fi / full battery",
+  "version_build": "0.1.0 (91.1)",
+  "not_uploaded_build": true,
+  "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+  "private_state": false,
+  "screen_time_authorization_injected": false,
+  "sources": {
+    "01-awareness": "Genuine unauthorized home; no selected apps",
+    "02-choose-interval": "Shipped Quick Start Choose Apps illustration",
+    "03-reminder": "Shipped Quick Start Reminder illustration, not an OS notification",
+    "04-today": "Shipped Quick Start Today illustration, not live usage"
+  }
+}

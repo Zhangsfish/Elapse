@@ -1,0 +1,34 @@
+[
+  {
+    "file": "01-awareness.png",
+    "pixels": [
+      1320,
+      2868
+    ],
+    "sha256": "b5852cdfd14df82aa8551337ccc5ff2fa20803d737791c7f1bffbc93b52a0971"
+  },
+  {
+    "file": "02-choose-interval.png",
+    "pixels": [
+      1320,
+      2868
+    ],
+    "sha256": "554dbb3e94fa4b94d87586061c90b6cee7769efa34265cdabed46307c3a3c300"
+  },
+  {
+    "file": "03-reminder.png",
+    "pixels": [
+      1320,
+      2868
+    ],
+    "sha256": "01fdf1ce68e3fc461d7849992368ba967958041c42f677c895a9531e843ca809"
+  },
+  {
+    "file": "04-today.png",
+    "pixels": [
+      1320,
+      2868
+    ],
+    "sha256": "1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26"
+  }
+]
