@@ -20,12 +20,17 @@ struct AboutSupportView: View {
                     ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
                     : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: 12))) {
                     Text("about.title").font(.headline)
+                        .fixedSize(horizontal: false, vertical: true)
                         .accessibilityAddTraits(.isHeader)
                     if !dynamicTypeSize.isAccessibilitySize { Spacer() }
                     Button("about.done") { dismiss() }
                         .font(.body)
+                        .fixedSize(horizontal: true, vertical: true)
                         .accessibilityIdentifier("about-close")
                 }
+                // Spacer inside an erased layout must not consume vertical
+                // space reserved for the Form. Keep this header intrinsic.
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 12)
 
@@ -67,6 +72,7 @@ struct AboutSupportView: View {
                 }
             }
             .background(Color(uiColor: .systemGroupedBackground))
+            .toolbar(.hidden, for: .navigationBar)
         }
         .sheet(isPresented: $tutorialPresented) {
             QuickStartTutorialView()

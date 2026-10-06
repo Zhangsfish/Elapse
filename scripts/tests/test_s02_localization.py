@@ -58,6 +58,9 @@ class S02LocalizationTests(unittest.TestCase):
         self.assertIn('return "\\(version) (\\(build))"', about)
         self.assertNotIn("0.1.0", about)
         self.assertIn('Section("about.versionTitle")', about)
+        self.assertGreaterEqual(about.count('.fixedSize(horizontal: false, vertical: true)'), 2,
+                                'Title and header must keep their intrinsic height above the Form')
+        self.assertIn('.toolbar(.hidden, for: .navigationBar)', about)
         privacy = about.split('Section("about.privacyTitle")', 1)[1].split(
             'Section("about.versionTitle")', 1)[0]
         self.assertEqual(privacy.count('Text("about.privacy'), 2)

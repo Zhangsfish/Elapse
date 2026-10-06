@@ -93,6 +93,8 @@ final class S02PolishUITests: XCTestCase {
         app.buttons["about-open"].tap()
         XCTAssertTrue(app.staticTexts[chinese ? "关于与支持" : "About & Support"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["about-close"].isHittable)
+        XCTAssertLessThan(app.buttons["about-close"].frame.maxY, app.frame.height * 0.35,
+                          "The support header stays at the top, not above a squeezed Form")
         XCTAssertTrue(app.buttons["about-tutorial-replay"].exists)
         attach(app, name: "\(language)-about-top")
         try app.performAccessibilityAudit(for: [.dynamicType, .textClipped])
