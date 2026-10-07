@@ -4,7 +4,7 @@ Updated: 2026-10-07
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A READY_FOR_AUDIT；S03-B / S03-C LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY；S03-C LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -30,64 +30,48 @@ S02 残余可靠性边界继续记录但不再扩功能：
 
 ## 唯一当前任务
 
-**[S03-A：App Store preflight, metadata and assets](prompts/S03_A_APP_STORE_PREFLIGHT.md)**
+**[S03-B：App Store submission preparation and exact release candidate](prompts/S03_B_APP_STORE_SUBMISSION.md)**
 
-PR [#22](https://github.com/Zhangsfish/Elapse/pull/22)，分支 `codex/s03-a-app-store-preflight`。
-English Pass 1 已完成真实 Release 采集、四张英文草稿、contact sheet、manifest 和像素校验。
-按持有人要求完成英文细节 polish 2：手机统一放大约 4%，优化外部插画与缩略图可读性；真实 capture、headline、背景与顺序不变。
-持有人已正式批准英文 reference `7aff9a46ba14716f22d0532a29f80408c5b8c18e`，英文 PNG/contact/renderer 已冻结。
-Pass 2 中文真实 Release 采集 CI 已通过，四张中文 PNG/contact 已生成；持有人要求第 2 张间隔文字垂直居中、胶囊略加宽，已修正并保留左右留白。
-42 项 Python 测试、独立像素/字体/ICC/几何/确定性校验及英文冻结哈希检查通过。
-测试实现 `e68dffa7795b6afe8d5fc415e530a9636364657a` 的 preflight / 普通 CI 均 PASS：60 Swift、42 Python 和实际双语 Release UI smoke 均通过。
-最终双语资产交付，**READY_FOR_AUDIT**，等待 cloud 独立审核；后续仅报告/STATUS 的 head CI 在 PR 中单独列出，不混用实现 SHA。
-持有人已确认最终中文留白“可以”；中英两套截图视觉均已接受并冻结。没有自行批准代码或合并。
-交付/已执行检查/剩余 gate：[`reports/S03-A/round-01/DELIVERY.md`](reports/S03-A/round-01/DELIVERY.md)。
-91.1 runtime 保持冻结；本轮没有新 TestFlight、App Review 或公开发布。
-Support/Privacy 静态源码及部署 workflow 已准备，但公开 URL 尚 NOT_LIVE。
-91.1 签名 gate 复核与 portal Assigned 确认分开；91.1 INTERNAL_ONLY 不可直接提交 App Review。
+S03-A 已由 cloud 独立审计并合并：
+- PR #22 merge: `62526aeff6176895d84d6b192086d4348df07858`
+- audit: [`audits/S03/S03_A_AUDIT_2026-10-07.md`](audits/S03/S03_A_AUDIT_2026-10-07.md)
+- verdict: **PASS_WITH_NOTES**
 
-总体发布框架：
-[`docs/S03_APP_STORE_RELEASE_PLAN.md`](docs/S03_APP_STORE_RELEASE_PLAN.md)
+已完成并冻结：
+- English + zh-Hans 商店截图设计；
+- owner 已在 ASC 实际上传 4+4 并确认显示正常；
+- App 名称 Everwhile；
+- primary language English (US)；
+- primary category Utilities；
+- age rating 4+；
+- bilingual metadata / review notes / privacy/support page source。
 
-S03-A 只做上架准备，不提交审核：
+S03-B 当前只做正式发布准备与 exact review-eligible RC：
 
-1. 核 Family Controls Distribution：
-   - main App；
-   - DeviceActivity Monitor extension；
-   - DeviceActivity Report extension。
-   91.1 签名已证明 profile allowance，但仍要记录 Developer portal `Assigned` 状态；如果自动化无法查，只给持有人一个最小 portal 动作。
+1. 让 Support / Privacy URL 真正上线并匿名 HTTPS 验证；
+2. 记录 Family Controls Distribution portal Assigned 状态（App / Monitor / Report）；
+3. 收口 ASC privacy / metadata / review fields；
+4. 从冻结 91.1 runtime 制作一个非 INTERNAL_ONLY、可供 App Review 选择的 distribution RC；
+5. 验证 exact IPA / 签名 / entitlement / processing / review eligibility；
+6. 在真正 Submit for Review 前停下，让 owner 确认 exact build + storefronts。
 
-2. 准备公开：
-   - Privacy Policy page；
-   - Support page；
-   - 无登录、无 analytics/remote JS。
+默认仍是：
+- United States first；
+- Free；
+- iPhone-only；
+- English + zh-Hans；
+- manual release；
+- China mainland 继续 BLOCKED_UNTIL_ICP_STATUS_CONFIRMED。
 
-3. 独立审 App Privacy：
-   - 源码；
-   - PrivacyInfo.xcprivacy；
-   - 网络/SDK；
-   - support email/browser；
-   - 形成 App Store Connect 回答草稿。
-
-4. 准备 English + zh-Hans：
-   - App Store name/subtitle/description/keywords；
-   - review notes；
-   - 4 张左右截图；
-   - Support/Privacy URL；
-   - category 建议。
-
-5. Region：
-   - 默认建议 **United States first**；
-   - China mainland 在 ICP 状态确认前标记 blocked，不自动选择；
-   - storefront 最终列表必须持有人批准。
+**S03-B 不授权自动公开发布。S03-C 仍 LOCKED。**
 
 ## 阶段状态
 
 | 阶段 | 状态 | 目的 |
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
-| S03-A | **READY_FOR_AUDIT** | approved English frozen + zh-Hans final assets/preflight evidence; independent cloud audit pending |
-| S03-B | LOCKED | App Store Connect data entry + exact build + submit to App Review |
+| S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
+| S03-B | **READY** | live URLs + portal gates + exact review-eligible RC + final submission package |
 | S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
 ## S03 硬边界
