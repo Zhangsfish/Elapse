@@ -4,7 +4,7 @@ Updated: 2026-10-07
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY；S03-C LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B IN_PROGRESS — WAITING_FOR_OWNER_PORTAL；S03-C LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -31,6 +31,12 @@ S02 残余可靠性边界继续记录但不再扩功能：
 ## 唯一当前任务
 
 **[S03-B：App Store submission preparation and exact release candidate](prompts/S03_B_APP_STORE_SUBMISSION.md)**
+
+Review-eligible RC 已完成：**Everwhile 0.1.0 (92.1)**，ASC `VALID / APP_STORE_ELIGIBLE`。
+Exact IPA SHA256：`fb3baad3ce54842122b6a6416b4334115b7754953a66dde5614b2f3801b9dade`。
+RC workflow：`37580987653`。App / Monitor / Report 的 Apple Distribution、Family Controls distribution profile allowance、必要 App Group、`get-task-allow=false` 均 PASS。
+
+S03-B 当前剩余主要是 portal/account 收口，不再是 build 工程问题。
 
 S03-A 已由 cloud 独立审计并合并：
 - PR #22 merge: `62526aeff6176895d84d6b192086d4348df07858`
@@ -71,7 +77,7 @@ S03-B 当前只做正式发布准备与 exact review-eligible RC：
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
-| S03-B | **READY** | live URLs + portal gates + exact review-eligible RC + final submission package |
+| S03-B | **IN_PROGRESS — WAITING_FOR_OWNER_PORTAL** | RC 92.1 APP_STORE_ELIGIBLE；等待 live URLs / final ASC fields / storefront approval |
 | S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
 ## S03 硬边界
