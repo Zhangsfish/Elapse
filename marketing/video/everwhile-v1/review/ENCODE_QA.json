@@ -1,0 +1,337 @@
+{
+  "status": "PASS_TECHNICAL",
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640020",
+        "width": 720,
+        "height": 1280,
+        "coded_width": 720,
+        "coded_height": 1280,
+        "has_b_frames": 0,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "9:16",
+        "pix_fmt": "yuv420p",
+        "level": 32,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 3,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 276480,
+        "duration": "18.000000",
+        "bit_rate": "822013",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1080",
+        "nb_read_frames": "1080",
+        "extradata_size": 50,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc63.1.101 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 1024,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 864000,
+        "duration": "18.000000",
+        "bit_rate": "262856",
+        "nb_frames": "845",
+        "nb_read_frames": "844",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "E:\\Elapse\\marketing\\video\\everwhile-v1\\review\\EVERWHILE_P01_EN_720.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "18.000000",
+      "size": "2463239",
+      "bit_rate": "1094772",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf63.1.101"
+      }
+    }
+  },
+  "fullDecodeFrames": 1080,
+  "nonBlackFrames": 1080,
+  "nonBlankFrames": 1080,
+  "minMeanRGB": 123.98307291666667,
+  "minSpatialStd": 12.927797635600657,
+  "encodedNativeComparison": [
+    {
+      "frame": 0,
+      "meanRGBError": 2.4040107783564815
+    },
+    {
+      "frame": 30,
+      "meanRGBError": 2.339154369212963
+    },
+    {
+      "frame": 54,
+      "meanRGBError": 2.6866590711805554
+    },
+    {
+      "frame": 72,
+      "meanRGBError": 2.5400831886574076
+    },
+    {
+      "frame": 102,
+      "meanRGBError": 2.477104311342593
+    },
+    {
+      "frame": 120,
+      "meanRGBError": 2.492603081597222
+    },
+    {
+      "frame": 150,
+      "meanRGBError": 1.4219986979166668
+    },
+    {
+      "frame": 168,
+      "meanRGBError": 1.4428153935185186
+    },
+    {
+      "frame": 180,
+      "meanRGBError": 1.453362991898148
+    },
+    {
+      "frame": 198,
+      "meanRGBError": 2.110275245949074
+    },
+    {
+      "frame": 220,
+      "meanRGBError": 2.085994646990741
+    },
+    {
+      "frame": 240,
+      "meanRGBError": 2.075398582175926
+    },
+    {
+      "frame": 254,
+      "meanRGBError": 2.065259693287037
+    },
+    {
+      "frame": 255,
+      "meanRGBError": 2.066509331597222
+    },
+    {
+      "frame": 262,
+      "meanRGBError": 2.2514742476851852
+    },
+    {
+      "frame": 269,
+      "meanRGBError": 2.1526982060185187
+    },
+    {
+      "frame": 270,
+      "meanRGBError": 1.4555436197916667
+    },
+    {
+      "frame": 271,
+      "meanRGBError": 1.4576381655092592
+    },
+    {
+      "frame": 300,
+      "meanRGBError": 1.4837391493055556
+    },
+    {
+      "frame": 360,
+      "meanRGBError": 1.5327625868055557
+    },
+    {
+      "frame": 390,
+      "meanRGBError": 2.135706741898148
+    },
+    {
+      "frame": 449,
+      "meanRGBError": 2.21359447337963
+    },
+    {
+      "frame": 450,
+      "meanRGBError": 2.2340049913194444
+    },
+    {
+      "frame": 462,
+      "meanRGBError": 2.2265241608796296
+    },
+    {
+      "frame": 480,
+      "meanRGBError": 2.195188078703704
+    },
+    {
+      "frame": 510,
+      "meanRGBError": 2.1581007667824075
+    },
+    {
+      "frame": 569,
+      "meanRGBError": 2.1240889033564816
+    },
+    {
+      "frame": 570,
+      "meanRGBError": 2.1560615596064814
+    },
+    {
+      "frame": 582,
+      "meanRGBError": 2.1647450086805557
+    },
+    {
+      "frame": 600,
+      "meanRGBError": 2.148734447337963
+    },
+    {
+      "frame": 689,
+      "meanRGBError": 1.4298491753472222
+    },
+    {
+      "frame": 690,
+      "meanRGBError": 1.5521050347222223
+    },
+    {
+      "frame": 702,
+      "meanRGBError": 1.528982204861111
+    },
+    {
+      "frame": 720,
+      "meanRGBError": 1.5366684751157407
+    },
+    {
+      "frame": 840,
+      "meanRGBError": 1.3766706452546296
+    },
+    {
+      "frame": 929,
+      "meanRGBError": 1.3742299623842593
+    },
+    {
+      "frame": 930,
+      "meanRGBError": 1.511894169560185
+    },
+    {
+      "frame": 931,
+      "meanRGBError": 1.5096372251157408
+    },
+    {
+      "frame": 960,
+      "meanRGBError": 1.5097598379629629
+    }
+  ],
+  "sfxOnsets": [
+    {
+      "frame": 450,
+      "sample": 360001,
+      "withinFrameOnset": 1
+    },
+    {
+      "frame": 570,
+      "sample": 456001,
+      "withinFrameOnset": 1
+    },
+    {
+      "frame": 690,
+      "sample": 552001,
+      "withinFrameOnset": 1
+    }
+  ],
+  "filmSHA256": "705a80eabad0e9ff0eaffef1fbbdc1f404cdeb5377cc85fcadd6c6fdf79f5400",
+  "fullSubjectiveViewing": "NOT_RUN",
+  "completeListening": "NOT_RUN",
+  "directorVerdict": "PENDING",
+  "encodedAudioAlignment": {
+    "bestLagSamples": 0,
+    "lagGridSamples": 16,
+    "correlation": 0.9998153724044938,
+    "toleranceSamples": 800,
+    "method": "AAC decoded mix versus PCM premix, 4.5\u201312.5 second window"
+  }
+}

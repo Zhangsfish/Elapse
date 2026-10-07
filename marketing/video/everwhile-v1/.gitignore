@@ -1,0 +1,9 @@
+node_modules/
+assets/fonts/*
+!assets/fonts/.gitkeep
+tmp/
+build/
+*.log
+__pycache__/
+review/frames/
+review/mix-unmastered.wav

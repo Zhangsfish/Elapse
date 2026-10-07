@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import path from 'node:path';import {root} from './tools.mjs';
+const spec=JSON.parse(await readFile(path.join(root,'src/scenes.json'),'utf8'));
+test('exact 18-second frame contract',()=>{assert.equal(spec.fps,60);assert.equal(spec.frames,1080);assert.equal(spec.seconds,18);assert.deepEqual(spec.scenes.map(s=>[s.start,s.end]),[[0,270],[270,390],[390,750],[750,930],[930,1080]]);});
+test('editorial cue frames and full end card',()=>{assert.deepEqual(spec.pulses.map(p=>p.frame),[450,570,690]);assert.equal(spec.endCardFullOnset,930);assert.deepEqual(spec.airPocket,[255,270]);});
+test('independent report provenance and neutral pulse',()=>{assert.equal(spec.scenes[3].sampleTotal,'30m');assert.equal(spec.scenes[2].demo,'Usage demo · time compressed');assert.equal(spec.scenes[4].variant,'brand-only');});
+test('seek-safe application source',async()=>{const s=await readFile(path.join(root,'src/timeline.ts'),'utf8');assert.doesNotMatch(s,/Date\.now|Math\.random|setInterval|setTimeout|autoplay/);assert.match(s,/paused:true/);assert.match(s,/frame\/60/);assert.match(s,/__timelines=\{root:tl\}/);});
+test('immutable shipped Today capture',async()=>{const b=await readFile(path.join(root,'assets/reference/today-quick-start.png'));assert.equal(createHash('sha256').update(b).digest('hex'),'1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26');});
+test('real 600 display font, no faux bold',async()=>{const s=await readFile(path.join(root,'src/film.css'),'utf8');assert.match(s,/font-synthesis:none/);assert.match(s,/'opsz' 32/);assert.match(s,/font-weight:600/);});

@@ -1,0 +1,110 @@
+{
+  "task": "PROMO-P01",
+  "baseSHA": "76838c8bd8659c379314decaa30c07ec0cb1e0ef",
+  "licenseChecked": "2026-10-07",
+  "assets": [
+    {
+      "file": "assets/footage/door-conversation.mp4",
+      "source": "https://www.pexels.com/video/couple-having-a-intense-conversation-in-front-of-the-door-5617887/",
+      "download": "https://videos.pexels.com/video-files/5617887/5617887-hd_1920_1080_24fps.mp4",
+      "creator": "RDNE Stock project",
+      "license": "https://www.pexels.com/license/",
+      "role": "Fictional short-drama viewing content only, no endorsement or judgement about identifiable actors",
+      "transform": "source 1–7s, scale1280w, CFR60 repeated native frames, all-intra H264, no source audio",
+      "original": "tmp/drama-source.mp4",
+      "sha256": "7a9d94e909c1c829321ce6d8ea5de2144f3795f389630718c326382c5c7035ff",
+      "bytes": 10487077,
+      "originalSHA256": "f2985790a1a31253e90667394c6c1f80348f41cc04c7541bc768861bf08bdd57"
+    },
+    {
+      "file": "assets/footage/coffee-pour.mp4",
+      "source": "https://www.pexels.com/video/pouring-black-coffee-into-a-cup-7118100/",
+      "download": "https://videos.pexels.com/video-files/7118100/7118100-uhd_2160_3840_25fps.mp4",
+      "creator": "Michael Burrows",
+      "license": "https://www.pexels.com/license/",
+      "role": "Lifestyle actual motion, no brand/user/private data",
+      "transform": "source 1–7s, 720x1280, CFR60 repeated native frames, all-intra H264, no audio",
+      "original": "tmp/coffee-source.mp4",
+      "sha256": "4ebe92ae9bc67abff96438f8999da67e2cb0e14b36827bc4ede65320fc6b1729",
+      "bytes": 7375828,
+      "originalSHA256": "f2ca77f0df0a2efc534e262380d9c4b8e8fe08a69d50329d04244da44f969dcd"
+    },
+    {
+      "file": "assets/footage/social-photo.jpg",
+      "source": "assets/footage/coffee-pour.mp4",
+      "license": "https://www.pexels.com/license/",
+      "creator": "Michael Burrows",
+      "role": "Generic fictional social photo post, original anonymous caption and avatar",
+      "transform": "first frame derivative, no private username",
+      "sha256": "ad474d6a9314c4df3ef95999cd8190b5d3d6da908b4fb0aa42df8032ac588ddb",
+      "bytes": 28127
+    },
+    {
+      "file": "assets/reference/today-quick-start.png",
+      "source": "store-assets/captures/en/04-today.png",
+      "license": "project-owned shipped UI",
+      "role": "Real Release Quick Start sample, 30m is unmodified, not live data",
+      "runtimeCaptureSHA": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+      "run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+      "transform": "none; entire PNG proportionally scaled into front-view frame",
+      "sha256": "1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26",
+      "bytes": 607799
+    },
+    {
+      "file": "assets/reference/everwhile-icon.png",
+      "source": "App/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "license": "project-owned branding",
+      "transform": "none",
+      "sha256": "7bb6db0340aaf4bad6a76e7dad7b8ab1adfeacccba9db5a098342b3965123a5b",
+      "bytes": 40691
+    },
+    {
+      "file": "assets/fonts/InterVariable.ttf",
+      "source": "https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip#InterVariable.ttf",
+      "license": "SIL Open Font License 1.1",
+      "version": "4.1",
+      "face": "Inter Variable, real weight600, optical-size32 display",
+      "redistributed": false,
+      "sha256": "4989b125924991b90d05b2d16e0e388c48f7d5bb8b30539bbf9c755278d0ccaf",
+      "bytes": 879708
+    },
+    {
+      "file": "review/music.wav",
+      "source": "scripts/sound.py",
+      "license": "original project composition",
+      "bpm": 120,
+      "sampleRate": 48000,
+      "sha256": "b653a8207501e8b9c577273fa42c5dbbf34ddc8f6e568a128d70969fadffccc9",
+      "bytes": 3456044
+    },
+    {
+      "file": "review/sfx.wav",
+      "source": "scripts/sound.py",
+      "license": "original project synthesis",
+      "sampleRate": 48000,
+      "onsets": [
+        7.5,
+        9.5,
+        11.5
+      ],
+      "sha256": "2eaa832645f1a7ef8d4c859e54ba50280cd778fdb530f754407f21877ec054fc",
+      "bytes": 3456044
+    }
+  ],
+  "tools": {
+    "hyperframes": "0.8.132",
+    "gsap": "3.15.0",
+    "typescript": "7.0.2",
+    "esbuild": "0.28.2",
+    "puppeteer-core": "25.12.0"
+  },
+  "privateData": [],
+  "renderNetwork": "NONE",
+  "fontBinariesCommitted": false,
+  "sourceHanSC": {
+    "status": "DEFERRED_ZH_AFTER_DIRECTOR_REVIEW",
+    "sha256": "df2b90f5bcc6d01dfc964cec5f6d535d6b6aebd26ed7fd79a9c1b3f2112fcb6b",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.005R/OTF/SimplifiedChinese/SourceHanSansSC-Bold.otf",
+    "face": "Bold700 2.005R"
+  }
+}

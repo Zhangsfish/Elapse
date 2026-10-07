@@ -1,0 +1,18 @@
+import {mkdir,cp,readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {root,toolRoot} from './tools.mjs';
+const {build}=await import(pathToFileURL(path.join(toolRoot,'node_modules/esbuild/lib/main.js')));
+const out=path.join(root,'build/en');await mkdir(out,{recursive:true});
+await build({entryPoints:[path.join(root,'src/page.ts')],outfile:path.join(root,'build/page.mjs'),bundle:true,platform:'node',format:'esm'});
+await build({entryPoints:[path.join(root,'src/timeline.ts')],outfile:path.join(out,'timeline.js'),bundle:true,platform:'browser',format:'iife'});
+const {page}=await import(pathToFileURL(path.join(root,'build/page.mjs')));
+await cp(path.join(root,'assets'),path.join(out,'assets'),{recursive:true});
+await cp(path.join(root,'review/music.wav'),path.join(out,'audio/music.wav'),{recursive:false}).catch(async()=>{await mkdir(path.join(out,'audio'),{recursive:true});await cp(path.join(root,'review/music.wav'),path.join(out,'audio/music.wav'));});
+await cp(path.join(root,'review/sfx.wav'),path.join(out,'audio/sfx.wav'));
+await cp(path.join(root,'src/film.css'),path.join(out,'film.css'));
+const gsap=await readFile(path.join(toolRoot,'node_modules/gsap/dist/gsap.min.js'),'utf8');
+const timeline=await readFile(path.join(out,'timeline.js'),'utf8');
+await writeFile(path.join(out,'gsap.min.js'),gsap);
+await writeFile(path.join(out,'index.html'),page().replace('<script src="timeline.js"></script>',`<script>${timeline}</script>`).replaceAll(/(<section[^>]*?) class="clip scene" data-start="[^"]+" data-duration="[^"]+" data-track-index="0"/g,'$1 class="scene"'));
+console.log('Built 18s / 1080f EN, 1080 design canvas → 720 review. No runtime network.');
