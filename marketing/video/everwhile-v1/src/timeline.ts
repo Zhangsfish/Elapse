@@ -2,6 +2,7 @@ declare const gsap:any;
 declare global{interface Window{__timelines:Record<string,any>;__directorReady:Promise<unknown>;__seekFilm:(frame:number)=>Promise<void>;__filmFrame:number;}}
 gsap.defaults({force3D:false});
 const tl=gsap.timeline({paused:true});tl.to('#root',{duration:18},0);
+const readingSpeed=120/.9,feedSpeed=120/.8; // same px/s before and after setup
 for(const[id,start,end]of[['s01',0,4.5],['s02',4.5,6.5],['s03',6.5,12.5],['s04',12.5,15.5],['s05',15.5,18]] as const){
 tl.set('#'+id,{visibility:'visible'},start);tl.set('#'+id,{visibility:'hidden'},end);
 }
@@ -28,8 +29,8 @@ tl.fromTo('#interval',{scale:.94},{scale:1,duration:.38,ease:'back.out(1.1)',imm
 for(const[id,start,end]of[['pulse-novel',6.5,8.5],['pulse-coffee',8.5,10.5],['pulse-social',10.5,12.5]] as const){
 tl.set('#'+id,{opacity:1},start);tl.set('#'+id,{opacity:0},end);
 }
-tl.to('#novel-p .book-inner',{y:-260,duration:2,ease:'none'},6.5);
-tl.to('#social-p .social-inner',{y:-185,duration:2,ease:'none'},10.5);
+tl.to('#novel-p .book-inner',{y:-readingSpeed*2,duration:2,ease:'none'},6.5);
+tl.to('#social-p .social-inner',{y:-feedSpeed*2,duration:2,ease:'none'},10.5);
 // Identical reveal + .8s clear hold + exit, no arithmetic/live-overlay timer.
 for(const[m,start]of[[5,7.5],[10,9.5],[15,11.5]]){
 tl.set('#pulse-'+m,{opacity:.12},start);
