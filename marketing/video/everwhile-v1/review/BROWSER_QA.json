@@ -1,0 +1,5994 @@
+{
+  "status": "TECHNICAL_CHECK_ONLY",
+  "browserErrors": [],
+  "sequentialShuffledSeek": [
+    {
+      "frame": 930,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 270,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 54,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 702,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.000808738425925926,
+      "equal": true
+    },
+    {
+      "frame": 30,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 749,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.0017082609953703704,
+      "equal": true
+    },
+    {
+      "frame": 198,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 570,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 1079,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 450,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.0023589409722222223,
+      "equal": true
+    },
+    {
+      "frame": 102,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 750,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 0,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 690,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.00080078125,
+      "equal": true
+    },
+    {
+      "frame": 262,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.0020612702546296295,
+      "equal": true
+    },
+    {
+      "frame": 390,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 168,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    }
+  ],
+  "fontProof": [
+    {
+      "selector": "#brand-name",
+      "fonts": [
+        {
+          "familyName": "Inter Variable",
+          "postScriptName": "InterVariable-Display-SemiBold",
+          "isCustomFont": true,
+          "glyphCount": 9
+        }
+      ]
+    },
+    {
+      "selector": "#end-title",
+      "fonts": [
+        {
+          "familyName": "Inter Variable",
+          "postScriptName": "InterVariable-Display-SemiBold",
+          "isCustomFont": true,
+          "glyphCount": 29
+        }
+      ]
+    }
+  ],
+  "boxes": {
+    "0": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "30": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "54": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "72": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "102": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "120": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "150": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "168": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "180": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "198": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "220": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "240": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "254": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "255": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "262": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "269": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "270": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "271": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "285": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "300": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "330": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "360": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "389": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "390": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "420": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "449": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "450": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 162,
+        "width": 261.7395935058594,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "451": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 159.64007568359375,
+        "width": 261.7395935058594,
+        "height": 77.33331298828125,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "462": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "480": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "509": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "510": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "540": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "569": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "570": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 162,
+        "width": 286.32293701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "571": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 159.64007568359375,
+        "width": 286.32293701171875,
+        "height": 77.33331298828125,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "582": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "600": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "629": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "630": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "660": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "689": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "690": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 200,
+        "y": 162,
+        "width": 283.41668701171875,
+        "height": 77.33334350585938,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "691": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 200,
+        "y": 159.64007568359375,
+        "width": 283.41668701171875,
+        "height": 77.33331298828125,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "702": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "720": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "749": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "750": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "751": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "780": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "840": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "929": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "930": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "931": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "960": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "1020": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ],
+    "1079": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 56,
+        "y": 121.33333587646484,
+        "width": 289.66668701171875,
+        "height": 135.66665649414062,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 66.66667175292969,
+        "y": 136,
+        "width": 586.6666870117188,
+        "height": 113.33334350585938,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 261.7395935058594,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 286.32293701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 200,
+        "y": 152.6666717529297,
+        "width": 283.41668701171875,
+        "height": 77.33332824707031,
+        "fontWeight": "600",
+        "fontSize": "96px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 1069.3333740234375,
+        "width": 238.73959350585938,
+        "height": 20.7916259765625,
+        "fontWeight": "400",
+        "fontSize": "26px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 73.33333587646484,
+        "y": 933.3333740234375,
+        "width": 287.1354064941406,
+        "height": 95.5625,
+        "fontWeight": "600",
+        "fontSize": "64px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 72,
+        "y": 335.3333435058594,
+        "width": 100,
+        "height": 100,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 197.33334350585938,
+        "y": 343.3333435058594,
+        "width": 283.0520935058594,
+        "height": 84,
+        "fontWeight": "600",
+        "fontSize": "104px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 72,
+        "y": 576,
+        "width": 456.26043701171875,
+        "height": 142.875,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      }
+    ]
+  },
+  "mandatoryOnset": [
+    {
+      "frame": 450,
+      "visible": true,
+      "previousVisible": false
+    },
+    {
+      "frame": 570,
+      "visible": true,
+      "previousVisible": false
+    },
+    {
+      "frame": 690,
+      "visible": true,
+      "previousVisible": false
+    }
+  ],
+  "endOnset": {
+    "frame": 930,
+    "full": true,
+    "previousHidden": true
+  },
+  "criticalTextInCanvas": true,
+  "captureZeroRepaint": {
+    "method": "entire immutable PNG rendered only as img with proportional scale; no internal masking/overlays",
+    "sha256": "1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26"
+  },
+  "subjectiveFullViewing": "NOT_RUN",
+  "completeListening": "NOT_RUN"
+}

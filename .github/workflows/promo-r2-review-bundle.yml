@@ -1,0 +1,32 @@
+name: Everwhile R2 actual film director review bundle
+on:
+  pull_request:
+    paths:
+      - marketing/video/everwhile-v1/**
+      - .github/workflows/promo-r2-review-bundle.yml
+permissions:
+  contents: read
+jobs:
+  review-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Verify delivered movie and frozen references
+        run: |
+          python3 marketing/video/everwhile-v1/scripts/check-assets.py
+          test -s marketing/video/everwhile-v1/review/director-r2/EVERWHILE_R2_EN_1080.mp4
+          test -s marketing/video/everwhile-v1/review/director-r2/EVERWHILE_R2_EN_720.mp4
+          git rev-parse HEAD > marketing/video/everwhile-v1/review/director-r2/REVIEW_HEAD.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: everwhile-r2-director-review-${{ github.event.pull_request.head.sha }}
+          retention-days: 30
+          path: |
+            marketing/video/everwhile-v1/review/director-r2/*
+            marketing/video/everwhile-v1/ASSET_MANIFEST_R2.json
+            marketing/video/everwhile-v1/DIRECTOR_R2.md
+            marketing/video/everwhile-v1/src/*
+          if-no-files-found: error

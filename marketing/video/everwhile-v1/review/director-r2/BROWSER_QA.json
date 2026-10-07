@@ -1,0 +1,6606 @@
+{
+  "status": "TECHNICAL_CHECK_ONLY",
+  "browserErrors": [],
+  "sequentialShuffledSeek": [
+    {
+      "frame": 930,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 270,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 54,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 702,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0.03373585390946502,
+      "equal": true
+    },
+    {
+      "frame": 30,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 749,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 4.822530864197531e-7,
+      "equal": true
+    },
+    {
+      "frame": 198,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 570,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 1079,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 450,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 102,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 750,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 0,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 690,
+      "byteEqual": false,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 4.822530864197531e-7,
+      "equal": true
+    },
+    {
+      "frame": 262,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 390,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    },
+    {
+      "frame": 168,
+      "byteEqual": true,
+      "domEqual": true,
+      "pixelMeanAbsoluteError": 0,
+      "equal": true
+    }
+  ],
+  "fontProof": [
+    {
+      "selector": "#brand-name",
+      "fonts": [
+        {
+          "familyName": "Inter Variable",
+          "postScriptName": "InterVariable-Display-SemiBold",
+          "isCustomFont": true,
+          "glyphCount": 9
+        }
+      ]
+    },
+    {
+      "selector": "#end-title",
+      "fonts": [
+        {
+          "familyName": "Inter Variable",
+          "postScriptName": "InterVariable-Display-SemiBold",
+          "isCustomFont": true,
+          "glyphCount": 29
+        }
+      ]
+    }
+  ],
+  "boxes": {
+    "0": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "30": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "54": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "72": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "102": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "120": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "150": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "168": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "180": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "198": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "219": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "220": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "234": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "240": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "246": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "254": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "255": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "262": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "269": [
+      {
+        "id": "question",
+        "visible": true,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "270": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "271": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "285": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "300": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "330": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "360": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "389": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "390": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "420": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "449": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "450": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "451": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 80,
+        "y": 179.41180419921875,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "462": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "480": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "509": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": true,
+        "x": 80,
+        "y": 166.0706024169922,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "510": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "540": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "569": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "570": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "571": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 80,
+        "y": 179.41180419921875,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "582": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "600": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "629": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": true,
+        "x": 80,
+        "y": 166.0706024169922,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "630": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "660": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "689": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "690": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 80,
+        "y": 182,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "691": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 80,
+        "y": 179.41180419921875,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "702": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "720": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 80,
+        "y": 172,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "749": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": true,
+        "x": 80,
+        "y": 166.0706024169922,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": true,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "750": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "751": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "753": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "780": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "801": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "810": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "840": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "929": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": false,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": false,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": false,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "930": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "931": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "960": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "1020": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ],
+    "1079": [
+      {
+        "id": "question",
+        "visible": false,
+        "x": 96,
+        "y": 1438,
+        "width": 888,
+        "height": 299.5,
+        "fontWeight": "600",
+        "fontSize": "144px"
+      },
+      {
+        "id": "time-layer",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-5",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-10",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "pulse-15",
+        "visible": false,
+        "x": 80,
+        "y": 164,
+        "width": 920,
+        "height": 300,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "usage-demo",
+        "visible": false,
+        "x": 96,
+        "y": 76,
+        "width": 262.46875,
+        "height": 42.890625,
+        "fontWeight": "400",
+        "fontSize": "33px"
+      },
+      {
+        "id": "reminder-message",
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 560,
+        "fontWeight": "600",
+        "fontSize": "94px"
+      },
+      {
+        "id": "brand-icon",
+        "visible": true,
+        "x": 108,
+        "y": 670,
+        "width": 148,
+        "height": 148,
+        "fontWeight": "400",
+        "fontSize": "16px"
+      },
+      {
+        "id": "brand-name",
+        "visible": true,
+        "x": 294,
+        "y": 676.796875,
+        "width": 460.015625,
+        "height": 134.390625,
+        "fontWeight": "600",
+        "fontSize": "112px"
+      },
+      {
+        "id": "end-title",
+        "visible": true,
+        "x": 108,
+        "y": 912,
+        "width": 864,
+        "height": 213.4375,
+        "fontWeight": "600",
+        "fontSize": "92px"
+      }
+    ]
+  },
+  "mandatoryOnset": [
+    {
+      "frame": 450,
+      "visible": true,
+      "previousVisible": false
+    },
+    {
+      "frame": 570,
+      "visible": true,
+      "previousVisible": false
+    },
+    {
+      "frame": 690,
+      "visible": true,
+      "previousVisible": false
+    }
+  ],
+  "endOnset": {
+    "frame": 930,
+    "full": true,
+    "previousHidden": true
+  },
+  "criticalTextInCanvas": true,
+  "captureZeroRepaint": {
+    "method": "exact documented source crop (200,650,1120,1735), uniform CSS scale; no repaint, both app rows preserved",
+    "sha256": "5ca03dc4f66c8ad8365cd8cac3575a5943b1bd43627c982d12269b8d7bc5ff00"
+  },
+  "subjectiveFullViewing": "NOT_RUN",
+  "completeListening": "NOT_RUN"
+}

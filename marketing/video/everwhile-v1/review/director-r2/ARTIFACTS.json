@@ -1,0 +1,124 @@
+{
+  "files": [
+    {
+      "file": "review/director-r2/CONTACT_SHEET_EN.jpg",
+      "sha256": "626d4b5c9f1801e7a84aac03d5693406fa5de1f0445e5016e4d53d4b6b7cd542",
+      "bytes": 365554
+    },
+    {
+      "file": "review/director-r2/EVERWHILE_R2_EN_1080.mp4",
+      "sha256": "f938e6e9f4efb17d5cbefc8e353db29de131f4b750e9b99859614632302a451c",
+      "bytes": 13806114
+    },
+    {
+      "file": "review/director-r2/EVERWHILE_R2_EN_720.mp4",
+      "sha256": "f2521eb0a46a93e4e3d484548aa3c42dbb28d7dd70bdded20ad902275113c1ed",
+      "bytes": 4111171
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_01_EN.png",
+      "sha256": "2744bc39eba73ab37d582abed52ca8202cdd9ce91cace1e347ee034d67e99e79",
+      "bytes": 384128
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_02_EN.png",
+      "sha256": "95ae6491cbd0a3425c7d69813c815bef9063f721a36e85738d42138b8b8a5f75",
+      "bytes": 602007
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_03_EN.png",
+      "sha256": "484caae9ddfe9d255fd59ad974f576c6dc03cc61f60f09d31ff9e27f28d62ce5",
+      "bytes": 585994
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_04_EN.png",
+      "sha256": "556fc2f6f72a2945f874b79b16559ceee189e01590f4aee2bca12cd249af107e",
+      "bytes": 2147472
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_05_EN.png",
+      "sha256": "5455ea44bc5637deb211a8cf5eabe9e4f4dc04ca20cab68625e3a60701f63563",
+      "bytes": 596394
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_06_EN.png",
+      "sha256": "f9f325a05ec3a1060404a3582fd528ef16faaf35a934b01ca0348b208a7fb8ce",
+      "bytes": 128044
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_07_EN.png",
+      "sha256": "7bb570682afdf07809e67bc4d959647fd156eb0e49011e8ff7738035f59b0e72",
+      "bytes": 345014
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_08_EN.png",
+      "sha256": "fdf66360f2600d336d8f453de1515b5b98f6e9340a45a22d48ce49453f6d18d0",
+      "bytes": 502595
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_09_EN.png",
+      "sha256": "a0253963a54ff23bab37264e5704de621e06a5b150b5f0d0ec21571f601be234",
+      "bytes": 2397396
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_10_EN.png",
+      "sha256": "d22d06e407af61b4acbc28cf61d28280d5a4c0ee768f09ca16ceef2b3e82343b",
+      "bytes": 186254
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_11_EN.png",
+      "sha256": "5f849303dc55b56a2553f7a0a4cc6523da104a9f13e7ae6bcdbe41c8b4ade119",
+      "bytes": 205237
+    },
+    {
+      "file": "review/director-r2/KEYFRAME_12_EN.png",
+      "sha256": "2e3039e2ca320d8385dd327f5dc240b850ddcd6b81de0bed1af92efc6fd2c778",
+      "bytes": 144822
+    },
+    {
+      "file": "review/director-r2/OLD_VS_NEW_EN.jpg",
+      "sha256": "3be6a24b0667d01ec29887ad04291041a030d73b3c895bfb7d5c8b7718cdebe3",
+      "bytes": 331408
+    },
+    {
+      "file": "review/director-r2/ONSET_PROOF_EN.jpg",
+      "sha256": "4b6e42b7347ab77e6ee3c05f4c6c79aba5bdaecefd1252186628cd92f1c585ad",
+      "bytes": 468830
+    },
+    {
+      "file": "review/director-r2/SEQUENCE_01_EN.jpg",
+      "sha256": "cbb95730ab152183db6d8480e39d598b638e6218d8f531f639a3a6530c1eacd6",
+      "bytes": 699450
+    },
+    {
+      "file": "review/director-r2/SEQUENCE_02_EN.jpg",
+      "sha256": "b2c9f666df4eb326a61ae3a414c486a11c3480d4ab76594581c9f4b22f438436",
+      "bytes": 649549
+    },
+    {
+      "file": "review/director-r2/SEQUENCE_03_EN.jpg",
+      "sha256": "e4111179c63fc977784ef7e0fa8c922342bb7b20aa573d349cacf31fd8c5907b",
+      "bytes": 484893
+    },
+    {
+      "file": "review/director-r2/STYLE_PROOFS_EN.jpg",
+      "sha256": "1d3073d68439b003da71752a12285d719c56a4797d6855b039641c2914daa8c9",
+      "bytes": 262553
+    },
+    {
+      "file": "review/director-r2/TEMPORAL_SEQUENCE_EN.jpg",
+      "sha256": "fb5fa0f8c4046da66295a83d0564e954db052645e46ddbfc6119ef0dd22e65f6",
+      "bytes": 1323669
+    },
+    {
+      "file": "review/director-r2/TRANSITIONS_EN.jpg",
+      "sha256": "a0b231909a98ff186a1d0f7e34d29c9174c49e03346f31e905adb7bcb193b51d",
+      "bytes": 591997
+    },
+    {
+      "file": "review/director-r2/OLD_VS_NEW_EN.mp4",
+      "sha256": "f8dafff36f178b7754a0bad48f1a0d2fda450dd58455d77d65204603c645f4b9",
+      "bytes": 2442061
+    }
+  ]
+}

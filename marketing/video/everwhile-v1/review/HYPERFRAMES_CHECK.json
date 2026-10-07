@@ -1,0 +1,333 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 3 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\Elapse\\marketing\\video\\everwhile-v1\\build\\en\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "console_warning",
+        "severity": "warning",
+        "message": "Invalid property force3D set to false Missing plugin? gsap.registerPlugin()",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "root",
+          "data-width": "720",
+          "data-height": "1280",
+          "data-duration": "18",
+          "data-start": "0"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 720,
+          "height": 1280
+        },
+        "time": 0,
+        "url": "",
+        "line": 39
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 3.5,
+        "selector": "#novel-m > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(5)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 70.69,
+          "top": 702.65,
+          "right": 313.03,
+          "bottom": 743.54,
+          "width": 242.34,
+          "height": 40.89
+        },
+        "containerSelector": "#coffee-m",
+        "text": "She had left it there ten years ago. Nobody else was supposed to know.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 70.69,
+          "y": 702.65,
+          "width": 242.34,
+          "height": 40.89
+        },
+        "firstSeen": 3.5,
+        "lastSeen": 3.5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 3.5,
+        "selector": "#novel-m > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(6)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 70.69,
+          "top": 763.1,
+          "right": 324.54,
+          "bottom": 803.98,
+          "width": 253.85,
+          "height": 40.89
+        },
+        "containerSelector": "#coffee-m",
+        "text": "For a moment, neither of them moved. Then she reached for the handle.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 70.69,
+          "y": 763.1,
+          "width": 253.85,
+          "height": 40.89
+        },
+        "firstSeen": 3.5,
+        "lastSeen": 3.5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 3.5,
+        "selector": "#novel-m > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(7)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 70.69,
+          "top": 823.54,
+          "right": 321.39,
+          "bottom": 864.43,
+          "width": 250.7,
+          "height": 40.89
+        },
+        "containerSelector": "#coffee-m",
+        "text": "The voice outside was softer than she remembered.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 70.69,
+          "y": 823.54,
+          "width": 250.7,
+          "height": 40.89
+        },
+        "firstSeen": 3.5,
+        "lastSeen": 3.5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 3.5,
+        "selector": "#novel-m > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(8)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 70.69,
+          "top": 883.99,
+          "right": 320.72,
+          "bottom": 902.65,
+          "width": 250.02,
+          "height": 18.66
+        },
+        "containerSelector": "#coffee-m",
+        "text": "“There is something you need to see.”",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 70.69,
+          "y": 883.99,
+          "width": 250.02,
+          "height": 18.66
+        },
+        "firstSeen": 3.5,
+        "lastSeen": 3.5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3.5,
+        "selector": "div.social-inner",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 387.38,
+          "top": 716.22,
+          "right": 655.29,
+          "bottom": 1160.67,
+          "width": 267.91,
+          "height": 444.45
+        },
+        "containerSelector": "#social-m",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 371.47,
+          "top": 706.38,
+          "right": 671.2,
+          "bottom": 1063.15,
+          "width": 299.74,
+          "height": 356.77
+        },
+        "overflow": {
+          "bottom": 97.52
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 387.38,
+          "y": 716.22,
+          "width": 267.91,
+          "height": 444.45
+        },
+        "firstSeen": 3.5,
+        "lastSeen": 3.5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 12,
+        "selector": "div.social-inner",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 94.67,
+          "top": 288,
+          "right": 625.33,
+          "bottom": 958.54,
+          "width": 530.67,
+          "height": 670.54
+        },
+        "containerSelector": "#social-p",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 73.33,
+          "top": 316.67,
+          "right": 646.67,
+          "bottom": 900.67,
+          "width": 573.33,
+          "height": 584
+        },
+        "overflow": {
+          "top": 28.67,
+          "bottom": 57.87
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 94.67,
+          "y": 288,
+          "width": 530.67,
+          "height": 670.54
+        },
+        "firstSeen": 12,
+        "lastSeen": 12,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 18,
+    "samples": [
+      0.5,
+      1.2,
+      2,
+      3.5,
+      5.8,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.5,
+      2,
+      5.8,
+      10,
+      16
+    ],
+    "checked": 19,
+    "passed": 19
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.132",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

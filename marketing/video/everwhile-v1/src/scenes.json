@@ -1,0 +1,20 @@
+{
+  "task": "PROMO-R2",
+  "fps": 60,
+  "frames": 1080,
+  "seconds": 18,
+  "design": [1080, 1920],
+  "review": [720, 1280],
+  "bpm": 120,
+  "locale": "en",
+  "scenes": [
+    {"id":"S01", "start":0, "end":270, "headline":"How long has it been", "headlineStart":168},
+    {"id":"S02", "start":270, "end":390, "headline":["Choose your apps", "Set your interval"]},
+    {"id":"S03", "start":390, "end":750, "headline":["A reminder", "Not a restriction"], "demo":"Time compressed"},
+    {"id":"S04", "start":750, "end":930, "headline":"See where the time went", "subline":"Total · by hour · by app", "capture":"assets/reference/today-quick-start.png", "sampleTotal":"30m"},
+    {"id":"S05", "start":930, "end":1080, "headline":["Feel time passing", "Nothing else"], "brand":"Everwhile", "variant":"brand-only"}
+  ],
+  "pulses": [{"frame":450,"minutes":5},{"frame":570,"minutes":10},{"frame":690,"minutes":15}],
+  "airPocket": [255,270],
+  "endCardFullOnset":930
+}

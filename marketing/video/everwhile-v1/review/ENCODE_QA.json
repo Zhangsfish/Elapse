@@ -1,0 +1,337 @@
+{
+  "status": "PASS_TECHNICAL",
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640020",
+        "width": 720,
+        "height": 1280,
+        "coded_width": 720,
+        "coded_height": 1280,
+        "has_b_frames": 0,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "9:16",
+        "pix_fmt": "yuv420p",
+        "level": 32,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 3,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 276480,
+        "duration": "18.000000",
+        "bit_rate": "815040",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1080",
+        "nb_read_frames": "1080",
+        "extradata_size": 50,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc63.1.101 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 1024,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 864000,
+        "duration": "18.000000",
+        "bit_rate": "262856",
+        "nb_frames": "845",
+        "nb_read_frames": "844",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "E:\\Elapse\\marketing\\video\\everwhile-v1\\review\\EVERWHILE_P01_EN_720.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "18.000000",
+      "size": "2447550",
+      "bit_rate": "1087800",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf63.1.101"
+      }
+    }
+  },
+  "fullDecodeFrames": 1080,
+  "nonBlackFrames": 1080,
+  "nonBlankFrames": 1080,
+  "minMeanRGB": 123.98307291666667,
+  "minSpatialStd": 12.945788796600844,
+  "encodedNativeComparison": [
+    {
+      "frame": 0,
+      "meanRGBError": 2.4040107783564815
+    },
+    {
+      "frame": 30,
+      "meanRGBError": 2.339154369212963
+    },
+    {
+      "frame": 54,
+      "meanRGBError": 2.6866590711805554
+    },
+    {
+      "frame": 72,
+      "meanRGBError": 2.5400831886574076
+    },
+    {
+      "frame": 102,
+      "meanRGBError": 2.477104311342593
+    },
+    {
+      "frame": 120,
+      "meanRGBError": 2.492603081597222
+    },
+    {
+      "frame": 150,
+      "meanRGBError": 1.4219986979166668
+    },
+    {
+      "frame": 168,
+      "meanRGBError": 1.4424717881944444
+    },
+    {
+      "frame": 180,
+      "meanRGBError": 1.4546158854166666
+    },
+    {
+      "frame": 198,
+      "meanRGBError": 2.1135973668981483
+    },
+    {
+      "frame": 220,
+      "meanRGBError": 2.0825220630787036
+    },
+    {
+      "frame": 240,
+      "meanRGBError": 2.0773687065972224
+    },
+    {
+      "frame": 254,
+      "meanRGBError": 2.0655287905092594
+    },
+    {
+      "frame": 255,
+      "meanRGBError": 2.0628548177083332
+    },
+    {
+      "frame": 262,
+      "meanRGBError": 2.2493109809027776
+    },
+    {
+      "frame": 269,
+      "meanRGBError": 2.150158420138889
+    },
+    {
+      "frame": 270,
+      "meanRGBError": 1.4761469184027778
+    },
+    {
+      "frame": 271,
+      "meanRGBError": 1.4808676938657408
+    },
+    {
+      "frame": 300,
+      "meanRGBError": 1.5116453269675927
+    },
+    {
+      "frame": 360,
+      "meanRGBError": 1.5265382667824074
+    },
+    {
+      "frame": 390,
+      "meanRGBError": 2.131535373263889
+    },
+    {
+      "frame": 449,
+      "meanRGBError": 2.208128616898148
+    },
+    {
+      "frame": 450,
+      "meanRGBError": 2.2293388310185187
+    },
+    {
+      "frame": 462,
+      "meanRGBError": 2.2210127314814816
+    },
+    {
+      "frame": 480,
+      "meanRGBError": 2.1898802806712965
+    },
+    {
+      "frame": 510,
+      "meanRGBError": 2.1562651909722224
+    },
+    {
+      "frame": 569,
+      "meanRGBError": 2.1255186631944443
+    },
+    {
+      "frame": 570,
+      "meanRGBError": 2.151957103587963
+    },
+    {
+      "frame": 582,
+      "meanRGBError": 2.1611143663194445
+    },
+    {
+      "frame": 600,
+      "meanRGBError": 2.1505924479166665
+    },
+    {
+      "frame": 689,
+      "meanRGBError": 1.4249674479166667
+    },
+    {
+      "frame": 690,
+      "meanRGBError": 1.5327781394675926
+    },
+    {
+      "frame": 702,
+      "meanRGBError": 1.524040798611111
+    },
+    {
+      "frame": 720,
+      "meanRGBError": 1.5234320746527779
+    },
+    {
+      "frame": 840,
+      "meanRGBError": 1.3739597800925927
+    },
+    {
+      "frame": 929,
+      "meanRGBError": 1.3729380063657408
+    },
+    {
+      "frame": 930,
+      "meanRGBError": 1.511894169560185
+    },
+    {
+      "frame": 931,
+      "meanRGBError": 1.5096372251157408
+    },
+    {
+      "frame": 960,
+      "meanRGBError": 1.5097598379629629
+    }
+  ],
+  "sfxOnsets": [
+    {
+      "frame": 450,
+      "sample": 360001,
+      "withinFrameOnset": 1
+    },
+    {
+      "frame": 570,
+      "sample": 456001,
+      "withinFrameOnset": 1
+    },
+    {
+      "frame": 690,
+      "sample": 552001,
+      "withinFrameOnset": 1
+    }
+  ],
+  "filmSHA256": "de859034fccd0a884de18c1da4df6a2343405abae9178e472015e13581a86dd6",
+  "fullSubjectiveViewing": "NOT_RUN",
+  "completeListening": "NOT_RUN",
+  "directorVerdict": "PENDING",
+  "encodedAudioAlignment": {
+    "bestLagSamples": 0,
+    "lagGridSamples": 16,
+    "correlation": 0.9998153724044938,
+    "toleranceSamples": 800,
+    "method": "AAC decoded mix versus PCM premix, 4.5\u201312.5 second window"
+  }
+}

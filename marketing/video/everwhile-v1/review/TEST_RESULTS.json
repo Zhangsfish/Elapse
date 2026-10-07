@@ -1,0 +1,38 @@
+{
+  "task": "PROMO-P01",
+  "status": "READY_FOR_DIRECTOR_REVIEW",
+  "baseSHA": "76838c8bd8659c379314decaa30c07ec0cb1e0ef",
+  "codeTestedRenderedSHA": "eeae9b1c15f8976dd276d01414596597d056bf86",
+  "PR": "https://github.com/Zhangsfish/Elapse/pull/26",
+  "protectedPathsChanged": [],
+  "local": {
+    "nodeContract": {"status": "PASS", "tests": 7},
+    "typescriptStrictNoEmit": "PASS",
+    "existingPython": {"status": "PASS", "tests": 48},
+    "assetAndArtifactHashes": "PASS",
+    "browserQA": "PASS_TECHNICAL",
+    "shuffledSeek": {"frames": 17, "DOMAndMediaTime": "EXACT_MATCH", "PNGByteEquality": "NOT_ALL_EQUAL", "meanRGBTolerance": 0.06},
+    "hyperframesCheck": {"status": "PASS", "browserSkipped": false, "lintErrors": 0, "lintWarnings": 1},
+    "encodedFilm": {"status": "PASS_TECHNICAL", "seconds": 18, "fps": 60, "width": 720, "height": 1280, "decodedFrames": 1080, "nonBlackFrames": 1080, "nonBlankFrames": 1080},
+    "pulseOnsetFrames": [450, 570, 690],
+    "endCardFullOnsetFrame": 930,
+    "AACDecodedMixAlignment": {"bestLagSamples": 0, "searchGridSamples": 16, "correlation": 0.9998153724044938},
+    "mixLUFS": -15.02,
+    "mixTruePeakDBTP": -4.48,
+    "fontBinaryRedistributed": false,
+    "realCaptureRepainted": false,
+    "privateData": []
+  },
+  "remoteCI": {
+    "status": "PENDING_FINAL_PUSH_AT_REPORT_CREATION",
+    "authoritativeChecks": "https://github.com/Zhangsfish/Elapse/pull/26/checks",
+    "finalHeadAndRunURLs": "Recorded in PR delivery summary after final push; not inherited from earlier commits"
+  },
+  "humanReview": {
+    "encodedContactTransitionOnsetSheets": "INSPECTED",
+    "fullSubjectiveViewing": "NOT_RUN",
+    "completeListening": "NOT_RUN",
+    "directorCreativeApproval": "PENDING"
+  },
+  "notRun": ["zh-Hans final", "1080p final", "App Store badge output", "public distribution", "TestFlight", "App Review", "merge"]
+}

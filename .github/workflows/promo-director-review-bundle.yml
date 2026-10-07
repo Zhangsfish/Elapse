@@ -1,0 +1,39 @@
+name: Promo director exact-source review bundle
+
+on:
+  push:
+    branches: [codex/promo-p01-time-becomes-visible]
+    paths: [.github/workflows/promo-director-review-bundle.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-existing-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d0aec01a5efcdb7639b7901be5a1ee9b230ba103
+          persist-credentials: false
+      - name: Verify the exact existing P01 film
+        run: |
+          set -euo pipefail
+          echo 'de859034fccd0a884de18c1da4df6a2343405abae9178e472015e13581a86dd6  marketing/video/everwhile-v1/review/EVERWHILE_P01_EN_720.mp4' | sha256sum --check
+          echo 'Packages existing public marketing media only. No render, app build, signing, upload to Apple, or release.'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: everwhile-p01-director-review-d0aec01
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            marketing/video/everwhile-v1/review/
+            marketing/video/everwhile-v1/src/
+            marketing/video/everwhile-v1/scripts/
+            marketing/video/everwhile-v1/AGENTS.md
+            marketing/video/everwhile-v1/README.md
+            marketing/video/everwhile-v1/DIRECTOR_V1.md
+            marketing/video/everwhile-v1/ASSET_MANIFEST.json
+            marketing/video/everwhile-v1/package.json

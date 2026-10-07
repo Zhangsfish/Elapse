@@ -1,0 +1,22 @@
+name: PROMO-P01 secret-free source and asset contract
+
+on:
+  pull_request:
+    paths:
+      - marketing/video/everwhile-v1/**
+      - .github/workflows/promo-p01.yml
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Frame and privacy source contract
+        run: node --test marketing/video/everwhile-v1/scripts/contract.test.mjs
+      - name: Frozen asset hashes and PCM stems (no installs, no secrets)
+        run: python3 marketing/video/everwhile-v1/scripts/check-assets.py

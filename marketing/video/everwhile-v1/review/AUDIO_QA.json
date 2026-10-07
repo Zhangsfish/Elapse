@@ -1,0 +1,35 @@
+{
+  "status": "TECHNICAL_CHECK_ONLY",
+  "sample_rate": 48000,
+  "samples": 864000,
+  "bpm": 120,
+  "cue_frames": [
+    450,
+    570,
+    690
+  ],
+  "cue_samples": [
+    360000,
+    456000,
+    552000
+  ],
+  "air_pocket_frames": [
+    255,
+    270
+  ],
+  "gain_db": 15.73,
+  "measurement": {
+    "input_i": "-15.02",
+    "input_tp": "-4.48",
+    "input_lra": "7.20",
+    "input_thresh": "-25.49",
+    "output_i": "-16.47",
+    "output_tp": "-7.19",
+    "output_lra": "2.80",
+    "output_thresh": "-26.73",
+    "normalization_type": "dynamic",
+    "target_offset": "1.47"
+  },
+  "complete_subjective_listening": "NOT_RUN",
+  "composition": "original deterministic synthesis, no third-party sound samples"
+}
