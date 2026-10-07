@@ -1,7 +1,8 @@
 # S03-A remaining account/release gates
 
-2026-10-07. These are a preflight map, not a request to submit or release now.
-S03-B/C remain LOCKED. English screenshot visual review is the current owner gate.
+2026-10-07. S03-A owner/account facts are recorded here for the release handoff.
+Screenshot visual/upload review is complete. S03-B may proceed after cloud audit;
+S03-C remains locked until review results.
 
 | Gate | Current evidence / smallest later action |
 |---|---|
@@ -12,11 +13,11 @@ S03-B/C remain LOCKED. English screenshot visual review is the current owner gat
 | Agreements | Owner confirms Account Holder agreements privately; no automatic acceptance |
 | Privacy | Confirm actual optional support-mail handling/retention and approve ASC answers; draft is not a legal attestation |
 | Copyright | Confirm legal rights-holder name in metadata draft |
-| Age rating | Complete current questionnaire from actual app features; do not invent a resulting age label |
+| Age rating | **OWNER_COMPLETED — 4+** from the actual questionnaire |
 | Export compliance | Source ITSAppUsesNonExemptEncryption=false; no custom crypto code found. Owner confirms applicability of Apple's current questions; source flag is not legal approval |
 | Review contact | Owner privately enters name/email/phone in ASC, never Git/chat public evidence |
-| Regions | Recommendation: United States first / Free / iPhone-only / English + zh-Hans. Exact storefront list requires approval |
-| Screenshot size slots | English draft uses the requested large Dynamic Island 1320×2868 size. In S03-B verify ASC's current required medium Dynamic Island slot; use Apple's scaling where supported or prepare an approved size derivative. Do not assume this four-file draft alone satisfies every future slot |
+| Regions | Recommendation remains United States first / Free / iPhone-only / English + zh-Hans. Exact storefront list still requires owner approval before submission |
+| Screenshots | **OWNER_COMPLETED — 4 English + 4 zh-Hans accepted in ASC and visually checked**. Canonical design masters remain 1320×2868; actual accepted slot used 1206×2622 derivatives. No re-upload requested |
 | China mainland | **BLOCKED_UNTIL_ICP_STATUS_CONFIRMED**. Do not add it by default or infer that a local-only app is exempt |
 | Release | Recommend manual release only after review and owner approval; no automatic public launch |
 
@@ -29,3 +30,16 @@ Apple references checked 2026-10-07:
 [internal-only builds](https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers),
 [China mainland information](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information),
 [manual release and metadata](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information).
+
+
+## Owner-completed App Store facts — 2026-10-07
+
+- App name: Everwhile.
+- Primary language: English (US).
+- Primary category: Utilities.
+- Secondary category: none.
+- Age rating questionnaire: completed, calculated 4+.
+- Store screenshots: 4 English + 4 zh-Hans uploaded to ASC and owner-approved in place.
+- Content-rights declaration shown by owner: no third-party content requiring a rights declaration.
+
+These are owner-observed portal facts. They are not evidence of App Review approval.
