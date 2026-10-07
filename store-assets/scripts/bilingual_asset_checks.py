@@ -12,6 +12,12 @@ HEADLINES = [["感受时间流逝。", "仅此而已。"], ["选你想留意的 
              ["只是提醒。", "不是限制。"], ["看看时间", "去了哪里。"]]
 
 
+def centered_text_y(top, bottom, glyph_bounds):
+    """Center visible glyph bounds, not a font baseline or line-box origin."""
+    assert top < bottom and 0 < glyph_bounds[3] - glyph_bounds[1] <= bottom - top
+    return round((top + bottom - glyph_bounds[1] - glyph_bounds[3]) / 2)
+
+
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -83,6 +89,9 @@ def check(root=ROOT, require_chinese=True):
         for text in frame["external_text_bounds"]:
             l, t, r, b = text["bounds"]
             assert 0 <= l < r <= 1320 and 0 <= t < b < frame["phone_rect"][1], "Text clipped"
+            if index == 1 and "分钟" in text["text"]:
+                assert 614 <= l < r <= 1214 and 596 <= t < b <= 708
+                assert abs(t + b - (596 + 708)) <= 1, "Chinese interval label not vertically centered"
         receipt = proof["frames"][index]
         assert receipt["sha256"] == frame["sha256"] and receipt["repainted_opaque_pixels"] == 0
         assert receipt["geometry_matches_english"] and receipt["contact_sheet_tile"] == "PASS"

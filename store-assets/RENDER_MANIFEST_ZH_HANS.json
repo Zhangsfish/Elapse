@@ -3,7 +3,7 @@
   "locale": "zh-Hans",
   "english_reference_head": "7aff9a46ba14716f22d0532a29f80408c5b8c18e",
   "polish_revision": 2,
-  "text_only_adaptation": "Interval label 42px at (632,611); unchanged pill geometry. Headlines 94px.",
+  "text_only_adaptation": "Interval label 42px at x=632; visible glyph bounds vertically centered in unchanged pill y=596..708. Headlines 94px.",
   "renderer_pillow_version": "11.1.0",
   "fonts": [
     {
@@ -143,7 +143,7 @@
     },
     {
       "file": "zh-Hans/02-choose-interval.png",
-      "sha256": "aeb415ed776c54b632e9c22522518f9affbf305380a6ce9e688e37e1464b83c3",
+      "sha256": "8edd9dab5334de7664e82b4227e01b56d52218ef4f1e5f5a2acc2a4df2577d2e",
       "raw": "captures/zh-Hans/02-choose-interval.png",
       "raw_sha256": "e8da69667ce5ed79a1438f18feae7671fce8e47bbc4299e9133f2427b1e57ae1",
       "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
@@ -255,14 +255,14 @@
           "text": "5 · 10 · 15 · 30 · 60 分钟",
           "bounds": [
             632,
-            617,
+            632,
             1203,
-            658
+            673
           ],
           "size": 42,
           "origin": [
             632,
-            611
+            626
           ],
           "bold": true,
           "weight": 700

@@ -19,6 +19,18 @@ class BilingualAssetsTests(unittest.TestCase):
     def test_english_freeze(self):
         self.assertEqual(english_freeze.check()["status"], "PASS")
 
+    def test_interval_ink_centering_uses_glyph_metrics(self):
+        for bounds in ((0, 13, 560, 55), (0, -8, 560, 29), (0, 0, 560, 1)):
+            y = assets.centered_text_y(596, 708, bounds)
+            self.assertLessEqual(abs(2*y + bounds[1] + bounds[3] - 1304), 1)
+        with self.assertRaises(AssertionError):
+            assets.centered_text_y(596, 708, (0, 0, 560, 113))
+
+    def test_actual_chinese_interval_label_is_centered(self):
+        manifest = json.loads((ROOT / "store-assets/RENDER_MANIFEST_ZH_HANS.json").read_text(encoding="utf-8"))
+        label = next(t for t in manifest["frames"][1]["external_text_bounds"] if "分钟" in t["text"])
+        self.assertLessEqual(abs(label["bounds"][1] + label["bounds"][3] - 1304), 1)
+
     def test_english_image_or_contact_tamper_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

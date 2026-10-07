@@ -14,9 +14,9 @@
     },
     "renderer": "UNCHANGED_NORMALIZED_LF"
   },
-  "manifest_sha256": "c0c26322c4ffada3b4557e0042d6eabf6922a427c9201abd4af4a12d590950b3",
-  "manifest_lf_sha256": "c0c26322c4ffada3b4557e0042d6eabf6922a427c9201abd4af4a12d590950b3",
-  "contact_sheet_sha256": "899aa0e08f9d89c19e6eabca57c6993888331bb562f5983089cde6b48359a392",
+  "manifest_sha256": "aea9c268f4d9f5e386a3f8522ee90536a862b0c080e47eb00499346e9b2db12f",
+  "manifest_lf_sha256": "aea9c268f4d9f5e386a3f8522ee90536a862b0c080e47eb00499346e9b2db12f",
+  "contact_sheet_sha256": "dbd7f7cf98a870a81c6619e2899ca398261702ce4c10c99bece9eef50542b1c3",
   "capture_source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
   "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
   "frames": [
@@ -32,7 +32,7 @@
     },
     {
       "file": "zh-Hans/02-choose-interval.png",
-      "sha256": "aeb415ed776c54b632e9c22522518f9affbf305380a6ce9e688e37e1464b83c3",
+      "sha256": "8edd9dab5334de7664e82b4227e01b56d52218ef4f1e5f5a2acc2a4df2577d2e",
       "status": "PASS",
       "repainted_opaque_pixels": 0,
       "geometry_matches_english": true,

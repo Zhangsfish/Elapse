@@ -7,6 +7,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 import render_store as en
 from english_freeze import check
+from bilingual_asset_checks import centered_text_y
 
 ROOT = en.ROOT
 FONT_FILE = "NotoSansSC-VF.ttf"
@@ -45,8 +46,10 @@ def motif(image, index, directory, records):
         args = list(args)
         assert args[2] == "5 · 10 · 15 · 30 · 60 min"
         args[2] = "5 · 10 · 15 · 30 · 60 分钟"
-        args[1] = (632, 611) # text-only fitting inside the unchanged interval pill
         args[5] = 42
+        face = font(directory, 42, kwargs.get("bold", args[7] if len(args) > 7 else False))
+        glyph_bounds = ImageDraw.Draw(image).textbbox((0, 0), args[2], font=face)
+        args[1] = (632, centered_text_y(596, 708, glyph_bounds))
         return text(*args, **kwargs)
 
     en.text = translated
@@ -99,7 +102,7 @@ def render(font_dir, icc_path):
         results.append(record)
     manifest = {"status": "FINAL_FREEZE_PENDING_INDEPENDENT_AUDIT", "locale": "zh-Hans",
                 "english_reference_head": freeze_before["approved_reference_head"], "polish_revision": 2,
-                "text_only_adaptation": "Interval label 42px at (632,611); unchanged pill geometry. Headlines 94px.",
+                "text_only_adaptation": "Interval label 42px at x=632; visible glyph bounds vertically centered in unchanged pill y=596..708. Headlines 94px.",
                 "renderer_pillow_version": __import__("PIL").__version__,
                 "fonts": [{"file": FONT_FILE, "family": "Noto Sans SC", "face_index": 0,
                            "sha256": FONT_SHA, "axes": {"regular_weight": 400, "bold_weight": 700}},
