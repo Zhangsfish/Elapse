@@ -1,6 +1,13 @@
 name: S03 review-eligible App Store RC
 
 on:
+  pull_request:
+    paths:
+      - .github/workflows/s03-review-rc.yml
+      - scripts/s03_review_release.sh
+      - scripts/s03_review_ipa_audit.py
+      - scripts/s03_review_status.swift
+      - reports/S03-B/**
   push:
     branches: [chatgpt/s03-b-app-store-submission]
     paths:
@@ -10,6 +17,36 @@ permissions:
   contents: read
 
 jobs:
+  verify-release-tooling:
+    if: github.event_name == 'pull_request'
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Record toolchain
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          swift --version
+      - name: Run logic tests and static release checks
+        run: |
+          set -euo pipefail
+          swift test
+          python3 -m unittest discover -s scripts/tests
+          bash -n scripts/s03_review_release.sh
+          python3 -m py_compile scripts/s03_review_ipa_audit.py
+          swiftc -typecheck scripts/s03_review_status.swift
+      - name: Verify frozen product source
+        run: |
+          set -euo pipefail
+          git diff --quiet fab87acc8f4b863451d9c91ee7605b4c33c47789 HEAD -- \
+            App Shared MonitorExtension ReportExtension Localization AppResources project.yml
+          echo 'S03_RC_FROZEN_PRODUCT_TREE_PASS'
+
   review-rc:
     if: github.event.head_commit.message == 'S03-B explicit one-time review RC upload'
     runs-on: macos-26
