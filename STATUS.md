@@ -4,7 +4,7 @@ Updated: 2026-10-07
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY_FOR_OWNER_SUBMISSION（工程收口 PR #25 待 cloud audit；私人声明/最终提交仍由 owner 完成）；S03-C LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY_FOR_OWNER_SUBMISSION — CLOUD_AUDIT_PASS；S03-C LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -40,7 +40,7 @@ S03-B 工程收口记录：[`reports/S03-B/round-01/PORTAL_CLOSEOUT.md`](reports
 当前 live URLs、92.1 关联、双语 metadata/review notes 均已收口；实际检查/run/SHAs 见 DELIVERY 和 TEST_RESULTS。
 Family Controls 发布签名/profile 实证 gate CLOSED；未读取的 Portal Assigned UI 降为 OPTIONAL_OWNER_READBACK，不再阻塞。
 App Privacy 源码结论是 **No / Data Not Collected；tracking No**，不能冒充 ASC 私人声明已发布。
-Owner 只需确认 exact storefront（建议 US only、排除中国大陆）及尚未完成的 legal/privacy attestation；cloud 审核 PR #25 后再亲自最终 Submit for Review。
+PR #25 已由 cloud 独立审核并合并。Owner 只需确认 exact storefront（建议 US only、排除中国大陆）及尚未完成的 legal/privacy attestation，然后亲自最终 Submit for Review。
 审核联系人已经填齐，不需重填。没有生成新 RC / TestFlight，没有提交审核或公开发布。
 
 S03-A 已由 cloud 独立审计并合并：
@@ -59,8 +59,9 @@ S03-A 已由 cloud 独立审计并合并：
 
 Support https://zhangsfish.github.io/Elapse/ 和 Privacy https://zhangsfish.github.io/Elapse/privacy.html 均 LIVE_VERIFIED：匿名 HTTPS200、双语及交叉链接等通过；两种 ASC locale 的 URL 已保存并读回。
 冻结 runtime / screenshots 不变；现有 92.1 为唯一正式 RC，不再重复制作。
-PR #24 已 merged，当前小型 closeout PR #25：`codex/s03-b-portal-closeout`，仅发布工具、metadata 和 evidence。
-**READY_FOR_OWNER_SUBMISSION 是工程准备状态，不是 cloud 批准/Apple 审核通过，也不授权 Codex 提交。**
+PR #24 / #25 均已 merged。PR #25 merge：`2bce5c0a5d3ab0f0e3c5219c7120e7d8ea4a03ab`。
+Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md)，verdict **PASS — READY_FOR_OWNER_SUBMISSION**。
+**READY_FOR_OWNER_SUBMISSION 是工程/云端审核通过状态，不是 Apple 审核通过，也不授权自动提交或公开发布。**
 
 默认仍是：
 - United States first；
@@ -78,7 +79,7 @@ PR #24 已 merged，当前小型 closeout PR #25：`codex/s03-b-portal-closeout`
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
-| S03-B | **READY_FOR_OWNER_SUBMISSION — PR #25 待 cloud audit** | RC 92.1 已关联，live URLs/metadata 完成；owner 最终地区/声明/提交保留 |
+| S03-B | **READY_FOR_OWNER_SUBMISSION — CLOUD_AUDIT_PASS** | RC 92.1 已关联，live URLs/metadata 完成；owner 最终地区/声明/提交保留 |
 | S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
 ## S03 硬边界
