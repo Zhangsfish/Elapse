@@ -46,7 +46,7 @@ adapted; no Lecture voices, music, branding or creative content were reused.
 
 Local PASS: six Node contract tests, TypeScript strict no-emit, 48 existing
 Python tests, immutable-source/output hashes, PCM stem shape. Browser QA checks
-56 sampled frames, 17 shuffled seeks, required onsets, safe text bounds, font
+57 sampled frames, 17 shuffled seeks, required onsets, safe text bounds, font
 proof, immutable capture. DOM/media times match exactly on shuffled seeks;
 five snapshots have tiny browser raster antialias differences (max mean RGB
 error <0.003/255), not byte equality. Do not call the entire renderer
