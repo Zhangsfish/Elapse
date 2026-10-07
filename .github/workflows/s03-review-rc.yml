@@ -1,0 +1,105 @@
+name: S03 review-eligible App Store RC
+
+on:
+  push:
+    branches: [chatgpt/s03-b-app-store-submission]
+    paths:
+      - reports/S03-B/round-01/evidence/s03b-review-rc-upload-once.json
+
+permissions:
+  contents: read
+
+jobs:
+  review-rc:
+    if: github.event.head_commit.message == 'S03-B explicit one-time review RC upload'
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate one-time RC marker
+        env:
+          PREVIOUS_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+
+          previous = os.environ["PREVIOUS_SHA"]
+          assert re.fullmatch(r"[0-9a-f]{40}", previous)
+          marker_path = Path("reports/S03-B/round-01/evidence/s03b-review-rc-upload-once.json")
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-status", previous, "HEAD", "--", str(marker_path)], text=True
+          ).strip()
+          assert changed == "A\t" + str(marker_path)
+          all_changed = subprocess.check_output(
+              ["git", "diff", "--name-only", previous, "HEAD"], text=True
+          ).strip()
+          assert all_changed == str(marker_path)
+          marker = json.loads(marker_path.read_text(encoding="utf-8"))
+          assert marker == {
+              "operation": "s03b-review-rc-upload-once",
+              "trigger_id": "everwhile-s03b-review-rc-20261007",
+              "source_code_sha": previous,
+              "version": "0.1.0",
+              "build_prefix": 92,
+          }
+          print("S03_RC_ONE_TIME_MARKER_VALID")
+          PY
+
+      - name: Record Apple toolchain
+        run: |
+          set -euo pipefail
+          sw_vers
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          swift --version
+          major=$(xcodebuild -version | awk '/^Xcode / {split($2, p, "."); print p[1]}')
+          test "$major" -ge 26
+
+      - name: Run logic tests
+        run: |
+          set -euo pipefail
+          swift test
+          python3 -m unittest discover -s scripts/tests
+          plutil -lint AppResources/PrivacyInfo.xcprivacy
+
+      - name: Verify frozen product source
+        run: |
+          set -euo pipefail
+          git diff --quiet fab87acc8f4b863451d9c91ee7605b4c33c47789 HEAD --             App Shared MonitorExtension ReportExtension Localization AppResources project.yml
+          echo 'S03_RC_FROZEN_PRODUCT_TREE_PASS'
+
+      - name: Use verified XcodeGen 2.46.0
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error             https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip             --output "$RUNNER_TEMP/xcodegen.zip"
+          echo "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 --check
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen-release"
+          tool=$(find "$RUNNER_TEMP/xcodegen-release" -type f -name xcodegen -print -quit)
+          test -n "$tool"
+          chmod +x "$tool"
+          echo "$(dirname "$tool")" >> "$GITHUB_PATH"
+          "$tool" --version
+
+      - name: Generate project and validate release tooling
+        run: |
+          set -euo pipefail
+          xcodegen generate --spec project.yml
+          python3 scripts/s00_signing_settings.py
+          bash -n scripts/s03_review_release.sh
+          python3 -m py_compile scripts/s03_review_ipa_audit.py
+          swiftc -typecheck scripts/s03_review_status.swift
+
+      - name: Create, audit and upload exact review RC
+        env:
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          S03_RC_BUILD_NUMBER: 92.${{ github.run_attempt }}
+        run: bash scripts/s03_review_release.sh
