@@ -61,6 +61,19 @@ class BilingualAssetsTests(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 assets.check(root)
 
+    def test_manifest_lf_crlf_is_equivalent_but_content_stays_hash_bound(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "assets"
+            shutil.copytree(ROOT / "store-assets", root)
+            path = root / "RENDER_MANIFEST_ZH_HANS.json"
+            raw = path.read_bytes().replace(b"\r\n", b"\n")
+            for newline in (b"\n", b"\r\n"):
+                path.write_bytes(raw.replace(b"\n", newline))
+                self.assertEqual(assets.check(root)["status"], "PASS")
+            path.write_bytes(raw.replace('只是提醒。'.encode(), '只是提醒！'.encode()))
+            with self.assertRaises(AssertionError):
+                assets.check(root)
+
     def test_png_rejects_alpha_wrong_dimensions_and_missing_icc(self):
         import struct
         import zlib

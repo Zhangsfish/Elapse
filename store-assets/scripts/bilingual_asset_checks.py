@@ -64,7 +64,8 @@ def check(root=ROOT, require_chinese=True):
     assert sorted(p.name for p in (root / "zh-Hans").glob("*.png")) == [n+".png" for n in NAMES]
     assert [f["headline_lines"] for f in manifest["frames"]] == HEADLINES
     assert [f["subtitle"] for f in manifest["frames"]] == ["", "", "", "总量 · 每小时 · 各 App"]
-    assert proof["status"] == "PASS" and proof["manifest_sha256"] == sha(path), "Stale pixel evidence"
+    manifest_lf_sha = hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    assert proof["status"] == "PASS" and proof["manifest_lf_sha256"] == manifest_lf_sha, "Stale pixel evidence"
     assert proof["capture_source_sha"] == provenance["source_sha"]
     assert proof["capture_run"] == provenance["run_url"]
     for index, (frame, english, raw) in enumerate(zip(manifest["frames"], en["frames"], inventory)):

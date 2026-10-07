@@ -92,12 +92,13 @@ def validate(root=ROOT):
                        "raw_inventory": "PASS", "text_bounds": "PASS", "contact_sheet_tile": "PASS"})
     result = {"status": "PASS", "english_freeze": frozen,
               "manifest_sha256": sha(root / "RENDER_MANIFEST_ZH_HANS.json"),
+              "manifest_lf_sha256": hashlib.sha256((root / "RENDER_MANIFEST_ZH_HANS.json").read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
               "contact_sheet_sha256": sha(root / "CONTACT_SHEET_ZH_HANS.png"),
               "capture_source_sha": provenance["source_sha"], "capture_run": provenance["run_url"],
               "frames": checks, "private_state": False, "production_runtime_unchanged": True,
               "visual_review": "CODEX_CONTACT_SHEET_INSPECTION_REQUIRED_SEPARATE_FROM_CLOUD_AUDIT",
               "app_review_public_release": "NOT_RUN_NOT_AUTHORIZED"}
-    (root / "IMAGE_VALIDATION_ZH_HANS.json").write_text(json.dumps(result, indent=2)+"\n", encoding="utf-8")
+    (root / "IMAGE_VALIDATION_ZH_HANS.json").write_text(json.dumps(result, indent=2)+"\n", encoding="utf-8", newline="\n")
     print("PASS: Chinese pixels/geometry/profile/text/contact + frozen English")
 
 

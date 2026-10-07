@@ -104,7 +104,7 @@ def render(font_dir, icc_path):
                 "fonts": [{"file": FONT_FILE, "family": "Noto Sans SC", "face_index": 0,
                            "sha256": FONT_SHA, "axes": {"regular_weight": 400, "bold_weight": 700}},
                           *english["fonts"]], "frames": results}
-    (ROOT / "RENDER_MANIFEST_ZH_HANS.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+    (ROOT / "RENDER_MANIFEST_ZH_HANS.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False)+"\n", encoding="utf-8", newline="\n")
     sheet = Image.new("RGB", (1440, 782), "#F7F9FD")
     for index, record in enumerate(results):
         sheet.paste(Image.open(ROOT / record["file"]).resize((360, 782), Image.Resampling.LANCZOS), (index*360, 0))
