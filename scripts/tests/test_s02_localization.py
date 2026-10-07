@@ -10,9 +10,15 @@ REFERENCE_PATTERN = re.compile(r'"((?:home|about|diagnostics|today|report|select
 
 def release_content_view():
     source = (ROOT / "App/ContentView.swift").read_text(encoding="utf-8")
-    # These narrow DEBUG blocks have no nested directives. Native Release UI
-    # tests additionally verify the actual compiler's result, not only text.
-    return re.sub(r'(?ms)^\s*#if DEBUG\n.*?^\s*#endif\n', '', source)
+    # These narrow diagnostic-only blocks have no nested directives. Public
+    # Release checks strip both ordinary DEBUG and the explicitly non-mergeable
+    # INTERNAL_DIAGNOSTICS probe used by temporary TestFlight investigations.
+    # Native Release UI tests additionally verify the compiler result.
+    return re.sub(
+        r'(?ms)^\\s*#if (?:DEBUG|DEBUG \\|\\| INTERNAL_DIAGNOSTICS)\\n.*?^\\s*#endif\\n',
+        '',
+        source,
+    )
 
 
 class S02LocalizationTests(unittest.TestCase):
