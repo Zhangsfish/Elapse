@@ -7,6 +7,10 @@ from pathlib import Path
 import plistlib
 import re
 import subprocess
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "store-assets/scripts"))
+import bilingual_asset_checks
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTECTED = ["App", "Shared", "MonitorExtension", "ReportExtension", "Localization",
@@ -138,7 +142,8 @@ def run(root=ROOT):
             assert hashlib.sha256((root / "store-assets" / path).read_bytes()).hexdigest() == expected
         assert frame["source_sha"] == provenance["source_sha"]
         assert frame["in_phone_overlay"] is None
-    return {"status": "PASS", "production_freeze": "PASS",
+    bilingual = bilingual_asset_checks.check(root / "store-assets", require_chinese=(root / "store-assets/RENDER_MANIFEST_ZH_HANS.json").exists())
+    return {"status": "PASS", "production_freeze": "PASS", "bilingual_assets": bilingual,
             "capture_source_sha": provenance["source_sha"],
             "metadata_counts": metadata_counts((root / "docs/APP_STORE_METADATA.md").read_text(encoding="utf-8")),
             "public_pages": check_pages(root / "public-pages"), "privacy_inventory": check_privacy(root),

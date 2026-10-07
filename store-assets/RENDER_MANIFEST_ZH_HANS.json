@@ -1,0 +1,522 @@
+{
+  "status": "FINAL_FREEZE_PENDING_INDEPENDENT_AUDIT",
+  "locale": "zh-Hans",
+  "english_reference_head": "7aff9a46ba14716f22d0532a29f80408c5b8c18e",
+  "polish_revision": 2,
+  "text_only_adaptation": "Interval label 42px at (632,611); unchanged pill geometry. Headlines 94px.",
+  "renderer_pillow_version": "11.1.0",
+  "fonts": [
+    {
+      "file": "NotoSansSC-VF.ttf",
+      "family": "Noto Sans SC",
+      "face_index": 0,
+      "sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a",
+      "axes": {
+        "regular_weight": 400,
+        "bold_weight": 700
+      }
+    },
+    {
+      "file": "segoeui.ttf",
+      "sha256": "8134dbcd09e7b123c9a7f229d49cffbcb01352cc72ea5e1076b65d0dca9f73cd"
+    },
+    {
+      "file": "segoeuib.ttf",
+      "sha256": "aeb9e4a6ec5cc59f4d72df8189032d7dbb28f45161cf1552174818b5465dac4e"
+    }
+  ],
+  "frames": [
+    {
+      "file": "zh-Hans/01-awareness.png",
+      "sha256": "e256c1e1c381f69a1e91ae1104383e7dd17f0be070070a5f6893624dae278760",
+      "raw": "captures/zh-Hans/01-awareness.png",
+      "raw_sha256": "a2cc18f13d568c058aa8ce9998e562fc4778b32a66822bd8f325b620343645d0",
+      "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+      "source_description": "Genuine unauthorized home; no selected apps",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        202,
+        803,
+        916,
+        1958
+      ],
+      "screen_rect": [
+        215,
+        815,
+        890,
+        1934
+      ],
+      "screen_corner_radius": 96,
+      "phone_bottom_cropped": false,
+      "brand_style": {
+        "icon_rect": [
+          108,
+          106,
+          76,
+          76
+        ],
+        "origin": [
+          208,
+          112
+        ],
+        "size": 42,
+        "color": "#536A84"
+      },
+      "headline_lines": [
+        "感受时间流逝。",
+        "仅此而已。"
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            208,
+            126,
+            398,
+            158
+          ],
+          "size": 42,
+          "origin": [
+            208,
+            112
+          ],
+          "bold": true
+        },
+        {
+          "text": "感受时间流逝。",
+          "bounds": [
+            104,
+            251,
+            762,
+            341
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "仅此而已。",
+          "bounds": [
+            104,
+            372,
+            574,
+            460
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true,
+          "weight": 700
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "zh-Hans/02-choose-interval.png",
+      "sha256": "aeb415ed776c54b632e9c22522518f9affbf305380a6ce9e688e37e1464b83c3",
+      "raw": "captures/zh-Hans/02-choose-interval.png",
+      "raw_sha256": "e8da69667ce5ed79a1438f18feae7671fce8e47bbc4299e9133f2427b1e57ae1",
+      "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+      "source_description": "Shipped Quick Start Choose Apps illustration",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        202,
+        803,
+        916,
+        1958
+      ],
+      "screen_rect": [
+        215,
+        815,
+        890,
+        1934
+      ],
+      "screen_corner_radius": 96,
+      "phone_bottom_cropped": false,
+      "brand_style": {
+        "icon_rect": [
+          108,
+          106,
+          76,
+          76
+        ],
+        "origin": [
+          208,
+          112
+        ],
+        "size": 42,
+        "color": "#536A84"
+      },
+      "headline_lines": [
+        "选你想留意的 App。",
+        "设定提醒间隔。"
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            208,
+            126,
+            398,
+            158
+          ],
+          "size": 42,
+          "origin": [
+            208,
+            112
+          ],
+          "bold": true
+        },
+        {
+          "text": "选你想留意的 App。",
+          "bounds": [
+            104,
+            250,
+            963,
+            352
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "设定提醒间隔。",
+          "bounds": [
+            104,
+            371,
+            762,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "5 · 10 · 15 · 30 · 60 分钟",
+          "bounds": [
+            632,
+            617,
+            1203,
+            658
+          ],
+          "size": 42,
+          "origin": [
+            632,
+            611
+          ],
+          "bold": true,
+          "weight": 700
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "zh-Hans/03-reminder.png",
+      "sha256": "52953445c3fbbfca54540badca865820b30e0600e37bd28595753be37cb247b5",
+      "raw": "captures/zh-Hans/03-reminder.png",
+      "raw_sha256": "84e265c8641eb704db2f71291544213efd1c50f5d707fe98a33f445ee326dc54",
+      "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+      "source_description": "Shipped Quick Start Reminder illustration, not an OS notification",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        202,
+        803,
+        916,
+        1958
+      ],
+      "screen_rect": [
+        215,
+        815,
+        890,
+        1934
+      ],
+      "screen_corner_radius": 96,
+      "phone_bottom_cropped": false,
+      "brand_style": {
+        "icon_rect": [
+          108,
+          106,
+          76,
+          76
+        ],
+        "origin": [
+          208,
+          112
+        ],
+        "size": 42,
+        "color": "#536A84"
+      },
+      "headline_lines": [
+        "只是提醒。",
+        "不是限制。"
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            208,
+            126,
+            398,
+            158
+          ],
+          "size": 42,
+          "origin": [
+            208,
+            112
+          ],
+          "bold": true
+        },
+        {
+          "text": "只是提醒。",
+          "bounds": [
+            104,
+            252,
+            574,
+            341
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "不是限制。",
+          "bounds": [
+            104,
+            372,
+            574,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true,
+          "weight": 700
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    },
+    {
+      "file": "zh-Hans/04-today.png",
+      "sha256": "5d5e6ccd8f6f70039dba6a6a4572c1b9f23be056a59e9b63c1ef6ab78b978fca",
+      "raw": "captures/zh-Hans/04-today.png",
+      "raw_sha256": "a8057ad13697d99328a785fd2f46f97d6945c76dc60631b3cb7f1d3fa9c37b35",
+      "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+      "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+      "source_description": "Shipped Quick Start Today illustration, not live usage",
+      "pixels": [
+        1320,
+        2868
+      ],
+      "mode": "RGB",
+      "icc_sha256": "2b3aa1645779a9e634744faf9b01e9102b0c9b88fd6deced7934df86b949af7e",
+      "phone_rect": [
+        202,
+        803,
+        916,
+        1958
+      ],
+      "screen_rect": [
+        215,
+        815,
+        890,
+        1934
+      ],
+      "screen_corner_radius": 96,
+      "phone_bottom_cropped": false,
+      "brand_style": {
+        "icon_rect": [
+          108,
+          106,
+          76,
+          76
+        ],
+        "origin": [
+          208,
+          112
+        ],
+        "size": 42,
+        "color": "#536A84"
+      },
+      "headline_lines": [
+        "看看时间",
+        "去了哪里。"
+      ],
+      "headline_style": {
+        "origin": [
+          104,
+          238
+        ],
+        "size": 94,
+        "line_height": 120
+      },
+      "subtitle": "总量 · 每小时 · 各 App",
+      "subtitle_style": {
+        "origin": [
+          108,
+          496
+        ],
+        "size": 38
+      },
+      "external_text_bounds": [
+        {
+          "text": "Everwhile",
+          "bounds": [
+            208,
+            126,
+            398,
+            158
+          ],
+          "size": 42,
+          "origin": [
+            208,
+            112
+          ],
+          "bold": true
+        },
+        {
+          "text": "看看时间",
+          "bounds": [
+            104,
+            252,
+            480,
+            340
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            238
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "去了哪里。",
+          "bounds": [
+            104,
+            371,
+            574,
+            461
+          ],
+          "size": 94,
+          "origin": [
+            104,
+            358
+          ],
+          "bold": true,
+          "weight": 700
+        },
+        {
+          "text": "总量 · 每小时 · 各 App",
+          "bounds": [
+            108,
+            501,
+            526,
+            543
+          ],
+          "size": 38,
+          "origin": [
+            108,
+            496
+          ],
+          "bold": false,
+          "weight": 400
+        }
+      ],
+      "in_phone_overlay": null,
+      "outside_phone_illustration": true,
+      "transformation": "Uniform LANCZOS resize and rounded-corner mask only"
+    }
+  ]
+}
