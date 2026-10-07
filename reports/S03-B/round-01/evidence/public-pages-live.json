@@ -1,0 +1,46 @@
+{
+  "status": "LIVE_VERIFIED",
+  "observed_at": "2026-10-07T06:46:57.822501+00:00",
+  "pages": [
+    {
+      "url": "https://zhangsfish.github.io/Elapse/",
+      "http_status": 200,
+      "anonymous": true,
+      "sha256": "e03b2173934889e861600e4b91242d7d093e18026ef1c84a9d0700e9fc55600a",
+      "exact_source_match": true,
+      "languages": [
+        "en",
+        "zh-Hans"
+      ],
+      "cross_links": true,
+      "mailto": true,
+      "remote_js": false,
+      "analytics": false,
+      "login_required": false
+    },
+    {
+      "url": "https://zhangsfish.github.io/Elapse/privacy.html",
+      "http_status": 200,
+      "anonymous": true,
+      "sha256": "d425cc039e11088295d72156ae1870132bcc405bef05b8de0464b4c6f82023fd",
+      "exact_source_match": true,
+      "languages": [
+        "en",
+        "zh-Hans"
+      ],
+      "cross_links": true,
+      "mailto": true,
+      "remote_js": false,
+      "analytics": false,
+      "login_required": false
+    },
+    {
+      "url": "https://zhangsfish.github.io/Elapse/style.css",
+      "http_status": 200,
+      "anonymous": true,
+      "sha256": "3cf1ac851c2d0b3a4a2ba8fb778b04fc341e0bec6e27901ca1d447dc8e21e85d",
+      "exact_source_match": true
+    }
+  ],
+  "basis": "ANONYMOUS_HTTP_AND_EXACT_STATIC_SOURCE_NOT_OS_MAIL_CLIENT_TEST"
+}

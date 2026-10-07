@@ -9,7 +9,7 @@ Name: Everwhile
 
 Subtitle: Feel time passing
 
-Promotional text: Choose apps and a 5, 10, 15, 30, or 60-minute interval. Everwhile sends cumulative-use reminders and shows total, hourly, and per-app time in Today.
+Promotional text: Choose the apps you want to notice and set a 5-minute interval. Everwhile sends reminders based on cumulative use and shows total, hourly, and per-app time in Today.
 
 Description:
 
@@ -89,8 +89,7 @@ Everwhile 只负责告诉你：时间已经过去了。
 
 - Support URL: **NOT_LIVE** — deploy public-pages/index.html first.
 - Privacy Policy URL: **NOT_LIVE** — deploy public-pages/privacy.html first.
-- Marketing URL candidate: https://zhang-shuo-portfolio.vercel.app/ (owner must
-  ensure it actually introduces Everwhile; otherwise omit optional Marketing URL).
+- Marketing URL: leave blank (optional; no verified Everwhile-specific landing page).
 - Copyright draft: **2026 Shuo Zhang — OWNER_CONFIRM_LEGAL_RIGHTS_HOLDER**.
 - Primary category: **Utilities** — owner entered this in ASC.
 - Secondary category: none.
