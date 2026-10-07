@@ -15,4 +15,10 @@ No self-approval, merge, upload, App Review submission or next-stage unlock.
 2026-10-07 detail polish 2: existing four-frame design retained; reports record
 actual 31 Python/pixel/determinism checks and prior successful macOS UI rerun.
 Canonical review image is `store-assets/CONTACT_SHEET_EN.png` revision 2.
-Original captures unchanged; owner final approval and Chinese assets still pending.
+English final approval is explicit at 7aff9a46ba14716f22d0532a29f80408c5b8c18e.
+
+2026-10-07 Pass2: canonical Chinese review is store-assets/CONTACT_SHEET_ZH_HANS.png.
+Fresh Release capture source86cb53710b01d7ece92875c8f93d52ebf6f2d0f2; CI37574631559 passed.
+Manifests/independent pixel proof/freeze guard live under store-assets/. English
+outputs/renderer are immutable. Reports separate capture source, tested code,
+documentation-only head and current CI. No new runtime/upload/device evidence.

@@ -1,19 +1,20 @@
-# Owner observations — S03-A English detail polish 2
+# Owner observations — S03-A Pass 2
 
-2026-10-07 · **WAITING_FOR_OWNER_VISUAL_REVIEW**.
+2026-10-07. Owner explicitly approved English Pass1 polish2 visual direction at
+7aff9a46ba14716f22d0532a29f80408c5b8c18e, then requested Chinese with English frozen.
+This supersedes earlier pending English review.
 
-English storyboard/contact sheet/four single images have been prepared for review.
-Owner accepted the current four-image design as the direction and requested only
-detail polish: uniform +3–5% phone size, restrained brand enhancement, clearer
-interval motif, external accumulation/reminder illustration, and less chart
-duplication. No headline changes or zh-Hans production requested.
-Revision 2 final owner review: **NOT_RUN**; do not infer acceptance from the
-renderer or CI. No private screenshots or Screen Time data were used.
+Owner reviewed the first Chinese contact sheet and requested only vertical centering
+of the Frame2 interval label. Corrected by actual glyph bounds, not baseline guesses.
+Owner then requested a slightly wider pill; widened its right edge50px, maintaining
+height/left edge/radius, and centered label with40/39px side padding. English untouched.
+Updated contact/four images delivered. **Owner final Chinese visual review: NOT_RUN**.
+Codex inspection is not owner/cloud approval. Sources are safe fresh Release
+simulator captures, never owner screenshots/Screen Time data.
 
-No new iPhone functional test requested or executed. Previously accepted 91.1
-observations belong to S02-B and are not relabelled as new S03 tests.
+**New physical-iPhone test: NOT_RUN / NOT_REQUIRED**. No repeat pulse, permissions,
+restart, Today, midnight or long usage. Simulator evidence is separate from device
+behavior; accepted91.1 stays inherited S02-B evidence.
 
-Next: owner reviews only English headline/style/phone size/readability. After an
-explicit acceptance, create zh-Hans assets; do not advance to READY_FOR_AUDIT yet.
-Portal/hosting/legal confirmations are listed separately in the owner checklist,
-not an additional device checklist for this visual round.
+Portal/hosting/legal confirmations are later release gates. No new TestFlight,
+ASC write, App Review or public release in this screenshot pass.
