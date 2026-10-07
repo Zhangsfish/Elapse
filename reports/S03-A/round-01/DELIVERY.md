@@ -141,6 +141,14 @@ contact sheets, shared renderer and runtime remain unchanged.
 
 See [UPLOAD_COMPATIBILITY_HANDOFF.md](UPLOAD_COMPATIBILITY_HANDOFF.md) for exact
 paths/hashes, executed local checks and mandatory equivalent Chinese export.
-Local derivatives are ignored and not part of the historical head's CI evidence.
-Chinese upload derivatives: **NOT_RUN**. Actual new-file ASC acceptance:
-**NOT_OBSERVED**. No automatic stage/status change, merge or submission follows.
+Local derivatives were not part of the historical master-asset CI evidence.
+
+The owner subsequently completed the real ASC upload for **4 English + 4 zh-Hans**
+screenshots in the accepted 1206×2622 slot and visually confirmed all eight in App
+Store Connect. Record: **OWNER_OBSERVED_ASC_SCREENSHOT_ACCEPTANCE = PASS**.
+This closes the screenshot upload-compatibility gate without claiming an API check
+or App Review approval.
+
+Exact already-uploaded derivative bytes were not all preserved in Git before upload;
+the frozen masters/raw captures/renderers remain the reproducible repository source.
+This is retained as a provenance note, not a request to re-upload.
