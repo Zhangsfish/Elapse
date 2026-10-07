@@ -87,10 +87,28 @@ inspected the result; this is not owner acceptance or cloud review.
    actual ASC acceptance and head-bound CI. Never inherit an old PASS for new
    derivatives. Record unresolved items honestly before release.
 
-## Remaining evidence
+## Owner final upload observation — gate closed
 
-- Chinese final-size derivatives / upload contact sheet: **NOT_RUN** in this side task.
-- Latest centered English variant owner visual acceptance: **NOT_OBSERVED**.
-- Actual ASC acceptance of corrected English/Chinese files: **NOT_OBSERVED**.
-- New head CI: **NOT_RUN** here; prior CI does not cover a future export implementation.
-- No App Review submission / public release / S03-B unlock authorized by this record.
+After this handoff was written, the owner completed the real App Store Connect upload
+using the accepted medium-display portrait slot and confirmed the final result in the
+ASC UI on 2026-10-07:
+
+- English: 4 screenshots accepted;
+- zh-Hans: 4 screenshots accepted;
+- actual ASC display: visually checked by the owner and accepted;
+- order/copy/crop/layout: accepted;
+- no further screenshot revision requested.
+
+Record this as **OWNER_OBSERVED_ASC_SCREENSHOT_ACCEPTANCE = PASS**. This is a
+first-party observation of the actual ASC uploader/UI, not an API claim and not App
+Review approval.
+
+The canonical 1320×2868 masters, raw captures, freeze files, renderers and validators
+remain the repository source of truth. The upload-size derivatives were produced in
+the local upload lane and accepted by ASC, but the exact already-uploaded 4+4 PNG
+bytes were not all committed before the upload. Therefore Git does **not** claim a
+byte-for-byte proof of the files currently stored by ASC. This provenance limitation
+is non-runtime and does not require the owner to re-upload or repeat visual review.
+
+Screenshot upload compatibility gate: **CLOSED — PASS_WITH_PROVENANCE_NOTE**.
+No App Review submission or public release was performed by this gate.
