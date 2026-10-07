@@ -50,6 +50,9 @@ Tutorial chrome remains. Uniform resize/corner mask only; **zero phone repaint**
 No owner data, real tokens or screenshot-only production mode. Codex contact-sheet
 inspection found no clipped text/phone chrome; this is not cloud/owner approval.
 Details: SCREENSHOT_STORYBOARD.md and manifests.
+Owner subsequently replied “可以” to the final widened/centered Chinese layout
+on 2026-10-07. Both language sets are visually accepted/frozen; independent cloud
+audit remains pending. No output changed after acceptance at asset SHA e68dffa….
 
 ## Executed checks
 

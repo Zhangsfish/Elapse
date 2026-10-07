@@ -8,7 +8,10 @@ Owner reviewed the first Chinese contact sheet and requested only vertical cente
 of the Frame2 interval label. Corrected by actual glyph bounds, not baseline guesses.
 Owner then requested a slightly wider pill; widened its right edge50px, maintaining
 height/left edge/radius, and centered label with40/39px side padding. English untouched.
-Updated contact/four images delivered. **Owner final Chinese visual review: NOT_RUN**.
+Updated contact/four images delivered. **Owner final Chinese visual review: PASS**.
+Owner replied “可以” to the widened/centered label on 2026-10-07 in this Codex
+conversation. Accepted assets match e68dffa7795b6afe8d5fc415e530a9636364657a;
+no image changes followed. This is visual acceptance, not cloud code approval.
 Codex inspection is not owner/cloud approval. Sources are safe fresh Release
 simulator captures, never owner screenshots/Screen Time data.
 

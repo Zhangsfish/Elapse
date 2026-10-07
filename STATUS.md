@@ -40,6 +40,7 @@ Pass 2 中文真实 Release 采集 CI 已通过，四张中文 PNG/contact 已�
 42 项 Python 测试、独立像素/字体/ICC/几何/确定性校验及英文冻结哈希检查通过。
 测试实现 `e68dffa7795b6afe8d5fc415e530a9636364657a` 的 preflight / 普通 CI 均 PASS：60 Swift、42 Python 和实际双语 Release UI smoke 均通过。
 最终双语资产交付，**READY_FOR_AUDIT**，等待 cloud 独立审核；后续仅报告/STATUS 的 head CI 在 PR 中单独列出，不混用实现 SHA。
+持有人已确认最终中文留白“可以”；中英两套截图视觉均已接受并冻结。没有自行批准代码或合并。
 交付/已执行检查/剩余 gate：[`reports/S03-A/round-01/DELIVERY.md`](reports/S03-A/round-01/DELIVERY.md)。
 91.1 runtime 保持冻结；本轮没有新 TestFlight、App Review 或公开发布。
 Support/Privacy 静态源码及部署 workflow 已准备，但公开 URL 尚 NOT_LIVE。
