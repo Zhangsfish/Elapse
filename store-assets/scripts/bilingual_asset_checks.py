@@ -90,7 +90,9 @@ def check(root=ROOT, require_chinese=True):
             l, t, r, b = text["bounds"]
             assert 0 <= l < r <= 1320 and 0 <= t < b < frame["phone_rect"][1], "Text clipped"
             if index == 1 and "分钟" in text["text"]:
-                assert 614 <= l < r <= 1214 and 596 <= t < b <= 708
+                assert frame["interval_pill_rect"] == [614, 596, 1264, 708]
+                assert 614 + 36 <= l < r <= 1264 - 36 and 596 <= t < b <= 708
+                assert abs(l + r - (614 + 1264)) <= 1, "Chinese interval label not horizontally centered"
                 assert abs(t + b - (596 + 708)) <= 1, "Chinese interval label not vertically centered"
         receipt = proof["frames"][index]
         assert receipt["sha256"] == frame["sha256"] and receipt["repainted_opaque_pixels"] == 0

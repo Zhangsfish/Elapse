@@ -77,7 +77,9 @@ def validate(root=ROOT):
             left, top, right, bottom = text["bounds"]
             assert 0 <= left < right <= 1320 and 0 <= top < bottom < record["phone_rect"][1]
             if "分钟" in text["text"]:
-                assert 614 <= left < right <= 1214 and 596 <= top < bottom <= 708
+                assert record["interval_pill_rect"] == [614, 596, 1264, 708]
+                assert 614 + 36 <= left < right <= 1264 - 36 and 596 <= top < bottom <= 708
+                assert abs(left + right - (614 + 1264)) <= 1, "Chinese interval label not horizontally centered"
                 assert abs(top + bottom - (596 + 708)) <= 1, "Chinese interval label not vertically centered"
         # Untranslated brand/background and illustrations retain exact English pixels.
         old = np.asarray(Image.open(root / en["file"]))

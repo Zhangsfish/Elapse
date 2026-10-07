@@ -30,6 +30,11 @@ class BilingualAssetsTests(unittest.TestCase):
         manifest = json.loads((ROOT / "store-assets/RENDER_MANIFEST_ZH_HANS.json").read_text(encoding="utf-8"))
         label = next(t for t in manifest["frames"][1]["external_text_bounds"] if "分钟" in t["text"])
         self.assertLessEqual(abs(label["bounds"][1] + label["bounds"][3] - 1304), 1)
+        self.assertEqual(manifest["frames"][1]["interval_pill_rect"], [614, 596, 1264, 708])
+        left, _, right, _ = label["bounds"]
+        self.assertGreaterEqual(left - 614, 36)
+        self.assertGreaterEqual(1264 - right, 36)
+        self.assertLessEqual(abs(left + right - 1878), 1)
 
     def test_english_image_or_contact_tamper_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

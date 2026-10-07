@@ -12,6 +12,7 @@ from bilingual_asset_checks import centered_text_y
 ROOT = en.ROOT
 FONT_FILE = "NotoSansSC-VF.ttf"
 FONT_SHA = "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a"
+INTERVAL_PILL = (614, 596, 1264, 708) # owner-requested Chinese-only +50px width
 STORY = [
     ("01-awareness", ["感受时间流逝。", "仅此而已。"], ""),
     ("02-choose-interval", ["选你想留意的 App。", "设定提醒间隔。"], ""),
@@ -39,7 +40,7 @@ def text(image, xy, value, directory, records, size, fill=en.INK, bold=False):
 
 def motif(image, index, directory, records):
     # One local text callback translates ONLY the outside-phone interval label.
-    # All shapes/coordinates/colors still execute the frozen English helper.
+    # Inherited art stays frozen; only Chinese pill width/text fitting is adapted.
     original = en.text
 
     def translated(*args, **kwargs):
@@ -49,7 +50,10 @@ def motif(image, index, directory, records):
         args[5] = 42
         face = font(directory, 42, kwargs.get("bold", args[7] if len(args) > 7 else False))
         glyph_bounds = ImageDraw.Draw(image).textbbox((0, 0), args[2], font=face)
-        args[1] = (632, centered_text_y(596, 708, glyph_bounds))
+        left, top, right, bottom = INTERVAL_PILL
+        ImageDraw.Draw(image).rounded_rectangle(INTERVAL_PILL, radius=56, fill="#DCEBFF")
+        args[1] = (round((left + right - glyph_bounds[0] - glyph_bounds[2]) / 2),
+                   centered_text_y(top, bottom, glyph_bounds))
         return text(*args, **kwargs)
 
     en.text = translated
@@ -99,10 +103,12 @@ def render(font_dir, icc_path):
                       source_sha=provenance["source_sha"], capture_run=provenance["run_url"],
                       source_description=provenance["sources"][name], headline_lines=lines,
                       subtitle=subtitle, external_text_bounds=bounds, icc_sha256=en.sha(icc_path))
+        if index == 1:
+            record["interval_pill_rect"] = list(INTERVAL_PILL)
         results.append(record)
     manifest = {"status": "FINAL_FREEZE_PENDING_INDEPENDENT_AUDIT", "locale": "zh-Hans",
                 "english_reference_head": freeze_before["approved_reference_head"], "polish_revision": 2,
-                "text_only_adaptation": "Interval label 42px at x=632; visible glyph bounds vertically centered in unchanged pill y=596..708. Headlines 94px.",
+                "text_only_adaptation": "Owner-requested Chinese interval pill +50px width, rect [614,596,1264,708]; 42px visible glyph bounds centered horizontally/vertically with >=36px side padding. Phone/headline/brand geometry unchanged; headlines 94px.",
                 "renderer_pillow_version": __import__("PIL").__version__,
                 "fonts": [{"file": FONT_FILE, "family": "Noto Sans SC", "face_index": 0,
                            "sha256": FONT_SHA, "axes": {"regular_weight": 400, "bold_weight": 700}},

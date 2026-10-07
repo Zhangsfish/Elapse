@@ -58,9 +58,11 @@ private device capture or screenshot-only data mode was used.
 | 4 | 看看时间 / 去了哪里。 | Shipped Chinese Today tutorial, not live usage |
 
 Frame 4 subline: 总量 · 每小时 · 各 App. Frame 2 outside interval text:
-5 · 10 · 15 · 30 · 60 分钟. Only necessary text fitting: 42px at x=632,
-visible glyph bounds vertically centered within the unchanged pill y=596..708;
-English remains 44px at (646,611). Owner requested this Chinese-only centering.
+5 · 10 · 15 · 30 · 60 分钟. Owner requested Chinese-only vertical centering,
+then a slightly wider pill for comfortable side padding. Pill right edge expands
+50px: [614,596,1264,708], retaining its height/radius/left edge and all phone/brand
+geometry. 42px glyph bounds centered on both axes, >=36px side padding.
+English pill/type remain unchanged: [614,596,1214,708], 44px at (646,611).
 Chinese headlines retain 94px / 120px line height and the exact English origin.
 All phone/brand geometry, background and external artwork execute the frozen
 English helpers. `render_store_zh_hans.py` never invokes English render or writes
