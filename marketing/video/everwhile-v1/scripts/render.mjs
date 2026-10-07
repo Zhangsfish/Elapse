@@ -1,5 +1,6 @@
 import {root,cli,live,run,ffmpeg} from './tools.mjs';
 import path from 'node:path';
+throw Error('Historical P01 renderer is frozen. Use scripts/render-r2.mjs, or reproduce P01 from eeae9b1 in a separate checkout.');
 // HyperFrames owns frame capture/video extraction. FFmpeg only muxes the original
 // sample-accurate premix after frame rendering (no homemade recording engine).
 await live(process.execPath,[cli,'render',path.join(root,'build/en'),'--output',path.join(root,'tmp/picture.mp4'),'--fps','60','--workers','2','--quality','standard','--crf','19','--sdr','--browser-gpu','--experimental-fast-capture=false']);

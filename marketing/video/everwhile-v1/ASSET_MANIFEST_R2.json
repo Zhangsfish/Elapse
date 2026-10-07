@@ -1,0 +1,106 @@
+{
+  "privateData": [],
+  "today": {
+    "source": "assets/reference/today-quick-start.png",
+    "sourceSHA256": "1588f5e0d49be1c46005db03288eb57bdf6752d9a2befc9ade0f2da918cadf26",
+    "cropLTRB": [
+      200,
+      650,
+      1120,
+      1735
+    ],
+    "output": "assets/r2/today-detail.png",
+    "outputSHA256": "5ca03dc4f66c8ad8365cd8cac3575a5943b1bd43627c982d12269b8d7bc5ff00",
+    "repaint": false,
+    "displayWidth": 800,
+    "uniformScale": 0.8695652173913043,
+    "exampleValues": [
+      "30m",
+      "App A",
+      "20m",
+      "App B",
+      "10m"
+    ]
+  },
+  "sources": [
+    {
+      "name": "drama",
+      "sourceSHA256": "f2985790a1a31253e90667394c6c1f80348f41cc04c7541bc768861bf08bdd57",
+      "creator": "RDNE Stock project",
+      "url": "https://www.pexels.com/video/couple-having-a-intense-conversation-in-front-of-the-door-5617887/",
+      "native": "1920\u00d71080, 24fps family",
+      "derivative": "crop=608:1080:530:0; Lanczos1080\u00d71920; repeats to60fps"
+    },
+    {
+      "name": "coffee",
+      "sourceSHA256": "f2ca77f0df0a2efc534e262380d9c4b8e8fe08a69d50329d04244da44f969dcd",
+      "creator": "Michael Burrows",
+      "url": "https://www.pexels.com/video/pouring-black-coffee-into-a-cup-7118100/",
+      "native": "2160\u00d73840,25fps",
+      "derivative": "Lanczos1080\u00d71920; repeats to60fps"
+    },
+    {
+      "name": "social",
+      "sourceSHA256": "f30d7ce58d4369e603cf985d9b5e2bdd5cd28a58684b099606882690a37cb67b",
+      "creator": "kaya Yu",
+      "url": "https://www.pexels.com/photo/street-in-city-in-sunlight-16249816/",
+      "download": "https://images.pexels.com/photos/16249816/pexels-photo-16249816.jpeg?cs=srgb&dl=pexels-kaya-yu-505472119-16249816.jpg&fm=jpg",
+      "native": [
+        1830,
+        2735
+      ],
+      "derivative": "RGB JPEG97; city photograph; no account data"
+    }
+  ],
+  "license": {
+    "url": "https://www.pexels.com/license/",
+    "checked": "2026-10-07",
+    "use": "free commercial editing; no endorsement or negative actor attribution"
+  },
+  "files": [
+    {
+      "file": "assets/r2/coffee.jpg",
+      "sha256": "17c88ae64ae0a8933e51cfaab763306d739455a1d0791dcf7e9ecd4c95537df9",
+      "bytes": 50420
+    },
+    {
+      "file": "assets/r2/coffee.mp4",
+      "sha256": "e759b5e5d8c7855ef642c014831bf960f2e7f6e508cce3068965e7fa25d9ce38",
+      "bytes": 19872784
+    },
+    {
+      "file": "assets/r2/drama.jpg",
+      "sha256": "f28b0ab828eea659b076a306fdc71883dd804aa79d7c6fff00e8dc30bdcc0ef2",
+      "bytes": 49211
+    },
+    {
+      "file": "assets/r2/drama.mp4",
+      "sha256": "c3ed4d2087b425e53506545458430b5f989460a5f6af37db56e4e4af497230a5",
+      "bytes": 19131542
+    },
+    {
+      "file": "assets/r2/social.jpg",
+      "sha256": "d4bfa445abc7e8d1f436c6f0e05c9136e8115e9bab8a5b01e7189c1f2868e51a",
+      "bytes": 3469387
+    },
+    {
+      "file": "assets/r2/today-detail.png",
+      "sha256": "5ca03dc4f66c8ad8365cd8cac3575a5943b1bd43627c982d12269b8d7bc5ff00",
+      "bytes": 71521
+    }
+  ],
+  "audioFrozen": [
+    {
+      "file": "review/music.wav",
+      "sha256": "b653a8207501e8b9c577273fa42c5dbbf34ddc8f6e568a128d70969fadffccc9"
+    },
+    {
+      "file": "review/sfx.wav",
+      "sha256": "2eaa832645f1a7ef8d4c859e54ba50280cd778fdb530f754407f21877ec054fc"
+    },
+    {
+      "file": "review/mix.wav",
+      "sha256": "df63a492897a7daf75d6d1c2b88bbba4d8bb43ac53e67131b5c90f886fb376d7"
+    }
+  ]
+}

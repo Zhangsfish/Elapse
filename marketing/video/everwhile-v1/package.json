@@ -6,8 +6,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test scripts/contract.test.mjs",
-    "qa": "node scripts/snapshot-qa.mjs",
-    "render": "node scripts/render.mjs"
+    "qa": "node scripts/snapshot-r2.mjs",
+    "render": "node scripts/render-r2.mjs"
   },
   "devDependencies": {
     "hyperframes": "0.8.132",

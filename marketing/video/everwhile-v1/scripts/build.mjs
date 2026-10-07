@@ -15,4 +15,4 @@ const gsap=await readFile(path.join(toolRoot,'node_modules/gsap/dist/gsap.min.js
 const timeline=await readFile(path.join(out,'timeline.js'),'utf8');
 await writeFile(path.join(out,'gsap.min.js'),gsap);
 await writeFile(path.join(out,'index.html'),page().replace('<script src="timeline.js"></script>',`<script>${timeline}</script>`).replaceAll(/(<section[^>]*?) class="clip scene" data-start="[^"]+" data-duration="[^"]+" data-track-index="0"/g,'$1 class="scene"'));
-console.log('Built 18s / 1080f EN, 1080 design canvas → 720 review. No runtime network.');
+console.log('Built R2: 18s / 1080f, native1080×1920. No runtime network.');

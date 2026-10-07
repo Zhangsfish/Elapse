@@ -6,4 +6,5 @@ build/
 *.log
 __pycache__/
 review/frames/
+review/director-r2/frames/
 review/mix-unmastered.wav

@@ -3,6 +3,7 @@ from pathlib import Path
 import subprocess, json, hashlib, os, wave
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+raise RuntimeError('Historical P01 export is frozen. Use scripts/export-r2.py.')
 
 root=Path(__file__).resolve().parents[1];out=root/'review';tmp=root/'tmp/encoded-frames';tmp.mkdir(parents=True,exist_ok=True)
 ffmpeg=os.environ.get('EVERWHILE_FFMPEG','E:/video_to_md/readable-transcript/resource/bin/ffmpeg.exe')

@@ -20,9 +20,37 @@ Inter4.1 font is local in ignored `assets/fonts/`, never distributed. Display us
 
 HyperFrames owns frame rendering/footage decode; FFmpeg encodes/muxes. One paused GSAP timeline, frame/60 seeking, locally frozen media, no autoplay/render-time downloads. Set `EVERWHILE_FFMPEG`, `EVERWHILE_FFPROBE`, `EVERWHILE_CHROME` as already documented for the host.
 
+## R2 reproduction (existing pinned environment, no installation)
+
+```powershell
+& 'C:/conda_envs/myenv/python.exe' scripts/prepare-r2.py
+node scripts/build.mjs
+node --test scripts/contract.test.mjs
+node scripts/snapshot-r2.mjs
+& 'C:/conda_envs/myenv/python.exe' scripts/style-proof-r2.py
+node scripts/render-r2.mjs --transition
+node scripts/render-r2.mjs
+& 'C:/conda_envs/myenv/python.exe' scripts/export-r2.py
+& 'C:/conda_envs/myenv/python.exe' scripts/check-assets.py
+```
+
+prepare-r2 requires the rights-cleared originals in ignored tmp/ (source URLs and
+hashes in ASSET_MANIFEST_R2.json). Frozen derivatives already in Git suffice for
+build/render. Font hash remains pinned in ASSET_MANIFEST.json; font must be
+supplied locally, not redistributed. Build native1080 first; preview is a Lanczos
+downsample of that new encoded film, with the AAC stream copied unchanged.
+The short transition composition covers 0–8.6s at native1080, including the first
+notice. Style proofs are internal gates; OLD_VS_NEW_EN uses actual final encodes.
+
+R2 removes repeated cards/orbits and uses full-frame content, accelerating
+single-image revisits, one selection-to-interval action, three identical numeral
+beats, one genuine report-detail reframe and a complete brand lockup. The final
+thought bridges 12.55–13.35s after the third numeral, avoiding competing headings.
+Today example remains independent of the preceding advertising time compression.
+
 ## P01 historical reproduction
 
-The following commands describe the delivered P01 pipeline. Adapt build/render/QA scripts for R2 in a coherent change; do not invoke a historical bootstrap that overwrites current directing decisions. Preserve original audio references instead of regenerating/replacing them casually.
+The following commands describe the delivered P01 pipeline at source eeae9b1c15f8976dd276d01414596597d056bf86. Reproduce ONLY in a separate checkout at that source SHA. Historical scripts are now guarded against overwriting P01 under the active R2 source. Never run sound.py against the frozen approved stems.
 
 ```powershell
 & 'C:/conda_envs/myenv/python.exe' scripts/sound.py
