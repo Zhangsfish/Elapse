@@ -1,0 +1,7 @@
+{
+  "operation": "s03b-review-rc-upload-once",
+  "trigger_id": "everwhile-s03b-review-rc-20261007",
+  "source_code_sha": "b285691f951d4f50ee10c9d7adfacee4ba9abd98",
+  "version": "0.1.0",
+  "build_prefix": 92
+}
