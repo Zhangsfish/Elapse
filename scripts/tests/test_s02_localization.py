@@ -15,7 +15,7 @@ def release_content_view():
     # INTERNAL_DIAGNOSTICS probe used by temporary TestFlight investigations.
     # Native Release UI tests additionally verify the compiler result.
     return re.sub(
-        r'(?ms)^\\s*#if (?:DEBUG|DEBUG \\|\\| INTERNAL_DIAGNOSTICS)\\n.*?^\\s*#endif\\n',
+        r'(?ms)^\s*#if (?:DEBUG|DEBUG \|\| INTERNAL_DIAGNOSTICS)\n.*?^\s*#endif\n',
         '',
         source,
     )
