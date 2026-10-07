@@ -21,3 +21,17 @@ behavior; accepted91.1 stays inherited S02-B evidence.
 
 Portal/hosting/legal confirmations are later release gates. No new TestFlight,
 ASC write, App Review or public release in this screenshot pass.
+
+## 2026-10-07 owner upload observation / correction
+
+Owner supplied an ASC screenshot showing `01-awareness.png: 文件尺寸无效`.
+Visible slot: “带灵动岛的 iPhone（中等显示屏）”; displayed portrait sizes:
+1179×2556 / 1206×2622. Owner said the suggested larger-screen option did not exist.
+This is owner upload UI evidence, not physical-iPhone/runtime evidence. No private
+account screenshot is added to public assets; only this safe observation is recorded.
+
+Codex exported four local English 1206×2622 copies and then a separate centered
+Frame2 copy at owner request. Owner has not yet confirmed these files were
+accepted by ASC or explicitly accepted the latest centered preview. Local automated
+validation PASS must not be converted into owner visual/upload PASS.
+Follow-up for Chinese is documented in UPLOAD_COMPATIBILITY_HANDOFF.md.

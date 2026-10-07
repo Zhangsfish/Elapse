@@ -128,3 +128,19 @@ approval and independent freeze guard supersede those immutable Pass1 labels.
   authorized eligible package; this asset pass authorizes no upload.
 
 No new physical-phone tests. S03-B/S03-C remain **LOCKED**.
+
+## 2026-10-07 addendum — actual upload-size correction
+
+The earlier final assets are frozen **design masters**, not proof of compatibility
+with the owner's actual ASC screenshot slot. Owner reported `01-awareness.png`
+1320×2868 rejected as invalid size in the visible Dynamic Island medium-display
+slot. Four local English derivatives were exported at 1206×2622; owner additionally
+requested Frame2 interval text be centered horizontally/vertically in its pill.
+That local variant changes only outside-phone interval ink; canonical assets,
+contact sheets, shared renderer and runtime remain unchanged.
+
+See [UPLOAD_COMPATIBILITY_HANDOFF.md](UPLOAD_COMPATIBILITY_HANDOFF.md) for exact
+paths/hashes, executed local checks and mandatory equivalent Chinese export.
+Local derivatives are ignored and not part of the historical head's CI evidence.
+Chinese upload derivatives: **NOT_RUN**. Actual new-file ASC acceptance:
+**NOT_OBSERVED**. No automatic stage/status change, merge or submission follows.

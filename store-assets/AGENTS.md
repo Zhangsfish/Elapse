@@ -22,3 +22,12 @@ English polish revision 2 keeps headlines/background/source capture/order unchan
 Phone scale is about +4% uniformly in all frames; brand slightly strengthened.
 Frame 2 interval motif type enlarged; Frame 3 external accumulated segments lead
 to a quiet bell; Frame 4 external bars are faint. This English direction is frozen.
+
+2026-10-07 owner upload correction: 1320x2868 failed the actual medium-display
+ASC slot. Final upload derivatives must be 1206x2622 for English and zh-Hans;
+retain canonical masters/freeze intact. Frame2 interval ink must be horizontally
+and vertically centered using actual glyph bounds, not baseline offsets.
+Read docs/S03_SCREENSHOT_PRODUCTION.md “Actual upload gate” and
+reports/S03-A/round-01/UPLOAD_COMPATIBILITY_HANDOFF.md before Chinese export.
+Local English derivatives are ignored outputs, not yet a tracked bilingual upload
+package or proof of successful ASC upload. Do not treat master-only PASS as this gate.

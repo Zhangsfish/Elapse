@@ -22,3 +22,9 @@ Fresh Release capture source86cb53710b01d7ece92875c8f93d52ebf6f2d0f2; CI37574631
 Manifests/independent pixel proof/freeze guard live under store-assets/. English
 outputs/renderer are immutable. Reports separate capture source, tested code,
 documentation-only head and current CI. No new runtime/upload/device evidence.
+
+2026-10-07 side-conversation correction: UPLOAD_COMPATIBILITY_HANDOFF.md records
+actual owner ASC size rejection, local English 1206x2622 derivatives and Frame2
+ink centering. This supplements (does not rewrite) the prior master freeze/CI.
+Chinese upload-size exports and actual upload acceptance are still NOT_RUN /
+NOT_OBSERVED. Follow the updated screenshot production spec before release.
