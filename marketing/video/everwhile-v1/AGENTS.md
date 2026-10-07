@@ -4,6 +4,12 @@
 
 **P01 VISUAL CHANGES_REQUIRED / R2 VISUAL REBUILD AUTHORIZED**
 
+R2 delivery: **READY_FOR_DIRECTOR_R2_REVIEW**. Native1080, derived720 and
+actual encoded P01/R2 comparison are in `review/director-r2/`. Rendered visual
+source: `51cd610b63b120de09c36a7dfca2bb43c5f5b7a9`. See DELIVERY/TEST_RESULTS
+for technical checks and disclosed limitations. This does not supersede the
+director's verdict or authorize merge, further redesign or App/ASC changes.
+
 Continue PR #26, branch `codex/promo-p01-time-becomes-visible`. Fetch current refs and preserve unrelated local work. Read `DIRECTOR_R2.md` first; it is the current directing authority.
 
 The owner accepts the story/music direction but rejects the picture as cheap, slide-deck/onboarding-like. Do not make another minor-polish iteration and do not ask the owner to choose fonts, footage, transitions or music. The director has fixed the next treatment.

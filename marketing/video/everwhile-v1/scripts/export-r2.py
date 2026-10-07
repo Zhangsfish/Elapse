@@ -41,8 +41,12 @@ onsets=[449,450,451,462,569,570,571,582,689,690,691,702,929,930,931]
 transitions=[254,255,262,269,270,271,300,330,360,389,390,391,449,450,480,749,750,751,753,780,801,810,840,929,930]
 temporal=list(range(0,1080,15))+[1079]
 indices=sorted(set(contact+onsets+transitions+temporal+[54,102,150,168,198,219,234,246]))
-subprocess.run([ff,'-v','error','-y','-i',str(native),'-vf','select='+'+'.join('eq(n\\,%d)'%f for f in indices),'-fps_mode','vfr',str(tmp/'%04d.png')],check=True)
-mapping={f:tmp/('%04d.png'%(i+1)) for i,f in enumerate(indices)}
+mapping={}
+# Keep FFmpeg's expression tree below its parser recursion limit.
+for offset in range(0,len(indices),24):
+    batch=indices[offset:offset+24];prefix=f'b{offset:03d}-'
+    subprocess.run([ff,'-v','error','-y','-i',str(native),'-vf','select='+'+'.join('eq(n\\,%d)'%f for f in batch),'-fps_mode','vfr',str(tmp/(prefix+'%04d.png'))],check=True)
+    mapping.update({f:tmp/(prefix+'%04d.png'%(i+1)) for i,f in enumerate(batch)})
 font=ImageFont.truetype(str(root/'assets/fonts/InterVariable.ttf'),20)
 def sheet(name,frames,cols,width):
     h=round(width*16/9);label=36;can=Image.new('RGB',(cols*width,((len(frames)+cols-1)//cols)*(h+label)),'#e9edf4');d=ImageDraw.Draw(can)

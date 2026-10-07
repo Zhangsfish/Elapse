@@ -1,0 +1,601 @@
+{
+  "status": "PASS_TECHNICAL_ONLY",
+  "movies": [
+    {
+      "file": "EVERWHILE_R2_EN_1080.mp4",
+      "sha256": "f938e6e9f4efb17d5cbefc8e353db29de131f4b750e9b99859614632302a451c",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "mime_codec_string": "avc1.64002a",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1088,
+            "coded_height": 1920,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 42,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 3,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "60/1",
+            "avg_frame_rate": "60/1",
+            "time_base": "1/15360",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 276480,
+            "duration": "18.000000",
+            "bit_rate": "5863289",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "1080",
+            "nb_read_frames": "1080",
+            "extradata_size": 50,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "encoder": "Lavc63.1.101 libx264"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "mime_codec_string": "mp4a.40.2",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 1024,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 864000,
+            "duration": "18.000000",
+            "bit_rate": "262856",
+            "nb_frames": "845",
+            "nb_read_frames": "844",
+            "extradata_size": 5,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler"
+            }
+          }
+        ],
+        "format": {
+          "filename": "E:\\Elapse\\marketing\\video\\everwhile-v1\\review\\director-r2\\EVERWHILE_R2_EN_1080.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "18.000000",
+          "size": "13806114",
+          "bit_rate": "6136050",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf63.1.101"
+          }
+        }
+      },
+      "decodedFrames": 1080,
+      "allFramesNonblank": true,
+      "decodedAudioPeak": 0.5377481579780579,
+      "decodedAudioSamplesPerChannel": 864000
+    },
+    {
+      "file": "EVERWHILE_R2_EN_720.mp4",
+      "sha256": "f2521eb0a46a93e4e3d484548aa3c42dbb28d7dd70bdded20ad902275113c1ed",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "mime_codec_string": "avc1.640020",
+            "width": 720,
+            "height": 1280,
+            "coded_width": 720,
+            "coded_height": 1280,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 32,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 5,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "60/1",
+            "avg_frame_rate": "60/1",
+            "time_base": "1/15360",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 276480,
+            "duration": "18.000000",
+            "bit_rate": "1550634",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "1080",
+            "nb_read_frames": "1080",
+            "extradata_size": 49,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "encoder": "Lavc63.1.101 libx264"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "mime_codec_string": "mp4a.40.2",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 1024,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 864000,
+            "duration": "18.000000",
+            "bit_rate": "262856",
+            "nb_frames": "845",
+            "nb_read_frames": "844",
+            "extradata_size": 5,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler"
+            }
+          }
+        ],
+        "format": {
+          "filename": "E:\\Elapse\\marketing\\video\\everwhile-v1\\review\\director-r2\\EVERWHILE_R2_EN_720.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "18.000000",
+          "size": "4111171",
+          "bit_rate": "1827187",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf63.1.101"
+          }
+        }
+      },
+      "decodedFrames": 1080,
+      "allFramesNonblank": true,
+      "decodedAudioPeak": 0.5377481579780579,
+      "decodedAudioSamplesPerChannel": 864000
+    }
+  ],
+  "directorVerdict": "PENDING",
+  "realTimeAudiovisualViewing": "NOT_RUN",
+  "subjectiveListening": "NOT_RUN",
+  "encodedAudioAlignment": {
+    "lagSamples": 0,
+    "gridSamples": 16,
+    "correlation": 0.9998153724044938,
+    "toleranceSamples": 800,
+    "method": "AAC against frozen PCM,4.5\u201312.5s"
+  },
+  "sfxOnsets": [
+    {
+      "frame": 450,
+      "firstSample": 360001
+    },
+    {
+      "frame": 570,
+      "firstSample": 456001
+    },
+    {
+      "frame": 690,
+      "firstSample": 552001
+    }
+  ],
+  "uiIntegrity": {
+    "exactRawCropPixels": true,
+    "cropLTRB": [
+      200,
+      650,
+      1120,
+      1735
+    ],
+    "uniformScale": 0.8695652173913043,
+    "browserInterpolationMAE": 0.09000883704489218,
+    "encodedDetailMAE": 0.4798449098621421,
+    "bothAppRowsPreserved": true
+  },
+  "encodedVsBrowser": [
+    {
+      "frame": 0,
+      "meanRGBError": 1.5494319058641974
+    },
+    {
+      "frame": 30,
+      "meanRGBError": 1.4990552662037038
+    },
+    {
+      "frame": 54,
+      "meanRGBError": 3.060142264660494
+    },
+    {
+      "frame": 72,
+      "meanRGBError": 3.013427694187243
+    },
+    {
+      "frame": 102,
+      "meanRGBError": 2.8110559735082306
+    },
+    {
+      "frame": 120,
+      "meanRGBError": 2.8149278227880656
+    },
+    {
+      "frame": 150,
+      "meanRGBError": 2.9273358731995884
+    },
+    {
+      "frame": 168,
+      "meanRGBError": 2.6330391589506172
+    },
+    {
+      "frame": 180,
+      "meanRGBError": 2.7146772119341565
+    },
+    {
+      "frame": 198,
+      "meanRGBError": 1.524881847993827
+    },
+    {
+      "frame": 219,
+      "meanRGBError": 2.5321310763888887
+    },
+    {
+      "frame": 234,
+      "meanRGBError": 2.437129147376543
+    },
+    {
+      "frame": 240,
+      "meanRGBError": 2.4447841113683126
+    },
+    {
+      "frame": 246,
+      "meanRGBError": 3.0386431005658436
+    },
+    {
+      "frame": 254,
+      "meanRGBError": 3.2394185635288064
+    },
+    {
+      "frame": 255,
+      "meanRGBError": 3.3040698945473252
+    },
+    {
+      "frame": 262,
+      "meanRGBError": 3.2437189750514404
+    },
+    {
+      "frame": 269,
+      "meanRGBError": 3.311815200617284
+    },
+    {
+      "frame": 270,
+      "meanRGBError": 1.6677727944958847
+    },
+    {
+      "frame": 271,
+      "meanRGBError": 1.6672026105967077
+    },
+    {
+      "frame": 285,
+      "meanRGBError": 1.68311422968107
+    },
+    {
+      "frame": 300,
+      "meanRGBError": 1.7105494470164608
+    },
+    {
+      "frame": 330,
+      "meanRGBError": 1.4433052019032921
+    },
+    {
+      "frame": 360,
+      "meanRGBError": 1.398762538580247
+    },
+    {
+      "frame": 389,
+      "meanRGBError": 1.3987636638374485
+    },
+    {
+      "frame": 390,
+      "meanRGBError": 1.4955664866255145
+    },
+    {
+      "frame": 420,
+      "meanRGBError": 1.469727527006173
+    },
+    {
+      "frame": 449,
+      "meanRGBError": 1.4396772119341563
+    },
+    {
+      "frame": 450,
+      "meanRGBError": 1.443890335648148
+    },
+    {
+      "frame": 451,
+      "meanRGBError": 1.4455954218106997
+    },
+    {
+      "frame": 462,
+      "meanRGBError": 1.4485275205761317
+    },
+    {
+      "frame": 480,
+      "meanRGBError": 1.4534527713477365
+    },
+    {
+      "frame": 510,
+      "meanRGBError": 2.4217907664609055
+    },
+    {
+      "frame": 540,
+      "meanRGBError": 2.4156069958847737
+    },
+    {
+      "frame": 569,
+      "meanRGBError": 2.4337369791666665
+    },
+    {
+      "frame": 570,
+      "meanRGBError": 2.45148164223251
+    },
+    {
+      "frame": 571,
+      "meanRGBError": 2.445987975823045
+    },
+    {
+      "frame": 582,
+      "meanRGBError": 2.4573726851851854
+    },
+    {
+      "frame": 600,
+      "meanRGBError": 2.4303422389403293
+    },
+    {
+      "frame": 630,
+      "meanRGBError": 2.5754656957304527
+    },
+    {
+      "frame": 660,
+      "meanRGBError": 2.7816594328703705
+    },
+    {
+      "frame": 689,
+      "meanRGBError": 2.9852388760288067
+    },
+    {
+      "frame": 690,
+      "meanRGBError": 2.9024961419753086
+    },
+    {
+      "frame": 691,
+      "meanRGBError": 2.999317772633745
+    },
+    {
+      "frame": 702,
+      "meanRGBError": 2.9222461741255144
+    },
+    {
+      "frame": 720,
+      "meanRGBError": 2.940417470421811
+    },
+    {
+      "frame": 749,
+      "meanRGBError": 2.9817682613168723
+    },
+    {
+      "frame": 750,
+      "meanRGBError": 1.107743537808642
+    },
+    {
+      "frame": 751,
+      "meanRGBError": 1.111052115483539
+    },
+    {
+      "frame": 753,
+      "meanRGBError": 1.113607896090535
+    },
+    {
+      "frame": 780,
+      "meanRGBError": 1.1279274369855967
+    },
+    {
+      "frame": 801,
+      "meanRGBError": 1.0463614004629629
+    },
+    {
+      "frame": 810,
+      "meanRGBError": 1.0507777134773661
+    },
+    {
+      "frame": 840,
+      "meanRGBError": 1.0509429655349793
+    },
+    {
+      "frame": 929,
+      "meanRGBError": 1.0510953575102882
+    },
+    {
+      "frame": 930,
+      "meanRGBError": 1.4357608346193416
+    },
+    {
+      "frame": 931,
+      "meanRGBError": 1.4350760352366254
+    },
+    {
+      "frame": 960,
+      "meanRGBError": 1.434881204989712
+    },
+    {
+      "frame": 1020,
+      "meanRGBError": 1.434881204989712
+    },
+    {
+      "frame": 1079,
+      "meanRGBError": 1.4346014981995885
+    }
+  ],
+  "renderedSourceSHA": "51cd610b63b120de09c36a7dfca2bb43c5f5b7a9",
+  "audioFrozen": [
+    {
+      "file": "review/music.wav",
+      "sha256": "b653a8207501e8b9c577273fa42c5dbbf34ddc8f6e568a128d70969fadffccc9"
+    },
+    {
+      "file": "review/sfx.wav",
+      "sha256": "2eaa832645f1a7ef8d4c859e54ba50280cd778fdb530f754407f21877ec054fc"
+    },
+    {
+      "file": "review/mix.wav",
+      "sha256": "df63a492897a7daf75d6d1c2b88bbba4d8bb43ac53e67131b5c90f886fb376d7"
+    }
+  ]
+}

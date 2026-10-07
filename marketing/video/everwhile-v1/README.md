@@ -4,6 +4,11 @@
 
 **P01 visuals CHANGES_REQUIRED. Execute `DIRECTOR_R2.md` on PR #26.**
 
+R2 is delivered at **READY_FOR_DIRECTOR_R2_REVIEW**, pending director verdict.
+Use `review/director-r2/DELIVERY.md` and the actual native/preview/comparison
+films, not P01's historical review bundle. Rendered source is `51cd610`;
+evidence/tooling commits are recorded separately in PR #26.
+
 Owner likes the story/music direction but rejects the picture as cheap and slide-deck-like. The director obtained the exact P01 MP4, verified its SHA, inspected decoded frames/sequence and source, and recorded the findings and replacement shot treatment in `DIRECTOR_R2.md`.
 
 Keep18s/60fps, the story, original score/SFX, reminder onsets7.5/9.5/11.5s and complete end card15.5s. Rebuild the picture, not the audio or App: immersive content, clear visual transition, strong typographic time notices, an actually legible Today detail and a unified brand card. No new renderer, no design questionnaire, no stopping with static frames. New complete English output belongs under `review/director-r2/`.
@@ -31,6 +36,7 @@ node scripts/snapshot-r2.mjs
 node scripts/render-r2.mjs --transition
 node scripts/render-r2.mjs
 & 'C:/conda_envs/myenv/python.exe' scripts/export-r2.py
+& 'C:/conda_envs/myenv/python.exe' scripts/compare-r2.py
 & 'C:/conda_envs/myenv/python.exe' scripts/check-assets.py
 ```
 
