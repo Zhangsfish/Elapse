@@ -4,7 +4,7 @@ Updated: 2026-10-07
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B IN_PROGRESS — WAITING_FOR_OWNER_PORTAL；S03-C LOCKED。**
+**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY_FOR_OWNER_SUBMISSION（工程收口 PR #25 待 cloud audit；私人声明/最终提交仍由 owner 完成）；S03-C LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -36,7 +36,12 @@ Review-eligible RC 已完成：**Everwhile 0.1.0 (92.1)**，ASC `VALID / APP_STO
 Exact IPA SHA256：`fb3baad3ce54842122b6a6416b4334115b7754953a66dde5614b2f3801b9dade`。
 RC workflow：`37580987653`。App / Monitor / Report 的 Apple Distribution、Family Controls distribution profile allowance、必要 App Group、`get-task-allow=false` 均 PASS。
 
-S03-B 当前剩余主要是 portal/account 收口，不再是 build 工程问题。
+S03-B 工程收口记录：[`reports/S03-B/round-01/PORTAL_CLOSEOUT.md`](reports/S03-B/round-01/PORTAL_CLOSEOUT.md)。
+当前 live URLs、92.1 关联、双语 metadata/review notes 均已收口；实际检查/run/SHAs 见 DELIVERY 和 TEST_RESULTS。
+Family Controls 发布签名/profile 实证 gate CLOSED；未读取的 Portal Assigned UI 降为 OPTIONAL_OWNER_READBACK，不再阻塞。
+App Privacy 源码结论是 **No / Data Not Collected；tracking No**，不能冒充 ASC 私人声明已发布。
+Owner 只需确认 exact storefront（建议 US only、排除中国大陆）及尚未完成的 legal/privacy attestation；cloud 审核 PR #25 后再亲自最终 Submit for Review。
+审核联系人已经填齐，不需重填。没有生成新 RC / TestFlight，没有提交审核或公开发布。
 
 S03-A 已由 cloud 独立审计并合并：
 - PR #22 merge: `62526aeff6176895d84d6b192086d4348df07858`
@@ -52,14 +57,10 @@ S03-A 已由 cloud 独立审计并合并：
 - age rating 4+；
 - bilingual metadata / review notes / privacy/support page source。
 
-S03-B 当前只做正式发布准备与 exact review-eligible RC：
-
-1. 让 Support / Privacy URL 真正上线并匿名 HTTPS 验证；
-2. 记录 Family Controls Distribution portal Assigned 状态（App / Monitor / Report）；
-3. 收口 ASC privacy / metadata / review fields；
-4. 从冻结 91.1 runtime 制作一个非 INTERNAL_ONLY、可供 App Review 选择的 distribution RC；
-5. 验证 exact IPA / 签名 / entitlement / processing / review eligibility；
-6. 在真正 Submit for Review 前停下，让 owner 确认 exact build + storefronts。
+Support https://zhangsfish.github.io/Elapse/ 和 Privacy https://zhangsfish.github.io/Elapse/privacy.html 均 LIVE_VERIFIED：匿名 HTTPS200、双语及交叉链接等通过；两种 ASC locale 的 URL 已保存并读回。
+冻结 runtime / screenshots 不变；现有 92.1 为唯一正式 RC，不再重复制作。
+PR #24 已 merged，当前小型 closeout PR #25：`codex/s03-b-portal-closeout`，仅发布工具、metadata 和 evidence。
+**READY_FOR_OWNER_SUBMISSION 是工程准备状态，不是 cloud 批准/Apple 审核通过，也不授权 Codex 提交。**
 
 默认仍是：
 - United States first；
@@ -77,7 +78,7 @@ S03-B 当前只做正式发布准备与 exact review-eligible RC：
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
-| S03-B | **IN_PROGRESS — WAITING_FOR_OWNER_PORTAL** | RC 92.1 APP_STORE_ELIGIBLE；等待 live URLs / final ASC fields / storefront approval |
+| S03-B | **READY_FOR_OWNER_SUBMISSION — PR #25 待 cloud audit** | RC 92.1 已关联，live URLs/metadata 完成；owner 最终地区/声明/提交保留 |
 | S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
 
 ## S03 硬边界

@@ -1,7 +1,7 @@
 {
-  "source_sha": "953cd07feddec17962f3938c16cd559aa07784f6",
-  "workflow_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37583779107",
-  "operation": "OWNER_AUTHORIZED_PUBLIC_URLS_AND_EXISTING_BUILD_ASSOCIATION_NO_SUBMISSION",
+  "source_sha": "41acc8158acea3087d9cfed4f98967f9c68cd3cc",
+  "workflow_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37584709525",
+  "operation": "OWNER_AUTHORIZED_PUBLIC_URLS_EXISTING_BUILD_REVIEW_NOTES_NO_SUBMISSION",
   "safe_fields": [
     {
       "app": "Everwhile",
@@ -9,7 +9,7 @@
       "buildAudienceType": "APP_STORE_ELIGIBLE",
       "bundle": "com.zhangsfish.elapse",
       "expired": false,
-      "observedAt": "2026-10-07T06:51:03Z",
+      "observedAt": "2026-10-07T07:00:51Z",
       "processingState": "VALID",
       "usesNonExemptEncryption": false,
       "version": "0.1.0"
@@ -56,7 +56,9 @@
     },
     {
       "demoAccountRequired": false,
-      "reviewContactComplete": true
+      "reviewContactComplete": true,
+      "reviewNotesCharacters": 1004,
+      "reviewNotesMatchRepository": true
     },
     {
       "locale": "en-US",

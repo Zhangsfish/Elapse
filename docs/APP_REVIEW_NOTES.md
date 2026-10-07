@@ -28,5 +28,5 @@ Screen Time report data stays on this iPhone.
 Today 由本机 DeviceActivityReport 提供当天截至现在的总量、小时汇总和
 各 App 用时，可能稍后更新，不是精确会话。没有阻止 App 或 Shield 功能。
 
-Review contact name/email/phone must be entered privately in ASC by the owner.
-Do not commit personal review-contact phone numbers or portal credentials.
+Current safe ASC readback confirms the private review contact fields are complete.
+Do not commit their values or portal credentials; no re-entry is requested.
