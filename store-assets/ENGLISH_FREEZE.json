@@ -1,0 +1,19 @@
+{
+  "approved_reference_head": "7aff9a46ba14716f22d0532a29f80408c5b8c18e",
+  "approval_source": "Owner explicit approval in Codex conversation, 2026-10-07",
+  "geometry_source": "RENDER_MANIFEST_EN.json polish_revision=2",
+  "sha256": {
+    "en/01-awareness.png": "521d7c86e791c8d352381f7cbf70abe6d32e30839d116d39d32b449cee2792d6",
+    "en/02-choose-interval.png": "5f86943803912c30b6d0eef0465baa9fa53c31bed4ecf5cbdbd643117462e60f",
+    "en/03-reminder.png": "cbb24b8025f17ae2accd1a0ed7223386ef437a12cbce16d3484e1cea9065264e",
+    "en/04-today.png": "a71f0a60a3c7afb3a5f1a816e39b7dedecfd4e97e2ce0815eb0e2ecacca79905",
+    "CONTACT_SHEET_EN.png": "23673d8d2f84dea8ebe0557ec144887bf013a1006584fe8a3c0adcd0c32925a8",
+    "RENDER_MANIFEST_EN.json": "3935a8ef556a19834705f716e875e6d54a718a463299dba94560827261fe0e97",
+    "IMAGE_VALIDATION_EN.json": "04e38751780aaa53a8f9736be3e2788e8c1f3ad0246ac27c58fae17774883a5e"
+  },
+  "git_lf_json_sha256": {
+    "RENDER_MANIFEST_EN.json": "62e0162431a462f654d45bd05ecae2569b0376a43f6251b1e72107001f209da8",
+    "IMAGE_VALIDATION_EN.json": "5dc7a7a3811497c7d71dba70f92886fdc3ca9a7b3931e3efe58e8ed57b8d75de"
+  },
+  "english_renderer_normalized_lf_sha256": "53e5b4f1cb8d6f9956634038a1d159a8a0df53b8d00a7aaf7131fcda54d8ef3f"
+}
