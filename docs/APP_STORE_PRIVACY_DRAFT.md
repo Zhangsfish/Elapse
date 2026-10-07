@@ -1,6 +1,7 @@
-# App Privacy draft — source-audited, not portal answers
+# App Privacy final recommendation — independently source-audited
 
-2026-10-07 · frozen runtime fab87acc8f4b863451d9c91ee7605b4c33c47789 (91.1).
+2026-10-07 · frozen runtime fab87acc8f4b863451d9c91ee7605b4c33c47789,
+unchanged in review RC 0.1.0 (92.1). This recommendation is not an ASC publication attestation.
 
 ## Verified source behavior
 
@@ -25,27 +26,35 @@ The App Group state store uses a local JSON file, not a shared UserDefaults suit
 its existence alone does not require the shared-defaults reason `1C8F.1`.
 See [Apple's reason definitions](https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitypereasons).
 
-## Proposed App Store Connect answers
+## Exact recommended App Store Connect answers
 
 - Tracking: **No**.
-- App automatically collects data: proposed **No / Data Not Collected**, conditional
-  on unchanged runtime and owner confirmation of optional support handling below.
+- “Do you or your third-party partners collect data from this app?”: **No**.
+- Resulting label: **Data Not Collected**; no automatic data categories to add.
 - Local Screen Time/token/configuration usage is not off-device collection. Apple
   explicitly distinguishes on-device-only processing from data collection.
 - No automatic analytics, identifiers, ads, location, contacts or usage upload.
 - Support messages are **not** described as never leaving the device. Mail is
   voluntary, external to the app, and may include email address/name/user content.
-  Owner must confirm actual retention/use and whether Apple's optional-support
-  disclosure criteria apply; otherwise disclose the relevant contact/user-content
-  categories for App Functionality. Do not silently approve that legal answer.
-- Proposed privacy URL: **NOT_LIVE** until public deployment and anonymous HTTPS
-  verification; repository source is not a published policy.
+  The app has no support submission form, mail composer integration, attachments,
+  prefilled diagnostic body or sending service: it opens an external `mailto:`
+  containing the fixed support destination only. A user independently composing
+  mail in their mail client does not make this binary automatically collect Email
+  Address or Customer Support. Do not claim that the mailbox receives no personal
+  information. Apple's optional-support exception has multiple conditions; if a
+  future in-app collection form or marketing reuse is introduced, reassess it
+  rather than assuming all support collection is exempt.
+- Privacy URL: https://zhangsfish.github.io/Elapse/privacy.html — **LIVE_VERIFIED**,
+  saved/read back in both ASC languages. English/zh-Hans public policy accurately
+  separates local app processing, voluntary mail and web-host-provider requests.
 
 ## Independent release gates
 
-Family Controls portal Assigned status is not proved by this privacy audit.
+Family Controls Assigned UI status is not proved by this privacy audit; exact 92.1
+distribution provisioning closes the release path independently (optional UI readback).
 App privacy declarations, required-reason manifest, final signatures and capability
-approval are separate. No ASC answer was saved in S03-A.
+approval are separate. No Privacy Nutrition Label answer was saved by this closeout;
+owner should confirm/publish the recommended answer in ASC. Public privacy URL was saved.
 
 Official guidance checked 2026-10-07:
 [App Privacy details](https://developer.apple.com/app-store/app-privacy-details/)

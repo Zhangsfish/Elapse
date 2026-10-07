@@ -1,12 +1,21 @@
 name: S03 review-eligible App Store RC
 
 on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        type: choice
+        options: [readback, prepare-fields]
+        default: readback
+        description: 'Read 92.1, or save public URLs/review notes and associate existing 92.1; never submit'
   pull_request:
     paths:
       - .github/workflows/s03-review-rc.yml
       - scripts/s03_review_release.sh
       - scripts/s03_review_ipa_audit.py
       - scripts/s03_review_status.swift
+      - scripts/s03_asc_readback.swift
+      - scripts/tests/test_s03_closeout.py
       - reports/S03-B/**
   push:
     branches: [chatgpt/s03-b-app-store-submission]
@@ -17,6 +26,33 @@ permissions:
   contents: read
 
 jobs:
+  read-existing-rc:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-26
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read existing 92.1 (optionally save public URLs, build association and review notes)
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          S03_ASC_OPERATION: ${{ inputs.operation }}
+        run: |
+          set -euo pipefail
+          set +x
+          umask 077
+          secret_dir=$(mktemp -d "$RUNNER_TEMP/everwhile-readback.XXXXXX")
+          trap 'rm -rf "$secret_dir"' EXIT
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$secret_dir/key.p8"
+          if [[ "$S03_ASC_OPERATION" == 'prepare-fields' ]]; then
+            swift scripts/s03_asc_readback.swift "$secret_dir/key.p8" --prepare-fields
+          else
+            swift scripts/s03_asc_readback.swift "$secret_dir/key.p8"
+          fi
+
   verify-release-tooling:
     if: github.event_name == 'pull_request'
     runs-on: macos-26
@@ -40,6 +76,7 @@ jobs:
           bash -n scripts/s03_review_release.sh
           python3 -m py_compile scripts/s03_review_ipa_audit.py
           swiftc -typecheck scripts/s03_review_status.swift
+          swiftc -typecheck scripts/s03_asc_readback.swift
       - name: Verify frozen product source
         run: |
           set -euo pipefail
