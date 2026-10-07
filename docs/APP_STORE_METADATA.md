@@ -9,7 +9,7 @@ Name: Everwhile
 
 Subtitle: Feel time passing
 
-Promotional text: Choose the apps you want to notice and set a 5, 10, 15, 30, or 60-minute interval. Everwhile sends reminders based on cumulative use and shows total, hourly, and per-app time in Today.
+Promotional text: Choose apps and a 5, 10, 15, 30, or 60-minute interval. Everwhile sends cumulative-use reminders and shows total, hourly, and per-app time in Today.
 
 Description:
 
