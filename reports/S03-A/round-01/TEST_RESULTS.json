@@ -77,8 +77,15 @@
     "status": "PASS",
     "source_sha": "e68dffa7795b6afe8d5fc415e530a9636364657a",
     "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37577314354",
-    "swift_tests": {"passed": 60, "failed": 0},
-    "python_tests": {"passed": 42, "failed": 0, "skipped": 0},
+    "swift_tests": {
+      "passed": 60,
+      "failed": 0
+    },
+    "python_tests": {
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0
+    },
     "generation_simulator_localization": "PASS",
     "actual_release_ui_en_light": "PASS_1_TEST_0_FAILURES",
     "actual_release_ui_zh_Hans_dark_largest_type": "PASS_1_TEST_0_FAILURES",
@@ -100,5 +107,26 @@
   "internal_only_build_review_eligibility": "BLOCKED_DEFERRED_S03_B",
   "mainland_china": "BLOCKED_UNTIL_ICP_STATUS_CONFIRMED",
   "app_store_data_entry_review_public_release": "NOT_RUN_NOT_AUTHORIZED",
-  "s03_b_s03_c": "LOCKED"
+  "s03_b_s03_c": "LOCKED",
+  "owner_asc_screenshot_upload": {
+    "status": "PASS_OWNER_OBSERVED",
+    "date": "2026-10-07",
+    "english_count": 4,
+    "zh_Hans_count": 4,
+    "accepted_slot_pixels": [
+      1206,
+      2622
+    ],
+    "asc_uploader_acceptance": true,
+    "owner_visual_check": true,
+    "exact_uploaded_derivative_bytes_in_git": false,
+    "note": "Canonical 1320x2868 masters/raw/render evidence remain in Git; exact already-uploaded derivative bytes were not all committed before ASC upload."
+  },
+  "app_store_owner_fields": {
+    "primary_language": "English (US)",
+    "primary_category": "Utilities",
+    "secondary_category": "none",
+    "age_rating": "4+",
+    "screenshots": "4 EN + 4 zh-Hans uploaded and owner-approved"
+  }
 }
