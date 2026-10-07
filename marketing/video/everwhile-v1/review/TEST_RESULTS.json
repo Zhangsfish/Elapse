@@ -1,0 +1,39 @@
+{
+  "task": "PROMO-P01",
+  "status": "READY_FOR_DIRECTOR_REVIEW",
+  "baseSHA": "76838c8bd8659c379314decaa30c07ec0cb1e0ef",
+  "codeTestedRenderedSHA": "6f6b4b12e5ef6b886d73200e5145489902d9e11f",
+  "PR": "https://github.com/Zhangsfish/Elapse/pull/26",
+  "protectedPathsChanged": [],
+  "local": {
+    "nodeContract": {"status": "PASS", "tests": 6},
+    "typescriptStrictNoEmit": "PASS",
+    "existingPython": {"status": "PASS", "tests": 48},
+    "assetAndArtifactHashes": "PASS",
+    "browserQA": "PASS_TECHNICAL",
+    "shuffledSeek": {"frames": 17, "DOMAndMediaTime": "EXACT_MATCH", "PNGByteEquality": "NOT_ALL_EQUAL", "meanRGBTolerance": 0.06},
+    "hyperframesCheck": {"status": "PASS", "browserSkipped": false, "lintErrors": 0, "lintWarnings": 1},
+    "encodedFilm": {"status": "PASS_TECHNICAL", "seconds": 18, "fps": 60, "width": 720, "height": 1280, "decodedFrames": 1080, "nonBlackFrames": 1080, "nonBlankFrames": 1080},
+    "pulseOnsetFrames": [450, 570, 690],
+    "endCardFullOnsetFrame": 930,
+    "AACDecodedMixAlignment": {"bestLagSamples": 0, "searchGridSamples": 16, "correlation": 0.9998153724044938},
+    "mixLUFS": -15.02,
+    "mixTruePeakDBTP": -4.48,
+    "fontBinaryRedistributed": false,
+    "realCaptureRepainted": false,
+    "privateData": []
+  },
+  "remoteCICheckpoint": {
+    "commitSHA": "6f6b4b12e5ef6b886d73200e5145489902d9e11f",
+    "promoContract": {"status": "PASS", "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37618885755"},
+    "ordinaryMacOS": {"status": "IN_PROGRESS_AT_REPORT_CREATION", "url": "https://github.com/Zhangsfish/Elapse/actions/runs/37618885669"},
+    "finalHead": "Read authoritative current PR Checks and PR delivery summary; checkpoint is not current-head proof"
+  },
+  "humanReview": {
+    "encodedContactTransitionOnsetSheets": "INSPECTED",
+    "fullSubjectiveViewing": "NOT_RUN",
+    "completeListening": "NOT_RUN",
+    "directorCreativeApproval": "PENDING"
+  },
+  "notRun": ["zh-Hans final", "1080p final", "App Store badge output", "public distribution", "TestFlight", "App Review", "merge"]
+}
