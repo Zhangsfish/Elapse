@@ -7,8 +7,8 @@ S03-C remains locked until review results.
 | Gate | Current evidence / smallest later action |
 |---|---|
 | Family Controls Distribution | 91.1 final App/Monitor/Report signatures and profile allowances PASS; portal Assigned NOT_VERIFIED. In Certificates, Identifiers & Profiles → Capability Requests → Family Controls, confirm Assigned/provisioning support for all three IDs (com.zhangsfish.elapse, .monitor, .report). Reply only the three states; no profiles/secrets |
-| Public Support/Privacy | First merged deploy failed only because the repo had Pages disabled. S03-B changes `actions/configure-pages` to `enablement: true`; after merge, verify the deployment and anonymous HTTPS before entering URLs in ASC |
-| App Store build | 91.1 is INTERNAL_ONLY. S03-B is preparing a separate review-eligible RC from the same frozen runtime; exact build/IPA/ASC eligibility must be recorded before owner submission approval |
+| Public Support/Privacy | Automatic enablement was attempted after merge but GitHub returned `Resource not accessible by integration`. **One owner GitHub action is required:** Settings → Pages → Build and deployment → Source = GitHub Actions. Then rerun/verify the existing deployment workflow and anonymous HTTPS |
+| App Store build | **PASS — 0.1.0 (92.1), VALID / APP_STORE_ELIGIBLE**. Exact IPA SHA256 `fb3baad3ce54842122b6a6416b4334115b7754953a66dde5614b2f3801b9dade` |
 | App record/SKU | Owner previously confirmed record Everwhile exists for com.zhangsfish.elapse. Current portal record/SKU readback NOT_RUN; do not create duplicate record |
 | Agreements | Owner confirms Account Holder agreements privately; no automatic acceptance |
 | Privacy | Source audit supports no automatic app-data collection/tracking. Final ASC privacy answer and optional support-mail treatment still require owner/account confirmation |
@@ -49,5 +49,5 @@ These are owner-observed portal facts. They are not evidence of App Review appro
 
 - PR #24 prepares the review-eligible RC tooling; production product tree remains frozen.
 - Secret-free RC tooling verification passed before the upload marker.
-- One-time review RC upload has been triggered for target build 0.1.0 (92.1); final result must come from the actual workflow/ASC query, not this checklist.
+- Review RC 0.1.0 (92.1) completed successfully: upload ACCEPTED, processing VALID, APP_STORE_ELIGIBLE.
 - App Review submission remains NOT AUTHORIZED until the exact RC and remaining portal fields are presented to the owner.
