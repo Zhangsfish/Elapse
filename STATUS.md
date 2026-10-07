@@ -34,6 +34,7 @@ S02 残余可靠性边界继续记录但不再扩功能：
 
 PR [#22](https://github.com/Zhangsfish/Elapse/pull/22)，分支 `codex/s03-a-app-store-preflight`。
 English Pass 1 已完成真实 Release 采集、四张英文草稿、contact sheet、manifest 和像素校验。
+按持有人要求完成英文细节 polish 2：手机统一放大约 4%，优化外部插画与缩略图可读性；真实 capture、headline、背景与顺序不变。
 等待持有人审英文视觉方向；**未开始最终 zh-Hans 截图，未 READY_FOR_AUDIT**。
 交付/已执行检查/剩余 gate：[`reports/S03-A/round-01/DELIVERY.md`](reports/S03-A/round-01/DELIVERY.md)。
 91.1 runtime 保持冻结；本轮没有新 TestFlight、App Review 或公开发布。

@@ -5,14 +5,22 @@
   "pr": "https://github.com/Zhangsfish/Elapse/pull/22",
   "branch": "codex/s03-a-app-store-preflight",
   "base_main": "e63cbe8c6327ff5e1e0bed1a209800c7ef661a4a",
+  "current_main_synchronized": "db2a12f11c2a7e5c749d1682b3ade769eca77a82",
   "frozen_runtime_sha": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
   "version_build": "0.1.0 (91.1)",
-  "implementation_tested_sha": "d188500258946a4450035a51cf14429b08c11150",
+  "implementation_tested_sha": "8a7911366ecf3b2f3de2bb2b89b84298e8774b3c",
   "capture_source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
   "existing_upload_sha": "d633b5b627933d71aac221a3bb2f6aae29fd82a2",
   "production_runtime_change": false,
   "new_upload": "NOT_RUN_NOT_NEEDED_NO_RUNTIME_CHANGE",
-  "python_tests": {"status": "PASS_LOCAL", "passed": 29, "failed": 0},
+  "python_tests": {"status": "PASS_LOCAL", "passed": 31, "failed": 0},
+  "english_polish": {
+    "revision": 2, "headline_copy_background_order": "UNCHANGED",
+    "screen_scale_increase_percent": 3.97,
+    "interval_type_pixels": 44, "interval_type_at_360px_thumbnail": 12,
+    "frame_1": "REAL_UNCONFIGURED_HOME_RETAINED_SOURCE_INSPECTION",
+    "raw_capture_hashes": "UNCHANGED", "phone_repainting": false
+  },
   "capture": {
     "status": "PASS",
     "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
@@ -48,6 +56,20 @@
     "source_sha": "912bfacc40fe48fbc79010cb60226f02fba1fe6a",
     "status": "PASS", "python_tests": 28
   },
+  "inherited_ordinary_ci_rerun": {
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37504293740",
+    "source_sha": "b6ba48ceaca345091056f73329840de91f878e14",
+    "status": "PASS", "swift_tests": 60, "python_tests": 29,
+    "actual_release_ui_en": "PASS_1_TEST_0_FAILURES",
+    "actual_release_ui_zh_Hans_dark_large": "PASS_1_TEST_0_FAILURES",
+    "boot_exemption": false
+  },
+  "inherited_preflight_ci_rerun": {
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37504293779",
+    "source_sha": "b6ba48ceaca345091056f73329840de91f878e14",
+    "status": "PASS", "python_tests": 29
+  },
+  "latest_polish_head_ci": "PENDING_NOT_A_PASS",
   "source_privacy_metadata": "PASS_STATIC_SOURCE_ONLY_NOT_LEGAL_APPROVAL",
   "existing_91_1_final_signatures": "PASS_INHERITED_EXACT_IPA_EVIDENCE",
   "portal_assigned": "BLOCKED_OWNER_CONFIRMATION",

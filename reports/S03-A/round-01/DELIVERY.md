@@ -1,4 +1,4 @@
-# S03-A / round-01 — English Pass 1
+# S03-A / round-01 — English detail polish 2
 
 2026-10-07 · **WAITING_FOR_OWNER_VISUAL_REVIEW**, not READY_FOR_AUDIT.
 PR [#22](https://github.com/Zhangsfish/Elapse/pull/22) · `codex/s03-a-app-store-preflight`.
@@ -9,7 +9,9 @@ PR [#22](https://github.com/Zhangsfish/Elapse/pull/22) · `codex/s03-a-app-store
 - Frozen functional runtime: `fab87acc8f4b863451d9c91ee7605b4c33c47789`, **0.1.0 (91.1)**.
 - Fresh Release capture source: `6e5a82fc60236c5bc9a408207fcd6ad102cacffa`;
   [capture CI](https://github.com/Zhangsfish/Elapse/actions/runs/37501370483) **PASS**.
-- Asset/preflight/test-only implementation tested locally: `d188500258946a4450035a51cf14429b08c11150`.
+- Current main synchronized: `db2a12f11c2a7e5c749d1682b3ade769eca77a82`
+  (handoff-only update merged into the task branch; no PR/main merge).
+- Screenshot-polish implementation tested locally: `8a7911366ecf3b2f3de2bb2b89b84298e8774b3c`.
   Later delivery/STATUS changes are documentation only. PR head is recorded by GitHub.
 - Existing signed/internal upload: `d633b5b627933d71aac221a3bb2f6aae29fd82a2`;
   [upload](https://github.com/Zhangsfish/Elapse/actions/runs/37480245045).
@@ -21,7 +23,14 @@ entitlement, capability, Bundle ID, tutorial or Today change.
 
 ## Owner review package
 
-English screenshot draft is ready for visual review.
+English detail-polish revision 2 is ready for owner visual review. The owner
+requested preserving the four-frame design/copy/background/order, not final approval.
+Phones uniformly enlarged 3.97%, brand/icon mildly stronger, Frame 2 interval
+text now 44px bold (12px at 360px thumbnail). Frame 3 modifies only external
+accumulation → bell art; Frame 4 outside bars are paler/half-height.
+Frame 1 remains genuine unconfigured Home: source inspection found no fuller
+genuine state available in the existing clean capture set. No fake state or new
+authorization attempt. See `store-assets/SCREENSHOT_STORYBOARD.md`.
 
 `store-assets/CONTACT_SHEET_EN.png` plus `store-assets/en/01-awareness.png`,
 `02-choose-interval.png`, `03-reminder.png`, `04-today.png`.
@@ -49,9 +58,11 @@ render zh-Hans at identical geometry. Chinese final images are **NOT_RUN**.
 
 ## Executed checks
 
-- Python **29/29 PASS**: existing 19 + ten S03 tests, missing/duplicate/path-traversal/
+- Python **31/31 PASS**: existing 19 + twelve S03 tests, missing/duplicate/path-traversal/
   wrong-size/skipped/failing capture rejection, UTF-8 metadata limits, static pages,
-  source privacy/bundle boundary and frozen production tree/hashes.
+  source privacy/bundle boundary and frozen production tree/hashes. Two new
+  standard-library tests pin unchanged copy, common geometry/brand, 3–5% scale,
+  interval thumbnail font size and renderer/manifest constant consistency.
 - Real capture XCTest **1/1 PASS**, 0 skipped/failed; generated effective entitlements PASS.
 - Four output images: dimensions/mode/profile/hash/text bounds/fixed geometry PASS;
   every opaque phone pixel equals uniformly resized raw capture (**zero repainted**).
@@ -68,15 +79,21 @@ render zh-Hans at identical geometry. Chinese final images are **NOT_RUN**.
   About sheet's Done button. A dismissal race is suspected; no product regression
   is excluded merely from that suspicion. Test-only change adds Apple's bounded
   `waitForNonExistence(timeout: 5)` and retains the negative assertion. No runtime
-  edit, failure suppression or fixed sleep. Final rerun is pending on PR #22;
-  do not call ordinary CI PASS until its actual UI assertion passes.
+  edit, failure suppression or fixed sleep. Rerun
+  [37504293740](https://github.com/Zhangsfish/Elapse/actions/runs/37504293740)
+  **PASS** on `b6ba48ceaca345091056f73329840de91f878e14`: actual English and
+  zh-Hans dark/large Release XCTest each executed 1 test, 0 failures; 60 Swift
+  and 29 Python tests PASS. No simulator-boot NOT_RUN exemption used.
+  This is inherited runtime/UI evidence, not new-polish-head CI evidence.
   See `evidence/ordinary-ci-first-attempt.md`.
-- New `S03 secret-free store preflight` workflow repeats the 29 tests and static/
+- New `S03 secret-free store preflight` workflow repeats the 31 tests and static/
   hash checks on the PR; no Apple credentials. Capture and preflight workflows
   never export/upload a signed app. Existing ordinary CI remains secret-free.
   Its initial [28-test run](https://github.com/Zhangsfish/Elapse/actions/runs/37503916636)
-  passed on `912bfacc40fe48fbc79010cb60226f02fba1fe6a`; the new bounded-wait test
-  is additionally passed locally and awaits the final head's CI run.
+  passed on `912bfacc40fe48fbc79010cb60226f02fba1fe6a`;
+  [37504293779](https://github.com/Zhangsfish/Elapse/actions/runs/37504293779)
+  also passed 29 tests on `b6ba48ceaca345091056f73329840de91f878e14`.
+  Latest polish-head CI starts after push; until recorded, it remains PENDING.
 
 Reproduce with installed tools, no dependency install:
 

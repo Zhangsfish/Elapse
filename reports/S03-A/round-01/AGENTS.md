@@ -11,3 +11,8 @@ summaries, not private provisioning material. Store sources/assets live in
 
 English screenshot visual gate precedes Chinese production and READY_FOR_AUDIT.
 No self-approval, merge, upload, App Review submission or next-stage unlock.
+
+2026-10-07 detail polish 2: existing four-frame design retained; reports record
+actual 31 Python/pixel/determinism checks and prior successful macOS UI rerun.
+Canonical review image is `store-assets/CONTACT_SHEET_EN.png` revision 2.
+Original captures unchanged; owner final approval and Chinese assets still pending.
