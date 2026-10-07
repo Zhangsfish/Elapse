@@ -7,13 +7,15 @@ on:
         type: choice
         options: [readback, prepare-fields]
         default: readback
-        description: 'Read 92.1, or save verified public URLs and associate existing 92.1; never submit'
+        description: 'Read 92.1, or save public URLs/review notes and associate existing 92.1; never submit'
   pull_request:
     paths:
       - .github/workflows/s03-review-rc.yml
       - scripts/s03_review_release.sh
       - scripts/s03_review_ipa_audit.py
       - scripts/s03_review_status.swift
+      - scripts/s03_asc_readback.swift
+      - scripts/tests/test_s03_closeout.py
       - reports/S03-B/**
   push:
     branches: [chatgpt/s03-b-app-store-submission]
@@ -32,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Read existing 92.1 (optionally save only public URLs/build association)
+      - name: Read existing 92.1 (optionally save public URLs, build association and review notes)
         env:
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}

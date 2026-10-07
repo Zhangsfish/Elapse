@@ -147,7 +147,8 @@ def run(root=ROOT):
             "capture_source_sha": provenance["source_sha"],
             "metadata_counts": metadata_counts((root / "docs/APP_STORE_METADATA.md").read_text(encoding="utf-8")),
             "public_pages": check_pages(root / "public-pages"), "privacy_inventory": check_privacy(root),
-            "portal_assigned": "BLOCKED_OWNER_CONFIRMATION", "app_privacy_answers": "DRAFT_OWNER_CONFIRMATION",
+            "portal_assigned": "NOT_REQUIRED_FOR_RELEASE_OPTIONAL_OWNER_READBACK",
+            "app_privacy_answers": "DATA_NOT_COLLECTED_RECOMMENDED_OWNER_ASC_ATTESTATION",
             "app_review_submission": "NOT_RUN_NOT_AUTHORIZED"}
 
 

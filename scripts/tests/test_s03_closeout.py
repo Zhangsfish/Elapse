@@ -53,6 +53,31 @@ class CloseoutTests(unittest.TestCase):
         self.assertNotIn('"Authorization":', text)
         self.assertIn('"LIVE_VERIFIED"', text)
 
+    def test_all_public_listing_fields_match_safe_current_asc_inventory(self):
+        text = (ROOT / "docs/APP_STORE_METADATA.md").read_text(encoding="utf-8")
+        evidence = json.loads((ROOT / "reports/S03-B/round-01/evidence/asc-current-readback.json").read_text(encoding="utf-8"))
+        records = evidence["safe_fields"]
+        for locale, heading, labels in (
+            ("en-US", "English", ("Promotional text: ", "Description:", "Keywords: ")),
+            ("zh-Hans", "简体中文", ("推广文本：", "描述：", "关键词：")),
+        ):
+            body = text.split("## " + heading + "\n", 1)[1].split("\n## ", 1)[0]
+            actual = next(r for r in records if r.get("publicStoreMetadata") and r["locale"] == locale)
+            self.assertEqual(body.split(labels[0], 1)[1].split("\n", 1)[0], actual["promotionalText"])
+            self.assertEqual(body.split(labels[1], 1)[1].split(labels[2], 1)[0].strip(), actual["description"])
+            self.assertEqual(body.split(labels[2], 1)[1].split("\n", 1)[0], actual["keywords"])
+        current = records[0]
+        self.assertEqual((current["version"], current["build"], current["processingState"], current["buildAudienceType"]),
+                         ("0.1.0", "92.1", "VALID", "APP_STORE_ELIGIBLE"))
+        self.assertTrue(next(r for r in records if "build92_1Associated" in r)["build92_1Associated"])
+
+    def test_operational_distribution_gate_is_not_optional_ui_gate(self):
+        result = s03_preflight.run()
+        self.assertEqual(result["portal_assigned"], "NOT_REQUIRED_FOR_RELEASE_OPTIONAL_OWNER_READBACK")
+        doc = (ROOT / "docs/APP_STORE_OWNER_CHECKLIST.md").read_text(encoding="utf-8")
+        self.assertIn("92.1 exact App Store IPA", doc)
+        self.assertIn("does not assert the unread Portal UI", doc)
+
 
 if __name__ == "__main__":
     unittest.main()

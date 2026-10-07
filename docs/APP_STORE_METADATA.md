@@ -1,7 +1,9 @@
 # Store metadata — owner-selected copy and release notes
 
 2026-10-07 · iPhone only · 0.1.0 · Free · English + Simplified Chinese.
-Owner selected the listing copy during ASC entry. Legal copyright wording, live URLs, exact storefronts and final submission package remain separate gates.
+Owner selected the listing copy during ASC entry. Current ASC public fields were
+read back on 2026-10-07; no listing text was rewritten through the API.
+Copyright legal attestation, exact storefronts and final submission remain owner gates.
 
 ## English
 
@@ -42,7 +44,7 @@ No scores. No streaks. No digital-detox tasks. And it never blocks you from open
 You keep doing what you want to do.
 Everwhile simply tells you: time has passed.
 
-Keywords: awareness,reminder,elapsed,usage,interval,hourly,local,time
+Keywords: screen time,usage,reminder,awareness,elapsed,notification,hourly,report,digital wellbeing
 
 ## 简体中文
 
@@ -83,17 +85,18 @@ Everwhile 想做的事情很简单：
 你继续做自己的事。
 Everwhile 只负责告诉你：时间已经过去了。
 
-关键词：时间感知,用时提醒,使用时长,提醒间隔,小时分布,本地数据
+关键词：屏幕使用时间,手机用时,用时提醒,时间感知,使用统计,每小时,应用时长
 
 ## Shared fields
 
-- Support URL: **NOT_LIVE** — deploy public-pages/index.html first.
-- Privacy Policy URL: **NOT_LIVE** — deploy public-pages/privacy.html first.
+- Support URL: https://zhangsfish.github.io/Elapse/ — **LIVE_VERIFIED**, saved/read back in both ASC locales.
+- Privacy Policy URL: https://zhangsfish.github.io/Elapse/privacy.html — **LIVE_VERIFIED**, saved/read back in both ASC locales.
 - Marketing URL: leave blank (optional; no verified Everwhile-specific landing page).
 - Copyright draft: **2026 Shuo Zhang — OWNER_CONFIRM_LEGAL_RIGHTS_HOLDER**.
 - Primary category: **Utilities** — owner entered this in ASC.
 - Secondary category: none.
-- Release method recommendation: **manual** after owner approval; not automatic.
+- Release method: **MANUAL** read back from ASC; no automatic release.
+- Exact build: **0.1.0 (92.1)**, VALID / APP_STORE_ELIGIBLE, associated with the 0.1.0 version in ASC.
 - Storefront recommendation: United States first, not worldwide by default.
 - Screenshots: owner uploaded and accepted 4 English + 4 zh-Hans images in ASC; canonical design masters remain in `store-assets/`.
 
@@ -102,3 +105,7 @@ keywords ≤100 UTF-8 bytes per locale. Automated preflight checks these limits.
 Checked against [Apple platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information)
 and [App information](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information/).
 Current screenshot slots: [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications).
+
+Exact public-field readback / counts: `reports/S03-B/round-01/evidence/asc-current-readback.json`.
+Owner-confirmed Chinese promotional text is unchanged. Keywords now match the actual
+owner-entered ASC values, rather than the superseded repository keyword draft.

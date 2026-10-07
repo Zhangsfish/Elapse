@@ -1,4 +1,4 @@
-// Default: GET only. Explicit --prepare-fields: only verified public URLs and existing build association.
+// Default: GET only. Explicit --prepare-fields: public URLs, existing build association, reviewer notes.
 // Never upload, submit, release, choose territories, log contacts/API IDs, or edit owner's listing copy.
 import CryptoKit
 import Foundation
@@ -48,8 +48,9 @@ func emit(_ value: [String: Any]) throws {
 }
 
 func save(_ path: String, _ body: [String: Any], _ token: String) throws {
-    // Only these three resource classes; no submission/release/price/privacy-label endpoint.
+    // Only these resource classes; no submission/release/price/privacy-label endpoint.
     guard path.hasPrefix("appStoreVersionLocalizations/") || path.hasPrefix("appInfoLocalizations/") ||
+          path.hasPrefix("appStoreReviewDetails/") ||
           (path.hasPrefix("appStoreVersions/") && path.hasSuffix("/relationships/build")) else { throw ReadbackError() }
     var request = URLRequest(url: URL(string: "https://api.appstoreconnect.apple.com/v1/" + path)!)
     request.httpMethod = "PATCH"
@@ -147,11 +148,28 @@ do {
                       "description": a["description"] as? String ?? "", "keywords": a["keywords"] as? String ?? ""])
         }
         // Never output private reviewer fields, only whether the existing UI fields are complete.
-        if let details = try? get("appStoreVersions/" + itemID + "/appStoreReviewDetail", [:], token),
-           let d = (details["data"] as? [String: Any])?["attributes"] as? [String: Any] {
+        if var details = try? get("appStoreVersions/" + itemID + "/appStoreReviewDetail", [:], token),
+           let detailID = (details["data"] as? [String: Any])?["id"] as? String,
+           var d = (details["data"] as? [String: Any])?["attributes"] as? [String: Any] {
+            let notesFile = try String(contentsOfFile: "docs/APP_REVIEW_NOTES.md", encoding: .utf8)
+            guard notesFile.contains("## English reviewer notes\n"), notesFile.contains("## 简体中文审核备注") else { throw ReadbackError() }
+            let notes = notesFile.components(separatedBy: "## English reviewer notes\n")[1]
+                .components(separatedBy: "## 简体中文审核备注")[0].trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !notes.isEmpty, notes.count <= 4000 else { throw ReadbackError() }
+            if prepare, d["notes"] as? String != notes {
+                try save("appStoreReviewDetails/" + detailID,
+                         ["data": ["type": "appStoreReviewDetails", "id": detailID,
+                                   "attributes": ["notes": notes]]], token)
+                details = try get("appStoreReviewDetails/" + detailID, [:], token)
+                guard let fresh = (details["data"] as? [String: Any])?["attributes"] as? [String: Any] else { throw ReadbackError() }
+                d = fresh
+            }
+            if prepare { guard d["notes"] as? String == notes else { throw ReadbackError() } }
             try emit(["reviewContactComplete": ["contactFirstName", "contactLastName", "contactEmail", "contactPhone"]
                 .allSatisfy { !(d[$0] as? String ?? "").isEmpty },
-                      "demoAccountRequired": d["demoAccountRequired"] ?? NSNull()])
+                      "demoAccountRequired": d["demoAccountRequired"] ?? NSNull(),
+                      "reviewNotesMatchRepository": d["notes"] as? String == notes,
+                      "reviewNotesCharacters": notes.count])
         } else { try emit(["reviewContactReadback": "NOT_VERIFIED"]) }
     } else {
         try emit(["storeVersion": "0.1.0", "state": "NO_UNIQUE_VERSION_RECORD"])
