@@ -44,7 +44,7 @@ def request(path, token, method="GET", body=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("operation", choices=["status", "enable-pages", "dispatch-pages", "dispatch-readback"])
+    parser.add_argument("operation", choices=["status", "enable-pages", "dispatch-pages", "dispatch-readback", "dispatch-prepare"])
     parser.add_argument("--ref", default="main")
     args = parser.parse_args()
     if args.ref not in ("main", "codex/s03-b-portal-closeout"):
@@ -57,8 +57,10 @@ def main():
         print(json.dumps({"operation": args.operation, "http_status": code}))
     elif args.operation.startswith("dispatch-"):
         workflow = "s03-public-pages.yml" if args.operation == "dispatch-pages" else "s03-review-rc.yml"
-        code, _ = request("/actions/workflows/" + workflow + "/dispatches", token,
-                          "POST", {"ref": args.ref})
+        body = {"ref": args.ref}
+        if args.operation == "dispatch-prepare":
+            body["inputs"] = {"operation": "prepare-fields"}
+        code, _ = request("/actions/workflows/" + workflow + "/dispatches", token, "POST", body)
         print(json.dumps({"operation": args.operation, "ref": args.ref, "http_status": code}))
     else:
         code, pages = request("/pages", token)

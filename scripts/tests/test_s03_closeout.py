@@ -21,13 +21,16 @@ class CloseoutTests(unittest.TestCase):
         self.assertEqual(len(actual), 165)
         self.assertEqual(s03_preflight.metadata_counts(text)["en"]["promotional_text"], 165)
 
-    def test_query_is_get_only_and_has_no_upload_or_submission(self):
+    def test_default_query_and_explicit_narrow_prepare_have_no_upload_or_submission(self):
         source = (ROOT / "scripts/s03_asc_readback.swift").read_text(encoding="utf-8")
         self.assertIn('request.httpMethod = "GET"', source)
         self.assertIn('"filter[version]": "92.1"', source)
         self.assertIn('version == "0.1.0"', source)
         self.assertNotIn('httpMethod = "POST"', source)
-        self.assertNotIn('httpMethod = "PATCH"', source)
+        self.assertIn('CommandLine.arguments[2] == "--prepare-fields"', source)
+        self.assertIn('path.hasSuffix("/relationships/build")', source)
+        self.assertNotIn('"territory"', source)
+        self.assertNotIn('"releaseType": "AFTER_APPROVAL"', source)
         self.assertNotIn('print(token)', source)
         self.assertNotIn('print(keyID)', source)
         self.assertNotIn('print(issuer)', source)

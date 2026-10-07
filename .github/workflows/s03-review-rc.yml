@@ -2,6 +2,12 @@ name: S03 review-eligible App Store RC
 
 on:
   workflow_dispatch:
+    inputs:
+      operation:
+        type: choice
+        options: [readback, prepare-fields]
+        default: readback
+        description: 'Read 92.1, or save verified public URLs and associate existing 92.1; never submit'
   pull_request:
     paths:
       - .github/workflows/s03-review-rc.yml
@@ -26,11 +32,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Read existing 92.1 and submission fields (GET only)
+      - name: Read existing 92.1 (optionally save only public URLs/build association)
         env:
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          S03_ASC_OPERATION: ${{ inputs.operation }}
         run: |
           set -euo pipefail
           set +x
@@ -38,7 +45,11 @@ jobs:
           secret_dir=$(mktemp -d "$RUNNER_TEMP/everwhile-readback.XXXXXX")
           trap 'rm -rf "$secret_dir"' EXIT
           printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$secret_dir/key.p8"
-          swift scripts/s03_asc_readback.swift "$secret_dir/key.p8"
+          if [[ "$S03_ASC_OPERATION" == 'prepare-fields' ]]; then
+            swift scripts/s03_asc_readback.swift "$secret_dir/key.p8" --prepare-fields
+          else
+            swift scripts/s03_asc_readback.swift "$secret_dir/key.p8"
+          fi
 
   verify-release-tooling:
     if: github.event_name == 'pull_request'
