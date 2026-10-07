@@ -5,7 +5,7 @@ PR: https://github.com/Zhangsfish/Elapse/pull/26
 Branch: `codex/promo-p01-time-becomes-visible`.
 Base: `76838c8bd8659c379314decaa30c07ec0cb1e0ef`.
 Implementation / locally tested / rendered source:
-`6f6b4b12e5ef6b886d73200e5145489902d9e11f`.
+`eeae9b1c15f8976dd276d01414596597d056bf86`.
 Subsequent delivery-report commits do not change that source or the film.
 Current exact PR head and its remote checks are authoritative in PR Checks;
 this report does not turn pending checks into PASS.
@@ -20,7 +20,7 @@ this report does not turn pending checks into PASS.
   5/10/15-minute onset and full end-card boundary checks.
 - `KEYFRAME_01_EN.png`–`KEYFRAME_06_EN.png`: actual encoded keyframes.
 - `ARTIFACTS.json`: exact output hashes/sizes. Film SHA256:
-  `705a80eabad0e9ff0eaffef1fbbdc1f404cdeb5377cc85fcadd6c6fdf79f5400`.
+  `de859034fccd0a884de18c1da4df6a2343405abae9178e472015e13581a86dd6`.
 
 ## Creative/source provenance
 
@@ -44,7 +44,7 @@ adapted; no Lecture voices, music, branding or creative content were reused.
 
 ## Verification and limits
 
-Local PASS: six Node contract tests, TypeScript strict no-emit, 48 existing
+Local PASS: seven Node contract tests, TypeScript strict no-emit, 48 existing
 Python tests, immutable-source/output hashes, PCM stem shape. Browser QA checks
 57 sampled frames, 17 shuffled seeks, required onsets, safe text bounds, font
 proof, immutable capture. DOM/media times match exactly on shuffled seeks;
@@ -63,20 +63,21 @@ technical measurements, not a listening verdict.
 
 Manually inspected actual encoded contact, transition and onset sheets. Novel
 title/body overlap and question/social collision were fixed before export.
+Final follow-up also fixed the SVG arc centre and initial entrance poses;
+browser checks, render, full decode and encoded-sheet inspection were repeated.
 **Full subjective film viewing and complete listening: NOT_RUN.** Art, pacing,
 the six director criteria and final sound remain PENDING director review.
 
-Remote CI checkpoint at report creation (implementation SHA above):
-- PROMO contract PASS: https://github.com/Zhangsfish/Elapse/actions/runs/37618885755
-- Ordinary macOS CI IN_PROGRESS: https://github.com/Zhangsfish/Elapse/actions/runs/37618885669
-- Final-head outcomes: see current PR Checks / PR delivery summary, not these
-  earlier run IDs. No skipped/inherited check is asserted as current-head PASS.
+Remote CI at report creation: pending push of the final source/evidence.
+Final-head outcomes and exact run URLs are recorded in PR #26's delivery summary
+after push; current PR Checks are authoritative. No earlier, skipped, pending
+or inherited check is asserted as current-head PASS in this report.
 
 ## Reproduction
 
 Reuse installed Lecture isolated runtime: HyperFrames 0.8.132, GSAP 3.15.0,
 TypeScript 7.0.2, esbuild 0.28.2, Puppeteer-core 25.12.0; lockfile pinned.
-Node 24.15.0; Windows + system Chrome; FFmpeg/ffprobe 9.0.1; existing Python
+Node 24.15.0; Windows + system Chrome 154.0.8037.98; FFmpeg/ffprobe 9.0.1; existing Python
 NumPy/Pillow. Inter 4.1 local ignored font, real 600 / opsz32 headlines and
 real 400 body; font SHA pinned, no font binary redistributed. No installation,
 upgrade, TTS/API, purchase or new account.
