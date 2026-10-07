@@ -37,7 +37,7 @@
         "start_time": "0.000000",
         "duration_ts": 276480,
         "duration": "18.000000",
-        "bit_rate": "822013",
+        "bit_rate": "815040",
         "bits_per_raw_sample": "8",
         "nb_frames": "1080",
         "nb_read_frames": "1080",
@@ -132,8 +132,8 @@
       "format_long_name": "QuickTime / MOV",
       "start_time": "0.000000",
       "duration": "18.000000",
-      "size": "2463239",
-      "bit_rate": "1094772",
+      "size": "2447550",
+      "bit_rate": "1087800",
       "probe_score": 100,
       "tags": {
         "major_brand": "isom",
@@ -147,7 +147,7 @@
   "nonBlackFrames": 1080,
   "nonBlankFrames": 1080,
   "minMeanRGB": 123.98307291666667,
-  "minSpatialStd": 12.927797635600657,
+  "minSpatialStd": 12.945788796600844,
   "encodedNativeComparison": [
     {
       "frame": 0,
@@ -179,119 +179,119 @@
     },
     {
       "frame": 168,
-      "meanRGBError": 1.4428153935185186
+      "meanRGBError": 1.4424717881944444
     },
     {
       "frame": 180,
-      "meanRGBError": 1.453362991898148
+      "meanRGBError": 1.4546158854166666
     },
     {
       "frame": 198,
-      "meanRGBError": 2.110275245949074
+      "meanRGBError": 2.1135973668981483
     },
     {
       "frame": 220,
-      "meanRGBError": 2.085994646990741
+      "meanRGBError": 2.0825220630787036
     },
     {
       "frame": 240,
-      "meanRGBError": 2.075398582175926
+      "meanRGBError": 2.0773687065972224
     },
     {
       "frame": 254,
-      "meanRGBError": 2.065259693287037
+      "meanRGBError": 2.0655287905092594
     },
     {
       "frame": 255,
-      "meanRGBError": 2.066509331597222
+      "meanRGBError": 2.0628548177083332
     },
     {
       "frame": 262,
-      "meanRGBError": 2.2514742476851852
+      "meanRGBError": 2.2493109809027776
     },
     {
       "frame": 269,
-      "meanRGBError": 2.1526982060185187
+      "meanRGBError": 2.150158420138889
     },
     {
       "frame": 270,
-      "meanRGBError": 1.4555436197916667
+      "meanRGBError": 1.4761469184027778
     },
     {
       "frame": 271,
-      "meanRGBError": 1.4576381655092592
+      "meanRGBError": 1.4808676938657408
     },
     {
       "frame": 300,
-      "meanRGBError": 1.4837391493055556
+      "meanRGBError": 1.5116453269675927
     },
     {
       "frame": 360,
-      "meanRGBError": 1.5327625868055557
+      "meanRGBError": 1.5265382667824074
     },
     {
       "frame": 390,
-      "meanRGBError": 2.135706741898148
+      "meanRGBError": 2.131535373263889
     },
     {
       "frame": 449,
-      "meanRGBError": 2.21359447337963
+      "meanRGBError": 2.208128616898148
     },
     {
       "frame": 450,
-      "meanRGBError": 2.2340049913194444
+      "meanRGBError": 2.2293388310185187
     },
     {
       "frame": 462,
-      "meanRGBError": 2.2265241608796296
+      "meanRGBError": 2.2210127314814816
     },
     {
       "frame": 480,
-      "meanRGBError": 2.195188078703704
+      "meanRGBError": 2.1898802806712965
     },
     {
       "frame": 510,
-      "meanRGBError": 2.1581007667824075
+      "meanRGBError": 2.1562651909722224
     },
     {
       "frame": 569,
-      "meanRGBError": 2.1240889033564816
+      "meanRGBError": 2.1255186631944443
     },
     {
       "frame": 570,
-      "meanRGBError": 2.1560615596064814
+      "meanRGBError": 2.151957103587963
     },
     {
       "frame": 582,
-      "meanRGBError": 2.1647450086805557
+      "meanRGBError": 2.1611143663194445
     },
     {
       "frame": 600,
-      "meanRGBError": 2.148734447337963
+      "meanRGBError": 2.1505924479166665
     },
     {
       "frame": 689,
-      "meanRGBError": 1.4298491753472222
+      "meanRGBError": 1.4249674479166667
     },
     {
       "frame": 690,
-      "meanRGBError": 1.5521050347222223
+      "meanRGBError": 1.5327781394675926
     },
     {
       "frame": 702,
-      "meanRGBError": 1.528982204861111
+      "meanRGBError": 1.524040798611111
     },
     {
       "frame": 720,
-      "meanRGBError": 1.5366684751157407
+      "meanRGBError": 1.5234320746527779
     },
     {
       "frame": 840,
-      "meanRGBError": 1.3766706452546296
+      "meanRGBError": 1.3739597800925927
     },
     {
       "frame": 929,
-      "meanRGBError": 1.3742299623842593
+      "meanRGBError": 1.3729380063657408
     },
     {
       "frame": 930,
@@ -323,7 +323,7 @@
       "withinFrameOnset": 1
     }
   ],
-  "filmSHA256": "705a80eabad0e9ff0eaffef1fbbdc1f404cdeb5377cc85fcadd6c6fdf79f5400",
+  "filmSHA256": "de859034fccd0a884de18c1da4df6a2343405abae9178e472015e13581a86dd6",
   "fullSubjectiveViewing": "NOT_RUN",
   "completeListening": "NOT_RUN",
   "directorVerdict": "PENDING",

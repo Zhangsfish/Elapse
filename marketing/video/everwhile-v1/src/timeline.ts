@@ -38,7 +38,7 @@ tl.to('#novel-p .book-inner',{y:-110,duration:2,ease:'none'},6.5);
 tl.to('#social-p .social-inner',{y:-100,duration:2,ease:'none'},10.5);
 // A single unbroken shared arc; background app changes never reset it.
 tl.to('#time-arc',{strokeDashoffset:82,duration:6,ease:'none'},6.5);
-tl.to('#time-dot',{rotation:254,transformOrigin:'0px 61px',duration:6,ease:'none'},6.5);
+tl.to('#time-rotor',{attr:{transform:'rotate(254 75 75)'},duration:6,ease:'none'},6.5);
 for(const [m,start,end] of [[5,7.5,9.3],[10,9.5,11.3],[15,11.5,12.5]]){
   tl.set('#pulse-'+m,{opacity:1},start);
   tl.fromTo('#pulse-'+m,{y:14},{y:0,duration:.18,ease:'power2.out',immediateRender:false},start);

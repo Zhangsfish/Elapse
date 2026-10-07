@@ -41,7 +41,7 @@ export function page() {return `<!doctype html><html lang="en"><head><meta chars
   <div class="pulse-content content-pane" id="pulse-novel">${novel('novel-p')}</div>
   <div class="pulse-content content-pane" id="pulse-coffee">${video('coffee-p','coffee-pour.mp4',8.5,2,2.5)}</div>
   <div class="pulse-content content-pane" id="pulse-social">${social('social-p')}</div>
-  <div id="time-layer"><svg id="time-ring" viewBox="0 0 150 150"><circle cx="75" cy="75" r="61" class="time-track"/><circle cx="75" cy="75" r="61" id="time-arc"/><circle id="time-dot" cx="75" cy="14" r="9"/></svg>
+  <div id="time-layer"><svg id="time-ring" viewBox="0 0 150 150"><circle cx="75" cy="75" r="61" class="time-track"/><circle cx="75" cy="75" r="61" id="time-arc" transform="rotate(-90 75 75)"/><g id="time-rotor" transform="rotate(0 75 75)"><circle id="time-dot" cx="75" cy="14" r="9"/></g></svg>
     <div id="pulse-5" class="minute">5 minutes</div><div id="pulse-10" class="minute">10 minutes</div><div id="pulse-15" class="minute">15 minutes</div></div>
   <h1 id="reminder-message">A reminder<br><span class="blue">Not a restriction</span></h1>
   <div id="usage-demo">Usage demo · time compressed</div>
