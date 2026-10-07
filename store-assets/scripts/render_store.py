@@ -15,9 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
 SIZE = (1320, 2868)
 BLUE, INK, MUTED = "#167DEA", "#162B46", "#60748C"
-PHONE_RECT = (220, 840, 880, 1884)
-SCREEN_RECT = (232, 852, 856, 1860)
-RADIUS = 92
+PHONE_RECT = (202, 803, 916, 1958)
+SCREEN_RECT = (215, 815, 890, 1934)
+RADIUS = 96
+PHONE_RADIUS = 108
+BRAND = {"icon_rect": [108, 106, 76, 76], "origin": [208, 112],
+         "size": 42, "color": "#536A84"}
+INTERVAL_MOTIF_SIZE = 44
 HEADLINE = {"origin": [104, 238], "size": 94, "line_height": 120}
 SUBTITLE = {"origin": [108, 496], "size": 38}
 STORY = [
@@ -69,28 +73,39 @@ def motif(image, index, directory, records):
             d.ellipse((x-radius, 661-radius, x+radius, 661+radius), fill="#B0D3FC")
         d.line((574, 661, 1180, 661), fill="#D8E8FA", width=3)
     elif index == 1:
-        for x in [108, 246, 384]:
-            d.rounded_rectangle((x, 600, x+104, 704), radius=25, fill="white", outline="#CEDFF4", width=2)
-            d.ellipse((x+26, 626, x+78, 678), fill="#E2EFFF")
-            d.line([(x+39, 651), (x+49, 661), (x+67, 642)], fill=BLUE, width=4, joint="curve")
-        d.line([(523, 652), (673, 652)], fill="#AFCFF5", width=4)
-        d.polygon([(663, 642), (678, 652), (663, 662)], fill="#AFCFF5")
-        d.rounded_rectangle((712, 600, 1198, 704), radius=52, fill="#E2EFFF")
-        text(image, (746, 620), "5 · 10 · 15 · 30 · 60 min", directory, records, 34, BLUE, True)
+        for x in [108, 254, 400]:
+            d.rounded_rectangle((x, 596, x+112, 708), radius=27, fill="white", outline="#BDD8FA", width=3)
+            d.ellipse((x+27, 623, x+85, 681), fill="#DFEDFF")
+            d.line([(x+40, 651), (x+52, 664), (x+74, 641)], fill=BLUE, width=5, joint="curve")
+        d.line([(536, 652), (592, 652)], fill="#6FABF4", width=5)
+        d.polygon([(580, 640), (597, 652), (580, 664)], fill="#6FABF4")
+        d.rounded_rectangle((614, 596, 1214, 708), radius=56, fill="#DCEBFF")
+        text(image, (646, 611), "5 · 10 · 15 · 30 · 60 min", directory, records,
+             INTERVAL_MOTIF_SIZE, BLUE, True)
     elif index == 2:
-        # A neutral pulse mark outside the phone, not an iOS banner mockup.
-        for radius in [26, 49, 73]:
-            d.ellipse((177-radius, 662-radius, 177+radius, 662+radius), outline="#AFCFF5", width=3)
-        d.ellipse((165, 650, 189, 674), fill=BLUE)
-        d.line((306, 662, 1188, 662), fill="#C8DFF9", width=3)
-        for x in [470, 770, 1070]:
-            d.ellipse((x-9, 653, x+9, 671), fill=BLUE)
+        # Generic app group -> accumulating segments -> a quiet bell/pulse.
+        # Marketing illustration only: no duration claim or OS banner mockup.
+        d.rounded_rectangle((108, 609, 194, 695), radius=22, fill="#E2EFFF", outline="#BDD8FA", width=3)
+        d.rounded_rectangle((166, 625, 252, 711), radius=22, fill="white", outline="#9AC4F8", width=3)
+        d.rounded_rectangle((187, 646, 231, 690), radius=12, fill="#DCEBFF")
+        d.line((282, 661, 935, 661), fill="#D4E5FA", width=3)
+        for x, color in [(346, "#BAD7FB"), (490, "#8FBEF7"), (634, "#6FABF4")]:
+            d.rounded_rectangle((x, 648, x+120, 674), radius=13, fill=color)
+        d.line((794, 661, 935, 661), fill="#8FBEF7", width=4)
+        d.polygon([(925, 651), (940, 661), (925, 671)], fill="#8FBEF7")
+        for radius in [55, 73]:
+            d.ellipse((1056-radius, 658-radius, 1056+radius, 658+radius), outline="#C5DDFA", width=3)
+        d.arc((1030, 628, 1082, 680), 180, 360, fill=BLUE, width=4)
+        d.line([(1030, 654), (1030, 675), (1023, 688), (1089, 688), (1082, 675), (1082, 654)],
+               fill=BLUE, width=4, joint="curve")
+        d.arc((1049, 685, 1063, 699), 0, 180, fill=BLUE, width=4)
+        d.ellipse((1053, 617, 1059, 623), fill=BLUE)
     else:
-        # Abstract bars echo an hourly chart; no labels, numbers or sessions.
+        # Very faint echo, subordinate to the genuine tutorial's Today chart.
         for index, height in enumerate([36, 62, 93, 48, 114, 76, 132, 55]):
             x = 110 + index*63
-            d.rounded_rectangle((x, 724-height, x+32, 724), radius=8, fill="#6FABF4")
-        d.line((109, 736, 620, 736), fill="#C8DFF9", width=2)
+            d.rounded_rectangle((x, 724-round(height*.5), x+24, 724), radius=6, fill="#CADFF9")
+        d.line((109, 736, 620, 736), fill="#DDEAFB", width=2)
         for x in [746, 850, 954]:
             d.rounded_rectangle((x, 639, x+70, 709), radius=20, fill="white", outline="#CEDFF4", width=2)
             d.ellipse((x+22, 661, x+48, 687), fill="#BCD9FC")
@@ -103,11 +118,11 @@ def phone(image, raw_path):
     assert raw.size == SIZE, raw.size
     assert sh == round(sw*raw.height/raw.width), "Non-uniform capture scaling"
     shadow = Image.new("RGBA", SIZE)
-    ImageDraw.Draw(shadow).rounded_rectangle((x-4, y+20, x+width+4, y+height+20), radius=110, fill=(24, 47, 77, 42))
+    ImageDraw.Draw(shadow).rounded_rectangle((x-4, y+20, x+width+4, y+height+20), radius=PHONE_RADIUS+6, fill=(24, 47, 77, 42))
     image.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(28)))
     draw = ImageDraw.Draw(image)
-    draw.rounded_rectangle((x, y, x+width-1, y+height-1), radius=104, fill="#243346")
-    draw.rounded_rectangle((x+3, y+3, x+width-4, y+height-4), radius=101, outline="#61748A", width=2)
+    draw.rounded_rectangle((x, y, x+width-1, y+height-1), radius=PHONE_RADIUS, fill="#243346")
+    draw.rounded_rectangle((x+3, y+3, x+width-4, y+height-4), radius=PHONE_RADIUS-3, outline="#61748A", width=2)
     screen = raw.convert("RGB").resize((sw, sh), Image.Resampling.LANCZOS).convert("RGBA")
     mask = Image.new("L", (sw, sh))
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, sw-1, sh-1), radius=RADIUS, fill=255)
@@ -125,12 +140,13 @@ def render(font_dir, icc_path):
         image = background()
         bounds = []
         icon_path = REPO / "App/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
-        icon = Image.open(icon_path).convert("RGBA").resize((68, 68), Image.Resampling.LANCZOS)
-        mask = Image.new("L", (68, 68))
-        ImageDraw.Draw(mask).rounded_rectangle((0, 0, 67, 67), radius=16, fill=255)
+        ix, iy, iw, ih = BRAND["icon_rect"]
+        icon = Image.open(icon_path).convert("RGBA").resize((iw, ih), Image.Resampling.LANCZOS)
+        mask = Image.new("L", (iw, ih))
+        ImageDraw.Draw(mask).rounded_rectangle((0, 0, iw-1, ih-1), radius=18, fill=255)
         icon.putalpha(mask)
-        image.alpha_composite(icon, (108, 106))
-        text(image, (198, 114), "Everwhile", font_dir, bounds, 38, MUTED, True)
+        image.alpha_composite(icon, (ix, iy))
+        text(image, tuple(BRAND["origin"]), "Everwhile", font_dir, bounds, BRAND["size"], BRAND["color"], True)
         for line_index, line in enumerate(lines):
             text(image, (HEADLINE["origin"][0], HEADLINE["origin"][1]+line_index*HEADLINE["line_height"]),
                  line, font_dir, bounds, HEADLINE["size"], BLUE if line_index else INK, True)
@@ -150,11 +166,12 @@ def render(font_dir, icc_path):
                         "pixels": list(SIZE), "mode": "RGB", "icc_sha256": sha(icc_path),
                         "phone_rect": list(PHONE_RECT), "screen_rect": list(SCREEN_RECT),
                         "screen_corner_radius": RADIUS, "phone_bottom_cropped": False,
+                        "brand_style": BRAND,
                         "headline_lines": lines, "headline_style": HEADLINE, "subtitle": subtitle,
                         "subtitle_style": SUBTITLE, "external_text_bounds": bounds,
                         "in_phone_overlay": None, "outside_phone_illustration": True,
                         "transformation": "Uniform LANCZOS resize and rounded-corner mask only"})
-    manifest = {"status": "DRAFT_WAITING_FOR_OWNER_VISUAL_REVIEW", "locale": "en",
+    manifest = {"status": "DRAFT_WAITING_FOR_OWNER_VISUAL_REVIEW", "locale": "en", "polish_revision": 2,
                 "reference_sha": "4995c1d0d70ebdf3712416bf96ee31219fc67720",
                 "renderer_pillow_version": __import__("PIL").__version__,
                 "fonts": [{"file": name, "sha256": sha(font_dir / name)} for name in ["segoeui.ttf", "segoeuib.ttf"]],

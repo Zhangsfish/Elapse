@@ -1,4 +1,4 @@
-# English Pass 1 — owner visual review pending
+# English detail polish 2 — owner visual review pending
 
 Frozen product: Everwhile 0.1.0 (91.1). Reference production method:
 Lecture Asset@4995c1d0d70ebdf3712416bf96ee31219fc67720 (both workflows,
@@ -27,3 +27,19 @@ All opaque real phone pixels must match the uniformly resized raw image exactly.
 
 Do not create/freeze zh-Hans assets until owner approves the English contact sheet.
 No App Review submission, public release, or S03-B unlock is authorized.
+
+## Detail polish 2 (2026-10-07)
+
+Same four headlines, subline, order, background and design language. Uniform screen
+width 856 → 890 pixels (+3.97%); all phones share the same geometry. Official icon
+68 → 76 pixels; brand type 38 → 42. Frame 2 interval numbers are 44px bold
+(12px at 360px-wide thumbnail), with stronger generic selected-app → interval art.
+Frame 3 external app tiles → accumulating segments → bell clarify the reminder;
+the captured Quick Start chrome/pixels remain untouched. Frame 4 external bars
+are half-height and paler, subordinate to the genuine tutorial Today chart.
+
+Frame 1 source inspection: production Home requires actual Family Controls
+authorization and opaque picker selection for its configured states. No fuller
+genuine state is available in the existing clean Release captures; keep the real
+unconfigured Home. No new authorization attempt, injected state, production edit,
+private device capture or screenshot-only data mode was used.

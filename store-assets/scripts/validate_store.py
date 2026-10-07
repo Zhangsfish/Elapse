@@ -38,7 +38,7 @@ def validate(root=ROOT):
     assert summary["passedTests"] == 1 and summary["failedTests"] == summary["skippedTests"] == 0
     checks = []
     for record, raw_entry in zip(frames, inventory):
-        for key in ["phone_rect", "screen_rect", "screen_corner_radius", "headline_style", "subtitle_style"]:
+        for key in ["phone_rect", "screen_rect", "screen_corner_radius", "headline_style", "subtitle_style", "brand_style"]:
             assert record[key] == frames[0][key], f"Inconsistent {key}"
         path = root / record["file"]
         image = Image.open(path)
