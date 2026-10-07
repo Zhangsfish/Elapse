@@ -1,0 +1,19 @@
+{
+  "stage": "S03-B",
+  "round": "01",
+  "status": "PREPARED_FOR_RC_UPLOAD_CI_PENDING",
+  "frozen_runtime_sha": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
+  "version": "0.1.0",
+  "intended_first_build": "92.1",
+  "production_runtime_change": false,
+  "review_rc_export": "NOT_RUN",
+  "exact_ipa_audit": "NOT_RUN",
+  "asc_upload": "NOT_RUN",
+  "asc_processing": "NOT_RUN",
+  "build_audience": "NOT_RUN",
+  "app_review_submission": "NOT_RUN_NOT_AUTHORIZED",
+  "public_release": "NOT_RUN_NOT_AUTHORIZED",
+  "public_pages": "NOT_LIVE_HAS_PAGES_FALSE",
+  "portal_family_controls_assigned": "NOT_VERIFIED_UI",
+  "china_mainland": "BLOCKED_UNTIL_ICP_STATUS_CONFIRMED"
+}
