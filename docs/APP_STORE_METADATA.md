@@ -1,7 +1,7 @@
-# Store metadata draft — not saved to App Store Connect
+# Store metadata — owner-selected copy and release notes
 
 2026-10-07 · iPhone only · 0.1.0 · Free · English + Simplified Chinese.
-Owner approves wording, legal copyright name, storefronts and URLs before entry.
+Owner selected the listing copy during ASC entry. Legal copyright wording, live URLs, exact storefronts and final submission package remain separate gates.
 
 ## English
 
@@ -9,21 +9,38 @@ Name: Everwhile
 
 Subtitle: Feel time passing
 
-Promotional text: Choose apps, set a reminder interval, and notice time passing. See total time, hourly usage and time by app on this iPhone.
+Promotional text: Choose the apps you want to notice and set a 5, 10, 15, 30, or 60-minute interval. Everwhile sends reminders based on cumulative use and shows total, hourly, and per-app time in Today.
 
 Description:
 
-Feel time passing. Nothing else.
+Everwhile is an app that helps you feel time passing again.
 
-Everwhile makes time in the apps you choose easier to notice. Choose one or more apps, set a reminder interval, and start. Time across your selected apps adds up toward neutral reminders.
+Some apps make time disappear the moment you open them. Everwhile does not limit your use or make decisions for you. It simply reminds you as time passes.
 
-Choose 5, 10, 15, 30 or 60 minutes. Start and stop when you want. Earlier usage before monitoring starts is not counted toward those reminders. Reminder points are not the same as today’s total.
+Choose the apps you want to notice, set a reminder interval of 5, 10, 15, 30, or 60 minutes, and use your phone as usual.
 
-Open Today to see selected-app time so far today: a total, usage grouped by hour and time by app. Hourly totals are not exact app opening or closing sessions.
+As cumulative time across your selected apps reaches each new reminder point, Everwhile sends a simple notification:
 
-Screen Time access and notification permission are needed for monitoring and visible reminders. iOS manages reminder delivery and report updates, so these may arrive later. Notification presentation follows your iPhone settings.
+5 minutes.
+10 minutes.
+15 minutes.
 
-Screen Time data stays on this iPhone and is not uploaded by Everwhile. No login is required. Everwhile reminds; it does not block apps or judge your time.
+Nothing else.
+
+You can also open Today to see:
+
+• Total time spent in your selected apps today
+• How that time is distributed across each hour
+• How much time you spent in each app
+
+Everwhile has one simple purpose:
+
+Make time perceptible again.
+
+No scores. No streaks. No digital-detox tasks. And it never blocks you from opening an app.
+
+You keep doing what you want to do.
+Everwhile simply tells you: time has passed.
 
 Keywords: awareness,reminder,elapsed,usage,interval,hourly,local,time
 
@@ -33,21 +50,38 @@ Keywords: awareness,reminder,elapsed,usage,interval,hourly,local,time
 
 副标题：感受时间流逝
 
-推广文本：选择 App，设定提醒间隔，感受时间流逝。在这台 iPhone 上查看所选 App 的今日总量、每小时分布与各 App 用时。
+推广文本：选择想留意的 App，设置 5、10、15、30 或 60 分钟提醒间隔。Everwhile 按所选 App 的累计使用时间发送提醒，并在“今天”中查看总时长、每小时分布和各 App 用时。
 
 描述：
 
-感受时间流逝。仅此而已。
+Everwhile 是一个让你重新感受到时间流逝的 App。
 
-Everwhile 让所选 App 中流逝的时间更容易被留意。选择一个或多个 App，设定提醒间隔并开始监控。所选 App 的使用时间一起累计，到达提醒点时请求中性通知。
+有些 App 一打开，时间就很容易消失。Everwhile 不限制你使用，也不替你做决定，只是在时间过去的时候提醒你。
 
-支持 5、10、15、30 或 60 分钟间隔。可以随时开始或停止；开始前的使用不计入本轮提醒。提醒点不等于今日总量。
+选择你想留意的 App，设定 5、10、15、30 或 60 分钟的提醒间隔，然后正常使用手机。
 
-打开 Today，查看所选 App 今天截至现在的总时长、每小时分布与各 App 用时。小时汇总不是 App 精确打开或关闭的会话记录。
+当所选 App 的累计使用时间达到新的提醒点时，Everwhile 会给你一个简单的通知：
 
-监控需要屏幕使用时间授权，显示提醒需要通知权限。iOS 管理提醒送达和报告更新，可能存在延迟；通知显示方式遵循 iPhone 设置。
+5 分钟。
+10 分钟。
+15 分钟。
 
-屏幕使用时间数据留在这台 iPhone 上，Everwhile 不会上传。无需登录。Everwhile 只提醒，不阻止使用，也不评价你的时间。
+仅此而已。
+
+你也可以在“今天”中查看：
+
+• 所选 App 的今日总使用时间
+• 一天中每个小时的使用分布
+• 每个 App 分别用了多久
+
+Everwhile 想做的事情很简单：
+
+让时间重新变得可感知。
+
+没有打分，没有连续签到，没有“戒手机”任务，也不会阻止你打开任何 App。
+
+你继续做自己的事。
+Everwhile 只负责告诉你：时间已经过去了。
 
 关键词：时间感知,用时提醒,使用时长,提醒间隔,小时分布,本地数据
 
@@ -58,13 +92,11 @@ Everwhile 让所选 App 中流逝的时间更容易被留意。选择一个或�
 - Marketing URL candidate: https://zhang-shuo-portfolio.vercel.app/ (owner must
   ensure it actually introduces Everwhile; otherwise omit optional Marketing URL).
 - Copyright draft: **2026 Shuo Zhang — OWNER_CONFIRM_LEGAL_RIGHTS_HOLDER**.
-- Primary category recommendation: **Utilities**: neutral local time-awareness
-  utility, not a medical/health treatment or productivity scoring system.
-- Secondary recommendation: none; avoid a misleading health/focus category.
+- Primary category: **Utilities** — owner entered this in ASC.
+- Secondary category: none.
 - Release method recommendation: **manual** after owner approval; not automatic.
 - Storefront recommendation: United States first, not worldwide by default.
-- Screenshot draft: store-assets/en; four 1320×2868 RGB/sRGB PNGs; owner review
-  pending. Tutorial captures must stay identifiable as examples, not live usage.
+- Screenshots: owner uploaded and accepted 4 English + 4 zh-Hans images in ASC; canonical design masters remain in `store-assets/`.
 
 Constraints: subtitle ≤30 characters; promotional text ≤170; description ≤4000;
 keywords ≤100 UTF-8 bytes per locale. Automated preflight checks these limits.
