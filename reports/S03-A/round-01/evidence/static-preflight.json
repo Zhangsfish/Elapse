@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "production_freeze": "PASS",
+  "capture_source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+  "metadata_counts": {
+    "en": {
+      "name": 9,
+      "subtitle": 17,
+      "promotional_text": 123,
+      "description": 964,
+      "keywords_utf8_bytes": 59
+    },
+    "zh-Hans": {
+      "name": 9,
+      "subtitle": 6,
+      "promotional_text": 63,
+      "description": 371,
+      "keywords_utf8_bytes": 77
+    }
+  },
+  "public_pages": "PASS_STATIC_SOURCE_NOT_ANONYMOUS_HTTPS",
+  "privacy_inventory": {
+    "imports": [
+      "Charts",
+      "Combine",
+      "Darwin",
+      "DeviceActivity",
+      "FamilyControls",
+      "Foundation",
+      "ManagedSettings",
+      "OSLog",
+      "SwiftUI",
+      "UIKit",
+      "UserNotifications"
+    ],
+    "network_api_matches": [],
+    "user_defaults_files": [
+      "App/ElapseModel.swift",
+      "Shared/TutorialVisitStore.swift"
+    ],
+    "bundle_ids_family_controls_report_boundary": "PASS_SOURCE_UNCHANGED",
+    "basis": "STATIC_SOURCE_ONLY_NOT_PACKET_CAPTURE_OR_LEGAL_APPROVAL"
+  },
+  "portal_assigned": "BLOCKED_OWNER_CONFIRMATION",
+  "app_privacy_answers": "DRAFT_OWNER_CONFIRMATION",
+  "app_review_submission": "NOT_RUN_NOT_AUTHORIZED"
+}

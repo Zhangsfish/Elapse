@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "browser": "154.0.8037.98",
+  "source": "local file URLs only",
+  "publicHTTPS": "NOT_RUN_NOT_LIVE",
+  "records": [
+    {
+      "file": "index-320-light.png",
+      "name": "index",
+      "width": 320,
+      "colorScheme": "light",
+      "layout": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "privacy-320-light.png",
+      "name": "privacy",
+      "width": 320,
+      "colorScheme": "light",
+      "layout": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "index-320-dark.png",
+      "name": "index",
+      "width": 320,
+      "colorScheme": "dark",
+      "layout": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "privacy-320-dark.png",
+      "name": "privacy",
+      "width": 320,
+      "colorScheme": "dark",
+      "layout": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "index-960-light.png",
+      "name": "index",
+      "width": 960,
+      "colorScheme": "light",
+      "layout": {
+        "viewport": 960,
+        "documentWidth": 960,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "privacy-960-light.png",
+      "name": "privacy",
+      "width": 960,
+      "colorScheme": "light",
+      "layout": {
+        "viewport": 960,
+        "documentWidth": 960,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "index-960-dark.png",
+      "name": "index",
+      "width": 960,
+      "colorScheme": "dark",
+      "layout": {
+        "viewport": 960,
+        "documentWidth": 960,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    },
+    {
+      "file": "privacy-960-dark.png",
+      "name": "privacy",
+      "width": 960,
+      "colorScheme": "dark",
+      "layout": {
+        "viewport": 960,
+        "documentWidth": 960,
+        "languages": [
+          "en",
+          "zh-Hans"
+        ],
+        "stylesheetLoaded": true,
+        "contact": "zhangs.taq@gmail.com",
+        "cookie": ""
+      },
+      "keyboardFocus": "PASS",
+      "externalRequests": 0
+    }
+  ]
+}

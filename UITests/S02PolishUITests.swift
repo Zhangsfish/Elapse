@@ -86,6 +86,10 @@ final class S02PolishUITests: XCTestCase {
 
     private func closeSupportAfterReplay(_ app: XCUIApplication) {
         XCTAssertTrue(app.buttons["about-close"].waitForExistence(timeout: 5))
+        // Underlying sheet controls can exist before the tutorial's dismissal
+        // animation completes. Require actual disappearance within a bound;
+        // do not suppress an assertion or merely sleep past an unknown state.
+        XCTAssertTrue(app.buttons["tutorial-skip"].waitForNonExistence(timeout: 5))
         XCTAssertFalse(app.buttons["tutorial-skip"].exists)
         app.buttons["about-close"].tap()
     }

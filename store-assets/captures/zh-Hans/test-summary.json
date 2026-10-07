@@ -1,0 +1,17 @@
+{
+  "result": "Passed",
+  "totalTestCount": 1,
+  "passedTests": 1,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "expectedFailures": 0,
+  "device": {
+    "modelName": "iPhone 17 Pro Max",
+    "osVersion": "26.2",
+    "osBuildNumber": "23C54",
+    "architecture": "arm64",
+    "platform": "iOS Simulator"
+  },
+  "source": "Safe projection of xcresulttool summary in artifact 11461939866; simulator identifiers omitted",
+  "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559"
+}

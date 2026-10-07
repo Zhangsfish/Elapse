@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "source_sha": "6e5a82fc60236c5bc9a408207fcd6ad102cacffa",
+  "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37501370483",
+  "production_runtime_unchanged": true,
+  "frames": [
+    {
+      "file": "en/01-awareness.png",
+      "dimensions_rgb_srgb_hash": "PASS",
+      "raw_inventory_hash": "PASS",
+      "visible_opaque_pixels": 1713244,
+      "repainted_opaque_pixels": 0,
+      "text_bounds": "PASS",
+      "common_geometry": "PASS",
+      "private_data": "NONE_BY_CAPTURE_POLICY"
+    },
+    {
+      "file": "en/02-choose-interval.png",
+      "dimensions_rgb_srgb_hash": "PASS",
+      "raw_inventory_hash": "PASS",
+      "visible_opaque_pixels": 1713244,
+      "repainted_opaque_pixels": 0,
+      "text_bounds": "PASS",
+      "common_geometry": "PASS",
+      "private_data": "NONE_BY_CAPTURE_POLICY"
+    },
+    {
+      "file": "en/03-reminder.png",
+      "dimensions_rgb_srgb_hash": "PASS",
+      "raw_inventory_hash": "PASS",
+      "visible_opaque_pixels": 1713244,
+      "repainted_opaque_pixels": 0,
+      "text_bounds": "PASS",
+      "common_geometry": "PASS",
+      "private_data": "NONE_BY_CAPTURE_POLICY"
+    },
+    {
+      "file": "en/04-today.png",
+      "dimensions_rgb_srgb_hash": "PASS",
+      "raw_inventory_hash": "PASS",
+      "visible_opaque_pixels": 1713244,
+      "repainted_opaque_pixels": 0,
+      "text_bounds": "PASS",
+      "common_geometry": "PASS",
+      "private_data": "NONE_BY_CAPTURE_POLICY"
+    }
+  ],
+  "owner_visual_review": "NOT_RUN",
+  "zh_Hans_final_assets": "NOT_RUN_ENGLISH_APPROVAL_REQUIRED",
+  "app_store_upload_review_release": "NOT_RUN_NOT_AUTHORIZED"
+}

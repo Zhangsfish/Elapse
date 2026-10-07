@@ -1,0 +1,132 @@
+{
+  "stage": "S03-A",
+  "round": "01",
+  "pass": "Pass 2 zh-Hans + final freeze",
+  "status": "READY_FOR_AUDIT",
+  "pr": "https://github.com/Zhangsfish/Elapse/pull/22",
+  "branch": "codex/s03-a-app-store-preflight",
+  "current_main_synchronized": "db2a12f11c2a7e5c749d1682b3ade769eca77a82",
+  "english_approved_reference_sha": "7aff9a46ba14716f22d0532a29f80408c5b8c18e",
+  "implementation_tested_sha": "e68dffa7795b6afe8d5fc415e530a9636364657a",
+  "capture_source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+  "frozen_runtime_sha": "fab87acc8f4b863451d9c91ee7605b4c33c47789",
+  "version_build": "0.1.0 (91.1)",
+  "production_runtime_change": false,
+  "new_upload": "NOT_RUN_NOT_AUTHORIZED_NO_RUNTIME_CHANGE",
+  "english_freeze": {
+    "status": "PASS_BYTE_IDENTICAL_4_PNG_AND_CONTACT",
+    "geometry_brand_copy_renderer": "UNCHANGED",
+    "hash_inventory": "store-assets/ENGLISH_FREEZE.json",
+    "approval": "OWNER_EXPLICIT_CONVERSATION_2026_10_07"
+  },
+  "zh_Hans_capture": {
+    "status": "PASS_ACTUAL_XCTEST",
+    "source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "artifact_id": 11461939866,
+    "artifact_zip_sha256": "7fc570f970f8ef2f15dffcf5547fa9dec69588bd0875b9ae539747e577b887e9",
+    "configuration": "Release",
+    "device": "Fresh iPhone 17 Pro Max simulator",
+    "locale": "zh-Hans / zh_CN",
+    "status_bar": "9:41 / Wi-Fi / full battery",
+    "xcode": "26.6 (17F113)",
+    "sdk": "26.5",
+    "simulator_os": "26.2 (23C54)",
+    "private_state": false,
+    "frames_2_3_4": "SHIPPED_TUTORIAL_SAMPLE_NOT_LIVE_USAGE_OR_OS_NOTIFICATION"
+  },
+  "zh_Hans_validation": {
+    "status": "PASS_LOCAL_INDEPENDENT_PIXEL_VALIDATOR",
+    "frames": 4,
+    "size": [
+      1320,
+      2868
+    ],
+    "mode": "RGB",
+    "profile": "sRGB",
+    "alpha": false,
+    "geometry_matches_frozen_english": true,
+    "owner_requested_chinese_text_fit_exception": "Interval pill right edge +50px: [614,596,1264,708]; label ink centered with 40/39px side padding. English unchanged.",
+    "raw_capture_hashes": "PASS",
+    "text_bounds": "PASS",
+    "repainted_phone_pixels": 0,
+    "one_pixel_tamper_rejected": true,
+    "repeat_render_identical": true,
+    "contact_sheet_exact_tiles": true,
+    "font": "Noto Sans SC VF face 0 weights400/700",
+    "font_sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a",
+    "evidence": "store-assets/IMAGE_VALIDATION_ZH_HANS.json",
+    "codex_visual_inspection": "PASS_NO_CLIPPING_NOT_CLOUD_APPROVAL",
+    "owner_zh_Hans_visual_review": "PASS_OWNER_REPLIED_CAN_ACCEPT_2026_10_07_AT_ASSET_SHA_e68dffa7795b6afe8d5fc415e530a9636364657a"
+  },
+  "python_tests": {
+    "status": "PASS_LOCAL",
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "preflight_ci": {
+    "status": "PASS_42_TESTS_AND_BILINGUAL_FREEZE",
+    "source_sha": "e68dffa7795b6afe8d5fc415e530a9636364657a",
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37577314358"
+  },
+  "ordinary_ci": {
+    "status": "PASS",
+    "source_sha": "e68dffa7795b6afe8d5fc415e530a9636364657a",
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37577314354",
+    "swift_tests": {
+      "passed": 60,
+      "failed": 0
+    },
+    "python_tests": {
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0
+    },
+    "generation_simulator_localization": "PASS",
+    "actual_release_ui_en_light": "PASS_1_TEST_0_FAILURES",
+    "actual_release_ui_zh_Hans_dark_largest_type": "PASS_1_TEST_0_FAILURES",
+    "boot_exemption": false,
+    "later_documentation_head_ci": "RECORDED_SEPARATELY_BY_GITHUB_PR_BODY_NOT_INHERITED_PASS"
+  },
+  "failed_preflight_fixed": {
+    "source_sha": "7a65f4a80db86225e2f621231bed97bafa66dc9b",
+    "run_url": "https://github.com/Zhangsfish/Elapse/actions/runs/37575693534",
+    "cause": "WINDOWS_CRLF_VS_GIT_LF_MANIFEST_PROOF_DIGEST",
+    "fix": "LF_OUTPUT_CONTENT_BOUND_NORMALIZED_DIGEST_AND_REGRESSION_TEST",
+    "png_changed_for_fix": false
+  },
+  "approved_english_head_ordinary_ui": "NOT_RUN_BOOT_TIMEOUT_37573154027",
+  "inherited_actual_bilingual_ui": "PASS_37504293740_AT_b6ba48ceaca345091056f73329840de91f878e14_NOT_CURRENT_HEAD",
+  "public_pages": "PASS_LOCAL_SOURCE_BROWSER_NOT_LIVE_HTTPS",
+  "portal_assigned": "BLOCKED_OWNER_CONFIRMATION",
+  "existing_91_1_signature_profile_allowance": "PASS_INHERITED_EXACT_IPA_EVIDENCE",
+  "internal_only_build_review_eligibility": "BLOCKED_DEFERRED_S03_B",
+  "mainland_china": "BLOCKED_UNTIL_ICP_STATUS_CONFIRMED",
+  "app_store_data_entry_review_public_release": "NOT_RUN_NOT_AUTHORIZED",
+  "s03_b_s03_c": "LOCKED",
+  "owner_asc_screenshot_upload": {
+    "status": "PASS_OWNER_OBSERVED",
+    "date": "2026-10-07",
+    "english_count": 4,
+    "zh_Hans_count": 4,
+    "accepted_slot_pixels": [
+      1206,
+      2622
+    ],
+    "asc_uploader_acceptance": true,
+    "owner_visual_check": true,
+    "exact_uploaded_derivative_bytes_in_git": false,
+    "note": "Canonical 1320x2868 masters/raw/render evidence remain in Git; exact already-uploaded derivative bytes were not all committed before ASC upload."
+  },
+  "app_store_owner_fields": {
+    "primary_language": "English (US)",
+    "primary_category": "Utilities",
+    "secondary_category": "none",
+    "age_rating": "4+",
+    "screenshots": "4 EN + 4 zh-Hans uploaded and owner-approved"
+  }
+}

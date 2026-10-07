@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "english_freeze": {
+    "status": "PASS",
+    "approved_reference_head": "7aff9a46ba14716f22d0532a29f80408c5b8c18e",
+    "frozen_files": {
+      "en/01-awareness.png": "521d7c86e791c8d352381f7cbf70abe6d32e30839d116d39d32b449cee2792d6",
+      "en/02-choose-interval.png": "5f86943803912c30b6d0eef0465baa9fa53c31bed4ecf5cbdbd643117462e60f",
+      "en/03-reminder.png": "cbb24b8025f17ae2accd1a0ed7223386ef437a12cbce16d3484e1cea9065264e",
+      "en/04-today.png": "a71f0a60a3c7afb3a5f1a816e39b7dedecfd4e97e2ce0815eb0e2ecacca79905",
+      "CONTACT_SHEET_EN.png": "23673d8d2f84dea8ebe0557ec144887bf013a1006584fe8a3c0adcd0c32925a8",
+      "RENDER_MANIFEST_EN.json": "3935a8ef556a19834705f716e875e6d54a718a463299dba94560827261fe0e97",
+      "IMAGE_VALIDATION_EN.json": "04e38751780aaa53a8f9736be3e2788e8c1f3ad0246ac27c58fae17774883a5e"
+    },
+    "renderer": "UNCHANGED_NORMALIZED_LF"
+  },
+  "manifest_sha256": "8d0be7c87f2bccd5af5546eee5846b44d20784cf820f104b475ed3a89aa62606",
+  "manifest_lf_sha256": "8d0be7c87f2bccd5af5546eee5846b44d20784cf820f104b475ed3a89aa62606",
+  "contact_sheet_sha256": "4fc1037a7cc03b370c6414cd4d5d8955c7bf53a0340ad3cf5e657ba5115e1233",
+  "capture_source_sha": "86cb53710b01d7ece92875c8f93d52ebf6f2d0f2",
+  "capture_run": "https://github.com/Zhangsfish/Elapse/actions/runs/37574631559",
+  "frames": [
+    {
+      "file": "zh-Hans/01-awareness.png",
+      "sha256": "e256c1e1c381f69a1e91ae1104383e7dd17f0be070070a5f6893624dae278760",
+      "status": "PASS",
+      "repainted_opaque_pixels": 0,
+      "geometry_matches_english": true,
+      "raw_inventory": "PASS",
+      "text_bounds": "PASS",
+      "contact_sheet_tile": "PASS"
+    },
+    {
+      "file": "zh-Hans/02-choose-interval.png",
+      "sha256": "cd7f76499104877c1c6f6415c4026dcc22bd4d53b44b08403c2f7f4b8b9b775f",
+      "status": "PASS",
+      "repainted_opaque_pixels": 0,
+      "geometry_matches_english": true,
+      "raw_inventory": "PASS",
+      "text_bounds": "PASS",
+      "contact_sheet_tile": "PASS"
+    },
+    {
+      "file": "zh-Hans/03-reminder.png",
+      "sha256": "52953445c3fbbfca54540badca865820b30e0600e37bd28595753be37cb247b5",
+      "status": "PASS",
+      "repainted_opaque_pixels": 0,
+      "geometry_matches_english": true,
+      "raw_inventory": "PASS",
+      "text_bounds": "PASS",
+      "contact_sheet_tile": "PASS"
+    },
+    {
+      "file": "zh-Hans/04-today.png",
+      "sha256": "5d5e6ccd8f6f70039dba6a6a4572c1b9f23be056a59e9b63c1ef6ab78b978fca",
+      "status": "PASS",
+      "repainted_opaque_pixels": 0,
+      "geometry_matches_english": true,
+      "raw_inventory": "PASS",
+      "text_bounds": "PASS",
+      "contact_sheet_tile": "PASS"
+    }
+  ],
+  "private_state": false,
+  "production_runtime_unchanged": true,
+  "visual_review": "CODEX_CONTACT_SHEET_INSPECTION_REQUIRED_SEPARATE_FROM_CLOUD_AUDIT",
+  "app_review_public_release": "NOT_RUN_NOT_AUTHORIZED"
+}

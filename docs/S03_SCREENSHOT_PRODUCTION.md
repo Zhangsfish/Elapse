@@ -1,6 +1,6 @@
 # S03 screenshot production — Everwhile App Store carousel
 
-Updated: 2026-10-06
+Updated: 2026-10-07
 Status: S03-A production direction.
 
 ## Reference implementation
@@ -40,7 +40,7 @@ The useful pattern to reproduce:
 Do not make plain screenshots with captions.
 
 Each final frame is a designed App Store poster:
-- canvas: 1320 × 2868, RGB, sRGB, no alpha;
+- design master canvas: 1320 × 2868, RGB, sRGB, no alpha;
 - subtle cool off-white / blue-tinted background;
 - small Everwhile app-icon + name brand line near top;
 - large 1–2 line headline;
@@ -228,7 +228,7 @@ Generate a 4-frame contact sheet as a review artifact, not an App Store asset.
 
 Automated validation should fail if:
 - count is not exactly 4 per locale;
-- PNG is not 1320×2868 RGB;
+- design master PNG is not 1320×2868 RGB (upload derivatives have their own exact-size gate below);
 - alpha exists;
 - sRGB/ICC is missing;
 - headline/subtitle leaves the canvas;
@@ -238,6 +238,59 @@ Automated validation should fail if:
 - renderer modifies pixels inside a real capture outside an explicitly declared illustrative overlay;
 - English frozen output changes during Chinese-only work;
 - private/real app identifiers appear in public fixtures/manifests.
+
+## Actual upload gate — owner correction on 2026-10-07
+
+**A validated design master is not yet an upload-compatible deliverable.**
+The owner attempted to upload `01-awareness.png` at 1320×2868 and App Store
+Connect rejected it as an invalid file size. The actual visible slot was
+“带灵动岛的 iPhone（中等显示屏）”; its displayed portrait sizes were 1179×2556
+and 1206×2622. The suggested large-display option was not available to the owner.
+Lecture Asset also used 1320×2868; that historical size is not proof this slot accepts it.
+
+For this owner's current upload lane, **deliver exactly 1206×2622** for both
+English and zh-Hans. Recheck the actual destination slot before a future upload;
+do not promise that an unseen large-display tab exists. Keep the approved
+1320×2868 masters, raw captures, frozen hashes and contact sheets unchanged.
+Make separately named/upload-folder derivatives, not replacements for the masters.
+
+### Frame 2 interval-label alignment
+
+The owner explicitly requested the English `5 · 10 · 15 · 30 · 60 min` be centered
+both horizontally and vertically inside its existing pill. Apply the same requirement
+to Chinese `5 · 10 · 15 · 30 · 60 分钟` using that locale's actual font metrics.
+Do not copy English baseline offsets or change the entire visual system.
+
+For glyph bounds `(gl, gt, gr, gb)` measured at `(0, 0)` and pill bounds
+`(left, top, right, bottom)`, place the text at:
+
+```text
+x = round((left + right - gl - gr) / 2)
+y = round((top + bottom - gt - gb) / 2)
+```
+
+Verify visible-ink center error ≤0.5 design pixel in each direction, adequate
+side padding, no clipping and acceptable thumbnail readability. Keep headline,
+brand, phone geometry and real capture pixels unchanged. The Chinese master
+already has an owner-approved wider pill `[614,596,1264,708]`; retain it and do
+not force the English width `[614,596,1214,708]` onto Chinese.
+
+### Upload derivative validation
+
+The local export used uniform LANCZOS resize from 1320×2868 to 1206×2620,
+then duplicated one outer edge row at the top and bottom for exact 1206×2622.
+This avoids anisotropic stretching/cropping; it is an export transform, not a
+phone repaint. Use the same transform across all four frames and both locales.
+
+Validate each locale's four upload PNGs separately: exact dimensions, RGB,
+sRGB ICC, no alpha, deterministic rerender, source/output SHA256, unchanged
+master/freeze/contact hashes and preserved phone content. Generate an
+upload-size contact sheet for visual review. Record the target slot and export
+transform in the upload manifest; do not relabel master validators as upload proof.
+Actual App Store Connect acceptance remains **NOT_OBSERVED** until confirmed.
+
+Exact local results and follow-up instructions:
+[`UPLOAD_COMPATIBILITY_HANDOFF.md`](../reports/S03-A/round-01/UPLOAD_COMPATIBILITY_HANDOFF.md).
 
 ## Evidence folder
 
