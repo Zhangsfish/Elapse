@@ -7,11 +7,11 @@ S03-C remains locked until review results.
 | Gate | Current evidence / smallest later action |
 |---|---|
 | Family Controls Distribution | 91.1 final App/Monitor/Report signatures and profile allowances PASS; portal Assigned NOT_VERIFIED. In Certificates, Identifiers & Profiles → Capability Requests → Family Controls, confirm Assigned/provisioning support for all three IDs (com.zhangsfish.elapse, .monitor, .report). Reply only the three states; no profiles/secrets |
-| Public Support/Privacy | Pure static source and main-only Pages workflow prepared. GitHub public repo metadata has_pages=false on 2026-10-07; no Pages-setting tool in current connector. After approved merge, set repository Settings → Pages → Source: GitHub Actions once; Codex can retry the workflow if needed. Then anonymously GET both live URLs; no fake URL now |
-| App Store build | 91.1 is INTERNAL_ONLY, not App-Review-eligible. **DEFERRED_S03_B**, not an owner credentials error. Codex later creates a new eligible distribution package with frozen runtime, under explicit submission-stage authority. No upload in S03-A |
+| Public Support/Privacy | First merged deploy failed only because the repo had Pages disabled. S03-B changes `actions/configure-pages` to `enablement: true`; after merge, verify the deployment and anonymous HTTPS before entering URLs in ASC |
+| App Store build | 91.1 is INTERNAL_ONLY. S03-B is preparing a separate review-eligible RC from the same frozen runtime; exact build/IPA/ASC eligibility must be recorded before owner submission approval |
 | App record/SKU | Owner previously confirmed record Everwhile exists for com.zhangsfish.elapse. Current portal record/SKU readback NOT_RUN; do not create duplicate record |
 | Agreements | Owner confirms Account Holder agreements privately; no automatic acceptance |
-| Privacy | Confirm actual optional support-mail handling/retention and approve ASC answers; draft is not a legal attestation |
+| Privacy | Source audit supports no automatic app-data collection/tracking. Final ASC privacy answer and optional support-mail treatment still require owner/account confirmation |
 | Copyright | Confirm legal rights-holder name in metadata draft |
 | Age rating | **OWNER_COMPLETED — 4+** from the actual questionnaire |
 | Export compliance | Source ITSAppUsesNonExemptEncryption=false; no custom crypto code found. Owner confirms applicability of Apple's current questions; source flag is not legal approval |
@@ -43,3 +43,11 @@ Apple references checked 2026-10-07:
 - Content-rights declaration shown by owner: no third-party content requiring a rights declaration.
 
 These are owner-observed portal facts. They are not evidence of App Review approval.
+
+
+## S03-B release progress
+
+- PR #24 prepares the review-eligible RC tooling; production product tree remains frozen.
+- Secret-free RC tooling verification passed before the upload marker.
+- One-time review RC upload has been triggered for target build 0.1.0 (92.1); final result must come from the actual workflow/ASC query, not this checklist.
+- App Review submission remains NOT AUTHORIZED until the exact RC and remaining portal fields are presented to the owner.
