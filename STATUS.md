@@ -1,10 +1,10 @@
 # STATUS
 
-Updated: 2026-10-07
+Updated: 2026-10-08
 
 ## 当前结论
 
-**S00 COMPLETE — PASS_WITH_NOTES。S01 COMPLETE — PASS_WITH_NOTES。S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE — PASS_WITH_NOTES；S03-B READY_FOR_OWNER_SUBMISSION — CLOUD_AUDIT_PASS；S03-C LOCKED。**
+**S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B OWNER_REPORTED_SUBMITTED；S03-C BLOCKED — APPLE_AUTOMATED_FAMILY_CONTROLS_ENTITLEMENT_CHECK，等待 Developer Portal 3 个 App ID 的 Family Controls Distribution Assigned 实际状态。公开发布 LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -30,7 +30,11 @@ S02 残余可靠性边界继续记录但不再扩功能：
 
 ## 唯一当前任务
 
-**[S03-B：App Store submission preparation and exact release candidate](prompts/S03_B_APP_STORE_SUBMISSION.md)**
+**[S03-C：Apple Family Controls 自动审核阻断核查](reports/S03-C/FAMILY_CONTROLS_AUTOMATED_REVIEW_BLOCK_2026-10-08.md)**
+
+2026-10-08 持有人转来 App Review 自动消息：检测到 Screen Time API，但声称送审包缺少 Family Controls entitlement，因此审核不能继续。这是 **OWNER_REPORTED**，未从 ASC API 独立确认其内部状态。已上传的 92.1 签名和 embedded App Store profiles 对 App/Monitor/Report 三项 Family Controls 检查全部 PASS；然而**签名通过 ≠ Apple 后台 managed capability 已批准**。此前将 Capability Requests Assigned 读取判为可选的结论已撤回。当前唯一账号动作：核对 3 个 Bundle ID 的 Family Controls (Distribution) 是否 Assigned 且 App Store provisioning supported。根据核查结果申请缺少的授权，或携证据要求 Apple 复核自动判定。不要盲目上传新 build、变更 runtime 或重新提交。
+
+### 历史 S03-B 工程交付
 
 Review-eligible RC 已完成：**Everwhile 0.1.0 (92.1)**，ASC `VALID / APP_STORE_ELIGIBLE`。
 Exact IPA SHA256：`fb3baad3ce54842122b6a6416b4334115b7754953a66dde5614b2f3801b9dade`。
@@ -38,10 +42,10 @@ RC workflow：`37580987653`。App / Monitor / Report 的 Apple Distribution、Fa
 
 S03-B 工程收口记录：[`reports/S03-B/round-01/PORTAL_CLOSEOUT.md`](reports/S03-B/round-01/PORTAL_CLOSEOUT.md)。
 当前 live URLs、92.1 关联、双语 metadata/review notes 均已收口；实际检查/run/SHAs 见 DELIVERY 和 TEST_RESULTS。
-Family Controls 发布签名/profile 实证 gate CLOSED；未读取的 Portal Assigned UI 降为 OPTIONAL_OWNER_READBACK，不再阻塞。
+历史结论（已被 2026-10-08 Apple 自动阻断推翻）：Family Controls 签名/profile gate PASS；**Portal Assigned UI 现在必须核查**，不能继续把它当作 OPTIONAL_OWNER_READBACK。
 App Privacy 源码结论是 **No / Data Not Collected；tracking No**，不能冒充 ASC 私人声明已发布。
-PR #25 已由 cloud 独立审核并合并。Owner 只需确认 exact storefront（建议 US only、排除中国大陆）及尚未完成的 legal/privacy attestation，然后亲自最终 Submit for Review。
-审核联系人已经填齐，不需重填。没有生成新 RC / TestFlight，没有提交审核或公开发布。
+PR #25 已由 cloud 独立审核并合并。截至 2026-10-07 的提交准备已完成。2026-10-08 持有人提供自动审核阻断通知，因此现阶段要先解决 Apple entitlement 权限或自动判定问题，后续回复/再提交以 Apple 反馈为准。
+审核联系人已经填齐，不需重填。92.1 没有重建；自动审核通知代表之后已尝试提交，具体 ASC 状态仍需读回；没有公开发布。
 
 S03-A 已由 cloud 独立审计并合并：
 - PR #22 merge: `62526aeff6176895d84d6b192086d4348df07858`
@@ -71,7 +75,7 @@ Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S0
 - manual release；
 - China mainland 继续 BLOCKED_UNTIL_ICP_STATUS_CONFIRMED。
 
-**S03-B 不授权自动公开发布。S03-C 仍 LOCKED。**
+**S03-C 仅处理自动审核阻断、权限申诉和必要的最小修复。未经证据支持，不授权新 RC、再次提交或公开发布。**
 
 ## 阶段状态
 
@@ -79,8 +83,8 @@ Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S0
 |---|---|---|
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
-| S03-B | **READY_FOR_OWNER_SUBMISSION — CLOUD_AUDIT_PASS** | RC 92.1 已关联，live URLs/metadata 完成；owner 最终地区/声明/提交保留 |
-| S03-C | LOCKED | review response / rejection fixes / owner-approved public release |
+| S03-B | OWNER_REPORTED_SUBMITTED — REVIEW_BLOCKED | 工程包已完成；2026-10-08 持有人提供 Apple 自动阻断信 |
+| S03-C | **BLOCKED_OWNER_PORTAL_READBACK** | 主 App / Monitor / Report 的 Family Controls Distribution Assigned 检查，必要时向 Apple 申请/申诉；公开发布禁止 |
 
 ## S03 硬边界
 
