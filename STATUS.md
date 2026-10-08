@@ -4,7 +4,7 @@ Updated: 2026-10-08
 
 ## 当前结论
 
-**S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B OWNER_REPORTED_SUBMITTED；S03-C BLOCKED — APPLE_AUTOMATED_FAMILY_CONTROLS_ENTITLEMENT_CHECK，等待 Developer Portal 3 个 App ID 的 Family Controls Distribution Assigned 实际状态。公开发布 LOCKED。**
+**S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B OWNER_REPORTED_SUBMITTED；S03-C BLOCKED — APPLE_AUTOMATED_FAMILY_CONTROLS_REVIEW，3 个 App ID Distribution Assigned 已由 owner 截图确认，等待 Apple App Review 复核。公开发布 LOCKED。**
 
 Everwhile 当前冻结功能候选：
 
@@ -32,7 +32,7 @@ S02 残余可靠性边界继续记录但不再扩功能：
 
 **[S03-C：Apple Family Controls 自动审核阻断核查](reports/S03-C/FAMILY_CONTROLS_AUTOMATED_REVIEW_BLOCK_2026-10-08.md)**
 
-2026-10-08 持有人转来 App Review 自动消息：检测到 Screen Time API，但声称送审包缺少 Family Controls entitlement，因此审核不能继续。这是 **OWNER_REPORTED**，未从 ASC API 独立确认其内部状态。已上传的 92.1 签名和 embedded App Store profiles 对 App/Monitor/Report 三项 Family Controls 检查全部 PASS；然而**签名通过 ≠ Apple 后台 managed capability 已批准**。此前将 Capability Requests Assigned 读取判为可选的结论已撤回。当前唯一账号动作：核对 3 个 Bundle ID 的 Family Controls (Distribution) 是否 Assigned 且 App Store provisioning supported。根据核查结果申请缺少的授权，或携证据要求 Apple 复核自动判定。不要盲目上传新 build、变更 runtime 或重新提交。
+2026-10-08 持有人转来 App Review 自动消息：检测到 Screen Time API，但声称送审包缺少 Family Controls entitlement，因此审核不能继续。这是 **OWNER_REPORTED**。已上传 92.1 的代码签名及 embedded App Store profiles 三项 Family Controls 检查全部 PASS。随后持有人提供的 Apple Portal 截图进一步确认 **App、Monitor、Report 三个 App ID 的 Family Controls (Distribution) 均为 Assigned**；Monitor、Report 信息弹窗明确包含 App Store Connect provisioning（主 App 弹窗未单独显示，但其 distribution 签名/profile 已通过）。因此现阶段应回复 Apple 要求人工复核自动判定及指出确切失败的二进制/entitlement key，**不要盲目上传新 build、变更 runtime 或重新提交**。对照证据和建议英文回信见 [审核阻断记录](reports/S03-C/FAMILY_CONTROLS_AUTOMATED_REVIEW_BLOCK_2026-10-08.md)。
 
 ### 历史 S03-B 工程交付
 
@@ -84,7 +84,7 @@ Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S0
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
 | S03-B | OWNER_REPORTED_SUBMITTED — REVIEW_BLOCKED | 工程包已完成；2026-10-08 持有人提供 Apple 自动阻断信 |
-| S03-C | **BLOCKED_OWNER_PORTAL_READBACK** | 主 App / Monitor / Report 的 Family Controls Distribution Assigned 检查，必要时向 Apple 申请/申诉；公开发布禁止 |
+| S03-C | **BLOCKED_APPLE_AUTOMATED_REVIEW — READY_TO_REQUEST_MANUAL_RECHECK** | 三个 App ID Assigned 已核实，等待 App Review 复核自动判定；公开发布禁止 |
 
 ## S03 硬边界
 
