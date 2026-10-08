@@ -4,7 +4,7 @@ Updated: 2026-10-08
 
 ## 当前结论
 
-**S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B OWNER_REPORTED_SUBMITTED；S03-C BLOCKED — APPLE_AUTOMATED_FAMILY_CONTROLS_REVIEW，3 个 App ID Distribution Assigned 已由 owner 截图确认，等待 Apple App Review 复核。公开发布 LOCKED。**
+**S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B SUBMITTED。S03-C APP_REVIEW_APPROVED — OWNER_EMAIL_CONFIRMED；WAITING_FOR_OWNER_MANUAL_RELEASE。公开上架/下载尚未验证。**
 
 Everwhile 当前冻结功能候选：
 
@@ -29,6 +29,12 @@ S02 残余可靠性边界继续记录但不再扩功能：
 这些不是 S03 功能开发项。
 
 ## 唯一当前任务
+
+**[S03-C：App Review 已通过，等待 owner 手动发布](reports/S03-C/APP_REVIEW_APPROVED_2026-10-08.md)**
+
+2026-10-08 持有人提供 Apple 两封正式邮件和截图：Everwhile iOS 0.1.0 的审核已完成并被批准分发（**APP_REVIEW_APPROVED — OWNER_EMAIL_CONFIRMED**）。这**取代了下文此前的 Family Controls 自动审核阻断状态**；Apple 未解释早先拦截的技术根因，不能自行宣称其承认误判。既有 92.1 为唯一已知且与版本关联的审核 RC。Apple 邮件不证明已经公开发布。过去 ASC 设置为 **MANUAL**；下一步先由 owner 确认 iOS 0.1.0 是否为 **Pending Developer Release**，再决定是否点击 **Release This Version**。继续遵守免费、US only、排除中国大陆；对外公开下载链接与宣传片发布需在真实上架后核验。不得未经 owner 授权自动发布。
+
+### 历史审核阻断（已被 Apple 正式获批结果取代）
 
 **[S03-C：Apple Family Controls 自动审核阻断核查](reports/S03-C/FAMILY_CONTROLS_AUTOMATED_REVIEW_BLOCK_2026-10-08.md)**
 
@@ -84,7 +90,7 @@ Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S0
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
 | S03-B | OWNER_REPORTED_SUBMITTED — REVIEW_BLOCKED | 工程包已完成；2026-10-08 持有人提供 Apple 自动阻断信 |
-| S03-C | **BLOCKED_APPLE_AUTOMATED_REVIEW — READY_TO_REQUEST_MANUAL_RECHECK** | 三个 App ID Assigned 已核实，等待 App Review 复核自动判定；公开发布禁止 |
+| S03-C | **APP_REVIEW_APPROVED — AWAITING_OWNER_MANUAL_RELEASE** | Apple 邮件确认 0.1.0 获批；未核实 Pending Developer Release/公开可下载；等待 owner 决定发布 |
 
 ## S03 硬边界
 
