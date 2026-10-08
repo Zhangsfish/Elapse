@@ -1,7 +1,7 @@
 # S03-C — Apple automated Family Controls review blocker
 
 Date: 2026-10-08
-Status: **BLOCKED_APPLE_ENTITLEMENT_GATE — OWNER_PORTAL_READBACK_REQUIRED**
+Status: **BLOCKED_APPLE_AUTOMATED_REVIEW — THREE PORTAL ASSIGNMENTS OWNER_VERIFIED; MANUAL_RECHECK_NEEDED**
 
 ## Observed by owner
 
@@ -69,6 +69,78 @@ Do not share account passwords, private certificates or provisioning profiles.
 A screenshot with account IDs/redactions is optional; text status of the 3 IDs
 is sufficient. This portal view is not presently available through the linked
 GitHub connector.
+
+
+## Owner Developer Portal readback — 2026-10-08
+
+Owner reviewed Apple's live Certificates, Identifiers & Profiles screens:
+
+| Bundle ID | Capability Requests status | Detail: App Store Connect provisioning |
+|---|---|---|
+| `com.zhangsfish.elapse` | **Assigned** | NOT_SHOWN_IN_OWNER_SCREENSHOT; the exact 92.1 distribution signature/profile allows the entitlement |
+| `com.zhangsfish.elapse.monitor` | **Assigned** | **Confirmed:** Development, Ad hoc, App Store Connect |
+| `com.zhangsfish.elapse.report` | **Assigned** | **Confirmed:** Development, Ad hoc, App Store Connect |
+
+For Monitor and Report the detail popover also displays:
+`Entitlement Keys: com.apple.developer.family-controls`, matching the exact
+code signatures and embedded App Store profiles in the 92.1 IPA audit.
+
+Evidence type: **OWNER_VISIBLE_APPLE_PORTAL_SCREENSHOTS**. Original screenshots
+are kept in the conversation, not uploaded to public GitHub because they expose
+account/team information. No password, provisioning payload, or account identifier
+other than the public app bundle IDs is copied to this report.
+
+**Conclusion:** No missing request or Pending/Submitted state has been found
+across the three shipping App IDs. The mismatch between the reviewer bot's
+"not submitted with entitlement" message and our approval/signature evidence
+now warrants a **manual App Review reassessment** before any binary change.
+This is strong grounds for a false-positive investigation, not proof of Apple's
+server-side logic.
+
+### Recommended immediate reply in App Store Connect
+
+> Hello App Review Team,
+>
+> Thank you for your message. Everwhile 0.1.0 (92.1) intentionally uses
+> the Screen Time APIs. We have already received Family Controls
+> (Distribution) approval for all three App IDs:
+>
+> - com.zhangsfish.elapse — Assigned
+> - com.zhangsfish.elapse.monitor — Assigned
+> - com.zhangsfish.elapse.report — Assigned
+>
+> The Monitor and Report approvals explicitly list App Store Connect
+> under Provisioning Support. For the exact submitted 92.1 IPA, we
+> independently inspected the Apple Distribution code signatures and
+> embedded provisioning profiles of the main app and both extensions;
+> all three contain com.apple.developer.family-controls = true.
+>
+> Could you please recheck this automated entitlement finding and
+> continue the review, or identify the exact bundle ID, executable,
+> entitlement key, or server-side authorization that failed your check?
+> We can provide redacted screenshots and signing evidence if needed.
+> We have not removed Screen Time functionality or changed the submitted build.
+>
+> Thank you.
+
+Do not state that Apple's review already resumed. Do not resubmit/withdraw or
+upload build 93.1 solely because of this automated message. If Apple identifies
+a specific key or binary, assess it independently first.
+
+### Secondary technical diagnostic only if Apple requests further detail
+
+Apple separately documents the
+`com.apple.developer.family-controls.app-and-website-usage` entitlement.
+Everwhile's source checks `AuthorizationStatus.approvedWithDataAccess` only to
+normalize an authorization status; the product uses ordinary tokenized
+Family Controls/DeviceActivity, not `FamilyActivityData` or privileged
+bundle/domain identifiers. A 2026 Apple Developer Forums report describes a
+similar automated rejection despite correctly assigned Family Controls and a
+signed IPA, where the author investigated such symbol references. This is
+an *unproven hypothesis*, **not** grounds to add enhanced-data entitlements or
+modify the accepted runtime preemptively. Wait for Apple's exact flag if its
+manual recheck does not resolve the issue.
+https://developer.apple.com/forums/tags/family-controls
 
 ## Branches of resolution
 
