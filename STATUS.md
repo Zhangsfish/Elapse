@@ -1,8 +1,16 @@
 # STATUS
 
-Updated: 2026-10-08
+Updated: 2026-10-12
 
-## 当前结论
+## 当前调度（2026-10-12；持有人更新）
+
+- **US store：OWNER_REPORTED_LIVE。** 持有人明确说 Everwhile 已经在美国区 App Store 正式上线；iOS `0.1.0 (92.1)` 已获 Apple App Review 批准。尚未独立核查当前 App Store 公开 URL / ASC 实时销售范围，不能把用户陈述伪装为工具读回。原先 S03-C `WAITING_FOR_OWNER_MANUAL_RELEASE` 记录为历史快照。
+- **中国大陆 ICP：NOT_APPROVED。** 独立 Developer Support 案例 **`102991507017`**，数字 App Store Connect Apple ID **`6818551574`**，Bundle ID `com.zhangsfish.elapse`。Apple 顾问 Water 要求重新提供签名函，明确包含数字 Apple ID；补全文件已制作，最终上传、回复及 Apple 受理状态仍须业主确认。不能使用 Lecture Asset 案例的批准。
+- **对照：Lecture Asset** 的支持案例 **`102984758084`**，2026-10-12 持有人邮件截图确认 Apple ICP 例外申请**获批准**；App 0.1.0 (34.1) 仍在等待普通审核。
+- **当前下一步**：Everwhile 不动已上架版本、不更改程序。确认补全版 PDF 已上传 / Water 已收到，再等待 `102991507017` 例外批准；获批并在 ASC 核实后才增加中国大陆供应范围。
+- **完整证据和公开信息边界**：[中国大陆 ICP 个案/发行记录](docs/CHINA_MAINLAND_ICP_RELEASE_2026-10-12.md)。案例号按持有人要求记录于公开仓库；不存签名、私有上传链接和身份证资料。
+
+## 2026-10-08 历史结论（已被上方状态取代）
 
 **S00/S01/S02 COMPLETE — PASS_WITH_NOTES。S03-A COMPLETE。S03-B SUBMITTED。S03-C APP_REVIEW_APPROVED — OWNER_EMAIL_CONFIRMED；WAITING_FOR_OWNER_MANUAL_RELEASE。公开上架/下载尚未验证。**
 
@@ -28,7 +36,7 @@ S02 残余可靠性边界继续记录但不再扩功能：
 
 这些不是 S03 功能开发项。
 
-## 唯一当前任务
+## 2026-10-08 历史任务（已被上方状态取代）
 
 **[S03-C：App Review 已通过，等待 owner 手动发布](reports/S03-C/APP_REVIEW_APPROVED_2026-10-08.md)**
 
@@ -90,7 +98,7 @@ Cloud audit：[`audits/S03/S03_B_PORTAL_CLOSEOUT_AUDIT_2026-10-07.md`](audits/S0
 | S02 | COMPLETE — PASS_WITH_NOTES | functional/product candidate frozen at 91.1 |
 | S03-A | **COMPLETE — PASS_WITH_NOTES** | metadata/assets/preflight complete; owner/account notes carried forward |
 | S03-B | OWNER_REPORTED_SUBMITTED — REVIEW_BLOCKED | 工程包已完成；2026-10-08 持有人提供 Apple 自动阻断信 |
-| S03-C | **APP_REVIEW_APPROVED — AWAITING_OWNER_MANUAL_RELEASE** | Apple 邮件确认 0.1.0 获批；未核实 Pending Developer Release/公开可下载；等待 owner 决定发布 |
+| S03-C | **APP_REVIEW_APPROVED；OWNER_REPORTED_US_LIVE** | 0.1.0 已获审核批准；持有人随后报告已在美国区上线（商店 URL 尚未独立读回）。独立中国大陆 ICP 案例 `102991507017` 尚未批准 |
 
 ## S03 硬边界
 
