@@ -2,7 +2,7 @@ name: S00 TestFlight preparation and explicit upload
 
 on:
   push:
-    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report, codex/s01-a-day-range-interval, codex/s01-b-daily-lifecycle, codex/s02-a-production-ui-today, codex/s02-b-onboarding-polish]
+    branches: [main, codex/s00-b-first-real-pulse, codex/s00-c-continuous-pulses, codex/s00-d-real-today-report, codex/s01-a-day-range-interval, codex/s01-b-daily-lifecycle, codex/s02-a-production-ui-today, codex/s02-b-onboarding-polish, chatgpt/ios26-7-diagnostics]
     paths:
       - audits/S00/s00-testflight-upload-once-20261003-xcodegen-entitlements.json
       - reports/S00-B/round-01/evidence/s00b-upload-once.json
@@ -18,6 +18,7 @@ on:
       - reports/S02-A/round-01/evidence/s02a-upload-once.json
       - reports/S02-B/round-01/evidence/s02b-prepare-once.json
       - reports/S02-B/round-01/evidence/s02b-upload-once.json
+      - reports/IOS26-7/evidence/ios267-upload-once.json
   workflow_dispatch:
     inputs:
       operation:
@@ -45,7 +46,8 @@ jobs:
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && (github.event.head_commit.message == 'S01-A explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload')) ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && (github.event.head_commit.message == 'S01-B explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload')) ||
       (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-a-production-ui-today' && (github.event.head_commit.message == 'S02-A explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S02-A explicit one-time TestFlight upload')) ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-b-onboarding-polish' && (github.event.head_commit.message == 'S02-B explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S02-B explicit one-time TestFlight upload'))
+      (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-b-onboarding-polish' && (github.event.head_commit.message == 'S02-B explicit one-time TestFlight prepare' || github.event.head_commit.message == 'S02-B explicit one-time TestFlight upload')) ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/chatgpt/ios26-7-diagnostics' && github.event.head_commit.message == 'iOS 26.7 diagnostics explicit one-time TestFlight upload')
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -146,13 +148,21 @@ jobs:
                   'source_code_sha': previous_main,
                   'version': '0.1.0',
               }
+          elif ref == 'refs/heads/chatgpt/ios26-7-diagnostics':
+              marker_path = 'reports/IOS26-7/evidence/ios267-upload-once.json'
+              expected = {
+                  'operation': 'ios267-diagnostics-testflight-upload-once',
+                  'trigger_id': 'everwhile-ios267-diagnostics-upload-20261007',
+                  'source_code_sha': previous_main,
+                  'version': '0.1.0',
+              }
           else:
               raise AssertionError('Unexpected upload ref')
           changed = subprocess.check_output(
               ['git', 'diff', '--name-status', previous_main, 'HEAD', '--', marker_path], text=True
           ).strip()
           assert changed == 'A\t' + marker_path, 'Upload marker must be newly added by this push'
-          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report', 'refs/heads/codex/s01-a-day-range-interval', 'refs/heads/codex/s01-b-daily-lifecycle', 'refs/heads/codex/s02-a-production-ui-today', 'refs/heads/codex/s02-b-onboarding-polish'):
+          if ref in ('refs/heads/codex/s00-c-continuous-pulses', 'refs/heads/codex/s00-d-real-today-report', 'refs/heads/codex/s01-a-day-range-interval', 'refs/heads/codex/s01-b-daily-lifecycle', 'refs/heads/codex/s02-a-production-ui-today', 'refs/heads/codex/s02-b-onboarding-polish', 'refs/heads/chatgpt/ios26-7-diagnostics'):
               all_changed = subprocess.check_output(
                   ['git', 'diff', '--name-only', previous_main, 'HEAD'], text=True
               ).strip()
@@ -330,7 +340,8 @@ jobs:
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-a-day-range-interval' && github.event.head_commit.message == 'S01-A explicit one-time TestFlight upload') ||
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s01-b-daily-lifecycle' && github.event.head_commit.message == 'S01-B explicit one-time TestFlight upload') ||
           (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-a-production-ui-today' && github.event.head_commit.message == 'S02-A explicit one-time TestFlight upload') ||
-          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-b-onboarding-polish' && github.event.head_commit.message == 'S02-B explicit one-time TestFlight upload')
+          (github.event_name == 'push' && github.ref == 'refs/heads/codex/s02-b-onboarding-polish' && github.event.head_commit.message == 'S02-B explicit one-time TestFlight upload') ||
+          (github.event_name == 'push' && github.ref == 'refs/heads/chatgpt/ios26-7-diagnostics' && github.event.head_commit.message == 'iOS 26.7 diagnostics explicit one-time TestFlight upload')
         env:
           APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}

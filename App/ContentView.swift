@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var pickerPresented = false
     @State private var tutorialPresented = TutorialVisitStore.reserveFirstVisit()
     @State private var aboutPresented = false
-    #if DEBUG
+    #if DEBUG || INTERNAL_DIAGNOSTICS
     @State private var diagnosticsPresented = false
     #endif
     @State private var notificationPermissionInProgress = false
@@ -187,7 +187,7 @@ struct ContentView: View {
                     Menu {
                         Button("about.title", systemImage: "info.circle") { aboutPresented = true }
                             .accessibilityIdentifier("about-open")
-                        #if DEBUG
+                        #if DEBUG || INTERNAL_DIAGNOSTICS
                         Button("home.diagnostics", systemImage: "slider.horizontal.3") { diagnosticsPresented = true }
                             .accessibilityIdentifier("developer-diagnostics")
                         #endif
@@ -198,7 +198,7 @@ struct ContentView: View {
                     .accessibilityIdentifier("home-menu")
                 }
             }
-            #if DEBUG
+            #if DEBUG || INTERNAL_DIAGNOSTICS
             .navigationDestination(isPresented: $diagnosticsPresented) { DiagnosticsView() }
             #endif
             .sheet(isPresented: $aboutPresented) { AboutSupportView() }
@@ -288,7 +288,7 @@ struct ContentView: View {
     }
 }
 
-#if DEBUG
+#if DEBUG || INTERNAL_DIAGNOSTICS
 private struct DiagnosticsView: View {
     @EnvironmentObject private var model: ElapseModel
 
