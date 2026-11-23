@@ -12,7 +12,7 @@ fp=str(Path(ff).with_name('ffprobe.exe'))
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 def cmd(args): return subprocess.check_output(args)
 def frame(p,n):
-    b=cmd([ff,'-v','error','-i',str(p),'-vf',f'select=eq(n\\,{n})','-frames:v','1','-f','image2pipe','-vcodec','png','-'])
+    b=cmd([ff,'-v','error','-ss',f'{n/60:.9f}','-i',str(p),'-frames:v','1','-f','image2pipe','-vcodec','png','-'])
     return Image.open(io.BytesIO(b)).convert('RGB')
 def audio(p): return cmd([ff,'-v','error','-i',str(p),'-map','0:a:0','-c','copy','-f','hash','-hash','sha256','-']).decode().strip()
 def prefix(p):
@@ -67,7 +67,8 @@ en_prefix=prefix(out/'EVERWHILE_EN_1080.mp4'); source_prefix=prefix(approved)
 assert len(en_prefix)==930 and en_prefix==source_prefix
 report['englishFirst930DecodedFramesByteEqual']=True
 report['audioPacketHash']=reference_audio
-report['sourceSHA']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+report['renderedCompositionSHA']='e32e85664cecbb406d0a584d32995c81369f12cc'
+report['testedSHA']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 crop=Image.open(here/'assets/today-zh-Hans.png').convert('RGB')
 raw=Image.open(root.parents[2]/provenance['chineseToday']['source']).crop((200,650,1120,1735)).convert('RGB')
 assert np.array_equal(np.asarray(crop),np.asarray(raw))

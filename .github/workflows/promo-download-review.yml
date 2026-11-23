@@ -1,0 +1,28 @@
+name: Everwhile bilingual public-download film bundle
+on:
+  pull_request:
+    paths:
+      - marketing/video/everwhile-v1/post-release/**
+      - .github/workflows/promo-download-review.yml
+permissions:
+  contents: read
+jobs:
+  review-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Check delivered media hashes and public-link evidence
+        run: node --test marketing/video/everwhile-v1/post-release/contract.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: everwhile-bilingual-download-${{ github.event.pull_request.head.sha }}
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            marketing/video/everwhile-v1/post-release/outputs/*
+            marketing/video/everwhile-v1/post-release/assets/qr-*.png
+            marketing/video/everwhile-v1/post-release/PUBLIC_PROVENANCE.json
+            marketing/video/everwhile-v1/post-release/DELIVERY.md
