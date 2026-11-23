@@ -1,0 +1,4296 @@
+[
+  {
+    "lang": "en",
+    "errors": [],
+    "boxes": [
+      {
+        "frame": 0,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 180,
+        "elements": [
+          {
+            "id": "question",
+            "visible": true,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 300,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": true,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 360,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": true,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 449,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 450,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 480,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 569,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 570,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 600,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 689,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 690,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 720,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 840,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": true,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 929,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": true,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 930,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 960,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 1079,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 299.5
+          },
+          {
+            "id": "Chooseyour apps",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "Set yourinterval",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 267.09375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 262.46875,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "See wherethe time went",
+            "visible": false,
+            "x": 96,
+            "y": 283,
+            "w": 535.609375,
+            "h": 203.5
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 213.4375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      }
+    ],
+    "fonts": [
+      {
+        "selector": "#brand-name",
+        "fonts": [
+          {
+            "familyName": "Inter Variable",
+            "postScriptName": "InterVariable-Display-SemiBold",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      },
+      {
+        "selector": "#end-title",
+        "fonts": [
+          {
+            "familyName": "Inter Variable",
+            "postScriptName": "InterVariable-Display-SemiBold",
+            "isCustomFont": true,
+            "glyphCount": 29
+          }
+        ]
+      },
+      {
+        "selector": "#download-label",
+        "fonts": [
+          {
+            "familyName": "Inter Variable",
+            "postScriptName": "InterVariable-Display-SemiBold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "zh-Hans",
+    "errors": [],
+    "boxes": [
+      {
+        "frame": 0,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 180,
+        "elements": [
+          {
+            "id": "question",
+            "visible": true,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 300,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": true,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 360,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": true,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 449,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 450,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 480,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 569,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 570,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 600,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 689,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 690,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": true,
+            "x": 80,
+            "y": 182,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 720,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": true,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": true,
+            "x": 80,
+            "y": 172,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 840,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": true,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 929,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": true,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": false,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": false,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": false,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": false,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": false,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 930,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 960,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      },
+      {
+        "frame": 1079,
+        "elements": [
+          {
+            "id": "question",
+            "visible": false,
+            "x": 96,
+            "y": 1438,
+            "w": 888,
+            "h": 330
+          },
+          {
+            "id": "选择想留意的 App",
+            "visible": false,
+            "x": -44,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "设定提醒间隔",
+            "visible": false,
+            "x": 96,
+            "y": 270,
+            "w": 888,
+            "h": 244.375
+          },
+          {
+            "id": "usage-demo",
+            "visible": false,
+            "x": 96,
+            "y": 76,
+            "w": 199.8125,
+            "h": 42.890625
+          },
+          {
+            "id": "pulse-5",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-10",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "pulse-15",
+            "visible": false,
+            "x": 80,
+            "y": 164,
+            "w": 920,
+            "h": 300
+          },
+          {
+            "id": "看看时间去了哪里",
+            "visible": false,
+            "x": 96,
+            "y": 287,
+            "w": 368,
+            "h": 239.1875
+          },
+          {
+            "id": "reminder-message",
+            "visible": false,
+            "x": 0,
+            "y": 0,
+            "w": 1080,
+            "h": 560
+          },
+          {
+            "id": "end-title",
+            "visible": true,
+            "x": 108,
+            "y": 578,
+            "w": 864,
+            "h": 249.375
+          },
+          {
+            "id": "download-entry",
+            "visible": true,
+            "x": 108,
+            "y": 1000,
+            "w": 864,
+            "h": 692.796875
+          },
+          {
+            "id": "download-qr",
+            "visible": true,
+            "x": 294,
+            "y": 1000,
+            "w": 492,
+            "h": 492
+          },
+          {
+            "id": "download-label",
+            "visible": true,
+            "x": 108,
+            "y": 1526,
+            "w": 864,
+            "h": 58.796875
+          },
+          {
+            "id": "download-url",
+            "visible": true,
+            "x": 108,
+            "y": 1657.796875,
+            "w": 864,
+            "h": 35
+          }
+        ]
+      }
+    ],
+    "fonts": [
+      {
+        "selector": "#brand-name",
+        "fonts": [
+          {
+            "familyName": "Inter Variable",
+            "postScriptName": "InterVariable-Display-SemiBold",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      },
+      {
+        "selector": "#end-title",
+        "fonts": [
+          {
+            "familyName": "Microsoft YaHei",
+            "postScriptName": "MicrosoftYaHei-Bold",
+            "isCustomFont": true,
+            "glyphCount": 12
+          }
+        ]
+      },
+      {
+        "selector": "#download-label",
+        "fonts": [
+          {
+            "familyName": "Microsoft YaHei",
+            "postScriptName": "MicrosoftYaHei-Bold",
+            "isCustomFont": true,
+            "glyphCount": 4
+          }
+        ]
+      }
+    ]
+  }
+]

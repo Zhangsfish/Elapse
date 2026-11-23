@@ -4,6 +4,7 @@ Owner request: 2026-11-23. Base main:
 `35ff10a58be815f7c67744cb5d2c70b3bbb2d583`. Implementation:
 `e32e85664cecbb406d0a584d32995c81369f12cc`.
 Later commits contain packaging/evidence, not changed film composition.
+Verification/test tooling SHA: `aa047531ee5543f1484a7c7bddbf722a1f8aa597`.
 Branch: `codex/promo-live-download-bilingual`. No self-merge/public posting.
 
 ## 成片
@@ -60,6 +61,13 @@ audio and exact Chinese raw crop pixels. Software decoder checks are not a
 claim of observed iPhone camera scanning.
 The540px stress test records whether raw RGB decoding succeeded or needed
 standard grayscale/Otsu decoder preprocessing; no movie pixels are changed.
+
+Result: four films fully decoded; all12 native/preview QR samples decoded the
+expected official URLs, both540px stress samples decoded after Otsu preprocessing;
+all930 earlier English decoded frames byte-identical; all four approved AAC
+packet hashes equal; Chinese crop pixels exact;14 Node contracts PASS.
+Encoded bilingual end cards/pulse/Today gallery visually inspected. Technical
+PASS is not aesthetic self-approval. State: READY_FOR_AUDIT / owner visual review.
 
 Existing Node24.15.0,HyperFrames0.8.132,GSAP3.15.0,esbuild0.28.2,FFmpeg9.0.1,
 Chrome,Python3.11/Pillow/NumPy/qrcode/OpenCV reused. No dependencies installed.

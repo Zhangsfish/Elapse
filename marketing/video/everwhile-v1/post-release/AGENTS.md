@@ -21,5 +21,11 @@ decode, QR from encoded pixels, immutable EN prefix/audio and genuine UI crop.
 contract.test.mjs is secret-free ordinary CI. outputs/ are canonical review media;
 tmp/ and build/ scratch and fonts are ignored. Never commit font binaries.
 
-Status: IN_PROGRESS. Final output hashes, tested source and limits go in DELIVERY
-and TEST_RESULTS. Screenshot/sample review is not real-time playback/listening.
+Status: READY_FOR_AUDIT / OWNER_VISUAL_REVIEW_PENDING. Four full films completed;
+14 source/asset tests pass. Native/preview encoded QR decode passes,540px CRF28
+stress decode uses recorded grayscale/Otsu preprocessing. All930 English prefix
+decoded frame hashes and all four AAC packet hashes equal the approved source.
+Rendered composition e32e856; verification tool/tested source aa04753. Film hashes
+and limits: outputs/TEST_RESULTS.json and ARTIFACTS.json. Exact PR head / CI URLs
+are recorded on the PR. Screenshot/sample review is not real-time playback or
+physical-iPhone camera validation; those remain NOT_RUN. No self-merge/posting.
