@@ -1,0 +1,59 @@
+{
+  "files": [
+    {
+      "file": "BILINGUAL_REVIEW.jpg",
+      "sha256": "f375f8c9f433f4e78ae855a3af76decef175d741f44e0432aa4feb894ec5d957",
+      "bytes": 134640
+    },
+    {
+      "file": "ENCODED_END_CARD_EN.png",
+      "sha256": "53c8ebb5b9239691ee5816266875f30a8805d1c2b1fc5427eb4bf5bf6c2a58df",
+      "bytes": 169925
+    },
+    {
+      "file": "ENCODED_END_CARD_ZH_HANS.png",
+      "sha256": "54d4723de4532fef59ec8da48ac8571c2f917c9ed82ef147ace74f343e55c745",
+      "bytes": 194109
+    },
+    {
+      "file": "END_CARD_en.png",
+      "sha256": "8539704e12e0ab262ce9998748c71565e9941281fbd0648b8e6f317822b1ff58",
+      "bytes": 74197
+    },
+    {
+      "file": "END_CARD_zh-Hans.png",
+      "sha256": "96f1c2036ea06fb27ecf281b3c4aa55ba4c9500374fec451f6d24e30a5715a15",
+      "bytes": 72754
+    },
+    {
+      "file": "EVERWHILE_EN_1080.mp4",
+      "sha256": "85843412ed232ca5169fe5549271b02f63ec38a7a5ebc864f5b19de0fbe67827",
+      "bytes": 13808040
+    },
+    {
+      "file": "EVERWHILE_EN_720.mp4",
+      "sha256": "2f5c0b4d76b181c9b6c1dfd498171e93affe57400c4c83d71ea7e5b178ca9940",
+      "bytes": 4126469
+    },
+    {
+      "file": "EVERWHILE_ZH_HANS_1080.mp4",
+      "sha256": "93285832b6466cac4b5987d1fdcdbd61b707dfa1788f5c8962f17842da5629de",
+      "bytes": 13987186
+    },
+    {
+      "file": "EVERWHILE_ZH_HANS_720.mp4",
+      "sha256": "4015b488f0e46d51af878e779f4e6ff2dfebe3dfc3ee284ff7d1c4aabf1e7aeb",
+      "bytes": 4182028
+    },
+    {
+      "file": "TODAY_EN.png",
+      "sha256": "5f849303dc55b56a2553f7a0a4cc6523da104a9f13e7ae6bcdbe41c8b4ade119",
+      "bytes": 205237
+    },
+    {
+      "file": "TODAY_ZH_HANS.png",
+      "sha256": "e6592312873304837fd1c3be930b82042f5a56bc05a4538326fca4289d633e97",
+      "bytes": 207962
+    }
+  ]
+}

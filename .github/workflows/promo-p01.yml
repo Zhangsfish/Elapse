@@ -20,3 +20,5 @@ jobs:
         run: node --test marketing/video/everwhile-v1/scripts/contract.test.mjs
       - name: Frozen asset hashes and PCM stems (no installs, no secrets)
         run: python3 marketing/video/everwhile-v1/scripts/check-assets.py
+      - name: Bilingual public-download film contract (no installs, no secrets)
+        run: node --test marketing/video/everwhile-v1/post-release/contract.test.mjs

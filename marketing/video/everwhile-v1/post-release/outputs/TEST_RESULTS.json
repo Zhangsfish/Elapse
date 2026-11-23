@@ -1,0 +1,138 @@
+{
+  "status": "PASS_TECHNICAL_ONLY",
+  "checkedDate": "2026-11-23",
+  "movies": [
+    {
+      "file": "EVERWHILE_EN_1080.mp4",
+      "sha256": "85843412ed232ca5169fe5549271b02f63ec38a7a5ebc864f5b19de0fbe67827",
+      "bytes": 13808040,
+      "width": 1080,
+      "height": 1920,
+      "fps": 60,
+      "frames": 1080,
+      "seconds": 18,
+      "fullDecode": "PASS",
+      "approvedAACPacketDataEqual": true,
+      "decodedPeak": 0.5377481579780579,
+      "qrFromEncodedFrames": [
+        {
+          "frame": 930,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 960,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 1079,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        }
+      ]
+    },
+    {
+      "file": "EVERWHILE_EN_720.mp4",
+      "sha256": "2f5c0b4d76b181c9b6c1dfd498171e93affe57400c4c83d71ea7e5b178ca9940",
+      "bytes": 4126469,
+      "width": 720,
+      "height": 1280,
+      "fps": 60,
+      "frames": 1080,
+      "seconds": 18,
+      "fullDecode": "PASS",
+      "approvedAACPacketDataEqual": true,
+      "decodedPeak": 0.5377481579780579,
+      "qrFromEncodedFrames": [
+        {
+          "frame": 930,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 960,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 1079,
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574"
+        },
+        {
+          "stress": "540x960 CRF28",
+          "decoded": "https://apps.apple.com/us/app/everwhile/id6818551574",
+          "method": "full-frame grayscale + Otsu threshold",
+          "rawRGBSucceeded": false
+        }
+      ]
+    },
+    {
+      "file": "EVERWHILE_ZH_HANS_1080.mp4",
+      "sha256": "93285832b6466cac4b5987d1fdcdbd61b707dfa1788f5c8962f17842da5629de",
+      "bytes": 13987186,
+      "width": 1080,
+      "height": 1920,
+      "fps": 60,
+      "frames": 1080,
+      "seconds": 18,
+      "fullDecode": "PASS",
+      "approvedAACPacketDataEqual": true,
+      "decodedPeak": 0.5377481579780579,
+      "qrFromEncodedFrames": [
+        {
+          "frame": 930,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 960,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 1079,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        }
+      ]
+    },
+    {
+      "file": "EVERWHILE_ZH_HANS_720.mp4",
+      "sha256": "4015b488f0e46d51af878e779f4e6ff2dfebe3dfc3ee284ff7d1c4aabf1e7aeb",
+      "bytes": 4182028,
+      "width": 720,
+      "height": 1280,
+      "fps": 60,
+      "frames": 1080,
+      "seconds": 18,
+      "fullDecode": "PASS",
+      "approvedAACPacketDataEqual": true,
+      "decodedPeak": 0.5377481579780579,
+      "qrFromEncodedFrames": [
+        {
+          "frame": 930,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 960,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        },
+        {
+          "frame": 1079,
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574"
+        },
+        {
+          "stress": "540x960 CRF28",
+          "decoded": "https://apps.apple.com/cn/app/everwhile/id6818551574",
+          "method": "full-frame grayscale + Otsu threshold",
+          "rawRGBSucceeded": false
+        }
+      ]
+    }
+  ],
+  "realTimePlayback": "NOT_RUN",
+  "subjectiveListening": "NOT_RUN",
+  "publicStorefronts": "PUBLIC_PROVENANCE.json",
+  "todayBrowserToEncodeMAE": {
+    "en": 1.0782643711419753,
+    "zh-Hans": 1.0832990933641975
+  },
+  "englishFirst930DecodedFramesByteEqual": true,
+  "audioPacketHash": "SHA256=c58c3f67e9bc324f5e7ac6ff916a496f53e0f4dd057cea1b29a10d9d9e74cca3",
+  "renderedCompositionSHA": "e32e85664cecbb406d0a584d32995c81369f12cc",
+  "testedSHA": "aa047531ee5543f1484a7c7bddbf722a1f8aa597",
+  "genuineChineseCropPixelEqual": true
+}

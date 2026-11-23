@@ -1,6 +1,16 @@
 # Everwhile promo — current director task
 
-## Execute now
+## Current owner task — 2026-11-23
+
+R2 was visually accepted by the owner and merged in PR26 (34bc5e8).
+Owner now requests the post-release download ending and bilingual films.
+Continue in `post-release/` using its AGENTS.md. Preserve the accepted English
+prefix and audio; use verified public App Store URLs and scan-test encoded QR.
+Chinese localization is now explicitly authorized. No App/ASC change, public
+posting, self-approval or self-merge. The R2 brand-only/Chinese-locked dispatch
+below is historical, not a reason to restart the film or block this follow-up.
+
+## Historical R2 dispatch
 
 **P01 VISUAL CHANGES_REQUIRED / R2 VISUAL REBUILD AUTHORIZED**
 
