@@ -1,6 +1,13 @@
 # Everwhile — time becomes visible
 
-## Current task: R2 visual rebuild
+## Current task: public download ending + bilingual delivery
+
+Owner accepted R2 and PR26 was merged. The2026-11-23 follow-up adds verified
+App Store download QR and delivers EN/zh-Hans films. See `post-release/AGENTS.md`
+and `post-release/outputs/`. Original R2 media/source/audio remain frozen.
+No App/ASC edits or posting. The following R2 dispatch is retained as history.
+
+## Historical task: R2 visual rebuild
 
 **P01 visuals CHANGES_REQUIRED. Execute `DIRECTOR_R2.md` on PR #26.**
 

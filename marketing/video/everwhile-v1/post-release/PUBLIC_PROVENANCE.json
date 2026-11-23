@@ -1,0 +1,47 @@
+{
+  "checkedDate": "2026-11-23",
+  "appID": 6818551574,
+  "storefronts": {
+    "en": {
+      "lookupURL": "https://itunes.apple.com/lookup?id=6818551574&country=us",
+      "url": "https://apps.apple.com/us/app/everwhile/id6818551574",
+      "HTTPStatus": 200,
+      "resolvedURL": "https://apps.apple.com/us/app/everwhile/id6818551574",
+      "trackName": "Everwhile",
+      "bundleID": "com.zhangsfish.elapse",
+      "version": "0.1.0",
+      "qrSHA256": "6a1e1ca389e14fc64de1a57822aa0ca18c2aac1e1f6dc8024f1ea7e9d15dbffa",
+      "qrModules": 33,
+      "quietZoneModules": 4
+    },
+    "zh-Hans": {
+      "lookupURL": "https://itunes.apple.com/lookup?id=6818551574&country=cn",
+      "url": "https://apps.apple.com/cn/app/everwhile/id6818551574",
+      "HTTPStatus": 200,
+      "resolvedURL": "https://apps.apple.com/cn/app/everwhile/id6818551574",
+      "trackName": "Everwhile",
+      "bundleID": "com.zhangsfish.elapse",
+      "version": "0.1.0",
+      "qrSHA256": "fa15c70ddc2eb04695bc7f457aec34e80f379e746dcca45bbe346b8a5325da4f",
+      "qrModules": 33,
+      "quietZoneModules": 4
+    }
+  },
+  "chineseToday": {
+    "source": "store-assets/captures/zh-Hans/04-today.png",
+    "sourceSHA256": "a8057ad13697d99328a785fd2f46f97d6945c76dc60631b3cb7f1d3fa9c37b35",
+    "cropLTRB": [
+      200,
+      650,
+      1120,
+      1735
+    ],
+    "cropSHA256": "64d429bb9bc1be97477e794275241975d3fcd49f84d4d63f3cbb73d6d6f66d95",
+    "repaint": false
+  },
+  "fontsLocalOnly": {
+    "E:\\Elapse\\marketing\\video\\everwhile-v1\\assets\\fonts\\InterVariable.ttf": "4989b125924991b90d05b2d16e0e388c48f7d5bb8b30539bbf9c755278d0ccaf",
+    "C:\\Windows\\Fonts\\msyh.ttc": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f",
+    "C:\\Windows\\Fonts\\msyhbd.ttc": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6"
+  }
+}
