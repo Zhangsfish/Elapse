@@ -50,8 +50,16 @@ for lang,key in [('en','EN'),('zh-Hans','ZH_HANS')]:
             subprocess.run([ff,'-v','error','-y','-ss','15.5','-i',str(p),'-t','1','-vf','scale=540:960:flags=lanczos','-c:v','libx264','-crf','28','-an',str(compressed)],check=True)
             im=frame(compressed,30)
             payload,_,_=cv2.QRCodeDetector().detectAndDecode(np.asarray(im))
+            method='full-frame RGB'
+            raw_ok=payload==target
+            if not raw_ok:
+                # Standard decoder preprocessing only; does not alter the film.
+                gray=cv2.cvtColor(np.asarray(im),cv2.COLOR_RGB2GRAY)
+                binary=cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
+                payload,_,_=cv2.QRCodeDetector().detectAndDecode(binary)
+                method='full-frame grayscale + Otsu threshold'
             assert payload==target
-            qrs.append({'stress':'540x960 CRF28','decoded':payload})
+            qrs.append({'stress':'540x960 CRF28','decoded':payload,'method':method,'rawRGBSucceeded':raw_ok})
         report['movies'].append({'file':p.name,'sha256':sha(p),'bytes':p.stat().st_size,
             'width':v['width'],'height':v['height'],'fps':60,'frames':1080,'seconds':18,
             'fullDecode':'PASS','approvedAACPacketDataEqual':audio_equal,

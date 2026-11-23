@@ -58,6 +58,8 @@ plus a540×960 CRF28 recompression. Verify all930 earlier English decoded frame
 hashes and approved AAC packet data, full decode/frame count, finite unclipped
 audio and exact Chinese raw crop pixels. Software decoder checks are not a
 claim of observed iPhone camera scanning.
+The540px stress test records whether raw RGB decoding succeeded or needed
+standard grayscale/Otsu decoder preprocessing; no movie pixels are changed.
 
 Existing Node24.15.0,HyperFrames0.8.132,GSAP3.15.0,esbuild0.28.2,FFmpeg9.0.1,
 Chrome,Python3.11/Pillow/NumPy/qrcode/OpenCV reused. No dependencies installed.
